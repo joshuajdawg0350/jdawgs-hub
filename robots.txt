@@ -20,4 +20,5 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-# Sitemap: add the absolute sitemap.xml URL for the hub host here once the hub is deployed.
+# Sitemap: the hub is deployed at joshuajdawg0350.github.io/jdawgs-hub.
+Sitemap: https://joshuajdawg0350.github.io/jdawgs-hub/sitemap.xml

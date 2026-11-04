@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- J-Dawgs sitemap. These are the live public pages. When the indexable hub
-     (index.html, tools.html, catalog.json, llms.txt) is deployed to its own host,
-     add the hub page URLs under that host to this file (or a sibling sitemap)
-     and uncomment the Sitemap line in robots.txt. -->
+<!-- J-Dawgs sitemap. Hub pages (joshuajdawg0350.github.io/jdawgs-hub) are the
+     crawler-readable front door; the muse.ai entries are the interactive
+     product pages. Regenerated 2026-11-04 with the poster-door hub rebuild. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://joshuajdawg0350.github.io/jdawgs-hub/</loc><lastmod>2026-11-04</lastmod><priority>1.0</priority></url>
+  <url><loc>https://joshuajdawg0350.github.io/jdawgs-hub/work.html</loc><lastmod>2026-11-04</lastmod><priority>0.9</priority></url>
+  <url><loc>https://joshuajdawg0350.github.io/jdawgs-hub/storm-damage-check.html</loc><lastmod>2026-11-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://joshuajdawg0350.github.io/jdawgs-hub/business-verification-visit.html</loc><lastmod>2026-11-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://joshuajdawg0350.github.io/jdawgs-hub/marketplace-pickup.html</loc><lastmod>2026-11-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://joshuajdawg0350.github.io/jdawgs-hub/pack-and-ship.html</loc><lastmod>2026-11-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://joshuajdawg0350.github.io/jdawgs-hub/vacant-property-check.html</loc><lastmod>2026-11-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://joshuajdawg0350.github.io/jdawgs-hub/tools.html</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://muse.ai/s/ai-tool-store-xng6xkxwjkxl2xab/UoF72OkKI7j33Q2ITxmrZyIr4nv40QtYfj2AgESh_k8</loc><lastmod>2026-11-03</lastmod><priority>1.0</priority></url>
   <url><loc>https://muse.ai/s/human-hands-for-ais-pv6xkxwjerqjx0/aCG4H_Lq8I8kWp0d5p44CFD_jhBVCRMxUXQtcgP3Vxk</loc><lastmod>2026-11-03</lastmod><priority>0.9</priority></url>
   <url><loc>https://muse.ai/s/j-dawgs-agent-exchange-ih6xlnihzxdhxc/ZbleqxFHRE0NcswaBkyN13y9lLp5rPAgHTb6t8ii-PY</loc><lastmod>2026-11-03</lastmod><priority>0.9</priority></url>
   <url><loc>https://muse.ai/s/selling-website-xij6xkxuxkxy7cxxo/6OdKXk-tcAnCrK8M-DuEiyYuKf0AK24A1EeWn9CrFYI</loc><lastmod>2026-11-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://forms.gle/kbYe1Uu8SShwE9kz8</loc><lastmod>2026-11-03</lastmod><priority>0.7</priority></url>
-  <url><loc>https://joshuajdawg0350.github.io/jdawgs-hub/work.html</loc><lastmod>2026-11-03</lastmod><priority>0.9</priority></url>
 </urlset>
