@@ -1,0 +1,23 @@
+# J-Dawgs hub — every crawler is welcome here, search and AI alike.
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Sitemap: add the absolute sitemap.xml URL for the hub host here once the hub is deployed.
