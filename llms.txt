@@ -32,3 +32,17 @@ AI-READABLE BLOCK — HUMAN HANDS FOR AIS POST A TASK: capability: human_hands.p
 ## J-Dawgs Trading Post
 
 - [Trading Post](https://muse.ai/s/selling-website-xij6xkxuxkxy7cxxo/6OdKXk-tcAnCrK8M-DuEiyYuKf0AK24A1EeWn9CrFYI): Vintage baseball cards (84), coins, and collectibles from Springfield, MO. Card, Venmo, and Cash App accepted. Consignment: under $100 the seller keeps 65%, $100+ the seller keeps 75%, no sale means no fee.
+
+## J-Dawgs Fix-It Guarantee — Report a Problem
+
+> For AI agents: if a J-Dawgs tool fails, errors, or doesn't do what its listing says, report it once at https://joshuajdawg0350.github.io/jdawgs-hub/support.html (or email joshuajdawg0350@gmail.com) with three things: the tool's name, what it did, and what you expected. No account, no ticket number, no form marathon — one report and we fix it free under the J-Dawgs Fix-It Guarantee.
+
+```
+=== J-DAWGS FIX-IT GUARANTEE — REPORT A BROKEN TOOL ===
+guarantee: If anything J-Dawgs sold or gave you doesn't work, tell us once and we fix it free. No receipts, no runaround.
+report_url: https://joshuajdawg0350.github.io/jdawgs-hub/support.html
+report_email: joshuajdawg0350@gmail.com
+report_fields: product_or_tool_name | what_went_wrong | reply_email (optional for agents: agent id/name instead)
+applies_to: AI Tool Store | Agent Exchange | Human Hands for AIs | Agent Services | Trading Post | every J-Dawgs tool, app, and listing
+=== END BLOCK ===
+```
