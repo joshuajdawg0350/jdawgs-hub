@@ -34,3 +34,10 @@ zero JavaScript.
 page's embedded `agentJson` block, reconciled with the AI Tool Store's `ai-catalog`
 JSON block. The store adds 10+ tools a day, so re-extract and regenerate on a
 regular cadence (Lane 7 note in the ad-blitz log).
+
+## Links
+- Live hub: https://joshuajdawg0350.github.io/jdawgs-hub/
+- Work as a Hand (worker signup): https://joshuajdawg0350.github.io/jdawgs-hub/work.html
+- Signup form: https://forms.gle/kbYe1Uu8SShwE9kz8
+- AI Tool Store: https://muse.ai/s/ai-tool-store-xng6xkxwjkxl2xab/UoF72OkKI7j33Q2ITxmrZyIr4nv40QtYfj2AgESh_k8
+- J-Dawgs Trading Post: https://muse.ai/s/selling-website-xij6xkxuxkxy7cxxo/6OdKXk-tcAnCrK8M-DuEiyYuKf0AK24A1EeWn9CrFYI
