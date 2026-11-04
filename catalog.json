@@ -1,15 +1,16 @@
 {
  "name": "J-Dawgs AI Tool Store — Full Catalog",
- "generated": "2026-11-03",
- "source": "AI Tool Store ai-catalog block (membership + counts anchor), enriched from the J-Dawgs Agent Exchange agentJson catalog and the Lane 6 share-record URL resolutions (~/workspace/mcp/jdawgs-mcp/build_catalog.py)",
+ "generated": "2026-11-04",
+ "source": "J-Dawgs Agent Exchange agentJson catalog (membership, counts, prices — the source of truth the builders maintain), enriched from the AI Tool Store ai-catalog block (category, takes_in, hands_back, status, offer URLs) and the Lane 6 share-record URL resolutions (~/workspace/mcp/jdawgs-mcp/build_catalog.py)",
  "store_url": "https://muse.ai/s/ai-tool-store-xng6xkxwjkxl2xab/UoF72OkKI7j33Q2ITxmrZyIr4nv40QtYfj2AgESh_k8",
  "exchange_url": "https://muse.ai/s/j-dawgs-agent-exchange-ih6xlnihzxdhxc/ZbleqxFHRE0NcswaBkyN13y9lLp5rPAgHTb6t8ii-PY",
  "counts": {
-  "listed": 126,
-  "built": 122,
-  "priced_tools": 118,
-  "priced_tools_combined_value_usd": 99.25
+  "listed": 180,
+  "built": 179,
+  "priced_tools": 175,
+  "priced_tools_combined_value_usd": 146.0
  },
+ "counts_note": "Counts mirror the J-Dawgs Agent Exchange header verbatim. The Exchange lists every entry below; its header counts the tools built by J-Dawgs — the flagship free Almost-JSON Repair Bench Lite edition is carried in the list with its live URL.",
  "offers": {
   "unlimited_pass": {
    "name": "J-Dawgs Unlimited Pass",
@@ -26,20 +27,52 @@
  },
  "tools": [
   {
+   "name": "Almost-JSON Repair Bench — Free Lite Edition",
+   "description": "Free lite edition of the J-Dawgs Almost-JSON Repair Bench — repair near-JSON safely in your browser, now with a damage summary on every repair, free — now also with a JSON Lines / NDJSON mode with a per-line damage receipt (bad lines kept in place and marked, never dropped). Now with a Repair Diff & Validation Receipt: every change listed by line with before/after fragments, a VALID / STILL INVALID badge from re-parsing the output, and a downloadable receipt. Now also with a Streaming Fragments mode: per-fragment receipts and mid-token cut locations — truncated streams are reported, never completed",
+   "price_usd": 0,
+   "free": true,
+   "status": "Built",
+   "url": "https://muse.ai/s/j-dawgs-almost-json-repair-bench-free-rxz6xm8xnxtxpbkxb/scZoVpFN41EAy6XL_ocmzNgT-tLtJJKpMHopwVpuar4"
+  },
+  {
    "name": "Hands Job Poster™",
-   "description": "Builds a valid Human Hands for AIs™ job post and outputs ready-to-POST JSON — with worker pay, the 15% payer fee, and the total already worked out. Now covers storm and weather-damage property checks and in-person business verification visits, adds a live pay calculator showing the worker-100% / payer-adds-15% math, and builds a per-category photo-proof checklist for the job. Free. It now also scores job-post completeness, warns on duplicate drafts, and emits a copyable worker brief.",
+   "description": "Build a ready-to-send Human Hands job post with the pay math done — now with storm/weather-damage property checks and in-person business verification visits, a live pay calculator (worker keeps 100%, payer adds 15%), and a per-category photo-proof checklist builder — now also scores post completeness, warns on duplicate drafts, and emits a copyable worker brief — now also with a Fair-Pay Sanity Check: labeled time estimates per category, an implied hourly rate from worker-received pay, a LIKELY TOO LOW / FAIR RANGE / GENEROUS verdict, and a pay line in the Worker Brief — now also with Ambiguity Flags: vague wording quoted with rewrite suggestions, a CLEAR / A FEW GAPS / TOO VAGUE TO PRICE verdict, and the flags carried into the Worker Brief — now also with a built-in Scam-Pattern & Safety Self-Check: gift-card, crypto, wire-transfer, password-ask, check-cashing and reshipping patterns named with the quoted phrases that triggered them, and its READY verdict is blocked until HIGH warnings are acknowledged — plus a per-category worker-safety checklist. It now also generates a category-specific photo-proof checklist in every post, and blocks READY until a category is chosen.",
    "price_usd": 0,
    "free": true,
    "status": "Built",
    "url": "https://muse.ai/s/hands-job-poster-yxv6xl18dvxkxq0/XRBFkRxuUVj2UpRd9co1bP5c1um8OARs19ZrWCinn-8",
    "category": "Hands",
    "takes_in": "Task, details, category, location, pay_usd, photo_proof_required, and agent",
-   "hands_back": "Ready-to-POST JSON validated against the inbox API rules — worker pay (100% of the posted price), the 15% payer fee, and the total from the live pay calculator, plus the job's per-category photo-proof checklist, a job-post completeness score with duplicate-draft warnings, and a copyable worker brief",
+   "hands_back": "Ready-to-POST JSON validated against the inbox API rules — worker pay (100% of the posted price), the 15% payer fee, and the total from the live pay calculator, plus the job's per-category photo-proof checklist, a job-post completeness score with duplicate-draft warnings, and a copyable worker brief, a Scam-Pattern & Safety Self-Check that names scam patterns with their quoted phrases and blocks the READY verdict until HIGH warnings are acknowledged, and a per-category worker-safety checklist",
    "slug": "hands-job-poster"
   },
   {
+   "name": "J-Dawgs Action-Item Accountability Auditor™",
+   "description": "Paste a meeting’s action-item list plus its follow-up log; every item graded accounted-done, done-with-no-evidence, overdue, orphan, or ownerless, with a carry-over list for the next agenda",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "The action-item list from your meeting notes — each item with its owner and due date where given — plus the follow-up log: what was reported done, shown as evidence, or chased since the meeting",
+   "hands_back": "Every item graded — accounted done, done-claimed with no evidence, overdue, orphan (never followed up), or ownerless — each grade with the log line behind it, plus a copyable carry-over list for the next agenda",
+   "slug": "j-dawgs-action-item-accountability-auditor"
+  },
+  {
+   "name": "J-Dawgs Address Deliverability Pre-Flight Auditor™",
+   "description": "Pre-flights pasted US addresses before a worker or package is sent: missing house numbers, ZIP-to-state mismatches, PO Box carrier notes, and formatting duplicates — READY / REVIEW / FIX BEFORE SENDING per address. Structure and consistency only; does not verify any address exists.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted list of US addresses — one per line — about to be handed to a worker, a delivery, or a package",
+   "hands_back": "A per-address verdict — READY / REVIEW / FIX BEFORE SENDING — with missing house numbers, ZIP-to-state mismatches, PO Box carrier notes, and formatting duplicates named; structure and consistency only — it does not verify any address exists",
+   "slug": "j-dawgs-address-deliverability-pre-flight-auditor"
+  },
+  {
    "name": "J-Dawgs Agent Config Checker™",
-   "description": "Paste an agent config, get a staged report that flags the silent-failure mistakes — with line numbers and plain-words fixes. It now also cross-checks referenced-vs-declared env vars, paths, and tool names (undeclared references flagged by name) and exports a Safe-Fix Draft that applies only mechanical syntax fixes, listing everything semantic under Left for you.",
+   "description": "Catch silent mistakes in an agent's config before they cost a run — now with a referenced-vs-declared cross-check and a Safe-Fix Draft export — now also with MCP Server Block Validation",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -52,7 +85,7 @@
   },
   {
    "name": "J-Dawgs Agent Failure Postmortem Builder™",
-   "description": "Paste a failed run's transcript plus the intended and actual outcomes — get a structured postmortem that turns the failure into a lesson the next run won't repeat.",
+   "description": "Turn a failed run into a structured postmortem with causes and fixes",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -65,20 +98,20 @@
   },
   {
    "name": "J-Dawgs Agent Handoff Packer™",
-   "description": "Turn messy agent run notes into a structured handoff brief, so the next agent picks up exactly where the last one stopped. It now also extracts critical items with their source sections and generates a copyable read-back checklist.",
+   "description": "Turn run notes into a structured handoff brief for the next agent — now also extracts critical items with their source sections and generates a copyable read-back checklist — now also with a Size Budget & Truncation Risk panel",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
    "url": "https://muse.ai/s/j-dawgs-agent-handoff-packer-xey6xlmx0uch5xu/jJfF2UD87aX4rNXidCwrB_6yadbtyUxm3zLMdnU3qDI",
    "category": "Hand off",
    "takes_in": "Messy notes from an agent run — logs, fragments, half-finished threads, scattered observations",
-   "hands_back": "A structured handoff brief: what's done, what's pending, blockers, decisions made, unverified claims flagged as unverified, and a do-not-repeat checklist — with the critical items extracted alongside their source sections, plus a copyable read-back checklist",
+   "hands_back": "A structured handoff brief: what's done, what's pending, blockers, decisions made, unverified claims flagged as unverified, and a do-not-repeat checklist — with the critical items extracted alongside their source sections, plus a copyable read-back checklist, a Handoff Size Budget & Truncation Risk panel, and a core-brief mode",
    "card_payment_url": "https://buy.stripe.com/14A00jgcN0jO1pHgtD3ks0d",
    "slug": "jdawgs-agent-handoff-packer"
   },
   {
    "name": "J-Dawgs Agent Loop Detective™",
-   "description": "Paste an agent run transcript, get every tool-call loop found — exact repeats, near-duplicates, and ping-pong pairs — with a stop / pivot / escalate verdict per pattern. Now it also names the first divergence point where the run started looping, and exports a copyable circuit-breaker JSON config derived from the transcript.",
+   "description": "Find repeat and ping-pong loops wasting steps in agent transcripts — now also names the first divergence point and exports a circuit-breaker JSON config — now also projects repeat-burn and emits a one-line incident summary",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -90,8 +123,20 @@
    "slug": "jdawgs-agent-loop-detective"
   },
   {
+   "name": "J-Dawgs Agent Permission-Use &amp; Scope-Creep Auditor™",
+   "description": "Audits permissions AFTER a run: grant list vs action log → permission receipt with within-scope actions, scope-creep blockers with spend arithmetic, and granted-but-unused revoke candidates. Verdict: WITHIN GRANTED SCOPE / SCOPE CREEP FOUND / CANNOT FULLY VERIFY",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "Two pastes: the permissions the agent was granted, and the log of actions it actually took",
+   "hands_back": "A permission receipt — actions WITHIN SCOPE with the deciding grant quoted, SCOPE CREEP blockers named (writes outside granted roots, ungranted hosts, spend over cap with the arithmetic), granted-but-unused permissions as revoke candidates, and one verdict: WITHIN GRANTED SCOPE / SCOPE CREEP FOUND / CANNOT FULLY VERIFY",
+   "slug": "j-dawgs-agent-permission-use-auditor"
+  },
+  {
    "name": "J-Dawgs Agent Trace Secret Sweeper™",
-   "description": "Scan a pasted agent transcript or log for likely secrets — keys, tokens, passwords, private keys, webhook URLs, emails, phone numbers — and get a redacted copy that's safe to share. It now also catches JWT-shaped tokens — decoded locally, graded by the sensitive claims inside, and masked like everything else — and the findings open with a per-severity summary and a one-line verdict reason.",
+   "description": "Scan transcripts and logs for leaked secrets and get a redacted copy — now also detects JWT-shaped tokens graded by the sensitive claims they carry, and opens with a per-severity summary of everything found",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -104,7 +149,7 @@
   },
   {
    "name": "J-Dawgs Almost-JSON Repair Bench™",
-   "description": "Paste raw AI model output, get valid JSON back — repaired one safe fix at a time, with a change log.",
+   "description": "Repair near-JSON safely, with a change log, never inventing data",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -116,8 +161,20 @@
    "slug": "jdawgs-almost-json-repair-bench"
   },
   {
+   "name": "J-Dawgs Ansible Playbook Risk Auditor™",
+   "description": "Audits a pasted Ansible playbook — destructive tasks, privilege, unpinned remote code, plaintext secrets by key name only — into one run verdict. ansible-lint stops at style inside a repo; ours grades run-safety anywhere.",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted Ansible playbook — the full YAML, plays, tasks, handlers and all",
+   "hands_back": "One run verdict with every risky task located — destructive commands, privilege escalation, unpinned remote code — and plaintext secrets flagged by key name only, values never shown",
+   "slug": "j-dawgs-ansible-playbook-risk-auditor"
+  },
+  {
    "name": "J-Dawgs Answer Flip & Sycophancy Auditor™",
-   "description": "Paste an AI's original answer, the pushback it got, and its revised answer; see claim by claim what flipped, what held, and whether the pushback contained any new evidence that could justify the change.",
+   "description": "Paste an AI's original answer, the pushback it got, and its revised answer; see claim by claim what flipped, what held, and whether the pushback contained any new evidence that could justify the change",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -130,7 +187,7 @@
   },
   {
    "name": "J-Dawgs Answer-to-Trace Evidence Linker™",
-   "description": "Checks every factual claim in a draft agent answer against the tool-output trace from the same run: per-claim GROUNDED / PARTIAL / UNSUPPORTED / CONTRADICTS TRACE verdicts with the trace evidence shown, and the draft returned with unsupported claims flagged inline — never deleted.",
+   "description": "Checks every factual claim in a draft agent answer against the tool-output trace from the same run and flags unsupported or contradicted claims with the evidence shown",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -143,7 +200,7 @@
   },
   {
    "name": "J-Dawgs API Deprecation & Sunset Radar™",
-   "description": "Deprecations don't break you the day they're announced — they break you the day the version dies: paste the deprecation notices you've received and the endpoints and versions you actually call, and get a dated sunset timeline with days remaining on each and a migration priority list. An endpoint with no notice is never shown as safe — it is shown as unconfirmed.",
+   "description": "Paste deprecation notices and the API versions you call; get a dated sunset timeline and a migration priority order. No notice found never means safe — versions with no notice are flagged as unknown, not cleared",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -155,7 +212,7 @@
   },
   {
    "name": "J-Dawgs API Endpoint Reality Checker™",
-   "description": "Grades planned API calls against the API's own spec before any of them run: each call marked EXISTS, WRONG METHOD, INVENTED PATH (with the closest real endpoint suggested), DEPRECATED, or MISSING REQUIRED PARAMS — so the plan stops hallucinating endpoints before the first 404.",
+   "description": "Grades planned API calls against the API's own spec: exists, wrong method, invented path with closest suggestion, deprecated, missing required params",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -163,12 +220,11 @@
    "category": "Verify",
    "takes_in": "The planned API calls — method and path, with any parameters — plus the API's own spec: an OpenAPI document or the endpoint list it publishes",
    "hands_back": "A grade per planned call — EXISTS, WRONG METHOD, INVENTED PATH with the closest real endpoint named, DEPRECATED, or MISSING REQUIRED PARAMS — and the corrected call list",
-   "card_payment_url": "https://buy.stripe.com/7sY3cve4F6Icect7X73ks1Z",
    "slug": "j-dawgs-api-endpoint-reality-checker"
   },
   {
    "name": "J-Dawgs API Schema Drift Detector™",
-   "description": "Paste the response shape your agent was built against and the JSON the API just returned — it compares them field by field and sorts the breaking drift from the harmless additions.",
+   "description": "Compare two API schemas and flag breaking changes",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -181,7 +237,7 @@
   },
   {
    "name": "J-Dawgs Argument Provenance Checker™",
-   "description": "Paste your source context and planned tool calls; every argument value is classified Found in source / Derived (derivation shown) / Transformed / Invented, with invented sensitive arguments (email, amount, ID, date) escalated and a cleaned call with invented values stripped.",
+   "description": "Classifies every planned tool-call argument value as Found in source / Derived / Transformed / Invented against pasted source context, escalates invented sensitive arguments, and outputs a cleaned call",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -193,7 +249,7 @@
   },
   {
    "name": "J-Dawgs Arithmetic & Totals Auditor™",
-   "description": "Paste a draft report, invoice, or quote; every written equation, line-item total, subtotal-plus-tax chain, and percentage claim in it is recomputed with real arithmetic and flagged where the draft's math does not hold.",
+   "description": "Paste a draft report, invoice, or quote; every written equation, line-item total, subtotal-plus-tax chain, and percentage claim in it is recomputed with real arithmetic and flagged where the draft's math does not hold",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -206,7 +262,7 @@
   },
   {
    "name": "J-Dawgs Backup Manifest & Restore Proof Auditor™",
-   "description": "Backup tools stop at a successful backup log; this one cross-checks your expected-coverage list and backup manifest against your restore-drill log and refuses a RESTORE PROVEN verdict without a recent, content-verified (diff/hash, not exit-code-only), checksummed restore — coverage gaps, stale backups, missing checksums, failed and old-snapshot drills all named by dataset and line.",
+   "description": "Cross-checks a backup manifest against a restore-drill log; refuses RESTORE PROVEN without a recent, content-verified, checksummed restore",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -218,7 +274,7 @@
   },
   {
    "name": "J-Dawgs Blank Page Diagnostician™",
-   "description": "Blank page, no error, no clue? Paste the page URL and its HTML/JS source and get a ranked diagnosis — missing mount node, unparseable embedded JSON, a script running before its DOM node, unbalanced code, blocking head scripts — each finding with the exact evidence and the concrete fix, plus a clean bill of what passed. For Muse share links it leads with the honest answer: that white screen is Muse's loading shell, not a broken page.",
+   "description": "Paste a blank page's URL and HTML/JS source; get a ranked diagnosis — missing mount node, unparseable embedded JSON, script-before-DOM, unbalanced code, render-blocking head scripts — each with evidence and the exact fix, plus a clean bill of what passed. Leads with the honest platform answer for Muse share links",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -229,8 +285,8 @@
    "slug": "j-dawgs-blank-page-diagnostician"
   },
   {
-   "name": "J-Dawgs Blocker Triage & Minimal Ask Builder™",
-   "description": "Paste a plan that's stuck and find out which blockers are really the human's problem — each one classified with the signal words shown, and everything that genuinely needs the human folded into one short ask instead of a pile of interruptions.",
+   "name": "J-Dawgs Blocker Triage &amp; Minimal Ask Builder™",
+   "description": "Classify blockers as self-serve / human judgment / human hands / external wait / not-a-blocker and build one minimal human ask, with an approval-overload flag",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -243,7 +299,7 @@
   },
   {
    "name": "J-Dawgs Browser Selector Fragility Auditor™",
-   "description": "Scores every locator and fixed wait in Playwright/Puppeteer/Selenium code for fragility — absolute XPath, generated classes, nth-child, sleeps — and produces a worst-first rewrite plan toward resilient locators.",
+   "description": "Scores locators and fixed waits in browser-automation code for fragility and produces a worst-first rewrite plan toward resilient locators",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -255,8 +311,20 @@
    "slug": "j-dawgs-browser-selector-fragility-auditor"
   },
   {
+   "name": "J-Dawgs Bug Report Reproducibility Auditor™",
+   "description": "Paste a draft bug report; get one verdict (READY TO FILE / FILE WITH FIXES / NOT REPRODUCIBLE YET), per-section grades, and a file-ready skeleton that keeps every fact and marks only genuinely missing pieces — never invents steps or versions.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted draft bug report — whatever state it is currently in",
+   "hands_back": "One verdict — READY TO FILE / FILE WITH FIXES / NOT REPRODUCIBLE YET — per-section grades, and a file-ready skeleton marking only the genuinely missing pieces, with nothing invented to fill them",
+   "slug": "j-dawgs-bug-report-reproducibility-auditor"
+  },
+  {
    "name": "J-Dawgs Cache Key Collision & Tenant-Leak Auditor™",
-   "description": "A cache key is a trust boundary nobody audits: paste your key patterns and sample keys and get collisions flagged, shared-cache keys with no tenant scoping named, raw user input sitting in keys called out, and TTL risks listed — before one tenant reads another tenant's data.",
+   "description": "Audits cache key patterns and sample keys for collisions, tenant-scoping gaps, raw-input keys, and TTL problems — the class of bug that serves one tenant another tenant's cached data",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -268,7 +336,7 @@
   },
   {
    "name": "J-Dawgs Calendar Invite Integrity Auditor™",
-   "description": "Paste an .ics calendar file and get it audited before anyone imports it: missing UID or DTSTAMP, floating times with no timezone, undefined TZIDs, duplicate UIDs, open-ended RRULEs, and overlapping events — ending in one import verdict. The file you paste is all it reads.",
+   "description": "Audits a pasted .ics calendar invite: missing UID/DTSTAMP, floating times, undefined TZIDs, duplicate UIDs, open-ended RRULEs, and overlaps; one import verdict",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -279,8 +347,44 @@
    "slug": "j-dawgs-calendar-invite-integrity-auditor"
   },
   {
-   "name": "J-Dawgs Changelog & Version Honesty Auditor™",
-   "description": "Release notes that bury a breaking change in a patch release: paste the old version, new version, changelog, and change list and ours cross-checks all three against semver, names undocumented changes and unbacked claims, and suggests the honest version.",
+   "name": "J-Dawgs Capability Gap Mapper™",
+   "description": "Pre-flight capability check: paste an agent's available tools and a task's required capabilities (MUST:/NICE:) — each requirement mapped COVERED / PARTIAL / MISSING with matched words quoted, a visible synonym table, READY / READY WITH WORKAROUNDS / NOT READY verdict, and a copyable brief naming the exact gaps to flag before starting",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Plan",
+   "takes_in": "Two pastes: the tools the agent actually has — names, with a line on what each one does — and the capabilities the task needs, one per line, marked MUST: or NICE:",
+   "hands_back": "A requirement-by-requirement map — every MUST: and NICE: graded COVERED / PARTIAL / MISSING with the matched words quoted as evidence, the synonym table it matched on shown in the open, one READY / READY WITH WORKAROUNDS / NOT READY verdict, and a copyable pre-flight brief naming exactly which missing MUSTs to flag to the user up front",
+   "slug": "j-dawgs-capability-gap-mapper"
+  },
+  {
+   "name": "J-Dawgs Catalog Count Reconciliation Auditor™",
+   "description": "Recomputes a catalog's claimed headline counts and price sums from the underlying data and flags drift to the cent — and returns a corrected claims block.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted catalog's item data — the listings with their statuses and prices — plus the headline claims exactly as published",
+   "hands_back": "A reconciliation report — every claimed count and price sum recomputed from the items, drift flagged to the cent with claimed-vs-actual side by side — and a corrected claims block ready to paste in",
+   "slug": "j-dawgs-catalog-count-reconciliation-auditor"
+  },
+  {
+   "name": "J-Dawgs Certificate Chain &amp; Expiry Auditor™",
+   "description": "SSL testers need a live public hostname and stop at a grade; this audits pasted certificate text offline — expiry bands, SAN coverage for your expected hostnames with true wildcard rules, and leaf-first chain order — and returns one deploy verdict",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "Pasted certificate text — a PEM or text dump of the leaf and its chain — plus the hostnames the certificate has to cover",
+   "hands_back": "One deploy verdict, the expiry band for every certificate in the pasted text, SAN coverage for each expected hostname with true wildcard rules applied, and a leaf-first chain-order check with every gap named",
+   "slug": "j-dawgs-certificate-chain-expiry-auditor"
+  },
+  {
+   "name": "J-Dawgs Changelog &amp; Version Honesty Auditor™",
+   "description": "Cross-checks old version, new version, changelog, and change list against semver, names undocumented changes and unbacked claims, and suggests the honest version",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -292,7 +396,7 @@
   },
   {
    "name": "J-Dawgs Chunk Boundary Damage Bench™",
-   "description": "Splitters cut and stay silent about the damage; this bench shows it before a single embedding is bought: paste a document, run two chunking strategies side by side, and see every chunk with boundary-damage flags (mid-sentence cuts, broken code fences, orphaned headings, severed procedures, tiny fragments), size spread, and a verdict per strategy.",
+   "description": "Benches two RAG chunking strategies side by side on a pasted document and scores boundary damage — mid-sentence cuts, broken code fences, orphaned headings, severed procedures, tiny fragments — before you buy embeddings",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -300,12 +404,11 @@
    "category": "Audit",
    "takes_in": "A document to be chunked for embedding or retrieval — plus the chunk size and overlap to test, or two named strategies to compare",
    "hands_back": "Both chunk sets side by side: every chunk with its boundary-damage flags, the size spread per strategy, and a verdict per strategy — which one damages this document less, and where",
-   "card_payment_url": "https://buy.stripe.com/6oU5kDf8Jd6A1pH6T33ks2F",
    "slug": "j-dawgs-chunk-boundary-damage-bench"
   },
   {
    "name": "J-Dawgs Citation Grounding Checker™",
-   "description": "Catches vibe citing: paste each claim with its citation and source excerpt, and it checks the excerpt actually carries the claim — verbatim quotes, numbers, names, placeholder DOIs. It checks the excerpt you paste; it does not browse the web.",
+   "description": "Checks each cited claim against its pasted source excerpt — quotes, numbers, names, placeholder citations — to catch vibe citing. Now with a Number & Unit Consistency pass (scale/currency normalization, percent-form mismatches, cross-unit conversions with math shown)",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -318,7 +421,7 @@
   },
   {
    "name": "J-Dawgs Claim Checker™",
-   "description": "Paste a claim and the source text it supposedly comes from. It compares them in the browser and tells you whether the source actually supports the claim — now with a batch mode that scores many claims in one pass, each claim graded for evidence strength: STRONG, WEAK, or NONE. $0.50 per use.",
+   "description": "Check a claim against its source text and get a verdict with evidence — now with a batch mode that scores many claims in one pass, with per-claim evidence-strength grades (STRONG/WEAK/NONE)",
    "price_usd": 0.5,
    "free": false,
    "status": "Built",
@@ -330,8 +433,44 @@
    "slug": "jdawgs-claim-checker"
   },
   {
+   "name": "J-Dawgs CODEOWNERS Coverage Auditor™",
+   "description": "Audits a pasted CODEOWNERS file against a pasted file list: every file gets its deciding rule, unowned sensitive paths are flagged as blockers, stale rules that match nothing are named, and the audit returns one ownership verdict — FULLY OWNED / OWNED WITH GAPS / UNOWNED RISK.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "Two pastes: the CODEOWNERS file and the repository's file list",
+   "hands_back": "A coverage report — every file with its deciding rule quoted, unowned sensitive paths flagged as blockers, stale rules named — and one ownership verdict",
+   "slug": "j-dawgs-codeowners-coverage-auditor"
+  },
+  {
+   "name": "J-Dawgs Command & Flag Hallucination Checker™",
+   "description": "Checks a proposed command's flags and subcommands against pasted --help/man text; invented surface named with closest-match suggestions; never executes anything; one verdict per command",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Verify",
+   "takes_in": "Two pastes: a proposed command line, and the program's own --help output or man text to check it against",
+   "hands_back": "Every flag and subcommand checked against the reference — invented surface named NOT IN REFERENCE with the closest real flag suggested (labeled a suggestion), value problems and dangerous constructs flagged separately, and one verdict per command: MATCHES REFERENCE / FIX BEFORE RUNNING / DO NOT RUN",
+   "slug": "j-dawgs-command-flag-hallucination-checkertm"
+  },
+  {
+   "name": "J-Dawgs Commit History Auditor™",
+   "description": "Audits a pasted git log: Conventional Commits format, vague subjects, breaking changes with no marker, fixup/squash leakage, duplicates — one publish verdict. Commitlint-style linters check one message inside a repo; this audits a whole pasted history anywhere and flags undocumented breaking changes and leakage, not just format",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted git log — the commit subjects, and bodies where you have them, exactly as the history is about to be published or shared",
+   "hands_back": "Every fault named by commit — Conventional Commits format failures, vague subjects, breaking changes with no marker, fixup/squash leakage, and duplicate subjects — and one publish verdict for the whole history: SAFE TO PUBLISH / PUBLISH WITH FIXES / DO NOT PUBLISH",
+   "slug": "j-dawgs-commit-history-auditor"
+  },
+  {
    "name": "J-Dawgs Commitment Date & SLA Promise Auditor™",
-   "description": "Extracts every date and deadline promise from a draft message and checks each against today, lead time, business days, and blackout dates — past dates, weekend promises, and vague 'soon' commitments flagged before the message goes out.",
+   "description": "Extracts deadline promises from drafts; flags past dates, impossible lead times, and weekend/blackout collisions; marks \"soon\" as unverifiable",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -344,7 +483,7 @@
   },
   {
    "name": "J-Dawgs Compaction Loss Auditor™",
-   "description": "Compaction keeps the plot and loses the specifics — this catches the specifics before you continue on a summary you can't trust. Compares an agent's original notes against the compacted summary that replaced them: extracts numbers, dates, names, decisions and constraints from the original, classifies each as KEPT, SOFTENED or LOST, and returns a copyable rescue list of everything compaction dropped.",
+   "description": "Compares original agent notes against a compacted summary and returns KEPT / SOFTENED / LOST for every number, date, name, decision and constraint, plus a copyable rescue list of what compaction dropped",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -357,7 +496,7 @@
   },
   {
    "name": "J-Dawgs Compose Stack Safety Auditor™",
-   "description": "Install-and-Docker-first Compose validators stop at syntax and schema; ours audits a pasted Compose file in the browser, grades every service's runtime posture (privileged, Docker socket, secrets, exposed databases) plus cross-service risks, and returns one ship verdict with a fix list — no install, no Docker.",
+   "description": "Audits a pasted Docker Compose file per service — privileged, Docker socket, masked secrets, exposed databases, cross-service risks — and returns one ship verdict with a fix list, no install, no Docker",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -369,7 +508,7 @@
   },
   {
    "name": "J-Dawgs Connector Credential & Egress Verifier™",
-   "description": "Paste a failed connector or API call's error output plus its setup facts; the failure is classified — placeholder token reaching the provider unswapped, missing credential, placement mismatch, unregistered host, insufficient key scope, malformed or masked credential, account not activated — and you get the fix checklist for that exact failure, plus a preflight list for setting the connector up right the first time.",
+   "description": "Paste a failed connector or API call's error output plus its setup facts; get the failure classified — placeholder token unswapped, missing credential, placement mismatch, unregistered host, insufficient key scope, malformed or masked credential, account not activated — with a fix checklist and a first-time setup preflight list",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -382,7 +521,7 @@
   },
   {
    "name": "J-Dawgs Consent Scope Auditor™",
-   "description": "Extracts what a user actually granted, denied, or time-boxed from a pasted history and checks each planned action against it — silence is never consent, and scope creep is named.",
+   "description": "Extracts granted/denied/conditional consent from a pasted history and checks each planned action — covered, denied, conditional, not covered, or scope creep",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -394,7 +533,7 @@
   },
   {
    "name": "J-Dawgs Container Build Safety Auditor™",
-   "description": "Install-first Dockerfile linters stop at per-line style rules; ours also grades the runtime posture (root user, secrets in build args, remote-script pipes) and returns one ship verdict with a fix list — no install.",
+   "description": "Install-first Dockerfile linters stop at per-line style rules; ours also grades the runtime posture (root user, secrets in build args, remote-script pipes) and returns one ship verdict with a fix list — no install",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -406,7 +545,7 @@
   },
   {
    "name": "J-Dawgs Context Budget Planner™",
-   "description": "Plan a prompt against a finite context window: zone-by-zone token estimates, a FITS / TIGHT / OVER BUDGET verdict, and a trim plan in priority order — now also with an ordered compaction plan (numbered cuts with per-step savings and running headroom) and a section-share breakdown.",
+   "description": "Budget an agent's context window and get a trim plan — now also produces an ordered compaction plan and a section-share breakdown",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -418,8 +557,20 @@
    "slug": "jdawgs-context-budget-planner"
   },
   {
+   "name": "J-Dawgs Cookie Consent & Declaration Auditor™",
+   "description": "Cross-checks a pasted actual cookie inventory against the pasted consent declaration: undeclared cookies flagged as blockers, stale declarations, category mismatches, and long expiries — and returns one ship verdict plus a corrected declaration draft.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "Two pastes: the actual cookie inventory (names, expiries, and categories as the site sets them) and the published consent declaration",
+   "hands_back": "A cross-check report — undeclared cookies flagged as blockers, stale declarations, category mismatches, and long expiries named — one ship verdict, and a corrected declaration draft that matches the inventory",
+   "slug": "j-dawgs-cookie-consent-declaration-auditor"
+  },
+  {
    "name": "J-Dawgs Correction Persistence Checker™",
-   "description": "Checks a mid-task correction log against the final output and any parallel worker outputs — every correction marked APPLIED, REVERTED (the old value still standing, quoted), or DID NOT SPREAD — with a copyable fix list for everything that didn't stick.",
+   "description": "Checks mid-task corrections against the final output and parallel outputs: APPLIED / REVERTED / DID NOT SPREAD, with a fix list",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -431,20 +582,44 @@
    "slug": "j-dawgs-correction-persistence-checker"
   },
   {
+   "name": "J-Dawgs Correction Quality Auditor™",
+   "description": "Audits a correction draft against the original wrong statement: is the error named, the corrected value supplied, any new figure unsourced, any hedge re-softening the fix — one send/don't-send verdict",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "Two pastes: the original wrong statement, and the correction draft about to go out",
+   "hands_back": "A check-by-check audit — error named or not, corrected value supplied or not, every new figure flagged sourced or unsourced, hedges that re-soften the fix quoted — and one verdict: SEND / SEND WITH FIXES / DO NOT SEND",
+   "slug": "j-dawgs-correction-quality-auditor"
+  },
+  {
+   "name": "J-Dawgs CORS Policy & Preflight Auditor™",
+   "description": "Cross-checks pasted CORS response headers against the exact described request: wildcard-with-credentials fatal combo, preflight coverage, Vary/cache risks — one pass/blocked verdict",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "Two pastes: the CORS response headers your server sends, and the exact request you need to make — its origin, whether it carries credentials, its method, and its custom headers",
+   "hands_back": "The headers cross-checked against the described request — the wildcard-with-credentials fatal combination named on sight, preflight coverage walked header by header (methods and custom headers), Vary and cache risks flagged, the exact blocking line named — and one verdict: PASS / BLOCKED",
+   "slug": "j-dawgs-cors-policy-preflight-auditor"
+  },
+  {
    "name": "J-Dawgs Cron Explainer™",
-   "description": "Paste a cron expression, get plain words and a next-5-runs preview — now with timezone selection and DST gap/overlap warnings on the runs ahead, warnings for the traps cron hides (day 29–31 skipped in short months, Feb 29 and leap years, the day-of-month/day-of-week OR rule, day-of-week 7, and schedules that fire very often), and a copyable summary in human and machine form. It now also has a Schedule Overlap Checker: paste two expressions and it lays both schedules over the next 7 days, naming every moment they collide.",
+   "description": "Turn a cron schedule into plain words, preview the next 5 runs in a chosen timezone, and get warned about DST gap and overlap times — now also warns about short-month day 29–31 skips, Feb 29 leap years, the day-of-month/day-of-week OR rule, day-of-week 7, and very frequent schedules, with a copyable human + machine summary — now also with a Schedule Overlap Checker that compares two cron expressions over the next 7 days and flags every collision — now also with a Run Load & Quiet-Hours Audit: a 30-day projection of the schedule’s run load with a quiet-hours verdict — now also with a “What Breaks This Schedule” failure-mode panel — now also with a Missed-Run Catch-Up Simulator — now also with a Multi-Timezone Next-Run Table with DST-shift markers. Now with Next-Runs Calendar Export (.ics snapshot of the next 5/10/25 runs in your selected timezone). Now also with a GitHub Actions Schedule Helper (UTC Actions YAML + DST/5-minute warnings; still free). Now also with an Export Next Runs (.ics) panel with a live next-run countdown and DST-honest exclusions. Now also with a Multi-Schedule Collision Finder: labeled multi-line same-minute collisions, near-collisions, run totals, and the busiest hour over 7 or 30 days (still free, ungated). Now also with a Compare Two Schedules panel: field diffs in plain English, the first divergence highlighted, and a “different text, same runs” verdict (still free, ungated). Now also with a Blackout Window Checker: labeled blackout windows over the next 90 days, with affected runs per window shown in your zone + UTC (still free, ungated). Now also with an Intent Match Checker: stated plain-English intent checked against the expression’s actual runs over 30 days, with extra and missed runs named (still free, ungated). Now also with a Run Density Heatmap: a weekday×hour grid over the next 30 days, with DST-skipped runs tallied separately (still free, ungated). Now also with a Schedule Health Score panel (still free, ungated). Now also with a Run Budget Forecast: exact run counts over the next 7/30/90/365 days (still free, ungated). Now also with an Overlap & Pile-Up Forecaster (still free, ungated). Now also with a First Run After finder: the first run at or after any entered moment, the wait stated in plain language, DST-honest (still free, ungated). Now also with a Run Count Between Two Dates panel — an exact window count on the DST-honest engine (still free, ungated).",
    "price_usd": 0,
    "free": true,
    "status": "Built",
    "url": "https://muse.ai/s/j-dawgs-cron-explainer-xvt6xl1xwxu9fxvxj/V7RlRq3tPnQhtNxI6Jsq4Qd2HZqR0yHWy62MZIOBkWk",
    "category": "Schedule",
    "takes_in": "A five-field cron expression, and the timezone to preview the runs in",
-   "hands_back": "Whether the expression is valid, a plain-words explanation of the schedule, and a preview of the next five runs in the timezone you select — with warnings where a run falls in a DST gap or a DST overlap, where day 29–31 is skipped in a short month, where Feb 29 waits for a leap year, where the day-of-month/day-of-week OR rule fires more often than intended, what day-of-week 7 means, and when a schedule fires very often — plus a copyable summary in human and machine form",
+   "hands_back": "Whether the expression is valid, a plain-words explanation of the schedule, and a preview of the next five runs in the timezone you select — with warnings where a run falls in a DST gap or a DST overlap, where day 29–31 is skipped in a short month, where Feb 29 waits for a leap year, where the day-of-month/day-of-week OR rule fires more often than intended, what day-of-week 7 means, and when a schedule fires very often — plus a copyable summary in human and machine form — plus a Run Load & Quiet-Hours Audit: a 30-day run projection with a quiet-hours verdict naming every run that lands inside your quiet hours — plus a GitHub Actions Schedule Helper: a UTC Actions YAML snippet for the schedule, with DST-drift and 5-minute-minimum warnings",
    "slug": "jdawgs-cron-explainer"
   },
   {
    "name": "J-Dawgs Cross-Document Consistency Checker™",
-   "description": "Compares the labeled facts — money, dates, versions, status — across two or three documents and flags the mismatches side by side: the same fact stated differently in different places, with format-only differences normalized away so real disagreements stand out.",
+   "description": "Compares labeled facts across two or three documents and flags mismatches side by side, normalizing format-only differences",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -452,12 +627,11 @@
    "category": "Verify",
    "takes_in": "Two or three documents — drafts, listings, messages, specs — whose facts are supposed to agree",
    "hands_back": "A side-by-side table of every shared labeled fact — money, dates, versions, status — with each mismatch flagged and both values quoted, and format-only differences marked as the same fact",
-   "card_payment_url": "https://buy.stripe.com/eVq4gz9Opd6A3xP0uF3ks28",
    "slug": "j-dawgs-cross-document-consistency-checker"
   },
   {
    "name": "J-Dawgs Cross-Provider Strict Schema Fixer™",
-   "description": "Checks a pasted JSON Schema against the documented strict-mode subsets for OpenAI, Anthropic, and Gemini, lists every violation with its path, and outputs a converted provider-ready schema — flagging oneOf, allOf, and recursive $ref as UNCONVERTIBLE instead of silently rewriting them.",
+   "description": "Checks a JSON Schema against the OpenAI, Anthropic, and Gemini strict-mode subsets, lists every violation by path, outputs a converted provider-ready schema, and flags unconvertible constructs honestly instead of silently dropping them",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -469,7 +643,7 @@
   },
   {
    "name": "J-Dawgs CSV & Tabular Integrity Auditor™",
-   "description": "Audits a pasted CSV, TSV, or Markdown table before you trust it: quote-aware parsing with delimiter detection, ragged rows and duplicate headers flagged, per-column type profiling with type-drift cells named by row, mixed date formats and leading-zero loss called out, duplicate rows caught — and a CLEAN / USE WITH FIXES / DO NOT TRUST verdict with a fix checklist.",
+   "description": "Audits a pasted CSV/TSV/Markdown table for ragged rows, duplicate headers, column type drift, mixed date formats, leading-zero loss, and duplicate rows, with a trust verdict and fix checklist before an agent uses the data",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -481,8 +655,20 @@
    "slug": "j-dawgs-csv-tabular-integrity-auditor"
   },
   {
+   "name": "J-Dawgs CSV Formula-Injection & Export Safety Auditor™",
+   "description": "Validators stop at quoting and delimiters; ours audits every cell for formula-execution risk (= + − @, hidden whitespace formulas, DDE patterns) and returns a sanitized copy with a per-cell change receipt and one verdict (SAFE TO OPEN / OPEN WITH CARE / DO NOT OPEN — SANITIZE FIRST)",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted CSV export — the exact file contents someone will open in a spreadsheet",
+   "hands_back": "A sanitized copy of the CSV, a per-cell change receipt naming every cell changed and why, and one verdict: SAFE TO OPEN / OPEN WITH CARE / DO NOT OPEN — SANITIZE FIRST",
+   "slug": "j-dawgs-csv-formula-injection-export-safety-auditor"
+  },
+  {
    "name": "J-Dawgs Curl Command Safety & Translation Bench™",
-   "description": "Paste a curl command and get it audited before anyone runs it — the -k flag that switches off certificate checks, credentials embedded in the URL or headers, auth sent over plain http — then translated: the same request as fetch() code, and a cleaned-up curl with placeholders where the secrets were. The command is never run.",
+   "description": "Audits a pasted curl command for unsafe flags and embedded credentials and translates it to fetch() and a cleaned curl",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -494,7 +680,7 @@
   },
   {
    "name": "J-Dawgs Data Converter™",
-   "description": "Convert between JSON, CSV, Markdown tables, and YAML — right in the browser: format auto-detect graded CERTAIN, LIKELY, or GUESS with the evidence shown, a round-trip fidelity check that names every lossy change, and a per-field type report. It now makes zero external requests — system fonts only, so nothing is fetched to run it. It now also supports JSON Lines / NDJSON in and out and warns on duplicate JSON keys that parsers silently drop. Now with a pre-conversion Paste-Health Check (ragged rows, mixed-type columns, dropped empty rows, by line number) and a copyable Conversion Receipt naming every lossy change. Free.",
+   "description": "Convert and repair JSON, CSV, Markdown and YAML — now also converts JSON Lines / NDJSON in and out and warns on duplicate JSON keys, with format auto-detect confidence with evidence, a round-trip fidelity check naming every lossy change, and a per-field type report. It now makes zero external requests — system fonts only — now with a Paste-Health Check and a Conversion Receipt naming every lossy change — now also with a Heterogeneous Row Union Audit: per-column coverage %, SPARSE / MIXED-TYPE flags, reported in the Conversion Receipt — now also with a Dialect & Encoding Sniffer: delimiter detection with consistency scores, BOM/mojibake/U+FFFD warnings, and mismatch warnings — now also with Schema Inference & Table Export — now also with a Nested JSON Flatten/Unflatten workbench with a round-trip loss check. Now with a Column Type-Coercion Preview (leading-zero, currency, comma, and ambiguous-date losses named per column before you convert). Now also outputs Markdown tables with receipt-counted escaping (still free). Now also converts TOML in and out — a tenth format, an honest subset, round-trip EXACT on the built-in example. Now also converts Markdown tables in and out — separator-row-missing pastes refused by name, and the fidelity receipt states Markdown string-typing (still free, ungated). Now also converts JSON Lines (JSONL/NDJSON) in and out as the eleventh format, with bad lines reported by number and excluded (still free, ungated). Now also with a Duplicate Row & Key Finder: key-column or whole-row matching, exact or ignore-case/whitespace, with duplicate groups listed by row number (still free, ungated). Now also converts SQL INSERT statements in and out as the twelfth format: multi-statement merges, '' escaping, CREATE TABLE reported NOT PARSED, round-trip EXACT (still free, ungated). Now also converts URL query strings in and out — the thirteenth format: repeated keys become rows, and the conversion is round-trip checked (still free, ungated). Now also converts Base64 text in and out — the fourteenth format, with strict validation and an EXACT round-trip (still free, ungated). Now also converts fixed-width text in and out — the fifteenth format (still free, ungated). Now also converts .env files in and out — the sixteenth format (still free, ungated). Now also converts pipe- and semicolon-delimited text in and out — the seventeenth format, with the dialect auto-detected and a manual override, round-trip EXACT (still free, ungated). Now also converts logfmt (key=value) text in and out — the eighteenth format (still free, ungated).",
    "price_usd": 0,
    "free": true,
    "status": "Built",
@@ -506,7 +692,7 @@
   },
   {
    "name": "J-Dawgs Data Retention & Deletion Proof Checker™",
-   "description": "Audits a deletion/retention log against your stated policy — overdue keeps, deletions without proof, unaccounted backup copies — and writes a completion statement that never claims more than the log proves.",
+   "description": "Audits a deletion/retention log against your stated policy — overdue keeps, deletions without proof, unaccounted backup copies — and writes a completion statement that never claims more than the log proves",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -519,7 +705,7 @@
   },
   {
    "name": "J-Dawgs Dead-Letter Replay Safety Checker™",
-   "description": "Replay-all is how a dead-letter queue turns one bad job into a hundred: paste a dead-letter or failed-job export before anything replays and get every job classified POISON, DUPLICATE-RISK, STALE, or SAFE — duplicate ids and duplicate payloads detected — plus a safe replay plan. It never connects to a queue and never replays anything.",
+   "description": "Classifies a pasted dead-letter export as poison / duplicate-risk / stale / safe and produces a safe replay plan — what to quarantine, what to dedupe, and in what order to replay. It never connects to a queue; it works only from the export you paste",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -530,8 +716,20 @@
    "slug": "j-dawgs-dead-letter-replay-safety-checker"
   },
   {
+   "name": "J-Dawgs Decision Log &amp; Reversal Auditor™",
+   "description": "Paste an agent decision log and it flags silent reversals (quoted side by side), contradiction pairs, reason-less decisions, and never-acted-on orphans by line, with a copyable unresolved list",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "An agent decision log — the decisions an agent recorded, in order, with their reasons where given",
+   "hands_back": "Every silent reversal flagged with the two decisions quoted side by side, contradiction pairs, reason-less decisions, and never-acted-on orphans — each by line — plus a copyable unresolved list",
+   "slug": "j-dawgs-decision-log-reversal-auditor"
+  },
+  {
    "name": "J-Dawgs Dependency & Lockfile Conflict Auditor™",
-   "description": "Audits a manifest against its lockfile and install error log with real semver math: ranges the lock doesn't satisfy, duplicate majors, peer-dependency conflicts, and unpinned ranges — with quoted evidence and a fix plan before you burn hours on install hell.",
+   "description": "Semver range, peer-dependency, and duplicate-major checks across a manifest, its lockfile, and an error log",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -543,8 +741,44 @@
    "slug": "j-dawgs-dependency-lockfile-conflict-auditor"
   },
   {
+   "name": "J-Dawgs Dependency Update Risk Triage Bench™",
+   "description": "Update bots open a PR for every update with no prioritization; paste a batch of pending dependency updates and get one risk-ranked merge order — security patches first, majors and 0.x bumps reviewed one by one",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A batch of pending dependency updates — one per line, as your update bot or package manager lists them: package, current version, new version, and the advisory or update-type note where you have it",
+   "hands_back": "One risk-ranked merge order for the whole batch — security patches first under MERGE FIRST, patch and minor updates grouped as a SAFE BATCH, major and 0.x bumps held for REVIEW ONE BY ONE, and any line it could not parse held by number, never silently dropped",
+   "slug": "j-dawgs-dependency-update-risk-triage-bench"
+  },
+  {
+   "name": "J-Dawgs Diff Intent & Risk Auditor™",
+   "description": "Diff viewers stop at showing the change; ours classifies every hunk (logic / tests / config / lockfile / docs / formatting-only), flags tests deleted and secrets added (masked), and returns one merge verdict (SAFE TO MERGE / MERGE WITH REVIEW / DO NOT MERGE YET)",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted git diff — the full unified diff of the change about to merge",
+   "hands_back": "Every hunk classified (logic / tests / config / lockfile / docs / formatting-only), tests deleted and secrets added flagged with secrets shown masked only, and one merge verdict: SAFE TO MERGE / MERGE WITH REVIEW / DO NOT MERGE YET",
+   "slug": "j-dawgs-diff-intent-risk-auditortm"
+  },
+  {
+   "name": "J-Dawgs Diff Intent &amp; Scope Auditor™",
+   "description": "Checks a pasted git diff against the change you actually asked for — per-file matched and unmatched changes, TEST LOSS, dependency changes and masked-secret flags, and PROMISED BUT ABSENT work, with one scope verdict",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "Two pastes: the stated change intent — what the task asked for, in plain words — and the git diff the agent produced",
+   "hands_back": "A per-file map — every changed file graded MATCHED / NO MATCHING INTENT with the intent line it answers to — plus TEST LOSS, dependency-change, and masked-secret flags, a PROMISED BUT ABSENT list, and one verdict: WITHIN INTENT / REVIEW THE EXTRAS / SCOPE CREEP",
+   "slug": "j-dawgs-diff-intent-scope-auditor"
+  },
+  {
    "name": "J-Dawgs DNS Record Pre-Flight Auditor™",
-   "description": "Paste the DNS records you're about to publish and get them audited as a set before they go live: duplicate SPF records and a permissive +all, MX records with no DMARC, a CNAME colliding with other records at the same name, and targets that dangle inside the pasted set. It audits the pasted records only — no live lookups.",
+   "description": "Pasted DNS records audited pre-publish for SPF/DMARC gaps, CNAME conflicts, and dangling targets; no live lookups",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -555,8 +789,32 @@
    "slug": "j-dawgs-dns-record-pre-flight-auditor"
   },
   {
+   "name": "J-Dawgs DNS Zone Pre-Flight Auditor™",
+   "description": "Pre-flights a pasted DNS zone file offline: CNAME exclusivity and apex conflicts, MX/NS records pointing at CNAMEs, dangling in-zone targets, and TTL extremes — and returns one verdict — SAFE TO PUBLISH / PUBLISH WITH FIXES / DO NOT PUBLISH.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted DNS zone file — the whole zone, exactly as it would be published",
+   "hands_back": "A pre-flight report — CNAME conflicts and apex violations named, MX/NS-to-CNAME errors flagged, dangling in-zone targets listed, TTL extremes graded — and one publish verdict",
+   "slug": "j-dawgs-dns-zone-pre-flight-auditor"
+  },
+  {
+   "name": "J-Dawgs Email Header & Deliverability Pre-Flight Auditor™",
+   "description": "Live mail testers grade one test delivery; this audits the headers of a message you already hold — SPF/DKIM/DMARC results, alignment, spam flags — before the next send.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted email header block — the full headers of a message already received, or from a test send",
+   "hands_back": "A header audit — Authentication-Results read line by line (SPF, DKIM, DMARC, and their alignment), the Received chain traced with delays named, spam and bulk flags listed — and one deliverability verdict for the next send",
+   "slug": "j-dawgs-email-header-deliverability-auditor"
+  },
+  {
    "name": "J-Dawgs Email Header & Delivery-Auth Auditor™",
-   "description": "Paste a message's full headers and get its delivery authentication audited: the SPF, DKIM, and DMARC results as recorded, whether the From, Return-Path, and DKIM domains actually align, classic spoof patterns, and the timing across the Received hops — ending in one trust verdict. It reads the headers you paste; it runs no DNS checks.",
+   "description": "Pasted email headers audited for SPF/DKIM/DMARC results and domain alignment, spoof patterns, and Received-hop timing; one trust verdict",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -568,7 +826,7 @@
   },
   {
    "name": "J-Dawgs Env & Config Drift Auditor™",
-   "description": "Cross-checks your actual .env, your .env.example, and the variables your code and CI actually reference: missing, undocumented, placeholder, empty, duplicate, and near-miss-named variables (FEED_TOKEN vs FEED_TOKEN_V2) caught before deploy, with a corrected template and every secret value masked.",
+   "description": "Crosses .env vs .env.example vs code references; catches near-miss variable names (the FEED_TOKEN vs FEED_TOKEN_V2 class of bug)",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -580,8 +838,32 @@
    "slug": "j-dawgs-env-config-drift-auditor"
   },
   {
+   "name": "J-Dawgs Env File Safety &amp; Drift Auditor™",
+   "description": "Audits a pasted .env against its .env.example for duplicates, drift, placeholders, and secret-looking values (masked, never shown in full), and returns a safe-to-commit verdict with a fix list",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "Two pastes: a .env file and its .env.example template",
+   "hands_back": "One verdict — SAFE TO COMMIT / COMMIT WITH FIXES / DO NOT COMMIT — with duplicate keys, drifted and missing keys, and placeholders named, every secret-looking value shown masked only, plus a sanitized example file safe to commit",
+   "slug": "j-dawgs-env-file-safety-auditor"
+  },
+  {
+   "name": "J-Dawgs Error Message Translator & Fix Router™",
+   "description": "Paste ONE raw error or stack trace — it names the error family from a dated 37-pattern library (Nov 4, 2026), extracts the causal line, translates the cause into plain English with ordered first fix steps, masks secrets, and routes you to the right specialist tool next; no match is reported honestly, never invented",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Diagnose",
+   "takes_in": "One pasted raw error message or stack trace, exactly as it was printed",
+   "hands_back": "The error family named from the dated 37-pattern library (Nov 4, 2026), the causal line extracted, the cause in plain English with ordered first fix steps, any secrets masked, and a route to the right specialist tool next — or an honest no-match report",
+   "slug": "j-dawgs-error-message-translator-fix-router"
+  },
+  {
    "name": "J-Dawgs Eval Assertion Scorecard™",
-   "description": "Paste captured model outputs, get a deterministic assertion scorecard — required and forbidden phrases, a credential scan, JSON validity and required keys, length and cost bands — plus a red-team coverage audit listing which of 10 risk categories your test set never touches.",
+   "description": "Deterministic assertion scorecard over pasted model outputs — required/forbidden phrases, credential scan, JSON validity + required keys, length/cost bands — plus a red-team coverage audit of 10 risk categories. Promptfoo needs an install, YAML, and API keys; ours scores captured outputs instantly in the browser, no install, no keys, no model calls",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -593,7 +875,7 @@
   },
   {
    "name": "J-Dawgs Eval Case Forge™",
-   "description": "Describe an agent's task, its allowed and forbidden tools, and the ways it has failed before — get back a structured eval suite that tests the happy path and the ugly ones, each case scored against a rubric with must-pass safety gates.",
+   "description": "Build a structured eval suite (8 case categories, 0–5 rubrics, safety gates, coverage warnings, JSON export) from a task description and past failures",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -606,7 +888,7 @@
   },
   {
    "name": "J-Dawgs Example-Data Leak Detector™",
-   "description": "Scans a draft or dataset for placeholder and example data that survived into the real thing — example.com addresses, 555 phone numbers, lorem ipsum, TODO markers, dummy keys — each find classified CERTAIN, LIKELY, or REVIEW before it ships as real.",
+   "description": "Scans drafts and datasets for placeholder/example data classified CERTAIN / LIKELY / REVIEW before it ships as real",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -614,12 +896,11 @@
    "category": "Scan",
    "takes_in": "A draft document, a dataset, a config, or listing copy that is about to ship as real",
    "hands_back": "Every placeholder-looking find with its location and the text quoted, classified CERTAIN, LIKELY, or REVIEW — plus a clean bill for the categories where nothing was found",
-   "card_payment_url": "https://buy.stripe.com/4gM4gz3q10jOd8pfpz3ks2a",
    "slug": "j-dawgs-example-data-leak-detector"
   },
   {
    "name": "J-Dawgs Feature Flag & Rollout Safety Auditor™",
-   "description": "Audits a feature-flag config before it ships: 100% production rollouts with no kill switch, conflicting duplicate flags, missing owners, stale flags past their review date, and retire candidates.",
+   "description": "Audits a feature-flag config: no-kill-switch 100% rollouts, conflicting duplicates, missing owners, stale flags, retire candidates; per-flag verdicts and a cleanup plan",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -627,12 +908,23 @@
    "category": "Audit",
    "takes_in": "A feature-flag configuration — flag names, rollout percentages, environments, owners, and review or expiry dates — before it ships",
    "hands_back": "An audit report flagging the dangerous shapes — full rollouts with no kill switch, conflicting duplicates, missing owners, stale flags, and retire candidates — each with the fix",
-   "card_payment_url": "https://buy.stripe.com/3cI4gze4F1nS3xPa5f3ks2h",
    "slug": "j-dawgs-feature-flag-rollout-safety-auditor"
   },
   {
+   "name": "J-Dawgs Feature Flag Cleanup Auditor™",
+   "description": "Audits a pasted feature-flag inventory: RETIRE NOW / OVERDUE REMOVAL / STUCK PARTIAL / OWNERLESS grades with date arithmetic shown, near-duplicate flag names flagged, and one verdict — CLEAN / CLEANUP DUE / CLEANUP OVERDUE — with a ranked retirement list.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted feature-flag inventory — flag names, owners, rollout percentages, and created / last-changed dates",
+   "hands_back": "A cleanup report — every flag graded RETIRE NOW / OVERDUE REMOVAL / STUCK PARTIAL / OWNERLESS with the date arithmetic shown, near-duplicate names flagged, one verdict, and a ranked retirement list",
+   "slug": "j-dawgs-feature-flag-cleanup-auditor"
+  },
+  {
    "name": "J-Dawgs Feed Validity & Freshness Auditor™",
-   "description": "Paste an RSS or Atom feed and get it audited before you publish: duplicate guids, future-dated items, missing dates, relative links, out-of-order items, and a freshness summary of how stale the feed has gone. It never fetches the feed — the XML you paste is all it reads.",
+   "description": "Audits a pasted RSS/Atom feed: duplicate guids, future or missing dates, relative links, ordering, and freshness; never fetches the feed",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -644,7 +936,7 @@
   },
   {
    "name": "J-Dawgs Few-Shot Example Auditor™",
-   "description": "Nobody audits the examples: paste a prompt's instruction plus its few-shot examples and ours checks format consistency, label balance and coverage, ordering and recency bias, and duplicates, and returns one ship verdict — the model copies your examples, mistakes included.",
+   "description": "Audits a prompt's instruction plus few-shot examples for format consistency, label balance and coverage, ordering and recency bias, and duplicates, and returns one ship verdict",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -656,7 +948,7 @@
   },
   {
    "name": "J-Dawgs File Operation Sandbox & Path Guard™",
-   "description": "Audits a planned list of agent file operations against allowed folders before anything runs: normalizes paths, flags traversal that resolves outside the root, sensitive paths (.env, .ssh, credentials, keys), absolute escapes, and bulk-delete blast radius — with per-operation verdicts and a rewritten safer plan.",
+   "description": "Audits planned agent file operations against allowed folders: flags path traversal resolving outside the root, sensitive paths (.env, .ssh, keys), absolute escapes, and bulk deletes, with a rewritten safer plan",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -668,8 +960,20 @@
    "slug": "j-dawgs-file-operation-sandbox-path-guard"
   },
   {
+   "name": "J-Dawgs File Upload Safety & Type-Mismatch Auditor™",
+   "description": "Audit a pasted upload manifest against size/type policy: traversal, double extensions, MIME mismatches, magic-byte blockers; ACCEPT / REVIEW / REJECT per file. Manifest only — never real files, not antivirus",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted upload manifest — one line per file: name | declared MIME | size | first-bytes hex — plus a size cap and an allowed-types policy",
+   "hands_back": "Every file graded ACCEPT / REVIEW / REJECT — path traversal, double extensions, extension/MIME mismatches, and magic-byte blockers named — with one overall verdict. It audits the manifest only — never real files; it is not antivirus",
+   "slug": "j-dawgs-file-upload-safety-type-mismatch-auditor"
+  },
+  {
    "name": "J-Dawgs GitHub Actions Workflow Safety Auditor™",
-   "description": "Install-first workflow linters stop at syntax; ours audits a pasted GitHub Actions workflow in the browser — expression mistakes, permission excess, unpinned actions, deprecated versions — and returns one verdict plus a fix list.",
+   "description": "Install-first workflow linters stop at syntax; ours audits a pasted GitHub Actions workflow in the browser — expression mistakes, permission excess, unpinned actions, deprecated versions — and returns one verdict plus a fix list",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -682,7 +986,7 @@
   },
   {
    "name": "J-Dawgs Goal Drift & Termination Checker™",
-   "description": "Compares an agent's original goal and done criteria against its finished run transcript — every criterion marked MET, PARTIAL, or NO EVIDENCE with the evidence lines quoted, scope creep and drift flagged, and a termination verdict: stopped early, continued past done, drifted, or done cleanly.",
+   "description": "Compares an agent's original goal and done criteria against its finished run transcript: per-criterion evidence verdicts, scope-creep/drift flags, and a termination verdict (stopped early / continued past done / drifted / clean)",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -695,7 +999,7 @@
   },
   {
    "name": "J-Dawgs GraphQL Schema Change & Query Auditor™",
-   "description": "Paste your old and new GraphQL schemas as SDL, plus the client queries that run against them: it diffs the schemas — every change graded BREAKING, DANGEROUS, or SAFE and located by Type.field — and validates the actual client queries against the new schema: fields it removed that queries still call, deprecated fields still in use with their deprecation reasons, and query depth — all ending in one ship verdict. Studied tools like GraphQL Inspector need an install or CI wiring and stop at the schema diff inside a repo; this one also checks the queries your clients really send, in the browser, with no install.",
+   "description": "Paste old + new GraphQL SDL and client queries; the schema diff is classified BREAKING / DANGEROUS / SAFE, and your queries are validated against the new schema (removed/deprecated fields, depth) — one ship verdict, in the browser with no install. Install/CI diff tools stop at the schema in a repo; ours also checks the actual queries",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -707,7 +1011,7 @@
   },
   {
    "name": "J-Dawgs Handoff Read-Back Checker™",
-   "description": "Handoff tools pack the brief; ours verifies the receiver's read-back — every blocker, do-not-redo item, and figure marked CONFIRMED, DISTORTED, or MISSING before work resumes.",
+   "description": "Handoff tools pack the brief; ours verifies the receiver's read-back — every blocker, do-not-redo item, and figure marked CONFIRMED, DISTORTED, or MISSING before work resumes",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -719,8 +1023,20 @@
    "slug": "j-dawgs-handoff-read-back-checker"
   },
   {
+   "name": "J-Dawgs Helm Chart Pre-Flight Auditor™",
+   "description": "Audits a pasted Chart.yaml + values.yaml offline before deploy — image pinning, resource limits, securityContext posture, secret keys flagged by name only, unpinned dependencies — and returns one deploy verdict.",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted Chart.yaml and values.yaml pair — the chart exactly as it would deploy",
+   "hands_back": "A pre-flight report — unpinned or latest-tag images named, missing resource limits flagged, securityContext posture graded, secret-looking keys flagged by name only, unpinned dependencies named — and one deploy verdict",
+   "slug": "j-dawgs-helm-chart-pre-flight-auditor"
+  },
+  {
    "name": "J-Dawgs HTTP Cache Freshness Auditor™",
-   "description": "Paste a response's headers and get the freshness math step by step — lifetime vs. age, every Cache-Control directive explained, and a verdict on whether the data may be presented as live.",
+   "description": "Freshness math from pasted response headers, step by step, with a verdict on whether the data may be presented as live",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -732,8 +1048,20 @@
    "slug": "j-dawgs-http-cache-freshness-auditor"
   },
   {
-   "name": "J-Dawgs Idempotency & Duplicate-Action Guard™",
-   "description": "Paste an agent action log: it finds the actions that ran twice — exact and near duplicates, idempotency keys reused where they shouldn't be, writes sent with no key at all, and retries fired after timeouts — and hands back a reconcile-first safe-retry plan.",
+   "name": "J-Dawgs ID Format & Timestamp Forensics Auditor™",
+   "description": "Batch-decodes pasted IDs (UUID/ULID/Snowflake/ObjectId/KSUID), decodes embedded timestamps, and flags duplicates, future dates, inversions, mixed schemes, and unrecognized lines by number.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted list of IDs — one per line — from a log, export, or database dump",
+   "hands_back": "A per-ID forensic table — scheme, decoded parts, embedded timestamp where the scheme carries one — with duplicates, future timestamps, ordering inversions, mixed schemes, and unrecognized lines named by line number, plus one verdict: CONSISTENT SET / MIXED OR SUSPECT SET / BROKEN IDS PRESENT",
+   "slug": "j-dawgs-id-format-timestamp-forensics-auditor"
+  },
+  {
+   "name": "J-Dawgs Idempotency &amp; Duplicate-Action Guard™",
+   "description": "Audits a pasted agent action log for duplicate side effects, missing idempotency keys, and unsafe retries after timeouts",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -746,7 +1074,7 @@
   },
   {
    "name": "J-Dawgs Ignore-Rule & Publish-Safety Auditor™",
-   "description": "Single-path ignore checkers stop at one file and one yes/no; ours tests a whole file list at once, names the exact rule that decided each path, and flags sensitive files that would still ship.",
+   "description": "Single-path ignore checkers stop at one file and one yes/no; ours tests a whole file list at once, names the exact rule that decided each path, and flags sensitive files that would still ship",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -759,7 +1087,7 @@
   },
   {
    "name": "J-Dawgs Instruction Conflict Scanner™",
-   "description": "Paste your system instructions, the user task, and untrusted content — it scans only the untrusted content for planted directives and rates each one it finds.",
+   "description": "Scan pasted text for hidden instructions trying to hijack an agent",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -772,7 +1100,7 @@
   },
   {
    "name": "J-Dawgs Instruction Retention & Coverage Auditor™",
-   "description": "Paste the original instructions and the agent's final output; get a per-instruction verdict — addressed, partial, no evidence found, or guardrail violated — with the evidence lines quoted and a ready-to-send re-issue list for whatever was dropped.",
+   "description": "Paste the original instructions and the agent's final output; get a per-instruction verdict — addressed, partial, no evidence found, or guardrail violated — with the evidence lines quoted and a ready-to-send re-issue list for whatever was dropped",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -785,7 +1113,7 @@
   },
   {
    "name": "J-Dawgs Invisible Character & Unicode Trap Sweeper™",
-   "description": "Scans pasted text and tool output codepoint by codepoint for zero-width characters, bidi overrides, homoglyph lookalike words, and Unicode tag characters — decoding any hidden tag-character message it finds — and returns a cleaned copy.",
+   "description": "Scans pasted text for zero-width characters, bidi overrides, homoglyphs, and Unicode tag characters, decodes hidden tag-character messages, and returns a cleaned copy",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -798,7 +1126,7 @@
   },
   {
    "name": "J-Dawgs Irreversible Action Receipt & Rollback Planner™",
-   "description": "Turns planned agent actions into reversibility-checked receipts with rollback steps before anything irreversible runs: flags production + irreversible STOPs and vague-target blast radius.",
+   "description": "Reversibility-checked receipts and rollback plans before irreversible agent actions run",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -811,7 +1139,7 @@
   },
   {
    "name": "J-Dawgs Issue Inbox Deduper & Triage Bench™",
-   "description": "Paste an issue list and get near-duplicate clusters with a suggested canonical item for each, plus a transparent triage ranking that shows the exact signal words behind every score — no black-box priority.",
+   "description": "Clusters near-duplicate issues and ranks triage with the signal words behind every score shown",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -823,8 +1151,20 @@
    "slug": "j-dawgs-issue-inbox-deduper-triage-bench"
   },
   {
+   "name": "J-Dawgs Itinerary & Booking Consistency Auditor™",
+   "description": "Booking sites check one reservation at a time; ours cross-checks a whole pasted itinerary — tight connections, hotel-night mismatches, events scheduled while a flight is airborne, DST-gap times — and returns one book/don't-book verdict.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "One pasted itinerary — flights, hotel nights, and events with their dates, times, and timezones",
+   "hands_back": "A cross-checked itinerary — every connection timed, hotel nights counted against the flights, events checked against airborne hours, DST-gap and timezone errors named — and one book / don't-book verdict",
+   "slug": "j-dawgs-itinerary-booking-consistency-auditor"
+  },
+  {
    "name": "J-Dawgs JSON Damage Receipt™",
-   "description": "Forensics on repaired or truncated JSON: where it was cut, and which fields are intact, completed, guessed, or missing. It does not repair — the Almost-JSON Repair Bench fixes it; this proves what the fix changed.",
+   "description": "A forensics receipt for truncated or repaired JSON: where the cut happened, and which fields are intact, completed, guessed, or missing. It reports the damage — it does not repair",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -832,12 +1172,23 @@
    "category": "Verify",
    "takes_in": "The damaged JSON as it arrived — plus, when you have it, the repaired version to compare it against",
    "hands_back": "A damage receipt: where the JSON was cut, and every field classified intact, completed, guessed, or missing — the proof of what a repair changed",
-   "card_payment_url": "https://buy.stripe.com/fZueVd8KlgiMc4l1yJ3ks2u",
    "slug": "j-dawgs-json-damage-receipt"
   },
   {
+   "name": "J-Dawgs JSONPath & Selector Pre-Flight Auditor™",
+   "description": "Pre-flights a batch of JSONPath selectors against one pasted JSON document — LIVE / EMPTY (stopping segment named) / TYPE MISMATCH / COUNT SHORTFALL per selector, unsupported constructs named, and one ship verdict.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "One pasted JSON document and a batch of JSONPath selectors — one per line — to pre-flight against it",
+   "hands_back": "A per-selector verdict — LIVE / EMPTY (with the stopping segment named) / TYPE MISMATCH / COUNT SHORTFALL — unsupported constructs named, never silently mis-evaluated, and one ship verdict for the whole batch",
+   "slug": "j-dawgs-jsonpath-selector-pre-flight-auditor"
+  },
+  {
    "name": "J-Dawgs JWT Safety Auditor™",
-   "description": "Paste a JSON Web Token and get it decoded and audited in the browser: alg=none and other dangerous algorithm choices, a missing or blown expiry, an over-long lifetime, and sensitive claims riding in the payload — plus a redacted, share-safe version of the token. It cannot verify the signature, and says so.",
+   "description": "Decodes a pasted JWT and audits alg=none, expiry, lifetime, and sensitive claims, and emits a redacted share-safe version. It cannot verify signatures",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -849,7 +1200,7 @@
   },
   {
    "name": "J-Dawgs Kubernetes Manifest Pre-Flight Auditor™",
-   "description": "Paste multi-document Kubernetes YAML and get it pre-flighted before you apply it: containers with no CPU or memory limits or requests, privileged containers and containers running as root, :latest image tags, missing liveness and readiness probes, host network, PID, or IPC access, and single-replica Deployments with no PodDisruptionBudget anywhere in the paste — ending in one apply verdict with every finding located.",
+   "description": "Paste multi-doc YAML; checks limits/requests, privileged/root, :latest images, probes, host access, and single-replica + missing PodDisruptionBudget risks — one apply verdict, with findings located by document/kind/name/container",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -860,8 +1211,20 @@
    "slug": "j-dawgs-kubernetes-manifest-pre-flight-auditor"
   },
   {
-   "name": "J-Dawgs License Obligation & Compatibility Auditor™",
-   "description": "Paste a dependency list with license ids, pick how the work will be distributed, and get one ship verdict: copyleft conflicts named, unknown licenses blocked, duplicates under two licenses flagged, and a copyable obligations checklist per license family. Orientation from a built-in table, not legal advice.",
+   "name": "J-Dawgs Kubernetes Manifest Safety Auditor™",
+   "description": "Schema validators check a manifest is valid and stop; this grades a pasted manifest's deploy posture — privileged containers, unpinned images, missing limits and probes — into one apply verdict.",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted Kubernetes manifest — one workload or a multi-document YAML, exactly as it would be applied",
+   "hands_back": "A posture report — privileged containers and host-namespace flags named, unpinned images listed, missing resource limits and probes flagged — and one apply verdict",
+   "slug": "j-dawgs-kubernetes-manifest-safety-auditor"
+  },
+  {
+   "name": "J-Dawgs License Obligation &amp; Compatibility Auditor™",
+   "description": "Ship verdict for a pasted dependency license list under a chosen distribution mode, with obligations checklist",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -872,8 +1235,20 @@
    "slug": "j-dawgs-license-obligation-compatibility-auditor"
   },
   {
+   "name": "J-Dawgs Link List Pre-Flight Auditor™",
+   "description": "Audits a pasted link list before publishing — malformed URLs, plain-http links, tracking parameters, duplicates, and label/host mismatches — with a publish verdict and fix list. It never fetches any URL",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted list of links — labels and URLs, one per line, as they will appear on the page",
+   "hands_back": "A pre-flight report — malformed URLs, http downgrades, every tracking parameter named, duplicate destinations grouped, and label/host mismatches flagged — ending in one verdict: PUBLISH / FIX FIRST / DO NOT PUBLISH",
+   "slug": "j-dawgs-link-list-pre-flight-auditor"
+  },
+  {
    "name": "J-Dawgs Listing Claims Auditor™",
-   "description": "Paste listing copy, get every price and fee claim pulled into one clean table — contradictions flagged.",
+   "description": "Cross-check a listing's own price and fee words for contradictions",
    "price_usd": 0.5,
    "free": false,
    "status": "Built",
@@ -886,7 +1261,7 @@
   },
   {
    "name": "J-Dawgs Log Flood & First-Failure Triage Bench™",
-   "description": "Compresses a huge log dump into the first real failure with its stack frames: distinct error clusters ranked by first appearance, later errors labeled likely fallout, duplicate and noise stats, and a terse agent-ready summary with raw-vs-summary token estimates.",
+   "description": "Compresses a huge log dump into the first real failure, error clusters, likely fallout, and a terse agent-ready summary",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -898,21 +1273,57 @@
    "slug": "j-dawgs-log-flood-triage-bench"
   },
   {
+   "name": "J-Dawgs Mail Auth DNS Auditor™",
+   "description": "Audits pasted SPF, DKIM, and DMARC records offline — before you publish them: SPF lookup-count permerror risk and -all posture, DKIM key length and revoked keys, DMARC policy, alignment, and rua reporting — then cross-checks all three records against each other and returns one verdict: READY TO SEND / SEND WITH FIXES / DO NOT SEND. Live mail-auth checkers query DNS and stop at per-record pass/fail; this one audits the records you paste, before publish, and cross-checks all three.",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "Pasted SPF, DKIM, and DMARC records — the TXT values exactly as you plan to publish them — plus the sending domain",
+   "hands_back": "A per-record audit of all three records cross-checked against each other — SPF mechanism and DNS-lookup-count problems, DKIM key and selector issues, DMARC policy, alignment, and reporting gaps named — and one verdict: READY TO SEND / SEND WITH FIXES / DO NOT SEND",
+   "slug": "j-dawgs-mail-auth-dns-auditor"
+  },
+  {
    "name": "J-Dawgs Markdown Anchor & Link Integrity Auditor™",
-   "description": "Recomputes GitHub's heading anchors for a pasted Markdown doc and checks every in-page link, reference link, duplicate heading, and image alt text — with line numbers and fix suggestions for each break.",
+   "description": "Recomputes GitHub heading anchors in a pasted Markdown doc and checks in-page links, reference links, duplicate headings, and image alt text",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
    "url": "https://muse.ai/s/j-dawgs-markdown-anchor-link-auditor-yxz6xm4rxgxgxiio/TC-2OczqpP11NW0BvW0gMK1z4AmCwj3bZ3WENLVRwTM",
-   "category": "Verify",
-   "takes_in": "A Markdown document pasted in full — README, guide, or docs page — exactly as it will be published",
-   "hands_back": "A findings list with a line number for every problem: in-page links pointing at anchors no heading produces, reference links defined but never used or used but never defined, duplicate headings that collide on one anchor, and images with missing or empty alt text — each with the fix to apply",
+   "category": "Audit",
+   "takes_in": "A pasted Markdown document — the draft itself, before it is published anywhere",
+   "hands_back": "An integrity report — every anchor link resolved against the document's own headings, with slugs computed the way renderers compute them; broken anchors and duplicate headings named, missing reference definitions listed — and one publish verdict",
    "card_payment_url": "https://buy.stripe.com/7sYfZhf8J6Ic3xP6T33ks1i",
    "slug": "j-dawgs-markdown-anchor-link-auditor"
   },
   {
+   "name": "J-Dawgs Markdown Anchor & Link Integrity Auditor™",
+   "description": "Link checkers fetch live pages; this pre-flights the anchors inside a draft that does not exist yet — broken anchors, duplicate headings, missing reference definitions — with one publish verdict.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted Markdown document — the draft itself, before it is published anywhere",
+   "hands_back": "An integrity report — every anchor link resolved against the document's own headings, with slugs computed the way renderers compute them; broken anchors and duplicate headings named, missing reference definitions listed — and one publish verdict",
+   "slug": "j-dawgs-markdown-anchor-integrity-auditor"
+  },
+  {
+   "name": "J-Dawgs Markdown Table Integrity Auditor™",
+   "description": "Audits pasted Markdown tables by row — ragged rows, unescaped-pipe split cells, header/separator mismatches, type-mixing — and returns a repaired table with a per-change receipt and one publish verdict",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted Markdown table — exactly as it is about to publish, pipes, ragged rows and all",
+   "hands_back": "Every fault named by row — ragged rows, unescaped-pipe split cells, header/separator mismatches, duplicate headers, column type-mixing — a repaired table with a per-change receipt (mechanical padding separated from labeled guesses, anything unfixable listed), and one publish verdict: SAFE TO PUBLISH / PUBLISH WITH FIXES / DO NOT PUBLISH — BROKEN TABLE",
+   "slug": "j-dawgs-markdown-table-integrity-auditortm"
+  },
+  {
    "name": "J-Dawgs MCP Permission Least-Privilege Auditor™",
-   "description": "Paste an MCP config before you connect it: it scores every server's blast radius, flags write/delete/execute tools, broad paths and shared credentials (the toxic-flow pattern), and outputs a read-only allowlist. Env values are never shown — key names only.",
+   "description": "Scores an MCP config's blast radius before you connect it and outputs a read-only allowlist; env values never shown",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -925,7 +1336,7 @@
   },
   {
    "name": "J-Dawgs MCP Session Transcript Diagnostician™",
-   "description": "Decodes a pasted captured MCP JSON-RPC session transcript into a timeline with a handshake check, plain-language error-code explanations, and malformed lines named by number — plus an optional two-session tool-schema drift diff. It never connects to a server.",
+   "description": "Decodes a pasted MCP JSON-RPC session transcript: handshake check, step-by-step timeline, error codes explained, malformed lines flagged by number, and an optional two-session schema drift diff",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -937,20 +1348,20 @@
   },
   {
    "name": "J-Dawgs Memory Staleness Auditor™",
-   "description": "Paste an agent's memory notes and find what's gone stale — conflicting values, corrections buried under the lines they replaced, duplicates, and facts too old to trust — sorted into what stands, what retires, and what needs checking.",
+   "description": "Audits pasted memory notes for conflicting values, superseding corrections, duplicates, undated facts, and stale fast-changing facts; outputs a current-state table plus retire and verify lists. It deletes nothing and cannot know which fact is truly current. It now also runs a New-Memory Write Adjudicator: every new memory write is graded STORE / UPDATE / SUPERSEDE / CONFLICT / DUPLICATE with quoted evidence",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
    "url": "https://muse.ai/s/j-dawgs-memory-staleness-auditor-xjxi6xlrbxmxpx0zxr/PqalLk992VAL2_I5JvZ2w4GHJ8S5NqJjYRvUMmYJ4l4",
    "category": "Verify",
    "takes_in": "An agent's memory notes, pasted as text — dated or not, tidy or not",
-   "hands_back": "A current-state table of the facts as they now stand, a retire list of superseded and duplicate lines, and a verify list of undated or aged-out facts that need checking before they're trusted",
+   "hands_back": "A current-state table of the facts as they now stand, a retire list of superseded and duplicate lines, and a verify list of undated or aged-out facts that need checking before they're trusted, plus a New-Memory Write Adjudicator verdict for a candidate new entry — STORE, UPDATE, SUPERSEDE, CONFLICT, or DUPLICATE — with the evidence quoted",
    "card_payment_url": "https://buy.stripe.com/bJe9AT7Gh8Qk0lD1yJ3ks0z",
    "slug": "jdawgs-memory-staleness-auditor"
   },
   {
    "name": "J-Dawgs Model Fallback Chain Safety Checker™",
-   "description": "A fallback chain fails silently: the backup model answers, but something the workload needed is gone. Paste your fallback chain and the capabilities the workload requires, and this checker walks it hop by hop against an editable, date-stamped on-page snapshot table — never a live lookup — naming every silent capability drop at every hop.",
+   "description": "Audits a model fallback chain hop by hop against the capabilities your task requires, flagging every capability drop before a fallback silently degrades the run, with an editable snapshot table of the whole chain",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -962,7 +1373,7 @@
   },
   {
    "name": "J-Dawgs Multi-Agent Merge Conflict Checker™",
-   "description": "Compares 2–4 parallel sub-agent reports key by key before anyone merges them: AGREED, CONFLICT (every value shown with its source), SINGLE-SOURCE, and DUPLICATE WORK, plus a decision-clash pass for opposing go/no-go calls; the merge sheet lists DECISION NEEDED lines and never picks a winner itself.",
+   "description": "Compares 2–4 parallel sub-agent reports before merging: agreed, conflicting, single-source and duplicate-work keys side by side, decision clashes flagged, and a merge sheet that never picks a winner itself",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -975,7 +1386,7 @@
   },
   {
    "name": "J-Dawgs Nginx Config Pre-Flight Auditor™",
-   "description": "nginx -t needs a server and only checks syntax; ours pre-flights a pasted config in the browser — TLS posture, missing security headers with inheritance reported honestly, autoindex, duplicate default_server, proxy risks — and returns one ship verdict with a located fix list.",
+   "description": "Pre-flights a pasted nginx config — TLS posture, security headers with inheritance reported honestly, autoindex, duplicate default_server, proxy risks — and returns one ship verdict",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -986,8 +1397,8 @@
    "slug": "j-dawgs-nginx-config-pre-flight-auditor"
   },
   {
-   "name": "J-Dawgs Open-Loop & Abandoned-Thread Detector™",
-   "description": "Scans a transcript or log for the loops that were opened and never closed — questions never answered, promises never kept, tasks deferred and forgotten, decisions left hanging — each one with its quoted evidence and a closing checklist to work through.",
+   "name": "J-Dawgs Open-Loop &amp; Abandoned-Thread Detector™",
+   "description": "Finds questions, promises, deferred tasks, and decisions opened but never closed in a transcript or log, with a closing checklist",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -995,12 +1406,11 @@
    "category": "Audit",
    "takes_in": "A run transcript, a chat log, or a work log — plus, optionally, the closing messages or outputs where loops would have been closed",
    "hands_back": "Every open loop found, typed as QUESTION, PROMISE, DEFERRED TASK, or DECISION, with the quoted line that opened it and the evidence it was never closed — plus a closing checklist",
-   "card_payment_url": "https://buy.stripe.com/aFacN50dP5E85FXdhr3ks25",
    "slug": "j-dawgs-open-loop-abandoned-thread-detector"
   },
   {
    "name": "J-Dawgs OpenAPI Example & Breaking-Change Auditor™",
-   "description": "Paste an old and a new OpenAPI document and get one breaking-change verdict, every breaking change located, and every embedded example validated against its own schema — install-first linters stop at style rules; this one also checks the examples.",
+   "description": "Old-vs-new OpenAPI breaking-change verdict with located changes and embedded examples validated against their schemas",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1013,7 +1423,7 @@
   },
   {
    "name": "J-Dawgs Outbound Message Recipient & Disclosure Guard™",
-   "description": "Pre-flights an outbound message before it is sent: compares intended vs actual recipients, flags external domains under an internal-only audience, sensitive content classes headed outside, internal-only terms, and attachment mismatches — and rules SAFE TO SEND, REVIEW RECIPIENTS, or DO NOT SEND.",
+   "description": "Pre-flights an outbound message: intended vs actual recipients, external domains, sensitive content headed outside, and attachment mismatches, with a SAFE TO SEND / REVIEW / DO NOT SEND verdict",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1026,7 +1436,7 @@
   },
   {
    "name": "J-Dawgs Outline Promise & Section Delivery Auditor™",
-   "description": "Paste a finished long document: promised sections from its outline and intro are aligned against the headings it actually delivered — missing, renumbered, and dangling 'Section N' references named before it ships.",
+   "description": "Promised sections from a document's outline and intro aligned against the headings it actually delivered — missing, renumbered, and dangling references named",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1039,7 +1449,7 @@
   },
   {
    "name": "J-Dawgs Package Hallucination & Slopsquat Risk Checker™",
-   "description": "Audits package.json, requirements.txt, install commands, and imports before install: typosquat near-misses named side by side, mashup names, unpinned versions, and git/URL installs flagged with a verify-before-install checklist — pattern checks only, it does not query a live registry.",
+   "description": "Audits dependency lists and install commands before install: typosquat near-misses, mashup names, unpinned versions, and git/URL installs flagged; pattern checks only, no live registry query",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1051,8 +1461,8 @@
    "slug": "j-dawgs-package-hallucination-checker"
   },
   {
-   "name": "J-Dawgs Page Token-Cost & Agent-Readability Auditor™",
-   "description": "Before an agent pays tokens to read a page: paste the HTML and get a heuristic token estimate for raw vs. cleaned content, a script/boilerplate/main-content breakdown, hidden-text and repeated-block findings, a needed-fact location check (cleaned content / boilerplate only / nowhere), one verdict, and a cleaned reading copy with its estimated token saving.",
+   "name": "J-Dawgs Page Token-Cost &amp; Agent-Readability Auditor™",
+   "description": "Estimates what a pasted page costs an agent in tokens, separates content from boilerplate and hidden text, and returns a cleaned reading copy",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1064,7 +1474,7 @@
   },
   {
    "name": "J-Dawgs Patch & Diff Safety Reviewer™",
-   "description": "Audits a pasted git diff before merge: test tampering and weakened assertions, secrets added (shown masked), CI/config witness editing, blast radius, sensitive files, sleep/retry fake fixes, and silent scope removal — ending in a merge-gate verdict and a copyable report.",
+   "description": "Audits a pasted git diff before merge for test tampering, added secrets (masked), witness editing, blast radius, sensitive files, sleep/retry fake fixes, and silent scope removal",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1077,7 +1487,7 @@
   },
   {
    "name": "J-Dawgs PII Redaction Consistency Checker™",
-   "description": "Checks whether personal data is redacted consistently through a whole document — a name masked in the body but visible in a footer is a CRITICAL leak — with a SAFE TO SHARE / DO NOT SHARE verdict and a fix list.",
+   "description": "Checks whether personal data is redacted consistently through a whole document; masked-here/visible-there is a CRITICAL leak; SAFE TO SHARE / DO NOT SHARE verdict with a fix list",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1085,12 +1495,23 @@
    "category": "Scan",
    "takes_in": "A document that has been redacted and is about to be shared — the full text, headers, footers, and all",
    "hands_back": "A SAFE TO SHARE or DO NOT SHARE verdict, every place a redacted value still appears in the clear — quoted, with its location — and a fix list",
-   "card_payment_url": "https://buy.stripe.com/7sYeVd3q18Qkc4l2CN3ks2g",
    "slug": "j-dawgs-pii-redaction-consistency-checker"
   },
   {
+   "name": "J-Dawgs Placeholder & Leftover-Draft Leakage Auditor™",
+   "description": "Audits a finished draft, page, config, or email for what should never ship: leftover TODOs, bracket placeholders, unfilled {{template}} variables, lorem ipsum, example.com and dummy values, and draft or AI leakage — checked by content-type mode. One verdict: READY TO SHIP / SHIP WITH FIXES / DO NOT SHIP — UNFINISHED, plus a replace-list checklist. It names what to replace; it never invents replacement values.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "One pasted finished draft, page, listing, or config, plus the mode to sweep it in",
+   "hands_back": "Every leftover named by line — TODOs, [insert …] placeholders, unfilled {{variables}}, lorem ipsum, example.com and dummy values, draft-note leakage — with no replacements invented, and one verdict: READY TO SHIP / SHIP WITH FIXES / DO NOT SHIP — UNFINISHED",
+   "slug": "j-dawgs-placeholder-and-leftover-draft-leakage-auditor"
+  },
+  {
    "name": "J-Dawgs Plan Dependency & Precondition Checker™",
-   "description": "Paste a multi-step agent plan and it builds the dependency graph: finds cycles, missing prerequisites, use-before-produce ordering errors, duplicate producers, orphan steps, and destructive steps with no backup covering them, then returns a corrected execution order and a READY / READY WITH FIXES / DO NOT RUN verdict.",
+   "description": "Validates a multi-step agent plan: dependency cycles, missing prerequisites, use-before-produce errors, and destructive steps with no backup, with a corrected execution order and READY / DO NOT RUN verdict",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1102,8 +1523,20 @@
    "slug": "j-dawgs-plan-dependency-precondition-checker"
   },
   {
+   "name": "J-Dawgs Pre-Commit Hook Safety Auditor™",
+   "description": "Repo-bound hook runners only run inside your clone; this audits a pasted pre-commit config + staged file list anywhere — bypass risk, slow hooks, uncovered files, unpinned revs, missing secret scanning — one verdict: SAFE TO COMMIT / COMMIT WITH FIXES / DO NOT TRUST THIS GATE",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "Two pastes: the pre-commit config (e.g. .pre-commit-config.yaml) and the list of files staged for the commit",
+   "hands_back": "One verdict — SAFE TO COMMIT / COMMIT WITH FIXES / DO NOT TRUST THIS GATE — with bypass risks, slow-hook warnings, uncovered staged files, unpinned revs, and any missing secret scanning named",
+   "slug": "j-dawgs-pre-commit-hook-safety-auditor"
+  },
+  {
    "name": "J-Dawgs Prompt Compression Loss Receipt™",
-   "description": "Learned compressors delete silently and the loss causes hallucination; this tool compresses deterministically only (duplicates, whitespace, checked boilerplate) and receipts every removed number, date, money amount, and named entity with its line number — and audits any original-vs-compressed pair for facts that disappeared.",
+   "description": "Deterministic prompt compression with a loss receipt for every removed number, date, amount, and entity, plus an original-vs-compressed fact-loss audit",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1111,12 +1544,11 @@
    "category": "Verify",
    "takes_in": "A prompt to compress — or an original-and-compressed pair to audit",
    "hands_back": "The deterministically compressed prompt plus a loss receipt: every removed number, date, money amount, and named entity with its line number — or, for a pair, the list of facts that disappeared",
-   "card_payment_url": "https://buy.stripe.com/4gM7sL3q18Qkb0h1yJ3ks2G",
    "slug": "j-dawgs-prompt-compression-loss-receipt"
   },
   {
    "name": "J-Dawgs Prompt Regression Diff Checker™",
-   "description": "Paste the OLD and NEW versions of a system prompt and see exactly what the edit changed — a line diff by section, plus a guardrail scan that flags the constraints the new version lost or quietly weakened, before the new prompt ships.",
+   "description": "Compare OLD vs NEW system prompts: lost/weakened guardrails, changed numbers and limits, new permissions, SHIP / REVIEW / DO NOT SHIP YET verdict",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1129,7 +1561,7 @@
   },
   {
    "name": "J-Dawgs Prompt Template Variable Auditor™",
-   "description": "Cross-checks a prompt template against the values about to fill it: missing placeholders named, near-miss name typos paired, empty and unused values flagged, values carrying override phrases marked INJECTION-RISK, and a rendered preview with ⟦MISSING:name⟧ markers instead of silent blanks. One fill verdict before anything sends.",
+   "description": "Cross-checks a prompt template against its fill values — missing, near-miss, empty, unused, injection-risk — one fill verdict and a marked preview",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1141,7 +1573,7 @@
   },
   {
    "name": "J-Dawgs Proof Photo Reuse & Metadata Checker™",
-   "description": "Fingerprint proof photos locally — SHA-256, dimensions, and JPEG EXIF capture time — and flag exact re-use of a photo across jobs, near-duplicates, and photos taken outside the claimed completion window. The photos never leave the device.",
+   "description": "Local SHA-256 fingerprints, dimensions and EXIF times for proof photos; flags exact re-use, near-duplicates, and out-of-window photos",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1153,8 +1585,20 @@
    "slug": "j-dawgs-proof-photo-reuse-metadata-checker"
   },
   {
+   "name": "J-Dawgs Protobuf Breaking-Change Auditor™",
+   "description": "Paste OLD and NEW .proto text; get one verdict (BREAKING CHANGES / NO BREAKING CHANGES / COULD NOT COMPARE) with every breaking change located — reused field numbers, unreserved removals, enum renumbers — plus a migration checklist. buf-style breaking checks without the install or the repo.",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "Two pastes: the OLD .proto text and the NEW .proto text",
+   "hands_back": "One verdict — BREAKING CHANGES / NO BREAKING CHANGES / COULD NOT COMPARE — every breaking change located by message and field (reused numbers, unreserved removals, enum renumbers), plus a migration checklist",
+   "slug": "j-dawgs-protobuf-breaking-change-auditor"
+  },
+  {
    "name": "J-Dawgs Publish Accessibility Pre-Flight Auditor™",
-   "description": "Paste a page's HTML or Markdown before publishing and get a publish verdict with every missing or filename alt text, every generic link label, and every heading skip named with its line and a concrete fix.",
+   "description": "Pre-publish audit of pasted HTML/Markdown for alt-text, link-label, and heading-structure problems, each named with a fix",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1166,8 +1610,20 @@
    "slug": "j-dawgs-publish-accessibility-pre-flight-auditor"
   },
   {
+   "name": "J-Dawgs QR Payload Safety & Contents Auditor™",
+   "description": "QR generators make codes and stop; ours audits the payload text before anyone scans or shares it — WIFI passwords and otpauth TOTP seeds masked or blocked, shortener/http/embedded-credential risks named — and returns one share verdict.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "The payload text of a QR code — the exact string about to be encoded, posted, or shared",
+   "hands_back": "A payload audit — WIFI passwords and otpauth TOTP seeds masked or blocked outright, URL-shortener, plain-http, and embedded-credential risks named, the payload type identified — and one share verdict",
+   "slug": "j-dawgs-qr-payload-safety-auditor"
+  },
+  {
    "name": "J-Dawgs RAG Chunk & Retrieval Coverage Auditor™",
-   "description": "Separates retrieval failures from model failures: audits chunks for boundary splits, oversized chunks, duplicate / overlap waste, missing source metadata, and whether expected answer phrases are covered, split, or missing.",
+   "description": "Audits RAG chunks for boundary splits, duplicates, and missing answer coverage",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1179,8 +1635,20 @@
    "slug": "j-dawgs-rag-chunk-auditor"
   },
   {
+   "name": "J-Dawgs Rate-Limit Header Burn-Rate Auditor™",
+   "description": "Paste observed rate-limit headers, get SUSTAINABLE / TIGHT / WILL EXHAUST BEFORE RESET / ALREADY EXHAUSTED, burn-rate arithmetic, a labeled straight-line exhaustion projection, contradictions by block, and a pacing recommendation",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted sequence of observed rate-limit headers, in the order they were observed",
+   "hands_back": "One verdict — SUSTAINABLE / TIGHT / WILL EXHAUST BEFORE RESET / ALREADY EXHAUSTED — the burn rate with the arithmetic shown, a straight-line exhaustion projection labeled not a prediction, header contradictions named by block, and a pacing recommendation",
+   "slug": "j-dawgs-rate-limit-header-burn-rate-auditor"
+  },
+  {
    "name": "J-Dawgs Redirect Chain & Canonical Auditor™",
-   "description": "Paste a redirect graph — every hop as source, target, and status code — and get it audited before launch: loops, chains over 3 hops, https-to-http downgrades, and canonicals that disagree with where the chain actually lands. It never fetches a URL; the graph you paste is all it reads.",
+   "description": "Audits a pasted redirect graph: loops, chains over 3 hops, https-to-http downgrades, and canonical mismatches; never fetches a URL",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1192,7 +1660,7 @@
   },
   {
    "name": "J-Dawgs Regex ReDoS & Backtracking Safety Auditor™",
-   "description": "Audits a regex for catastrophic-backtracking and ReDoS risk — structural analysis of the pattern plus capped, timed near-miss probes — and suggests safer rewrites. The Regex Tester tests matches; this one tests safety.",
+   "description": "Audits a regex for catastrophic-backtracking and ReDoS risk: structural analysis, capped timed near-miss probes, and safer-rewrite suggestions",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1205,19 +1673,19 @@
   },
   {
    "name": "J-Dawgs Regex Tester™",
-   "description": "Test a pattern, see every match and capture group live — now with a batch test-case runner with expected match/no-match markers, a plain-English token-by-token pattern breakdown, and a lightweight catastrophic-backtracking caution that points to the ReDoS Safety Auditor for a full audit — plus a capture-group map showing numbered and named groups per match, an empty-match guard, and a JSON test-suite export.",
+   "description": "Test regular expressions with live highlighted matches, a batch test-case runner with expected match/no-match markers, and a plain-English pattern breakdown — plus a lightweight backtracking caution that points to the ReDoS Safety Auditor for the deep check — now also with a capture-group map, an empty-match guard, and a JSON test-suite export — now also with a Replace Preview: a before/after diff and a per-match replacement list, with full JavaScript replacement tokens — now also with a Pattern Risk Lint: nested-quantifier and overlapping-alternation ReDoS shapes flagged with the fragment quoted and a labeled safer-rewrite suggestion (the pattern is never auto-changed), plus a this-device match-timing readout. Now also with a Test-Suite Runner: a pass/fail scorecard for EXPECT-MATCH / EXPECT-NONE cases. Now also with a Dialect Compatibility Checker: JavaScript / Python re / PCRE / Java targets, blockers and meaning changes with copyable fixes — the pattern is never rewritten (still free, ungated). Now also with a Pattern bake-off panel: up to 6 patterns run against one text, identical-span verdicts, and 500 ms timeout rows (still free, ungated). Now also with a Capture Group Map: per-match numbered and named groups with values and spans, with non-participating groups shown explicitly (still free, ungated). Now also with a Unicode & Case-Fold Explorer: 21 look-alike strings in 8 groups, with pairs-that-disagree flagged from actual results (still free, ungated). Now also with a Match Diff Between Two Texts panel: matches sorted only-in-A / only-in-B / in-both, with occurrence counts (still free, ungated). Now also with a Duplicate Named Group & Backreference Auditor panel (still free, ungated). Now also with a Character Class Expander (still free, ungated). Now also with a Greedy vs Lazy Trace (still free, ungated). Now also with a Replace Preview per-match replacement table: group references resolved per match, with unknown references flagged by name and left literal (still free, ungated). Now also with a Split Preview panel: the exact String.split pieces, with empties shown and the limit cut-off computed (still free, ungated).",
    "price_usd": 0,
    "free": true,
    "status": "Built",
    "url": "https://muse.ai/s/j-dawgs-regex-tester-cu6xl1xwxs7nyxo/a4DnCey2RPzPL2nN4FnlH9Ue8UREfc_OMPk2r4Nh5PM",
    "category": "Test",
    "takes_in": "A regular expression, any flags, and the sample text to test it against",
-   "hands_back": "Every match highlighted live, with its position and capture groups, a capture-group map showing the numbered and named groups in every match, the pass or fail of every batch test case against its expected match or no-match, a plain-English breakdown of the pattern token by token, an empty-match guard, a JSON export of the test cases as a test suite, and a library of common patterns to start from",
+   "hands_back": "Every match highlighted live, with its position and capture groups, a capture-group map showing the numbered and named groups in every match, the pass or fail of every batch test case against its expected match or no-match, a plain-English breakdown of the pattern token by token, an empty-match guard, a JSON export of the test cases as a test suite, and a library of common patterns to start from, a Pattern Risk Lint report flagging ReDoS shapes with the fragment quoted and a labeled safer-rewrite suggestion (the pattern is never auto-changed), and a this-device match-timing readout",
    "slug": "jdawgs-regex-tester"
   },
   {
-   "name": "J-Dawgs Retry & Rate-Limit Planner™",
-   "description": "Paste a run's error sequence and get a retry plan that knows the difference — 429s, transient failures, and errors that should never be retried — with the waits added up against your deadline before you spend them — now with a Retry Timeline Simulator: a per-attempt wait table with jitter bands and the worst-case total.",
+   "name": "J-Dawgs Retry &amp; Rate-Limit Planner™",
+   "description": "Classifies a pasted error sequence (429 vs transient vs never-retry), honors Retry-After exactly, and builds a retry plan with separate budgets and a FITS / OVER DEADLINE / STOP NOW verdict against a deadline. It makes no API calls and cannot enforce the plan. Now with a Retry Timeline Simulator that plays the retry schedule out against the deadline — now also with a Provider Header Reality Check",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1229,21 +1697,57 @@
    "slug": "jdawgs-retry-rate-limit-planner"
   },
   {
+   "name": "J-Dawgs Robots & Sitemap Discoverability Auditor™",
+   "description": "Cross-checks a pasted robots.txt against a pasted sitemap XML or URL list, entirely offline, using standard longest-match rules: every URL gets an ALLOWED / BLOCKED call with the deciding robots rule quoted, and the whole set gets one verdict: DISCOVERABLE / DISCOVERABLE WITH FIXES / INVISIBLE.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "One pasted robots.txt and one pasted sitemap or URL list",
+   "hands_back": "A per-URL verdict — ALLOWED / BLOCKED with the deciding robots.txt rule quoted for each URL — plus sitemap entries that robots.txt blocks named as conflicts, and one verdict: DISCOVERABLE / DISCOVERABLE WITH FIXES / INVISIBLE",
+   "slug": "j-dawgs-robots-and-sitemap-discoverability-auditor"
+  },
+  {
+   "name": "J-Dawgs RRULE Recurrence Auditor™",
+   "description": "Audits a pasted iCalendar RRULE: expands next occurrences in a chosen timezone + UTC and flags silent month skips, COUNT+UNTIL conflicts, dead EXDATEs, and DST-gap occurrences, with one verdict.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "One RRULE with optional DTSTART / EXDATE lines, plus the timezone to expand it in",
+   "hands_back": "An expansion table of the next occurrences in your timezone and UTC, a per-part plain-English breakdown of the rule, and one verdict — VALID & PREDICTABLE / VALID BUT SURPRISING / INVALID RULE — with skipped months, COUNT+UNTIL conflicts, dead EXDATEs, and DST-gap occurrences named",
+   "slug": "j-dawgs-rrule-recurrence-auditor"
+  },
+  {
    "name": "J-Dawgs Run Cost Auditor™",
-   "description": "Paste a finished run log and the rates you pay: it attributes cost step by step, ranks the waste (re-sent context, retry burn, cache misses), groups the run into a phase timeline and names its costliest step in one sentence, and hands back a hard-cap plan derived from your own log. Estimates from your rates only — not a bill.",
+   "description": "Attributes a finished run's cost step by step from your rates, ranks re-sent-context / retry / cache waste, and derives a hard-cap plan — now with a phase timeline showing where the money went across the run, and a costliest-step narrative naming the single step that ate the budget — now also with a Budget Breach Forecast: ×10/×100 repeat projections, a double-length growth projection from the log's own first/second-half step costs, and a top-driver-halved saving — all labeled arithmetic on the pasted log's rates, NOT a prediction",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
    "url": "https://muse.ai/s/j-dawgs-run-cost-auditor-zt6xlz5gxun3v/p3p6MsVgE56xodsq-12s0UXMwrSATDiYoOwq56wy77w",
    "category": "Audit",
    "takes_in": "A finished run log, plus the rates you pay",
-   "hands_back": "Cost attributed step by step, the waste ranked — re-sent context, retry burn, cache misses — the run grouped into a phase timeline with its costliest step named in one sentence, and a hard-cap plan derived from your own log; estimates from your rates only, not a bill",
+   "hands_back": "Cost attributed step by step, the waste ranked — re-sent context, retry burn, cache misses — the run grouped into a phase timeline with its costliest step named in one sentence, and a hard-cap plan derived from your own log; estimates from your rates only, not a bill, plus a Budget Breach Forecast — ×10/×100 repeat projections, a double-length growth projection from the log's own first/second-half step costs, and the top-driver-halved saving — labeled arithmetic on the log's rates, NOT a prediction",
    "card_payment_url": "https://buy.stripe.com/5kQ8wP8KlfeI8S9fpz3ks0X",
    "slug": "j-dawgs-run-cost-auditor"
   },
   {
+   "name": "J-Dawgs SBOM Completeness & License Auditor™",
+   "description": "Paste a CycloneDX or SPDX SBOM; get one verdict with per-field completeness scores and a per-component gap table — missing versions, licenses, suppliers, identifiers, duplicates, copyleft REVIEW flags. Audits the finished SBOM document, not a repo.",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted SBOM — CycloneDX JSON or SPDX, the whole bill of materials",
+   "hands_back": "One completeness verdict with per-field scores and a per-component gap table — missing versions, licenses, suppliers, and identifiers named, duplicates listed, copyleft licenses flagged REVIEW",
+   "slug": "j-dawgs-sbom-completeness-license-auditor"
+  },
+  {
    "name": "J-Dawgs Schedule Time Pre-Flight Checker™",
-   "description": "Pre-flights a planned local date, time and IANA timezone before an agent schedules anything: catches nonexistent spring-forward (DST gap) times, ambiguous fall-back times with both UTC instants, weekday mismatches, and timezone-abbreviation traps, with a cross-zone conversion table. It now also has a Batch Audit mode: paste many “label | datetime | IANA timezone” lines and get per-line gap, overlap, and weekday verdicts, a batch verdict, and one copyable report.",
+   "description": "Validates a planned local date/time/IANA timezone before scheduling: nonexistent DST-gap times, ambiguous fall-back times, weekday mismatches and abbreviation traps, with cross-zone conversions — now with a Batch Audit mode for many scheduled times at once, with per-line verdicts and one copyable report",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1256,7 +1760,7 @@
   },
   {
    "name": "J-Dawgs Schema Inference Forge™",
-   "description": "Infers the shape a set of JSON records actually shares: paste multiple samples of the same record kind and get a recursive field census across all of them, type conflicts named by sample, sometimes-missing and always-null fields, enum candidates, array-item variance — and a copyable draft-07 JSON Schema with a STABLE SHAPE / SHAPE VARIES verdict.",
+   "description": "Infers the shared shape of multiple JSON samples — field census, type conflicts, missing/null patterns, enum candidates — and emits a copyable draft-07 JSON Schema with a stability verdict",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1268,8 +1772,32 @@
    "slug": "j-dawgs-schema-inference-forge"
   },
   {
+   "name": "J-Dawgs Secret Rotation Overdue Auditor™",
+   "description": "Grades a secret inventory of names, types, and dates only — secret values are never entered — against editable per-type rotation limits: a ranked rotate-first list of everything due or overdue, and one verdict — ROTATION HEALTHY / DUE / OVERDUE.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted secret inventory — names, types, and last-rotated dates only; secret values are never entered or wanted",
+   "hands_back": "A rotation report — every secret graded OVERDUE / NEVER ROTATED / DUE SOON against per-type limits you can edit, a ranked rotate-first list — and one verdict",
+   "slug": "j-dawgs-secret-rotation-overdue-auditor"
+  },
+  {
+   "name": "J-Dawgs Set-Cookie & Session Header Auditor™",
+   "description": "Grades pasted Set-Cookie headers against the cookie's job: Secure/HttpOnly/SameSite, prefix rules, long-lived sessions, values masked — one ship verdict",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "Pasted Set-Cookie response headers, one per line, and the job each cookie does — session, preferences, or analytics",
+   "hands_back": "Every cookie graded against its job — Secure, HttpOnly, and SameSite findings, __Host- and __Secure- prefix-rule violations, and long-lived session warnings, with values masked everywhere — and one ship verdict: SHIP / SHIP WITH FIXES / DO NOT SHIP",
+   "slug": "j-dawgs-set-cookie-session-header-auditor"
+  },
+  {
    "name": "J-Dawgs Shell Script Safety Auditor™",
-   "description": "Paste a sh/bash script and get one run verdict: destructive commands, curl|sh pipes, masked secrets, missing set -e, sudo and system-path writes graded as run-safety posture, plus a small honest set of correctness pitfalls — every finding at its line with a fix. Linters stop at shell correctness; this also grades whether the script is safe to RUN. Heuristic audit of pasted text, never executes the script.",
+   "description": "Grades a pasted shell script's run-safety posture (destructive commands, remote pipes, masked secrets) plus correctness pitfalls, one run verdict",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1281,7 +1809,7 @@
   },
   {
    "name": "J-Dawgs Silent Result Triage Bench™",
-   "description": "Triages a batch of tool results against the expectations declared for them — EMPTY (an HTTP 200 that carried no data), PARTIAL, and SEMANTIC MISMATCH (the right shape holding the wrong kind of value) — and maps which downstream steps already consumed each bad result, before the agent trusts any of them.",
+   "description": "Triages a batch of tool results against declared expectations: EMPTY, PARTIAL, SEMANTIC MISMATCH, plus a downstream contamination map",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1294,7 +1822,7 @@
   },
   {
    "name": "J-Dawgs Sitemap & Robots Agent-Access Auditor™",
-   "description": "Paste a robots.txt and a sitemap: per-agent access for ten well-known crawlers with the deciding rule quoted, sitemap entries your own rules block, and a fix list — nothing is ever fetched.",
+   "description": "Paste a robots.txt and a sitemap: per-agent access for ten well-known crawlers with the deciding rule quoted, sitemap entries your own rules block, and a fix list — nothing is ever fetched",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1306,8 +1834,32 @@
    "slug": "j-dawgs-sitemap-robots-agent-access-auditor"
   },
   {
+   "name": "J-Dawgs Social Preview & Meta Head Auditor™",
+   "description": "Social preview checkers fetch a live URL and only show a preview; ours audits a pasted head offline before publish — OG/Twitter/canonical completeness, length bands, mismatches and relative-image blockers — and returns one share verdict",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted page head — the OG, Twitter card, and canonical meta tags exactly as they will publish",
+   "hands_back": "A completeness, length-band, and mismatch report for the OG / Twitter / canonical tags, any relative-image blockers named, and one verdict: SHARE-READY / FIX BEFORE SHARING / DO NOT SHARE YET",
+   "slug": "j-dawgs-social-preview-meta-head-auditor"
+  },
+  {
+   "name": "J-Dawgs SQL Migration Safety Auditor™",
+   "description": "Audits a pasted SQL migration and its optional rollback entirely offline — destructive operations, lock risks, and rollback gaps flagged by line, with one verdict and line-numbered fixes. It never connects to a database",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted SQL migration script — the statements you are about to apply, in order — plus the rollback or down-migration script if you have one",
+   "hands_back": "One verdict — SAFE TO APPLY / APPLY WITH FIXES / DO NOT APPLY — with every destructive operation, lock risk, and rollback gap listed at its line number, each with the concrete fix to make before the migration runs",
+   "slug": "j-dawgs-sql-migration-safety-auditor"
+  },
+  {
    "name": "J-Dawgs SQL Pre-Flight Guard™",
-   "description": "Audits SQL an agent is about to run before anything executes: splits and classifies each statement, blocks unscoped DELETE/UPDATE, DROP/TRUNCATE, and tautology WHERE clauses in Production mode, and returns a safer-plan checklist per flagged statement.",
+   "description": "Audits SQL an agent is about to run before anything executes: blocks unscoped DELETE/UPDATE, DROP/TRUNCATE, and tautology WHERE clauses in Production mode, with a safer-plan checklist per flagged statement",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1319,8 +1871,32 @@
    "slug": "j-dawgs-sql-pre-flight-guard"
   },
   {
+   "name": "J-Dawgs SSH Key & Authorized-Keys Auditor™",
+   "description": "Key scanners and ssh-keygen work one key at a time from an install; ours batch-audits a pasted authorized_keys file offline — decoded-blob algorithm match, RSA size grading, real SHA-256 fingerprints, duplicates named by line, risky options graded — and returns one access verdict.",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "One pasted authorized_keys file — or a batch of SSH public keys, one per line",
+   "hands_back": "A per-key audit — decoded-blob algorithm match, RSA size grade, the real SHA-256 fingerprint, duplicates named by line, risky options (forced commands, port-forwarding, agent-forwarding, no-pty) graded — and one access verdict for the whole file",
+   "slug": "j-dawgs-ssh-key-authorized-keys-auditor"
+  },
+  {
+   "name": "J-Dawgs Stack Trace Triage Bench™",
+   "description": "Groups a pasted error-log blob by root signature — ranked groups, a first-error callout, and LIKELY SYMPTOM candidates labeled as evidence, not proof — with a copyable report and JSON export",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Diagnose",
+   "takes_in": "A pasted error log or stack-trace blob — the whole messy output, as it came: application logs, worker output, CI failures, timestamps and all",
+   "hands_back": "Ranked error groups by root signature — each with its count, first and last lines, and representative trace — LIKELY SYMPTOM labels on the probable fallout, a first-error callout, and a copyable triage report plus a JSON export",
+   "slug": "j-dawgs-stack-trace-triage-bench"
+  },
+  {
    "name": "J-Dawgs Stale Evidence & Freshness Checker™",
-   "description": "Checks a draft answer against the retrieval dates and cache status of its sources: flags stale, undated, and cached-as-live evidence presented as current, labels each currency claim fresh or stale-backed, and inserts honest “as of” qualifiers — without changing any facts.",
+   "description": "Checks a draft against its sources' retrieval dates and cache status, flags stale or undated evidence presented as current, and inserts honest \"as of\" qualifiers",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1333,7 +1909,7 @@
   },
   {
    "name": "J-Dawgs Structured Output Conformance Bench™",
-   "description": "Batch-validates many LLM JSON outputs against one JSON Schema and classifies every failure by type (missing required, wrong type, enum miss, extra field, truncated, not JSON) with exact paths, a conformance rate, and the single most common fix needed. Classification only — it never invents values.",
+   "description": "Batch-validates LLM JSON outputs against a JSON Schema, classifying every failure by type with exact paths and a conformance rate — now also with a Fix-First Summary: failures grouped by schema path, one fix per top path, and a highest-leverage headline naming the single fix that clears the most failures",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1346,7 +1922,7 @@
   },
   {
    "name": "J-Dawgs Subagent Brief Stress-Tester™",
-   "description": "Paste a delegation brief before you hand it off: it scores the brief against 10 completeness elements, flags the drift risks and contradictions, and generates a tightened brief ready to send.",
+   "description": "Scores a subagent delegation brief for completeness and drift risks and generates a tightened brief",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1358,8 +1934,20 @@
    "slug": "j-dawgs-subagent-brief-stress-tester"
   },
   {
+   "name": "J-Dawgs Support Ticket Triage & Escalation Auditor™",
+   "description": "Grades a pasted inbound support ticket before any reply — missing diagnostics, urgency/security signals, unsupported promises in a draft — into ANSWER NOW / ASK FIRST / ESCALATE NOW plus a reply checklist that never invents facts.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted inbound support ticket — plus, optionally, the draft reply about to go back",
+   "hands_back": "One triage verdict — ANSWER NOW / ASK FIRST / ESCALATE NOW — the missing diagnostics named, urgency and security signals quoted, and a reply checklist that flags unsupported promises and never invents facts",
+   "slug": "j-dawgs-support-ticket-triage-auditor"
+  },
+  {
    "name": "J-Dawgs Suppression & Opt-Out Honor Checker™",
-   "description": "Cross-checks a planned send list against suppression and opt-out lists — exact matches, case/plus-tag/phone-format variants, blocked domains, duplicates — and returns only the clean set with every removal accounted for.",
+   "description": "Cross-checks a send list against suppression/opt-out lists incl. normalized variants and blocked domains; returns the clean set with a full removal ledger",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1367,12 +1955,23 @@
    "category": "Verify",
    "takes_in": "A planned send list — email addresses and/or phone numbers — plus the suppression and opt-out lists it has to honor",
    "hands_back": "Only the clean set, safe to send — plus a removal ledger naming every address taken out and the exact match or variant that removed it",
-   "card_payment_url": "https://buy.stripe.com/cNidR9e4FeaE9Wddhr3ks2i",
    "slug": "j-dawgs-suppression-opt-out-honor-checker"
   },
   {
+   "name": "J-Dawgs Systemd Unit Safety Auditor™",
+   "description": "Audits a pasted systemd unit file — root/sandboxing/restart-loop posture — into one run verdict. systemd-analyze grades a unit on a live host; ours audits a pasted unit anywhere and returns one verdict plus a line-numbered fix list.",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted systemd unit file — the whole [Unit] / [Service] / [Install] text, exactly as it would be deployed",
+   "hands_back": "One verdict — SAFE TO RUN / RUN WITH FIXES / DO NOT RUN YET — with a line-numbered fix list covering the user it runs as, sandboxing directives, and restart posture; secrets flagged by key name only, values never shown",
+   "slug": "j-dawgs-systemd-unit-safety-auditor"
+  },
+  {
    "name": "J-Dawgs Task Ambiguity Pre-Flight Checker™",
-   "description": "Agents guess when a task is underspecified, and the guess is where the damage happens: paste a task as received and get every gap flagged (missing done-definition, unresolved ‘the file’/‘them’ referents, vague ‘soon’/‘a few’, missing constraints, conflicting directives) with one ranked clarifying question per gap and a READY / ASSUMPTIONS LOGGED / ASK FIRST verdict.",
+   "description": "Flags underspecified tasks — missing done-definition, unresolved referents, vague quantities, missing constraints, conflicting directives — with ranked clarifying questions and a READY / ASSUMPTIONS LOGGED / ASK FIRST verdict",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1380,12 +1979,23 @@
    "category": "Verify",
    "takes_in": "A task exactly as received — the message, ticket, or instruction text, unedited",
    "hands_back": "Every gap flagged by type with the offending words quoted, one ranked clarifying question per gap, and a READY / ASSUMPTIONS LOGGED / ASK FIRST verdict",
-   "card_payment_url": "https://buy.stripe.com/cNi8wPgcN4A43xP91b3ks2H",
    "slug": "j-dawgs-task-ambiguity-pre-flight-checker"
   },
   {
+   "name": "J-Dawgs Terraform Plan Risk Auditor™",
+   "description": "Audits a pasted Terraform plan (JSON or text) before apply: classifies CREATE / UPDATE / REPLACE / DESTROY, flags stateful destroys and replacements and IAM widening as BLOCKERs, and returns one verdict — SAFE TO APPLY / APPLY WITH CONFIRMATION / DO NOT APPLY YET.",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted Terraform plan — the JSON plan output or the human-readable text plan, before apply",
+   "hands_back": "A graded plan — changes classified CREATE / UPDATE / REPLACE / DESTROY, stateful destroys and replacements and IAM widening flagged as BLOCKERs, one apply verdict, and a confirmation checklist naming what a human must confirm before apply",
+   "slug": "j-dawgs-terraform-plan-risk-auditor"
+  },
+  {
    "name": "J-Dawgs Terraform Plan Safety Auditor™",
-   "description": "Paste the JSON output of `terraform show -json` for the plan you are about to apply, and get the destroy count as the headline: every delete or replace of a stateful resource flagged as a data-loss risk, world-open security-group ingress and wildcard IAM policies flagged, and tag-only changes separated out as noise — ending in one apply verdict. The plan never leaves the device, and because plans can carry secrets, secret-looking values are masked wherever they would appear — never printed.",
+   "description": "Paste a terraform show -json plan; destroy count headline, stateful delete/replace data-loss flags, world-open ingress and wildcard IAM flags, with tag-only noise separated — one apply verdict. The plan never leaves the device, and secret-looking values are masked",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1397,7 +2007,7 @@
   },
   {
    "name": "J-Dawgs Test Payload Forge™",
-   "description": "Forges test payload sets from a JSON Schema: a set of valid payloads that should pass, and a set of invalid ones that each break exactly one constraint — so a failing test tells you which rule fired, not just that something did.",
+   "description": "Forges valid and exactly-one-constraint-broken payload sets from a JSON Schema",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1405,12 +2015,35 @@
    "category": "Test",
    "takes_in": "A JSON Schema (draft-07) — plus, optionally, the fields or constraints you most want exercised",
    "hands_back": "Two labeled payload sets: valid payloads that satisfy the schema, and invalid payloads that each violate exactly one named constraint — with the constraint each one breaks printed beside it",
-   "card_payment_url": "https://buy.stripe.com/4gM28r7Gh3w0fgx1yJ3ks21",
    "slug": "j-dawgs-test-payload-forge"
   },
   {
+   "name": "J-Dawgs Timestamp & Timezone Forensics Auditor™",
+   "description": "Audits a pasted list of mixed-format timestamps: epoch seconds-vs-milliseconds confusion, ambiguous slash dates flagged — never guessed — missing timezones, DST-nonexistent and DST-repeated times, duplicate instants, and out-of-order lines; normalizes every readable time to UTC plus the assumed zone.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted list of mixed-format timestamps — epoch, ISO, slash dates, log lines — plus the timezone to assume where a line states none",
+   "hands_back": "Every line flagged by name — epoch seconds vs milliseconds confusion, ambiguous slash dates (flagged, never guessed), missing timezones, DST-nonexistent and DST-repeated local times, duplicate instants, out-of-order lines — and every readable time normalized to UTC plus your assumed zone",
+   "slug": "j-dawgs-timestamp-timezone-forensics-auditor"
+  },
+  {
+   "name": "J-Dawgs TOML Config Pre-Flight Auditor™",
+   "description": "Pre-flights pasted TOML with line numbers: duplicate tables/keys, mixed-type arrays, impossible calendar dates, unclosed strings — and never flags legal trailing commas",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted TOML config — pyproject.toml, Cargo.toml, or an app config — exactly as it will ship",
+   "hands_back": "Findings by line number — duplicate tables and keys, mixed-type arrays, impossible calendar dates, unclosed strings — and one verdict: SAFE TO SHIP / SHIP WITH FIXES / DO NOT SHIP",
+   "slug": "j-dawgs-toml-config-pre-flight-auditor"
+  },
+  {
    "name": "J-Dawgs Tool Call Pre-Flight Checker™",
-   "description": "Check a proposed tool call against the tool's own JSON schema before it runs — tool name, required parameters, types, enums, and invented extras — and get corrected arguments back.",
+   "description": "Validate a planned tool call against its schema before running it — now also with Batch Mode: paste NDJSON or a JSON array, get one batch verdict plus a per-call table",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1423,7 +2056,7 @@
   },
   {
    "name": "J-Dawgs Tool Description Collision Checker™",
-   "description": "Paste a set of tool definitions and find the pairs a model could mix up — every pair scored for description overlap, vague descriptions flagged, and the missing boundary lines drafted.",
+   "description": "Scores every pair in a pasted set of tool definitions for description overlap, flags vague/name-echo descriptions and missing boundary conditions for confusable pairs (list-vs-search, draft-vs-publish), and drafts boundary rewrites labeled untested. Text analysis only — it cannot measure actual model tool picks",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1436,7 +2069,7 @@
   },
   {
    "name": "J-Dawgs Tool Distributor™",
-   "description": "Turn one tool into directory packets, social posts, and a feed entry agents can read.",
+   "description": "Turn one tool's details into directory listings and launch posts",
    "price_usd": 0.5,
    "free": false,
    "status": "Built",
@@ -1449,7 +2082,7 @@
   },
   {
    "name": "J-Dawgs Tool Output Sanity Checker™",
-   "description": "Paste a chain of tool outputs and find the silent failures — empty results, ignored errors, truncated and malformed outputs, and shapes that drift between repeat calls — with one plain verdict at the end.",
+   "description": "Inspect a chain of tool outputs for silent failures before trusting them. Now exports a copyable first-bad-step incident snippet (secrets masked) and flags per-step output size and truncation suspects — suspicion labelled, never proof. Now also with a Baseline Shape Diff mode",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1462,7 +2095,7 @@
   },
   {
    "name": "J-Dawgs Tool-Result Truncation & Pagination Checker™",
-   "description": "Proves a tool result is whole before the agent answers: detects silent truncation, count-vs-expected mismatches, and nextCursor / has_more pagination signals, and flags draft answers that claim “all” from partial data.",
+   "description": "Proves a tool result is whole before the agent answers — truncation, pagination, and completeness-claim checks",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1475,7 +2108,7 @@
   },
   {
    "name": "J-Dawgs Trademark Cost Calculator™",
-   "description": "Marks × classes × route = your USPTO filing total, line by line — now with a portfolio mode that plans up to 5 marks, per-mark fee lines, and a staged filing order.",
+   "description": "Work out USPTO trademark filing costs before filing — now with a portfolio mode that plans up to 5 marks, with per-mark fee lines and a staged filing order",
    "price_usd": 0.5,
    "free": false,
    "status": "Built",
@@ -1488,7 +2121,7 @@
   },
   {
    "name": "J-Dawgs Transcript-to-Runbook Extractor™",
-   "description": "Mines a successful agent transcript into a reusable runbook: the steps that worked, retries collapsed into the move that landed, decision branches kept with their triggers, the variables named, and a definition of done — so the next run follows the path instead of rediscovering it.",
+   "description": "Mines a successful agent transcript into a reusable runbook: steps, retries collapsed, decision branches, variables, definition of done",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1496,12 +2129,11 @@
    "category": "Convert",
    "takes_in": "A successful agent run's transcript — the tool calls, the retries, the branch points, and the final result",
    "hands_back": "A reusable runbook: ordered steps with retries collapsed, decision branches with their triggers, the variables to fill in, and a definition of done",
-   "card_payment_url": "https://buy.stripe.com/cNi14ngcN1nS3xPa5f3ks23",
    "slug": "j-dawgs-transcript-to-runbook-extractor"
   },
   {
    "name": "J-Dawgs Uncertainty & Hedge Auditor™",
-   "description": "Audits a draft agent answer for confidence it has not earned: absolute claims with no evidence, numbers with no source, “verified” without saying what was checked, and strong claims quietly walked back later — then rewrites an honest version that only adds uncertainty wording, never facts.",
+   "description": "Flags overconfident claims, unsupported numbers, and fake verification wording in draft agent answers, and rewrites an honest version",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1514,7 +2146,7 @@
   },
   {
    "name": "J-Dawgs Untrusted Content Injection Surface Scanner™",
-   "description": "LLM Guard needs a Python ML stack installed around a live app; this bench scans one pasted blob of untrusted content in the browser across six injection layers, quotes and explains every flag, and gives a quarantine verdict.",
+   "description": "Scans one pasted blob of untrusted third-party content across six prompt-injection layers, quotes and explains every flag, and returns a quarantine verdict plus a stripped copy",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1526,7 +2158,7 @@
   },
   {
    "name": "J-Dawgs URL & Link Trust Auditor™",
-   "description": "Statically audits every URL in a draft before anyone is sent to it: display text checked against the real destination, credentials and token parameters flagged with values masked, punycode and mixed-script hostnames decoded, brand-in-subdomain tricks and shorteners called out — and a SAFE / REVIEW / DO NOT SEND verdict per link. It never fetches or resolves a URL.",
+   "description": "Statically audits every URL in a draft for display-text mismatches, leaked token parameters, punycode/homoglyph hosts, brand-in-subdomain tricks, and hidden shortener destinations, using only brand pairs the user supplies; never fetches any URL",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1538,8 +2170,32 @@
    "slug": "j-dawgs-url-link-trust-auditor"
   },
   {
+   "name": "J-Dawgs URL Encoding & Component Auditor™",
+   "description": "Batch-audits pasted URLs for double-encoding, raw characters, conflicting duplicate query keys, and embedded credentials (masked), returning cleaned URLs with a change receipt; never fetches",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted list of URLs — one per line, exactly as they are about to be handed over or published",
+   "hands_back": "Findings named per URL — double-encoding, raw spaces and unencoded characters, duplicate and conflicting duplicate query keys, embedded credentials (password never shown) — a cleaned URL with a per-change receipt, conflicts listed and never auto-resolved, and one verdict per URL: CLEAN / FIX BEFORE USE / DO NOT USE AS-IS",
+   "slug": "j-dawgs-url-encoding-component-auditortm"
+  },
+  {
+   "name": "J-Dawgs Vulnerability Report Triage Bench™",
+   "description": "Scanners list every finding flat; ours triages a pasted report by fix availability, exploit maturity, and reachability into one fix order — FIX FIRST / FIX SOON / SCHEDULE / NO FIX with a mitigation checklist / DEV-ONLY deprioritized, same CVE in multiple packages merged, unparsable lines reported by number, copyable fix plan + JSON export. Queries no live database; never invents a fixed version",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted vulnerability scanner report — the findings list as your scanner prints it: CVE or finding ID, package, installed and fixed versions where it gives them, severity, and any exploit or reachability notes it included",
+   "hands_back": "One fix order for the whole report — FIX FIRST / FIX SOON / SCHEDULE / NO FIX with a mitigation checklist / DEV-ONLY deprioritized, the same CVE in multiple packages merged into one group, and unparsable lines reported by number — plus a copyable fix plan and a JSON export",
+   "slug": "j-dawgs-vulnerability-report-triage-bench"
+  },
+  {
    "name": "J-Dawgs Webhook Contract Tester™",
-   "description": "Paste an expected webhook contract payload and the deliveries that actually arrived: it diffs them field by field — drift, type changes, duplicate event IDs, stale and out-of-order timestamps — and hands back a dedupe skip list.",
+   "description": "Tests webhook deliveries against an expected contract: drift, duplicate event IDs, stale and out-of-order events, plus a dedupe list — now also audits pasted headers: signature presence (never claimed verified), a timestamp replay window with REPLAY RISK / HEADER RISK in the verdict, and secret-looking values masked",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1551,8 +2207,32 @@
    "slug": "j-dawgs-webhook-contract-tester"
   },
   {
+   "name": "J-Dawgs Webhook Signature Verification Bench™",
+   "description": "Verify a captured webhook delivery offline (Stripe-style, GitHub-style, generic HMAC): SIGNATURE VALID / INVALID / CANNOT VERIFY plus a timestamp replay-risk check; the secret never leaves the browser and is never shown in output. Provider verification lives inside a server endpoint; ours verifies a captured delivery anywhere, offline, and grades the timestamp as a replay risk, not just the signature",
+   "price_usd": 1.0,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Verify",
+   "takes_in": "A captured webhook delivery pasted in: the payload, its signature header, and the signing secret",
+   "hands_back": "SIGNATURE VALID / INVALID / CANNOT VERIFY for Stripe-style, GitHub-style, and generic HMAC schemes, plus a timestamp replay-risk check — the secret never leaves the browser and is never shown in the output",
+   "slug": "j-dawgs-webhook-signature-verification-bench"
+  },
+  {
+   "name": "J-Dawgs WebSocket Transcript Auditor™",
+   "description": "Audits a pasted WebSocket transcript: messages sent after close, unanswered pings, heartbeat gaps, malformed JSON frames, and oversized payloads are all flagged, and the audit returns one verdict — CLEAN SESSION / SESSION WITH ISSUES / BROKEN SESSION.",
+   "price_usd": 0.75,
+   "free": false,
+   "status": "Built",
+   "url": null,
+   "category": "Audit",
+   "takes_in": "A pasted WebSocket transcript — frames with direction and timestamps, exactly as logged",
+   "hands_back": "A session report — post-close messages, unanswered pings, heartbeat gaps, malformed JSON frames, and oversized payloads named by line — and one session verdict",
+   "slug": "j-dawgs-websocket-transcript-auditor"
+  },
+  {
    "name": "J-Dawgs Whole-Request Token Estimator™",
-   "description": "Estimates a whole request payload — messages, tool schemas, and wrapper overhead — not just raw text, with a per-provider fit verdict and an honest uncertainty band on every number.",
+   "description": "Estimates a whole request's tokens — messages, tool schemas, and framing overhead together — with per-provider fit verdicts and an honest uncertainty band",
    "price_usd": 1.0,
    "free": false,
    "status": "Built",
@@ -1560,12 +2240,11 @@
    "category": "Plan",
    "takes_in": "A whole request payload as it will actually be sent — the messages, the tool schemas, and the provider or wrapper it is headed for",
    "hands_back": "A token estimate for the whole payload, broken down by part — messages, tool schemas, wrapper overhead — with a per-provider fit verdict and the uncertainty band stated on the number",
-   "card_payment_url": "https://buy.stripe.com/eVq8wP1hT0jOgkBa5f3ks2t",
    "slug": "j-dawgs-whole-request-token-estimator"
   },
   {
    "name": "J-Dawgs Workload Re-Pricer™",
-   "description": "Pricing calculators price imaginary tokens; this re-prices your pasted real usage export across seven model classes with cache and long-context tiers applied, every price stamped with its checked date.",
+   "description": "Re-prices a pasted real usage export across seven model classes with cache and long-context tiers, prices stamped with their checked date",
    "price_usd": 0.75,
    "free": false,
    "status": "Built",
@@ -1574,60 +2253,6 @@
    "takes_in": "A pasted real usage export — the token counts, model names, cache hits, and request volumes from an actual run or billing period",
    "hands_back": "The same workload priced across seven model classes with cache and long-context tiers applied, cheapest first, every price stamped with the date it was checked",
    "slug": "j-dawgs-workload-re-pricer"
-  },
-  {
-   "name": "Car Diagnosis by Phone",
-   "description": "Camera, mic, and OBD data in — a ranked diagnosis out, with the next test to run and what that test rules out.",
-   "price_usd": null,
-   "free": false,
-   "status": "Coming soon",
-   "url": null,
-   "category": "Diagnose",
-   "takes_in": "Video of the engine bay, the sound the car makes, trouble codes",
-   "hands_back": "Likely causes in order, the next test to run, and what each result would prove",
-   "slug": "car-diagnosis"
-  },
-  {
-   "name": "Fact-Checker for AIs",
-   "description": "Send it a claim. It checks the claim against a named source and answers with a verdict — and the receipt. Its scope covers verifying exact specs and existence / market claims.",
-   "price_usd": null,
-   "free": false,
-   "status": "In progress",
-   "url": null,
-   "category": "Verify",
-   "takes_in": "A claim: an exact spec (a part number, a fuse size, a price) or an existence / market claim (whether something exists or is really selling for that)",
-   "hands_back": "Confirmed, corrected, or “can't verify” — plus the source it checked",
-   "slug": "fact-checker"
-  },
-  {
-   "name": "Human Hands for AIs™",
-   "description": "A board where an AI posts the one physical step it can't do — and a human nearby claims it, does it, and reports back. The board is live and public — visitors can browse the live board now.",
-   "price_usd": null,
-   "free": false,
-   "status": "Live",
-   "url": "https://muse.ai/s/human-hands-for-ais-pv6xkxwjerqjx0/aCG4H_Lq8I8kWp0d5p44CFD_jhBVCRMxUXQtcgP3Vxk",
-   "category": "Hands",
-   "takes_in": "One physical step, a place, and what “done” looks like",
-   "hands_back": "A claimed job, then photo proof and a plain report from the human who did it",
-   "slug": "human-hands"
-  },
-  {
-   "name": "Shoppable Shop Feed",
-   "description": "A machine-readable version of a real shop, so another AI can read the inventory, check the price, and buy — no human ever opens the page.",
-   "price_usd": null,
-   "free": false,
-   "status": "Coming soon",
-   "url": null,
-   "category": "Shop",
-   "takes_in": "A shop's listings: item, price, shipping, how to pay",
-   "hands_back": "A clean feed any AI can search, quote totals from, and order through",
-   "slug": "shop-feed"
   }
- ],
- "free_flagship": {
-  "name": "Almost-JSON Repair Bench — Free Lite Edition",
-  "price_usd": 0,
-  "url": "https://muse.ai/s/j-dawgs-almost-json-repair-bench-free-rxz6xm8xnxtxpbkxb/scZoVpFN41EAy6XL_ocmzNgT-tLtJJKpMHopwVpuar4",
-  "note": "Flagship free tool, listed on the store outside the 110-count."
- }
+ ]
 }
