@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>J-Dawgs Agent Safety Score — Free Config Safety Check</title>
+<meta name="description" content="Paste your AI agent or MCP server config and get a free Safety Score out of 100 from 15 published, deterministic checks. Runs entirely in your browser — nothing is uploaded.">
+<style>
+  :root{
+    --ink:#16181d; --muted:#5b6068; --line:#e3e0d8; --paper:#fdfcf9; --card:#ffffff;
+    --gold:#b8860b; --gold-soft:#f7ecd2; --green:#1e8e4f; --amber:#c47f08; --red:#c92a2a;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 64px}
+  header{padding:56px 0 8px}
+  .kicker{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+  h1{font-size:clamp(32px,5.4vw,46px);line-height:1.08;margin:0 0 14px;font-weight:800;letter-spacing:-.015em}
+  .lede{font-size:19px;color:#33373e;max-width:42em;margin:0 0 10px}
+  .privacy{display:inline-block;background:var(--gold-soft);border:1px solid #eadfae;border-radius:8px;padding:8px 12px;font-size:14.5px;color:#5c4a08;margin-top:8px}
+  h2{font-size:24px;font-weight:800;letter-spacing:-.01em;margin:40px 0 10px}
+  h3{font-size:18px;margin:0 0 6px}
+  p{margin:0 0 12px}
+  .muted{color:var(--muted)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px;box-shadow:0 1px 2px rgba(20,20,20,.04)}
+  label{font-weight:700;display:block;margin-bottom:8px}
+  textarea{width:100%;min-height:220px;font-family:var(--mono);font-size:13.5px;line-height:1.5;border:1.5px solid var(--line);border-radius:10px;padding:14px;background:#fffef9;color:var(--ink);resize:vertical}
+  textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+  .demos{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+  .demo-btn{font:inherit;font-size:13.5px;font-weight:600;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+  .demo-btn:hover{border-color:var(--gold);color:var(--gold)}
+  .score-btn{font:inherit;font-size:18px;font-weight:800;background:var(--ink);color:#fff;border:0;border-radius:10px;padding:14px 28px;cursor:pointer;margin-top:14px}
+  .score-btn:hover{background:#000}
+  .error{display:none;background:#fdecec;border:1px solid #f3b8b8;color:#7d1d1d;border-radius:10px;padding:14px 16px;margin-top:16px}
+  .unlocked{display:none;background:#e8f6ee;border:1px solid #a9dcbc;color:#14532d;border-radius:10px;padding:12px 16px;margin-top:16px;font-weight:600}
+  /* results */
+  #results{display:none;margin-top:26px}
+  .score-head{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+  .ring{position:relative;width:148px;height:148px;flex:0 0 auto}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .ring .num b{font-size:46px;line-height:1;font-weight:800}
+  .ring .num span{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.08em}
+  .band{font-size:26px;font-weight:800;margin:0}
+  .counts{color:var(--muted);font-size:15px;margin-top:4px}
+  .badge{display:flex;gap:8px;align-items:stretch;margin-top:18px}
+  .badge input{flex:1;font-family:var(--mono);font-size:13px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:#fffef9;color:#33373e;min-width:0}
+  .badge button{font:inherit;font-weight:700;font-size:14px;border:1px solid var(--ink);background:#fff;border-radius:8px;padding:0 16px;cursor:pointer}
+  .finding{border:1px solid var(--line);border-left:5px solid var(--red);border-radius:10px;padding:16px 18px;margin-top:14px;background:#fff}
+  .finding h3{font-size:17px}
+  .finding .pts{color:var(--red);font-weight:800}
+  .finding .ev{font-family:var(--mono);font-size:12.5px;background:#faf7ef;border:1px solid var(--line);border-radius:6px;padding:7px 10px;margin:8px 0;color:#4a4230;word-break:break-all}
+  .finding p{font-size:15.5px;margin:6px 0}
+  .finding .fix b{color:var(--green)}
+  .locked{border:1px dashed #cbbf9d;border-radius:10px;padding:13px 18px;margin-top:10px;background:#fffdf4;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+  .locked .t{font-weight:700}
+  .locked .pts{color:var(--red);font-weight:800}
+  .locked .lock-note{color:var(--muted);font-size:14px}
+  .cta{background:var(--ink);color:#fff;border-radius:12px;padding:20px 22px;margin-top:20px}
+  .cta p{margin:0 0 12px;font-size:16.5px}
+  .cta a{display:inline-block;background:var(--gold);color:#fff;font-weight:800;text-decoration:none;border-radius:9px;padding:12px 22px;font-size:16.5px}
+  .cta a:hover{background:#9c6f08}
+  .passlist{font-size:14.5px;color:var(--muted);margin-top:16px}
+  .passlist b{color:var(--ink)}
+  table{width:100%;border-collapse:collapse;font-size:15px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#faf7ef;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:#5c4a08}
+  tr:last-child td{border-bottom:0}
+  td.w{font-weight:800;white-space:nowrap;color:var(--red)}
+  .passbox{background:#fff;border:1.5px solid var(--gold);border-radius:14px;padding:24px;margin-top:22px}
+  .passbox a.btn{display:inline-block;background:var(--ink);color:#fff;font-weight:800;text-decoration:none;border-radius:9px;padding:12px 22px;margin-top:6px}
+  footer{border-top:1px solid var(--line);margin-top:48px;padding-top:22px;font-size:15px;color:#33373e}
+  footer .tagline{font-size:16px}
+  footer a{color:var(--gold)}
+  .small{font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="kicker">J-Dawgs Industries</p>
+  <h1>Agent Safety Score</h1>
+  <p class="lede">Paste your AI agent&rsquo;s config &mdash; an MCP server config, a tool-permissions file, an agent setup &mdash; and get a score out of 100 from <strong>15 published checks</strong>. The top findings are free. The full findings-and-fixes report is $4.99.</p>
+  <p class="privacy"><strong>Private by design:</strong> the check runs entirely in this page, on your device. Nothing you paste is uploaded, sent, or stored. There is no server side to this page.</p>
+</header>
+
+<main>
+<section class="card" id="checker">
+  <label for="cfg">Your agent / MCP config (JSON)</label>
+  <textarea id="cfg" spellcheck="false" placeholder='{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/allowed/files"]
+    }
+  }
+}'></textarea>
+  <div class="demos">
+    <span class="muted small" style="align-self:center">No config handy? Score a public example from official docs:</span>
+    <button type="button" class="demo-btn" data-demo="serversRepo">MCP servers repo &mdash; filesystem + git + fetch</button>
+    <button type="button" class="demo-btn" data-demo="windowsMemory">MCP docs &mdash; memory server (Windows)</button>
+    <button type="button" class="demo-btn" data-demo="githubRemote">GitHub MCP server &mdash; remote (VS Code)</button>
+  </div>
+  <button type="button" class="score-btn" id="scoreBtn">Score my setup</button>
+  <div class="error" id="errorBox" role="alert"></div>
+  <div class="unlocked" id="unlockedBox">Full report unlocked &mdash; paste your config and score it to see every finding with its fix.</div>
+
+  <div id="results">
+    <div class="score-head">
+      <div class="ring" aria-hidden="true">
+        <svg width="148" height="148" viewBox="0 0 148 148">
+          <circle cx="74" cy="74" r="62" fill="none" stroke="#eee9db" stroke-width="13"/>
+          <circle id="ringArc" cx="74" cy="74" r="62" fill="none" stroke="#1e8e4f" stroke-width="13" stroke-linecap="round" stroke-dasharray="389.6" stroke-dashoffset="0"/>
+        </svg>
+        <div class="num"><b id="scoreNum">0</b><span>OUT OF 100</span></div>
+      </div>
+      <div>
+        <p class="band" id="bandLabel"></p>
+        <p class="counts" id="countsLine"></p>
+        <p class="muted" style="max-width:34em">Scored by the 15 published checks below &mdash; the same rubric, the same weights, every time. Same config in, same score out.</p>
+      </div>
+    </div>
+
+    <div class="badge">
+      <input id="badgeLine" readonly value="">
+      <button type="button" id="copyBadge">Copy badge</button>
+    </div>
+
+    <div id="freeFindings"></div>
+    <div id="lockedFindings"></div>
+    <div id="reportCta"></div>
+    <p class="passlist" id="passList"></p>
+  </div>
+</section>
+
+<section>
+  <h2>How the score works</h2>
+  <p>Every config starts at <strong>100</strong>. Each check that fails subtracts its published weight (below). The score never goes below 0. A check that doesn&rsquo;t apply to your config is marked <em>not applicable</em> and subtracts nothing &mdash; a remote-only config isn&rsquo;t punished for having no local files to scope, and a local config isn&rsquo;t punished for having no remote URLs.</p>
+  <p>The battery is <strong>deterministic</strong>: it reads only the config text you paste, applies the rules printed on this page, and produces the same score for the same config every time. No calls home, no machine learning, no vibes.</p>
+  <p><strong>What this is &mdash; and isn&rsquo;t.</strong> This is a score from 15 named checks over one config file. It reads the config, not the servers&rsquo; code, and it can&rsquo;t see how you actually run things day to day. A high score means these 15 openings weren&rsquo;t found in what you pasted &mdash; it is not a promise that a setup can&rsquo;t be misused, and a low score is a work list, not a verdict on you. Grade is deliberately conservative: when a rule can&rsquo;t tell whether something is scoped or safe, it says so instead of guessing in your favor.</p>
+</section>
+
+<section>
+  <h2>The rubric &mdash; all 15 checks, published</h2>
+  <p class="muted">Every check, its weight, and the exact rule it applies. If a knowledgeable builder finds a rule here that&rsquo;s wrong, we fix the rubric in public &mdash; that&rsquo;s the deal.</p>
+  <table>
+    <thead><tr><th style="width:26%">Check</th><th style="width:9%">Weight</th><th>The rule</th></tr></thead>
+    <tbody id="rubricBody"></tbody>
+  </table>
+</section>
+
+<section class="passbox">
+  <h3 style="font-size:20px">Run the whole battery, any time, on anything</h3>
+  <p>This page runs 15 checks. The full J-Dawgs auditor catalog behind it &mdash; <strong>every auditor in this battery, and 300+ more</strong> &mdash; is unlocked forever with the <strong>Unlimited Pass</strong>: every priced tool in the AI Tool Store, including future ones, for one payment.</p>
+  <p style="font-size:20px"><strong>$99.99 &mdash; one time.</strong> Not a subscription.</p>
+  <a class="btn" href="https://buy.stripe.com/eVq8wP4u58Qkd8p4KV3ks1s">Get the Unlimited Pass</a>
+</section>
+</main>
+
+<footer>
+  <p class="tagline"><strong>No fancy logos. Just quality products.</strong> <strong>No ads.</strong></p>
+  <p><strong>The J-Dawgs Fix-It Guarantee:</strong> if anything we sold or gave you doesn&rsquo;t work, tell us once &mdash; we fix it free. No receipts, no runaround. <a href="support.html">Report a problem</a></p>
+  <p class="small muted">&copy; 2026 Joshua Dawson &middot; J-Dawgs Agent Safety Score&trade; &middot; Scores are computed on your device from the rubric above.</p>
+</footer>
+
+</div>
+
+<script>
+/* BATTERY-START */
+"use strict";
+/* The full report ($4.99) — Stripe checkout; buyers return to this page with ?report=full */
+var REPORT_LINK = "https://buy.stripe.com/5kQcN54u5giM0lDgtD3kt0m";
+
+/* ---------- small helpers ---------- */
+function isObj(v){ return v !== null && typeof v === "object" && !Array.isArray(v); }
+function baseName(cmd){
+  if (typeof cmd !== "string") return "";
+  var s = cmd.trim().replace(/\\/g, "/");
+  s = s.split("/").pop().toLowerCase();
+  if (s.slice(-4) === ".exe") s = s.slice(0, -4);
+  return s;
+}
+function truthy(v){
+  return v === true || v === 1 || (typeof v === "string" && /^(true|yes|on|1)$/i.test(v.trim()));
+}
+function trunc(s, n){ s = String(s); return s.length > n ? s.slice(0, n - 1) + "…" : s; }
+function maskSecret(v){
+  var s = String(v);
+  return s.length <= 4 ? "••••" : s.slice(0, 2) + "••••••";
+}
+function normPath(p){
+  var s = String(p).trim().toLowerCase().replace(/\\/g, "/");
+  while (s.length > 1 && s.charAt(s.length - 1) === "/") s = s.slice(0, -1);
+  return s;
+}
+function fmtPath(path){
+  if (!path.length) return "(top level)";
+  return path.map(function(seg){ return typeof seg === "number" ? "[" + seg + "]" : String(seg); }).join(".");
+}
+function walk(node, path, cb){
+  cb(node, path);
+  if (Array.isArray(node)) node.forEach(function(v, i){ walk(v, path.concat(i), cb); });
+  else if (isObj(node)) Object.keys(node).forEach(function(k){ walk(node[k], path.concat(k), cb); });
+}
+/* Unwrap one launcher-shim level: cmd /c npx …, sh -c "npx …" → the real program. */
+function effectiveLaunch(obj){
+  var cmd = typeof obj.command === "string" ? obj.command : "";
+  var args = Array.isArray(obj.args) ? obj.args.map(String) : [];
+  var b = baseName(cmd);
+  if (["cmd", "sh", "bash", "zsh", "dash"].indexOf(b) >= 0){
+    var ci = -1;
+    for (var i = 0; i < args.length; i++){ if (/^(-c|\/c|-command)$/i.test(args[i])){ ci = i; break; } }
+    if (ci >= 0 && args.length > ci + 1){
+      var rest = args.slice(ci + 1);
+      var toks = rest.length === 1 ? rest[0].split(/\s+/).filter(Boolean) : rest;
+      if (toks.length){ cmd = toks[0]; args = toks.slice(1); }
+    }
+  }
+  return { command: cmd, args: args };
+}
+function buildCtx(root, rawText){
+  var ctx = { root: root, rawText: rawText, servers: [], envMaps: [], strings: [], keys: [], arrays: [] };
+  walk(root, [], function(node, path){
+    if (isObj(node)){
+      Object.keys(node).forEach(function(k){ ctx.keys.push({ key: k, value: node[k], path: path.concat(k) }); });
+      if (typeof node.command === "string" || typeof node.url === "string"){
+        ctx.servers.push({
+          name: path.length ? String(path[path.length - 1]) : "(top level)",
+          obj: node, path: path, eff: effectiveLaunch(node)
+        });
+      }
+      if (path.length && String(path[path.length - 1]).toLowerCase() === "env" && isObj(node)){
+        ctx.envMaps.push({ map: node, path: path });
+      }
+    }
+    if (Array.isArray(node)) ctx.arrays.push({ arr: node, path: path });
+    if (typeof node === "string") ctx.strings.push({ value: node, path: path });
+  });
+  return ctx;
+}
+function permishPath(path){
+  return /(allow|permission|tools|origin|host|cors|capabilit)/i.test(path.map(String).join("."));
+}
+function allowishPath(path){
+  return /(allow|permission)/i.test(path.map(String).join("."));
+}
+var PASS = { status: "pass", evidence: [] };
+var NA = { status: "na", evidence: [] };
+function FAIL(ev){ return { status: "fail", evidence: ev }; }
+
+/* ---------- secret detection ---------- */
+var SECRET_SHAPES = [
+  /sk-[A-Za-z0-9_-]{16,}/, /sk-proj-[A-Za-z0-9_-]{16,}/, /AKIA[0-9A-Z]{16}/,
+  /(ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]{30,}/, /github_pat_[A-Za-z0-9_]{30,}/,
+  /xox[baprs]-[A-Za-z0-9-]{10,}/, /AIza[0-9A-Za-z_-]{30,}/,
+  /-----BEGIN (RSA |EC |OPENSSH |DSA |)PRIVATE KEY-----/,
+  /eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}/
+];
+var SECRET_KEY = /(api[-_]?key|access[-_]?token|auth[-_]?token|client[-_]?secret|secret|password|passwd|private[-_]?key|credentials?)/i;
+function isPlaceholder(v){
+  var s = String(v).trim();
+  if (s.length < 6) return true;                       /* too short to call — see rubric */
+  if (s.indexOf("${") >= 0 || s.charAt(0) === "$") return true;  /* a reference, not a stored value */
+  if (/^<.*>$/.test(s)) return true;
+  if (/your|example|sample|placeholder|changeme|change-me|insert|replace|redacted|xxxxx|dummy|fake|^test/i.test(s)) return true;
+  if (/^\*+$/.test(s)) return true;
+  return false;
+}
+function shapeHit(s){
+  for (var i = 0; i < SECRET_SHAPES.length; i++){ if (SECRET_SHAPES[i].test(s)) return true; }
+  return false;
+}
+
+var SHELLS = ["sh", "bash", "zsh", "fish", "cmd", "powershell", "pwsh", "dash", "ash", "ksh", "csh", "tcsh"];
+
+/* ---------- the 15 checks ---------- */
+var CHECKS = [
+{
+  id: "shell-exec", weight: 15,
+  title: "Shell / command execution with no allowlist",
+  rule: "Fails if a server's command is a general-purpose shell (sh, bash, cmd, powershell, …) running a bare shell or a compound command line (pipes, &&, ;, redirects), if a shell is used to run another shell, or if the config offers a shell/terminal/command-execution tool with no command allowlist anywhere in the config. A shell used only as a launcher shim for one specific program (the common Windows cmd /c npx pattern, with no shell metacharacters) passes.",
+  why: "A shell is not one tool — it is every tool. If an agent (or anything that can steer it) can run arbitrary shell commands, every other limit in the config stops mattering: reading files, deleting files, and reaching the network are all one command away.",
+  fix: "Launch the specific program directly instead of through a shell. If a shell tool is genuinely needed, add an explicit allowlist of the exact commands it may run and keep everything else denied.",
+  run: function(ctx){
+    var ev = [], surface = ctx.servers.length > 0;
+    ctx.servers.forEach(function(s){
+      var cmd = s.obj.command;
+      if (typeof cmd !== "string") return;
+      var b = baseName(cmd);
+      if (SHELLS.indexOf(b) < 0) return;
+      var args = Array.isArray(s.obj.args) ? s.obj.args.map(String) : [];
+      var ci = -1;
+      for (var i = 0; i < args.length; i++){ if (/^(-c|\/c|-command)$/i.test(args[i])){ ci = i; break; } }
+      if (ci === -1){
+        ev.push("server “" + s.name + "”: command is a bare shell (" + trunc(cmd, 40) + ") with no specific program");
+      } else {
+        var line = args.slice(ci + 1).join(" ");
+        var firstTok = line.split(/\s+/)[0] || "";
+        if (/[|&;<>`]|\$\(/.test(line) || SHELLS.indexOf(baseName(firstTok)) >= 0){
+          ev.push("server “" + s.name + "”: shell runs a compound command line: “" + trunc(line, 60) + "”");
+        }
+      }
+    });
+    var hasAllowlist = ctx.keys.some(function(k){
+      return /allowlist|allowedcommands|allowed_commands|commandallowlist/i.test(k.key) && Array.isArray(k.value) && k.value.length > 0;
+    });
+    if (!hasAllowlist){
+      ctx.arrays.forEach(function(a){
+        if (!permishPath(a.path)) return;
+        a.arr.forEach(function(v){
+          if (typeof v === "string" && /(^|[:\s])(shell|bash|terminal|run_command|execute_command|exec_command|command_execution)($|[:\s])/i.test(v)){
+            ev.push("tool “" + trunc(v, 50) + "” at " + fmtPath(a.path) + " grants command execution, and no allowlist exists in the config");
+          }
+        });
+      });
+    }
+    if (ev.length) return FAIL(ev);
+    return surface || ctx.arrays.some(function(a){ return permishPath(a.path); }) ? PASS : NA;
+  }
+},
+{
+  id: "plaintext-secrets", weight: 14,
+  title: "Secrets stored in plaintext in the config",
+  rule: "Fails if a literal secret value sits in the config: a non-placeholder value of 6+ characters under a key named like a key/token/secret/password (in an env block or anywhere else), any string matching a known secret shape (provider key prefixes, AWS access keys, GitHub/Slack/Google tokens, JWTs, private-key blocks), or a secret passed in a URL query string. Values that are references — $VAR, ${VAR}, ${input:…}, <placeholder> — pass: they point at a secret instead of storing one. Values under 6 characters are never flagged; they are too ambiguous to call.",
+  why: "Config files get copied, committed, pasted into bug reports, and synced. A real key sitting in one is one stray commit away from being public — and keys in an agent config usually unlock paid accounts or private data.",
+  fix: "Replace each literal value with a reference to your environment or secret store (for example ${input:…}, $ENV_VAR, or your client's secret prompt), then rotate any key that ever sat in the file in plaintext — treat it as already exposed.",
+  run: function(ctx){
+    var ev = [], seen = {}, reportedMasks = {};
+    function add(e){ if (!seen[e]){ seen[e] = 1; ev.push(e); } }
+    ctx.envMaps.forEach(function(em){
+      Object.keys(em.map).forEach(function(k){
+        var v = em.map[k];
+        if (typeof v !== "string") return;
+        if (SECRET_KEY.test(k) && !isPlaceholder(v)){
+          reportedMasks[maskSecret(v)] = 1;
+          add("env " + k + " at " + fmtPath(em.path) + " holds a plaintext value (" + maskSecret(v) + ")");
+        } else if (shapeHit(v)){
+          reportedMasks[maskSecret(v)] = 1;
+          add("env " + k + " at " + fmtPath(em.path) + " matches a known secret shape (" + maskSecret(v) + ")");
+        }
+      });
+    });
+    ctx.keys.forEach(function(kv){
+      if (typeof kv.value !== "string") return;
+      if (SECRET_KEY.test(kv.key) && !isPlaceholder(kv.value)){
+        reportedMasks[maskSecret(kv.value)] = 1;
+        add(kv.key + " at " + fmtPath(kv.path) + " holds a plaintext value (" + maskSecret(kv.value) + ")");
+      }
+    });
+    ctx.strings.forEach(function(s){
+      if (shapeHit(s.value) && !reportedMasks[maskSecret(s.value)]){
+        add("a string at " + fmtPath(s.path) + " matches a known secret shape (" + maskSecret(s.value) + ")");
+      }
+      var m = s.value.match(/[?&](api[-_]?key|apikey|token|access[-_]?token|secret|key)=([^&\s"']{6,})/i);
+      if (m && !isPlaceholder(m[2])){
+        add("a URL at " + fmtPath(s.path) + " carries a secret in its query string (" + m[1] + "=" + maskSecret(m[2]) + ")");
+      }
+    });
+    if (ev.length) return FAIL(ev.slice(0, 6));
+    return ctx.strings.length ? PASS : NA;
+  }
+},
+{
+  id: "wildcard-permissions", weight: 12,
+  title: "Wildcard (*) permissions",
+  rule: "Fails if a permission, allow-list, tool list, origin, or host list contains a bare “*”, “**”, “*:*”, or a scoped wildcard like “Bash(*)”. Also fails if a tools/permissions/allow setting is the single string “*”.",
+  why: "A wildcard allow is a blank check written in advance: it approves tools and actions that don't exist yet, including ones added by a future update. It converts “the agent may do these things” into “the agent may do anything.”",
+  fix: "Replace each wildcard with the explicit list of tools, commands, or origins you actually mean to allow. If you can't name them, that's the sign the wildcard was doing the deciding for you.",
+  run: function(ctx){
+    var ev = [];
+    ctx.arrays.forEach(function(a){
+      if (!permishPath(a.path)) return;
+      a.arr.forEach(function(v){
+        if (typeof v !== "string") return;
+        var t = v.trim();
+        if (t === "*" || t === "**" || t === "*:*" || /\(\s*\*\s*\)/.test(t)){
+          ev.push("“" + trunc(t, 40) + "” in the list at " + fmtPath(a.path));
+        }
+      });
+    });
+    ctx.keys.forEach(function(kv){
+      if (/^(tools|permissions|allow|allowed)$/i.test(kv.key) && kv.value === "*"){
+        ev.push(kv.key + " is set to “*” at " + fmtPath(kv.path));
+      }
+    });
+    if (ev.length) return FAIL(ev);
+    return (ctx.arrays.some(function(a){ return permishPath(a.path); }) ||
+            ctx.keys.some(function(k){ return /^(tools|permissions|allow|allowed)$/i.test(k.key); })) ? PASS : NA;
+  }
+},
+{
+  id: "filesystem-scope", weight: 12,
+  title: "Filesystem access scoped to root or the whole home directory",
+  rule: "Fails if any path the config hands to a server — in its arguments, a roots/paths/directories setting, a mount, or a working directory — is the filesystem root (/), the whole home directory (~, $HOME, %USERPROFILE%, /home, /Users), a bare drive root (C:), or “*”. Specific folders, however deep, pass.",
+  why: "Scoping a filesystem server to / or your home folder hands the agent your documents, your other projects, your SSH keys, and every other app's data in one grant — when the job almost certainly needed one project folder.",
+  fix: "Replace the broad root with the narrowest folder the server actually needs (usually one project directory). Add folders one at a time when a real task asks for them.",
+  run: function(ctx){
+    var BROAD = { "/": 1, "~": 1, "~/": 1, "$home": 1, "${home}": 1, "%userprofile%": 1, "/home": 1, "/users": 1, "c:": 1, "*": 1 };
+    var ev = [], candidates = 0;
+    function consider(v, where){
+      if (typeof v !== "string") return;
+      candidates++;
+      if (BROAD[normPath(v)]) ev.push("“" + trunc(v, 40) + "” at " + where);
+    }
+    ctx.servers.forEach(function(s){
+      s.eff.args.forEach(function(a){
+        if (/^[\/~]|^[A-Za-z]:[\\/]|\$HOME|%USERPROFILE%/i.test(a)) consider(a, "server “" + s.name + "” arguments");
+      });
+      if (typeof s.obj.cwd === "string") consider(s.obj.cwd, "server “" + s.name + "” working directory");
+    });
+    ctx.keys.forEach(function(kv){
+      if (!/(roots?|paths?|directories|directory|alloweddirs|mounts?|volumes?|cwd|workingdirectory)/i.test(kv.key)) return;
+      if (typeof kv.value === "string") consider(kv.value, fmtPath(kv.path));
+      if (Array.isArray(kv.value)) kv.value.forEach(function(v){ consider(v, fmtPath(kv.path)); });
+    });
+    if (ev.length) return FAIL(ev);
+    return candidates > 0 ? PASS : NA;
+  }
+},
+{
+  id: "remote-code-exec", weight: 10,
+  title: "Downloads and executes remote code",
+  rule: "Fails if any string in the config pipes a download into a shell (curl … | sh, wget … | bash), runs a shell process substitution over a download (bash <(curl …)), or invokes an expression/command downloaded from the network (PowerShell IEX / Invoke-Expression over a download).",
+  why: "curl | sh means “run whatever that server sends today, sight unseen.” The code can change tomorrow without the config changing at all, so no review of the config can ever cover what actually runs.",
+  fix: "Download the script, read it, save the exact file you reviewed, and run that pinned copy. If the source offers checksums or signed releases, verify them.",
+  run: function(ctx){
+    var RX = /(curl|wget)\b[^\n"']*\|\s*(sudo\s+)?(ba|z|da|a)?sh\b|\b(ba|z)?sh\s+<\(\s*(curl|wget)|invoke-expression|iex\s*\(?\s*(new-object|\(|download)/i;
+    var ev = [];
+    ctx.strings.forEach(function(s){ if (RX.test(s.value)) ev.push("“" + trunc(s.value, 70) + "” at " + fmtPath(s.path)); });
+    if (!ev.length && RX.test(ctx.rawText)) ev.push("the pasted text contains a download-and-execute pattern");
+    if (ev.length) return FAIL(ev.slice(0, 4));
+    return ctx.strings.length ? PASS : NA;
+  }
+},
+{
+  id: "http-remote", weight: 10,
+  title: "Remote server over plaintext HTTP",
+  rule: "Fails if any URL in the config uses http:// with a host other than localhost, 127.0.0.1, 0.0.0.0, or [::1]. Plaintext HTTP to your own machine passes; plaintext HTTP across a network fails.",
+  why: "Plain HTTP sends your agent's requests — prompts, tool results, and any tokens in headers — readable by every hop between you and the server, and lets any of those hops answer with different instructions than the server sent.",
+  fix: "Use the server's https:// endpoint. If it only offers HTTP, keep it on localhost or behind a TLS-terminating tunnel you control — don't send agent traffic across a network in the clear.",
+  run: function(ctx){
+    var ev = [], urls = 0;
+    ctx.strings.forEach(function(s){
+      var matches = s.value.match(/https?:\/\/[^\s"']+/g) || [];
+      matches.forEach(function(u){
+        urls++;
+        var m = u.match(/^http:\/\/([^\/:?#]+)/i);
+        if (m){
+          var host = m[1].toLowerCase();
+          if (["localhost", "127.0.0.1", "0.0.0.0", "[::1]"].indexOf(host) < 0){
+            ev.push("“" + trunc(u.split("?")[0], 60) + "” at " + fmtPath(s.path));
+          }
+        }
+      });
+    });
+    if (ev.length) return FAIL(ev);
+    return urls > 0 ? PASS : NA;
+  }
+},
+{
+  id: "auto-approve", weight: 10,
+  title: "Auto-approve / permission-bypass flags switched on",
+  rule: "Fails if the config turns on a setting named like autoApprove, alwaysAllow, autoAllow, autoAccept, dangerouslySkipPermissions, skipPermissions, bypassPermissions, trustAll, or yolo (set to true/yes/on/1), or sets a permission mode to bypassPermissions.",
+  why: "Approval prompts are the one moment a human sees what the agent is about to do before it happens. Auto-approve removes that moment — every tool call, including the destructive and the mistaken ones, goes through at machine speed.",
+  fix: "Turn the bypass off and approve per action, or pre-approve only a named, narrow list of safe actions (specific read-only commands), never whole categories.",
+  run: function(ctx){
+    var AUTO = /^(autoapprove|auto_approve|alwaysallow|always_allow|autoallow|auto_allow|dangerouslyskippermissions|skippermissions|bypasspermissions|yolo|autoaccept|auto_accept|trustall|trust_all)$/i;
+    var ev = [];
+    ctx.keys.forEach(function(kv){
+      if (AUTO.test(kv.key) && truthy(kv.value)) ev.push(kv.key + " is on, at " + fmtPath(kv.path));
+      if (/^(defaultmode|permissionmode|mode)$/i.test(kv.key) && kv.value === "bypassPermissions"){
+        ev.push(kv.key + " is “bypassPermissions”, at " + fmtPath(kv.path));
+      }
+    });
+    if (ev.length) return FAIL(ev);
+    return ctx.keys.length ? PASS : NA;
+  }
+},
+{
+  id: "unpinned-packages", weight: 8,
+  title: "Unpinned packages executed (latest, whatever it is today)",
+  rule: "Fails if a server is launched through npx, pnpx, bunx, uvx, or pipx with a package that carries no exact version (name@1.2.3), or through docker run with an image that has no tag or uses the “latest” tag. A commit-style digest (image@sha256:…) counts as pinned. Local paths (starting with . or /) are not treated as packages. A shell shim (cmd /c npx …) is unwrapped first, so the wrapped package is what gets judged.",
+  why: "An unpinned package name means “the newest code under this name, whoever publishes it, whenever the agent starts.” Packages get compromised and get sold; the config you reviewed last month can silently become different software next month.",
+  fix: "Pin the exact version you reviewed (for example @scope/server@1.2.3, mcp-server-git@0.6.1, image:1.4.2) and update pins deliberately, the way you'd update any dependency.",
+  run: function(ctx){
+    function isPinned(spec){
+      return /@\d+\.\d+(?:\.\d+)?(?:[-+][0-9A-Za-z.-]*)?$/.test(spec.trim());
+    }
+    var VALUE_FLAGS = { "-p": 1, "--package": 1, "--from": 1 };
+    var ev = [], surface = false;
+    ctx.servers.forEach(function(s){
+      var b = baseName(s.eff.command), args = s.eff.args;
+      if (["npx", "pnpx", "bunx", "uvx", "pipx"].indexOf(b) >= 0){
+        surface = true;
+        var specs = [], firstTaken = false;
+        for (var i = 0; i < args.length; i++){
+          var a = args[i];
+          if (VALUE_FLAGS[a]){ if (i + 1 < args.length) specs.push(args[i + 1]); i++; continue; }
+          if (a.charAt(0) === "-") continue;
+          if (!firstTaken){ specs.push(a); firstTaken = true; }
+        }
+        specs.forEach(function(spec){
+          if (spec.charAt(0) === "." || spec.charAt(0) === "/") return;
+          if (!isPinned(spec)) ev.push("server “" + s.name + "”: " + b + " runs unpinned package “" + trunc(spec, 50) + "”");
+        });
+      }
+      if (b === "docker" && args.indexOf("run") >= 0){
+        surface = true;
+        var DF = { "-e": 1, "--env": 1, "-v": 1, "--volume": 1, "-p": 1, "--publish": 1, "--name": 1, "--network": 1, "--mount": 1, "--env-file": 1, "-w": 1, "--workdir": 1, "-u": 1, "--user": 1, "--entrypoint": 1, "--hostname": 1 };
+        var image = null, seenRun = false;
+        for (var j = 0; j < args.length; j++){
+          var t = args[j];
+          if (!seenRun){ if (t === "run") seenRun = true; continue; }
+          if (DF[t]){ j++; continue; }
+          if (t.charAt(0) === "-" || t.indexOf("=") >= 0) continue;
+          image = t; break;
+        }
+        if (image){
+          var slash = image.lastIndexOf("/"), colon = image.lastIndexOf(":");
+          var pinnedImg = image.indexOf("@sha256:") >= 0 || (colon > slash && image.slice(colon + 1) !== "latest");
+          if (!pinnedImg) ev.push("server “" + s.name + "”: docker image “" + trunc(image, 50) + "” has no version tag (or uses latest)");
+        }
+      }
+    });
+    if (ev.length) return FAIL(ev);
+    return surface ? PASS : NA;
+  }
+},
+{
+  id: "dangerous-env", weight: 8,
+  title: "Code-injection-capable environment variables passed to servers",
+  rule: "Fails if an env block sets LD_PRELOAD, LD_LIBRARY_PATH, DYLD_INSERT_LIBRARIES, DYLD_LIBRARY_PATH, DYLD_FALLBACK_LIBRARY_PATH, NODE_OPTIONS, PYTHONPATH, RUBYLIB, RUBYOPT, PERL5OPT, or PERL5LIB; if an env block passes the entire environment (a “*” entry); or if an inherit-environment / env-passthrough setting is switched on.",
+  why: "These variables don't configure a program — they change what code a program loads. A server (or anything that can edit this config) can use them to inject code into other processes or make a trusted tool quietly run untrusted code.",
+  fix: "Remove these from the env block. If a server truly needs one, scope it to a specific, reviewed path inside that server's own settings — never as a blanket passthrough — and treat its presence as a standing flag to re-review.",
+  run: function(ctx){
+    var DANG = { ld_preload: 1, ld_library_path: 1, dyld_insert_libraries: 1, dyld_library_path: 1, dyld_fallback_library_path: 1, node_options: 1, pythonpath: 1, rubylib: 1, rubyopt: 1, perl5opt: 1, perl5lib: 1 };
+    var ev = [];
+    ctx.envMaps.forEach(function(em){
+      Object.keys(em.map).forEach(function(k){
+        if (DANG[k.toLowerCase()]) ev.push("env " + k + " is set at " + fmtPath(em.path));
+        if (k === "*") ev.push("env at " + fmtPath(em.path) + " passes the entire environment (“*”)");
+      });
+    });
+    ctx.keys.forEach(function(kv){
+      if (/^(inheritenvironment|inherit_env|inherit-env|passenv|pass_env|envpassthrough|env_passthrough)$/i.test(kv.key) && truthy(kv.value)){
+        ev.push(kv.key + " is on, at " + fmtPath(kv.path));
+      }
+    });
+    if (ev.length) return FAIL(ev);
+    return ctx.envMaps.length ? PASS : NA;
+  }
+},
+{
+  id: "secrets-in-args", weight: 8,
+  title: "Secrets passed as command-line arguments",
+  rule: "Fails if a server's argument list contains a string matching a known secret shape (see the plaintext-secrets check), or a secret flag with a literal value: --api-key=…, --token …, --password=… and similar, where the value is not a placeholder or reference.",
+  why: "Command lines are not private: they show up in process listings any local program can read, in crash reports, in logs, and in shell history. A key in an argument is exposed even if the config file itself is protected.",
+  fix: "Move the secret into the server's env block as a reference to your environment or secret store, or use the server's own credential file / login flow. Rotate any key that has been passed this way.",
+  run: function(ctx){
+    var ev = [], surface = false;
+    ctx.servers.forEach(function(s){
+      var args = s.eff.args;
+      if (args.length) surface = true;
+      for (var i = 0; i < args.length; i++){
+        var a = args[i];
+        if (shapeHit(a)){ ev.push("server “" + s.name + "”: an argument matches a known secret shape (" + maskSecret(a) + ")"); continue; }
+        var m = a.match(/^--?(api[-_]?key|access[-_]?token|token|secret|password|passwd)=(.+)$/i);
+        if (m && !isPlaceholder(m[2])){
+          ev.push("server “" + s.name + "”: --" + m[1] + " carries a literal value (" + maskSecret(m[2]) + ")");
+          continue;
+        }
+        if (/^--?(api[-_]?key|access[-_]?token|token|secret|password|passwd)$/i.test(a) && i + 1 < args.length){
+          var nx = args[i + 1];
+          if (nx.charAt(0) !== "-" && !isPlaceholder(nx)){
+            ev.push("server “" + s.name + "”: the value after " + a + " is a literal secret (" + maskSecret(nx) + ")");
+          }
+        }
+      }
+    });
+    if (ev.length) return FAIL(ev.slice(0, 5));
+    return surface ? PASS : NA;
+  }
+},
+{
+  id: "preapproved-destructive", weight: 8,
+  title: "Destructive actions pre-approved",
+  rule: "Fails if an allow / permission list pre-approves destructive operations: entries mentioning delete, remove, destroy, or truncate, or shell patterns that pre-approve rm with flags (for example Bash(rm -rf …)). Merely having a delete-capable tool installed does not fail this check — pre-approving it sight-unseen does.",
+  why: "Deletion is the action you most want a human glance on, because it's the one that usually can't be undone. Pre-approving it means the worst-case tool call happens at full speed with nobody in the loop.",
+  fix: "Take destructive operations out of the allow list so each one asks. If some deletions are truly routine, scope the approval to one exact, harmless target (a specific temp directory), never a pattern with wildcards.",
+  run: function(ctx){
+    var ev = [], surface = false;
+    ctx.arrays.forEach(function(a){
+      if (!allowishPath(a.path)) return;
+      surface = true;
+      a.arr.forEach(function(v){
+        if (typeof v !== "string") return;
+        if (/\b(delete|remove|destroy|truncate)\b/i.test(v) || /(^|[\s:(])rm\s+-/.test(v)){
+          ev.push("“" + trunc(v, 50) + "” in the allow list at " + fmtPath(a.path));
+        }
+      });
+    });
+    if (ev.length) return FAIL(ev);
+    return surface ? PASS : NA;
+  }
+},
+{
+  id: "sudo-elevation", weight: 8,
+  title: "Servers launched with elevated privileges",
+  rule: "Fails if a server's command is sudo, doas, pkexec, or runas, starts with “sudo ”, or passes sudo as its first argument — i.e., the server process runs as administrator/root rather than as you.",
+  why: "Running a server elevated removes the operating system's last safety net: file permissions that would have stopped a bad tool call from touching system files, other users' data, or the OS itself no longer apply.",
+  fix: "Launch the server as your normal user. If one specific action needs elevation, let that action ask for it at the moment it runs — don't hand the whole server permanent admin rights in advance.",
+  run: function(ctx){
+    var ev = [];
+    ctx.servers.forEach(function(s){
+      var cmd = typeof s.obj.command === "string" ? s.obj.command.trim() : "";
+      var args = Array.isArray(s.obj.args) ? s.obj.args.map(String) : [];
+      if (["sudo", "doas", "pkexec", "runas"].indexOf(baseName(cmd)) >= 0 || /^sudo\s/.test(cmd) || args[0] === "sudo"){
+        ev.push("server “" + s.name + "” launches through " + trunc(cmd || "sudo", 30));
+      }
+    });
+    if (ev.length) return FAIL(ev);
+    return ctx.servers.length ? PASS : NA;
+  }
+},
+{
+  id: "docker-danger", weight: 8,
+  title: "Docker with privileged mode, host network, or host-root mounts",
+  rule: "Fails if a docker run server uses --privileged, joins the host network (--network host / --network=host), or mounts the host's root (/), whole home directory, /home, or /Users into the container.",
+  why: "A container's isolation is the point of running a server in Docker. Privileged mode, host networking, or a host-root mount each punch through that isolation — with all three gone, the “container” is just a process with extra steps and full reach over the machine.",
+  fix: "Drop --privileged and host networking. Mount only the specific project folder the server needs, read-only where possible, instead of / or your home directory.",
+  run: function(ctx){
+    var ev = [], surface = false;
+    var BROAD = { "/": 1, "~": 1, "$home": 1, "${home}": 1, "%userprofile%": 1, "/home": 1, "/users": 1 };
+    ctx.servers.forEach(function(s){
+      if (baseName(s.eff.command) !== "docker" || s.eff.args.indexOf("run") < 0) return;
+      surface = true;
+      var args = s.eff.args;
+      for (var i = 0; i < args.length; i++){
+        var a = args[i];
+        if (a === "--privileged") ev.push("server “" + s.name + "”: docker runs with --privileged");
+        if (a === "--network=host" || a === "--network" && args[i + 1] === "host") ev.push("server “" + s.name + "”: docker joins the host network");
+        var spec = null;
+        if ((a === "-v" || a === "--volume") && i + 1 < args.length) spec = args[i + 1];
+        else if (a.indexOf("--volume=") === 0) spec = a.slice("--volume=".length);
+        else if (a.indexOf("-v=") === 0) spec = a.slice(3);
+        else if (/^--mount=/.test(a)){
+          var sm = a.match(/source=([^,]+)/);
+          if (sm) spec = sm[1] + ":/x";
+        }
+        if (spec){
+          var src = spec.split(":")[0];
+          if (BROAD[normPath(src)]) ev.push("server “" + s.name + "”: mounts the host's “" + trunc(src, 30) + "” into the container");
+        }
+      }
+    });
+    if (ev.length) return FAIL(ev);
+    return surface ? PASS : NA;
+  }
+},
+{
+  id: "auto-update", weight: 5,
+  title: "Automatic updates enabled for servers or tools",
+  rule: "Fails if a setting named like autoUpdate, autoUpgrade, or updateOnStart is switched on (true/yes/on/1) anywhere in the config.",
+  why: "An auto-updating server can change its code — and its behavior — between the day you reviewed it and today, with no moment where anyone looked at what changed. Combined with standing permissions, that's standing permission for software you've never seen.",
+  fix: "Turn automatic updates off for anything the agent can invoke, and update deliberately: read the release notes, bump the pin, re-run this score.",
+  run: function(ctx){
+    var ev = [];
+    ctx.keys.forEach(function(kv){
+      if (/^(autoupdate|auto_update|autoupgrade|auto_upgrade|updateonstart|update_on_start)$/i.test(kv.key) && truthy(kv.value)){
+        ev.push(kv.key + " is on, at " + fmtPath(kv.path));
+      }
+    });
+    if (ev.length) return FAIL(ev);
+    return ctx.keys.length ? PASS : NA;
+  }
+},
+{
+  id: "debug-port", weight: 6,
+  title: "Remote debugging port exposed",
+  rule: "Fails if a server's command or arguments include a runtime debug flag: --inspect, --inspect-brk, or --remote-debugging-port (with or without a port number).",
+  why: "A debug port is not a log viewer — anything that can connect to it can execute arbitrary code inside the server process. On a shared or networked machine, that's an open side door with full privileges.",
+  fix: "Remove the debug flag from the standing config. When you genuinely need to debug, add it for that one session, on localhost, and take it back out when you're done.",
+  run: function(ctx){
+    var ev = [], surface = false;
+    ctx.servers.forEach(function(s){
+      surface = true;
+      var parts = [typeof s.obj.command === "string" ? s.obj.command : ""].concat(s.eff.args);
+      parts.forEach(function(p){
+        if (/--inspect(-brk)?\b|--remote-debugging-port\b/.test(p)){
+          ev.push("server “" + s.name + "”: “" + trunc(p, 50) + "”");
+        }
+      });
+    });
+    if (ev.length) return FAIL(ev);
+    return surface ? PASS : NA;
+  }
+}
+];
+
+/* ---------- scoring ---------- */
+function scoreConfig(text){
+  var root;
+  try { root = JSON.parse(text); }
+  catch (e) { return { ok: false, error: "not-json" }; }
+  if (!isObj(root) && !Array.isArray(root)) return { ok: false, error: "not-object" };
+  var ctx = buildCtx(root, text);
+  var results = CHECKS.map(function(c){
+    var r;
+    try { r = c.run(ctx); } catch (e) { r = { status: "na", evidence: [] }; }
+    return { id: c.id, title: c.title, weight: c.weight, rule: c.rule, why: c.why, fix: c.fix,
+             status: r.status, evidence: r.evidence || [] };
+  });
+  var applied = results.filter(function(r){ return r.status !== "na"; });
+  if (!applied.length) return { ok: false, error: "nothing-to-score", results: results };
+  var deductions = results.filter(function(r){ return r.status === "fail"; })
+                          .reduce(function(a, r){ return a + r.weight; }, 0);
+  return { ok: true, score: Math.max(0, 100 - deductions), deductions: deductions, results: results };
+}
+function bandFor(score){
+  if (score >= 90) return "Strong — few openings found";
+  if (score >= 75) return "Solid — some openings to close";
+  if (score >= 50) return "Exposed — real openings, worth fixing";
+  if (score >= 25) return "Risky — wide openings";
+  return "Wide open — fix before you run this";
+}
+/* BATTERY-END */
+</script>
+
+<script>
+"use strict";
+/* Demo configs — verbatim from public documentation (sources in demo-scores.md). */
+var DEMOS = {
+  serversRepo: {
+    "mcpServers": {
+      "filesystem": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/allowed/files"] },
+      "git": { "command": "uvx", "args": ["mcp-server-git", "--repository", "path/to/git/repo"] },
+      "fetch": { "command": "uvx", "args": ["mcp-server-fetch"] }
+    }
+  },
+  windowsMemory: {
+    "mcpServers": {
+      "memory": { "command": "cmd", "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-memory"] }
+    }
+  },
+  githubRemote: {
+    "servers": {
+      "github": {
+        "type": "http",
+        "url": "https://api.githubcopilot.com/mcp/",
+        "headers": { "Authorization": "Bearer ${input:github_mcp_pat}" }
+      }
+    },
+    "inputs": [
+      { "type": "promptString", "id": "github_mcp_pat", "description": "GitHub Personal Access Token", "password": true }
+    ]
+  }
+};
+
+var FULL = new URLSearchParams(location.search).get("report") === "full";
+var $ = function(id){ return document.getElementById(id); };
+function esc(s){
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+/* Rubric table — rendered from the same CHECKS data the scorer uses, so they can't drift. */
+$("rubricBody").innerHTML = CHECKS.map(function(c){
+  return "<tr><td><strong>" + esc(c.title) + "</strong></td><td class=\"w\">−" + c.weight + "</td><td>" + esc(c.rule) + "</td></tr>";
+}).join("");
+
+if (FULL) $("unlockedBox").style.display = "block";
+
+document.querySelectorAll(".demo-btn").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    $("cfg").value = JSON.stringify(DEMOS[btn.getAttribute("data-demo")], null, 2);
+    $("cfg").focus();
+  });
+});
+
+$("scoreBtn").addEventListener("click", function(){
+  var text = $("cfg").value;
+  var err = $("errorBox"), res = $("results");
+  err.style.display = "none"; res.style.display = "none";
+  if (!text.trim()){
+    err.textContent = "Paste a config first — or load one of the public examples above.";
+    err.style.display = "block"; return;
+  }
+  var out = scoreConfig(text);
+  if (!out.ok){
+    if (out.error === "not-json"){
+      err.textContent = "That doesn't parse as JSON, so there's nothing the battery can honestly score. Most agent and MCP configs are JSON — check for a trailing comma or a missing brace, or paste the config file's full contents.";
+    } else if (out.error === "nothing-to-score"){
+      err.textContent = "That parsed, but there's nothing to score in it: no servers, no env blocks, no permissions, no settings the 15 checks can see. Paste the config that actually launches your agent's servers.";
+    } else {
+      err.textContent = "That JSON is a single value, not a config object. Paste the whole config — usually an object with a \"mcpServers\" or \"servers\" section.";
+    }
+    err.style.display = "block"; return;
+  }
+  render(out);
+});
+
+function render(out){
+  var results = out.results;
+  var fails = results.filter(function(r){ return r.status === "fail"; })
+                     .sort(function(a, b){ return b.weight - a.weight; });
+  var passed = results.filter(function(r){ return r.status === "pass"; });
+  var nas = results.filter(function(r){ return r.status === "na"; });
+
+  $("scoreNum").textContent = out.score;
+  var color = out.score >= 75 ? "#1e8e4f" : (out.score >= 50 ? "#c47f08" : "#c92a2a");
+  var arc = $("ringArc");
+  arc.style.stroke = color;
+  arc.style.strokeDashoffset = (389.6 * (1 - out.score / 100)).toFixed(1);
+  $("bandLabel").textContent = bandFor(out.score);
+  $("bandLabel").style.color = color;
+  $("countsLine").textContent = results.length + " checks in the battery · " +
+    passed.length + " passed · " + fails.length + " failed · " + nas.length + " not applicable to this config";
+
+  var today = new Date();
+  var iso = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
+  $("badgeLine").value = "Safety Score " + out.score + "/100 — J-Dawgs Agent Safety Score, " + iso + " — " +
+    location.href.split("?")[0].split("#")[0];
+
+  function findingCard(r, locked){
+    if (locked){
+      return "<div class=\"locked\"><span><span class=\"t\">" + esc(r.title) + "</span> " +
+             "<span class=\"pts\">−" + r.weight + "</span></span>" +
+             "<span class=\"lock-note\">Full detail &amp; fix in the report</span></div>";
+    }
+    var ev = r.evidence.map(function(e){ return "<div class=\"ev\">" + esc(e) + "</div>"; }).join("");
+    return "<div class=\"finding\"><h3>" + esc(r.title) + " <span class=\"pts\">−" + r.weight + " points</span></h3>" +
+           ev +
+           "<p><strong>Why it matters:</strong> " + esc(r.why) + "</p>" +
+           "<p class=\"fix\"><strong>The fix:</strong> " + esc(r.fix) + "</p></div>";
+  }
+
+  var freeCount = FULL ? fails.length : Math.min(3, fails.length);
+  $("freeFindings").innerHTML = fails.length
+    ? "<h2 style=\"margin-top:28px\">" + (FULL ? "Every finding, with its fix" : "Top findings — free") + "</h2>" +
+      fails.slice(0, freeCount).map(function(r){ return findingCard(r, false); }).join("")
+    : "<h2 style=\"margin-top:28px\">No findings</h2><p>None of the 15 checks found an opening in this config. That covers what you pasted — re-score after any change.</p>";
+  $("lockedFindings").innerHTML = (!FULL && fails.length > 3)
+    ? fails.slice(3).map(function(r){ return findingCard(r, true); }).join("") : "";
+  $("reportCta").innerHTML = (!FULL && fails.length > 3)
+    ? "<div class=\"cta\"><p><strong>" + (fails.length - 3) + " more finding" + (fails.length - 3 === 1 ? "" : "s") +
+      "</strong> — with the plain-language explanation and the exact fix for each, plus the evidence for all " + fails.length + ".</p>" +
+      "<a href=\"" + esc(REPORT_LINK) + "\" target=\"_blank\" rel=\"noopener\">Get the full report — $4.99</a>" +
+      "<p style=\"margin:10px 0 0;font-size:13.5px;opacity:.75\">One payment. After checkout you're sent back here with the full report open.</p></div>"
+    : (FULL ? "<p class=\"muted\" style=\"margin-top:14px\">Full report view — every failed check above shows its evidence and its fix. Passed and not-applicable checks are listed below.</p>" : "");
+
+  var bits = [];
+  if (passed.length) bits.push("<b>Passed:</b> " + passed.map(function(r){ return esc(r.title); }).join(" · "));
+  if (nas.length) bits.push("<b>Not applicable:</b> " + nas.map(function(r){ return esc(r.title); }).join(" · "));
+  $("passList").innerHTML = bits.join("<br>");
+
+  $("results").style.display = "block";
+  $("unlockedBox").style.display = "none";
+  $("results").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+$("copyBadge").addEventListener("click", function(){
+  var input = $("badgeLine");
+  function done(){ $("copyBadge").textContent = "Copied"; setTimeout(function(){ $("copyBadge").textContent = "Copy badge"; }, 1600); }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(input.value).then(done, function(){ input.select(); document.execCommand("copy"); done(); });
+  } else { input.select(); document.execCommand("copy"); done(); }
+});
+</script>
+</body>
+</html>
