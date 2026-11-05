@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>J-Dawgs Photo Tidy™ — Duplicate, Blur & Screenshot Decision Helper | J-Dawgs</title>
+<meta name="description" content="Pick a batch of photos and Photo Tidy groups near-duplicates side by side, flags blurry shots with real scores, and hands you a keep/delete list. It never deletes anything itself. No account, no ads, no subscription. $4.99 one time.">
+<link rel="canonical" href="https://joshuajdawg0350.github.io/jdawgs-hub/photo-tidy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style data-jd-design="2026-11">
+:root{
+  --jd-navy:#0b2239; --jd-navy-2:#123c63; --jd-silver:#c7ceda; --jd-silver-bright:#e9edf3;
+  --jd-ink:#182430; --jd-muted:#5b6b7c; --jd-paper:#ffffff; --jd-mist:#f3f5f8; --jd-line:#d9dfe8;
+  --jd-radius:14px;
+  --jd-font-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --jd-font-display:"Archivo","Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0 auto;max-width:70rem;padding:0 1.25rem 3.5rem;background:var(--jd-mist);color:var(--jd-ink);font-family:var(--jd-font-body);font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--jd-font-display);line-height:1.15;letter-spacing:-.01em;color:var(--jd-navy)}
+h1{font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:800;margin:0 0 .6rem}
+h2{font-size:clamp(1.35rem,3vw,1.7rem);font-weight:700;margin:0 0 .75rem}
+h3{font-size:1.12rem;font-weight:700;margin:1.4rem 0 .5rem}
+p{margin:.65rem 0}
+a{color:var(--jd-navy-2);text-underline-offset:2px}
+a:hover{color:var(--jd-navy)}
+a:focus-visible{outline:2px solid var(--jd-navy-2);outline-offset:2px}
+::selection{background:var(--jd-silver)}
+img{max-width:100%;height:auto}
+header{background:linear-gradient(135deg,var(--jd-navy) 0%,var(--jd-navy-2) 100%);color:var(--jd-silver-bright);border-radius:0 0 var(--jd-radius) var(--jd-radius);padding:2.25rem 2rem 1.75rem;margin:0 0 1.5rem;box-shadow:0 8px 24px rgba(11,34,57,.16)}
+header h1,header h2{color:#fff}
+header a{color:var(--jd-silver-bright)}
+header nav ul{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;list-style:none;padding:0;margin:1rem 0 0}
+header nav a{font-weight:600;text-decoration:none}
+header nav a:hover{text-decoration:underline}
+section{background:var(--jd-paper);border:1px solid var(--jd-line);border-radius:var(--jd-radius);padding:1.6rem 2rem;margin:0 0 1.25rem;box-shadow:0 1px 3px rgba(11,34,57,.05)}
+ul,ol{padding-left:1.3rem}
+li{margin:.35rem 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;background:var(--jd-paper)}
+th{font-family:var(--jd-font-display);background:var(--jd-navy);color:#fff;text-align:left;padding:.6rem .7rem;border:1px solid var(--jd-navy)}
+td{padding:.55rem .7rem;border:1px solid var(--jd-line);vertical-align:top}
+tr:nth-child(even) td{background:var(--jd-mist)}
+pre{background:var(--jd-mist);border:1px solid var(--jd-line);border-radius:10px;padding:1rem;overflow-x:auto;font-size:.8rem;line-height:1.55;white-space:pre-wrap;word-wrap:break-word}
+footer{border-top:2px solid var(--jd-silver);margin-top:2rem;padding-top:1.1rem;color:var(--jd-muted);font-size:.9rem}
+.jd-tagline{font-family:var(--jd-font-display);font-weight:700;font-size:1.02rem;color:var(--jd-navy);letter-spacing:.01em;margin:.4rem 0 .8rem}
+a[href^="https://buy.stripe.com"],a[href^="https://forms.gle"]{display:inline-block;background:var(--jd-navy);color:#fff;font-weight:600;text-decoration:none;padding:.55rem 1.1rem;border-radius:10px;margin:.15rem 0;box-shadow:0 2px 6px rgba(11,34,57,.18)}
+a[href^="https://buy.stripe.com"]:hover,a[href^="https://forms.gle"]:hover{background:var(--jd-navy-2);color:#fff}
+@media (max-width:640px){body{padding:0 .8rem 2.5rem}header{padding:1.6rem 1.15rem 1.3rem}section{padding:1.15rem 1.15rem}}
+</style></head>
+<body>
+<header>
+<p><a href="index.html">&larr; J-Dawgs hub</a></p>
+<h1>J-Dawgs Photo Tidy™</h1>
+<p>Your camera roll is full of near-duplicates, blurry shots, and screenshots — and the cleaner apps want $5.95–$11.99 <em>a week</em> to deal with it. Photo Tidy does the honest half of that job: you pick a batch of photos, it groups the look-alikes side by side, shows you a real sharpness score for each one, and hands you a keep/delete list. Your photos never leave your phone, and the app itself never deletes a thing.</p>
+<nav><ul>
+<li><a href="index.html">Hub home</a></li>
+<li><a href="support.html">Support</a></li>
+</ul></nav>
+</header>
+
+<section>
+<h2>What it does</h2>
+<ul>
+<li><strong>Near-duplicate groups:</strong> photos that look alike are grouped side by side at readable size, with file size and date under each. The largest/sharpest is marked as a <em>suggested</em> keeper — a suggestion only, never an auto-decision.</li>
+<li><strong>Blur scores with the numbers shown:</strong> every photo gets a sharpness score and a plain label (Sharp / Soft / Blurry). The number is right there — no black-box "AI" verdict.</li>
+<li><strong>Screenshot &amp; biggest-file lanes:</strong> screenshots grouped by month, and your largest files listed with sizes — the two fastest honest wins in any camera roll.</li>
+<li><strong>Your decisions, exportable:</strong> mark Keep or Delete-candidate, undo any mark, and export a plain list (name, size, decision) plus the total estimated space. You delete in your own gallery app, from the list — nothing is ever deleted for you.</li>
+<li><strong>Try it in 30 seconds:</strong> a built-in SAMPLE set, clearly labeled, runs the whole flow — grouping, blur labels, decisions, export — with none of your photos.</li>
+</ul>
+</section>
+
+<section>
+<h2>Honest limits — read these first</h2>
+<ul>
+<li><strong>It cannot scan your whole gallery.</strong> No web app can. You pick the photos it may look at, in batches — that picker is also your privacy guarantee: unpicked photos are never touched.</li>
+<li><strong>It cannot delete photos from your phone.</strong> No web app can do that either. This app helps you decide and gives you the list; deleting happens in your own gallery app, under your control.</li>
+<li><strong>Similarity and blur scores are heuristics</strong> — good guides with the numbers shown, not proof. The final call on every photo is yours.</li>
+<li><strong>Estimated space is an estimate</strong> until the files are actually deleted in your gallery.</li>
+<li>Disclosed-not-verified in our build audit: the native file picker on a real phone (the app uses the standard file dialog, which our test rig cannot operate — the identical analysis path is proven end-to-end by the SAMPLE set), the downloaded list landing in a real phone's Downloads folder, and the storage-blocked fallback branch (storage is wrapped so a restricted browser runs session-only with a plain notice; verified by code inspection).</li>
+</ul>
+</section>
+
+<section>
+<h2>Price</h2>
+<p><strong>$4.99 — one time. No subscription. Nothing renews, ever.</strong> For comparison, the category leader charges $5.95–$11.99 <em>per week</em> (about $415 a year at the middle weekly price) or $29.99 a year, Swipewipe charges $3.99–$9.99 a week or $29.99 a year, and lifetime tiers in this category run $29.99–$49.99. Photo Tidy is $4.99 once.</p>
+<!-- MAIN AGENT — FILL BEFORE PUBLISH: replace the placeholder href below with the Photo Tidy Stripe payment link (spec: ~/workspace/photo-tidy-sales-pack.md), then remove this comment. Do NOT publish this page with href="#" in place. -->
+<p><a href="#" data-stripe-link="PENDING — Photo Tidy Stripe link, main-agent step">Buy Photo Tidy™ — $4.99, one time</a></p>
+<!-- MAIN AGENT — FILL BEFORE PUBLISH: replace the placeholder href below with the Gumroad product URL once the product exists, then remove this comment. -->
+<p>Prefer Gumroad? <a href="#" data-gumroad-link="PENDING — Photo Tidy Gumroad product, main-agent step">Get Photo Tidy™ on Gumroad</a> — same $4.99, same file.</p>
+<p>Ways to pay: card via Stripe (the buy button above, once the main agent fills it), Venmo <strong>@Joshua-Dawson-81</strong>, or Cash App <strong>$jjdawg0350</strong>. Pay by Venmo or Cash App and your app link and download are sent to you directly.</p>
+<p><strong>Already have the Unlimited Pass?</strong> Then you already own this. Photo Tidy is included in the <a href="https://buy.stripe.com/eVq8wP4u58Qkd8p4KV3ks1s">J-Dawgs Unlimited Pass — $99.99, one time</a> at no extra cost, like every priced J-Dawgs app and AI Tool Store tool, including all future ones.</p>
+<p>Your app, once it's yours: <a href="https://muse.ai/s/j-dawgs-photo-tidy-xlk6xnw7xfxcxkit/WsXCfdabi-bfFKVMGdehXxwHrxio3mjzEMbjQTf5KTY">open Photo Tidy</a> — plus the single-file download you keep.</p>
+</section>
+
+<section>
+<h2>How buying works</h2>
+<ol>
+<li><strong>Pay $4.99 once</strong> — card, Venmo, or Cash App. No subscription, nothing renews.</li>
+<li><strong>Open the app</strong> — you get the live app link plus the single-file HTML download to keep.</li>
+<li><strong>Pick a batch, decide, export the list</strong> — then delete in your own gallery, from your list.</li>
+</ol>
+</section>
+
+<section>
+<h2>Who it's for</h2>
+<ul>
+<li>Anyone whose phone keeps warning "storage almost full" because of photo clutter</li>
+<li>Parents and grandparents with thousands of near-identical shots of the same moment</li>
+<li>Anyone who refuses to pay a weekly subscription for a once-in-a-while cleanup chore — or to hand a cleaner app their whole gallery</li>
+</ul>
+<p>Honest note: this app is brand new — be one of the first in, and tell us what to add next.</p>
+</section>
+
+<footer>
+<p>More from J-Dawgs: <a href="index.html">Hub home</a> · <a href="https://muse.ai/s/ai-tool-store-xng6xkxwjkxl2xab/UoF72OkKI7j33Q2ITxmrZyIr4nv40QtYfj2AgESh_k8">AI Tool Store</a> · <a href="work.html">Work as a Hand</a> · <a href="https://muse.ai/s/selling-website-xij6xkxuxkxy7cxxo/6OdKXk-tcAnCrK8M-DuEiyYuKf0AK24A1EeWn9CrFYI">J-Dawgs Trading Post</a> · <a href="https://linktr.ee/jdawgs">Every door at linktr.ee/jdawgs</a></p>
+<p>© 2026 J-Dawgs / Joshua Dawson, Springfield, MO. J-Dawgs Photo Tidy — a J-Dawgs business (J-DAWGS INDUSTRIES). Business contact: joshuajdawg0350@gmail.com.</p>
+<p><strong>The J-Dawgs Fix-It Guarantee:</strong> if anything we sold or gave you doesn't work, tell us once — we fix it free. No receipts, no runaround. <a href="support.html">Report a problem</a></p>
+<p class="jd-tagline"><strong>No fancy logos. Just quality products.</strong> <strong>No ads.</strong></p>
+</footer>
+
+<section id="ai-readable">
+<h2>Machine-readable block — J-Dawgs Photo Tidy</h2>
+<pre>
+PRODUCT: J-Dawgs Photo Tidy by J-DAWGS INDUSTRIES. WHAT IT IS: a single-file, fully on-device photo decision helper. The user picks photos in batches (standard file picker; nothing is uploaded; zero external requests). The app computes a perceptual fingerprint per photo and groups near-duplicates side by side with file size and date, marking the largest/sharpest as a suggested keeper labeled as a suggestion only; computes a Laplacian-variance sharpness score per photo shown as a number plus a Sharp/Soft/Blurry label; groups likely screenshots by month and lists the largest files with sizes; lets the user mark Keep or Delete-candidate with global and per-card undo; shows a live total of estimated space for Delete-candidates, worded as an estimate; and exports a plain-text decision list (name, size, date, decision) by download or copy. A canvas-drawn labeled SAMPLE set (sunset original + resized copy + blurred copy, an unrelated mountain scene, two screenshot mocks) runs the full flow with no real photos. HONEST LIMITS: a web app cannot scan a whole gallery (user picks batches) and cannot delete photos (deleting happens in the user's own gallery app from the list); similarity and blur scores are heuristics with numbers shown, not proof; estimated space is an estimate until files are actually deleted. Validated in audit: fingerprint distances on constructed sets (identical 0.0000, resized 0.0082/0.0317, cropped 0.0521 grouped at threshold 0.16; unrelated 0.3205 and flat frame 1.0000 separate); blur scores (sharp 1394.3 vs blurred 0.1 in Node; live SAMPLE Sharp 538 / 728, blurred copy Blurry 3). DISCLOSED-NOT-VERIFIED: native file picker on a real phone, the downloaded list landing in a real Downloads folder, and the storage-blocked session-only branch (code-inspected; storage is try/catch guarded with an in-app notice). PRICE: $4.99 one time, no subscription, also included in the J-Dawgs Unlimited Pass ($99.99 one time).
+</pre>
+</section>
+</body>
+</html>
