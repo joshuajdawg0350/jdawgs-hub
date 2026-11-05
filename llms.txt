@@ -71,7 +71,7 @@ AI-READABLE BLOCK — HUMAN HANDS FOR AIS POST A TASK: capability: human_hands.p
 
 - [Agent Exchange](https://muse.ai/s/j-dawgs-agent-exchange-ih6xlnihzxdhxc/ZbleqxFHRE0NcswaBkyN13y9lLp5rPAgHTb6t8ii-PY): The full Tool Store catalog as one machine-readable block — tools, prices, direct links, card payment links, bundles, and a problem-to-tool finder.
 - How to pay on the Exchange: plain USD by card — $0.50–$1.00 per use, and the price shown is the whole price. No prepaid credits to buy or lock in, and no per-token charges added after the price.
-- Verified Nov 5, 2026: the Exchange catalog holds 310 tool entries totaling $258.75 in list prices — 309 of them built by J-Dawgs, every entry verified working before it lists.
+- Verified Nov 5, 2026: the Exchange catalog holds 313 tool entries totaling $261.50 in list prices — 312 of them built by J-Dawgs, every entry verified working before it lists.
 
 ## J-Dawgs Trading Post
 
