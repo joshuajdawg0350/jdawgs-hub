@@ -2311,6 +2311,246 @@
       "url": "https://muse.ai/s/j-dawgs-habit-streak-log-dxe6xnxmxzxvxdxqy7/QkFqB7_jPR4Vi4pFOekg1_e6kKKWxeBPFWbeBMYJ3KI",
       "hub_page": "habit-streak-log.html",
       "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Moving Box & Belongings Finder™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-moving-box-finder-hxl6xnxgxzxpqixs3/gfSTnhnpiXFXw_4hxieUo0IbnB0yTTeR7D-QP3yGWv0",
+      "hub_page": "moving-box-finder.html",
+      "status": "Public app live; Gumroad live (https://jdawgs.gumroad.com/l/hewwke); Stripe checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Plant Care Log™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-plant-care-log-xfxp6xnxbcixwgmv/D4T9i5sG2MXdIYl3lx0KMwdpF6rDa8aJEx4RZ493Xns",
+      "hub_page": "plant-care-log.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Birthday & Gift Log™",
+      "price_usd": 3.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-birthday-gift-log-zxj6xnxgzxoxaxpxxxp/kVVAwuFCDUXLpcvkhjlm9zX8kORsi2JbLKK6OQsOovM",
+      "hub_page": "birthday-gift-log.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Family Chore Roster™",
+      "price_usd": 3.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-family-chore-roster-xjxt6xnxgxexnxe6sr/NTKEVXrIujNnvJ1Nbcplp9VtY-CHtqvmOyWz530BWMQ",
+      "hub_page": "family-chore-roster.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Family Emergency Plan & Go-Bag Check™",
+      "price_usd": 2.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-family-emergency-plan-go-bag-xtxb6xnxmxaxkfglb/TU6x7NrqeH_IyHPcGMj3WhvaqDwm1bU_b53RDO10rCc",
+      "hub_page": "family-emergency-plan.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Group Expense Split Ledger™",
+      "price_usd": 3.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-group-expense-split-ledger-nxb6xnxmxb5xtxwxwx0/07uWcKQ16sQpVyE1HPoP6UsfeV62dPjkZ1WF0DBU2qA",
+      "hub_page": "group-expense-split-ledger.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Mood & Day Log™",
+      "price_usd": 2.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-mood-day-log-aw6xnxmxg7xt2qg/lVZfkne8pfKaHP2Gxq01UdfjM1SOPNtR1QbaOcsoIFU",
+      "hub_page": "mood-day-log.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Voice Memo Cleaner™",
+      "price_usd": 6.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-voice-memo-cleaner-al6xn7cxokxl7xo/VsXi26w-SDhgJ23U2vzp_lsMAm_O1mPJo2BX1bLULD8",
+      "hub_page": "voice-memo-cleaner.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Proof Check™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-proof-check-xub6xnw1xxeedk/weeHjlyZY18mtpTM_KO6RXgdIG_vGcPQAZBbCpHeVk8",
+      "hub_page": "proof-check.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Sideload Check™",
+      "price_usd": 5.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-sideload-check-qxi6xnw24xtxlo8/FtsZWm-r-YLnSq4Ja0BNTJSIxB6BqCHHmHvYXisV_OA",
+      "hub_page": "sideload-check.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Agent Approval Inbox™",
+      "price_usd": 6.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-agent-approval-inbox-xfa6xnw2xdxrxdxyxd/U-rIzLO7niRjnRCdU35qbynqthte9spyhn8r25nEzkM",
+      "hub_page": "agent-approval-inbox.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Return Window Vault™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-return-window-vault-jxi6xnw2xixplkd/jK4Jy5gYD5CilwhAKn-kKYXV4_4r6swedv1eN0la6ho",
+      "hub_page": "return-window-vault.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Gig Tax Resolver™",
+      "price_usd": 5.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-gig-tax-resolver-qxh6xnw3azxf2xm/nIYJ3qlSCvW1YNSKabAdh3srXsgi9_60hckFgwgMWSA",
+      "hub_page": "gig-tax-resolver.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs On-Device AI Writing Kit™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-on-device-ai-writing-kit-xuo6xnw3cxpwz8/GD4ydNmSyqi9wvSzW9FAtdf6wLqY4FlqpQe35oUBQz4",
+      "hub_page": "on-device-ai-writing-kit.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs My Agent's Toolbox™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-my-agent-s-toolbox-xno6xnw3xqxl6vd/MEPOnn9RpfuyZBsFbzWGCZDFKkK0DTLijAkTt6sHdcw",
+      "hub_page": "my-agents-toolbox.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Before-the-Storm Property Documentation Kit™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-storm-property-kit-xio6xnw3xu8xtxmxk/VBkkokralvEu8RbntLlHDXfhnRjmN2yc3F0WE3iMrMU",
+      "hub_page": "storm-property-kit.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Photo Tidy™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-photo-tidy-xlk6xnw7xfxcxkit/WsXCfdabi-bfFKVMGdehXxwHrxio3mjzEMbjQTf5KTY",
+      "hub_page": "photo-tidy.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs PDF Pack Maker™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-pdf-pack-maker-nxd6xnw7zj82h/ogxrfE7j7ueyoPutx7wTncZRW_el7WnJoCDLJq5B0jA",
+      "hub_page": "pdf-pack-maker.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Job-Site Timestamp Log™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-job-site-timestamp-log-nxr6xnw8iqotn/KL5hVaTQT4cCSUBnzXi2c0-J9Bx75mClN_-ISjxDI8E",
+      "hub_page": "job-site-timestamp-log.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Simple Invoice & Estimate Maker™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-simple-invoice-estimate-maker-zk6xnw8mxw7w5/tsyuKI3AiMrjHcTv1Vd79UTkUcX4MZw0xpeUIwfqAOg",
+      "hub_page": "invoice-maker.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Vehicle Care Log™",
+      "price_usd": 5.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-vehicle-care-log-uj6xnw8xwxnxwxik/5r7ecm6AYNwX9WFVzSAk8T2OXRhRxCqgnTrssJVCFEo",
+      "hub_page": "vehicle-care-log.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs New Phone Move Checklist™",
+      "price_usd": 3.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-new-phone-move-checklist-xkxc6xnw8xyxbxpxvxo/eJNKeGa967kb20wteUQDXotJyW0l-vz4OHQ3VbAbZbk",
+      "hub_page": "new-phone-move-checklist.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Warranty Vault™",
+      "price_usd": 3.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-warranty-vault-hxq6xnwa1lxuxbxn/xXWdmUOGuZLg3KGhthYP368OqsQHmPqPnCIFszZKshI",
+      "hub_page": "warranty-vault.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Tool & Equipment Loan Log™",
+      "price_usd": 3.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-tool-equipment-loan-log-xgi6xnw9xumkxti/sjqhfccLMLrcqigDHlT1MM8TvHN4v8tIYm_Xeew_EzA",
+      "hub_page": "tool-loan-log.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Home Care Log™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-home-care-log-fh6xnwbij7xsd/nZ3dGSrXPyGC9qMWOsN4aEhVtJ4EeykFCSB0j-w1agY",
+      "hub_page": "home-care-log.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Pantry & Fridge Expiry Helper™",
+      "price_usd": 3.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-pantry-fridge-expiry-helper-xbxa6xnwbg3glxr/k-ByJ4RhLijEs-CD2w7NX2M6vf3jWLbzLZNiqaO5S6k",
+      "hub_page": "pantry-expiry-helper.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Pet Care Log™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-pet-care-log-xaxn6xnwcwkw9xy/P-OqFmTdODJm0jd3Zvwmb80cDwN5LnNtdDgM_NvmHWI",
+      "hub_page": "pet-care-log.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Pocket Prompter™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-pocket-prompter-xexn6xnwctxcxgkxk/tIzGMaQBK2bUqy-rDXcTwPyzJlO64Op62YGsNLUJ-B4",
+      "hub_page": "pocket-prompter.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs Subscription Reality Check™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-subscription-reality-check-hxn6xnwdinxbzxj/A6ruGx3AjlBUifcCpQ3UIaeIDqyiGnaaaDr2r2McONg",
+      "hub_page": "subscription-reality-check.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
+    },
+    {
+      "name": "J-Dawgs QR Card Maker™",
+      "price_usd": 4.99,
+      "terms": "One-time payment. Also included in the $99.99 Unlimited Pass.",
+      "url": "https://muse.ai/s/j-dawgs-qr-card-maker-xsxm6xnwdpxp9xb6/dTRWtwsTOU2K2YackmzGQSc4W15HZEwU3PGuUmcDcUc",
+      "hub_page": "qr-card-maker.html",
+      "status": "Public app live; Stripe/Gumroad checkout pending (see sales pack execution record)"
     }
   ]
 }
