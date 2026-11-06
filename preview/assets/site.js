@@ -1,9 +1,19 @@
 /* J-Dawgs Industries — flagship site script.
-   Two jobs only: the mobile nav toggle, and calm staggered
-   entrances for .rise elements. No tracking, no network calls.
+   Three jobs only: the mobile nav toggle, the header's
+   solid-on-scroll state, and calm staggered entrances for
+   .rise elements. No tracking, no network calls.
    Honors prefers-reduced-motion (elements simply stay visible). */
 (function () {
   "use strict";
+
+  var header = document.querySelector(".site-header");
+  if (header) {
+    var onScroll = function () {
+      header.classList.toggle("scrolled", window.scrollY > 24);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
 
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".site-nav");
@@ -11,6 +21,12 @@
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    nav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
     });
   }
 
@@ -32,4 +48,9 @@
     el.style.transitionDelay = (i % 4) * 55 + "ms"; /* 40–60ms stagger family */
     io.observe(el);
   });
+  /* Failsafe: motion is a garnish, invisible content is a failure.
+     Anything still hidden 2.8s after load simply appears. */
+  setTimeout(function () {
+    items.forEach(function (el) { el.classList.add("in"); });
+  }, 2800);
 })();
