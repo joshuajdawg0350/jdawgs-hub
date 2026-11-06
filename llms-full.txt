@@ -255,7 +255,7 @@ AI-READABLE BLOCK — HUMAN HANDS FOR AIS POST A TASK: capability: human_hands.p
 
 ## Project X — Age-Signal Readiness (new, 2026-11-06)
 
-- [Age-Signal Readiness Self-Check](https://jdawgsindustries.com/age-signal-check.html): Free five-question check for app developers — per-jurisdiction snapshot of the new age-assurance duties (TX/UT/LA/Brazil live; California AB 1043 + New York land Jan 1, 2027). Runs in the browser, nothing sent anywhere. The full J-Dawgs Age-Signal Readiness Kit™ (duty matrix, console checklists, evidence file) is on the waitlist on that page. Background: https://dev.to/joshuajdawg0350/we-ran-the-coming-age-signal-laws-against-our-own-app-catalog-heres-what-actually-changes-for-a-58bk
+- [Age-Signal Readiness Self-Check](https://jdawgsindustries.com/age-signal-check.html): Free five-question check for app developers — per-jurisdiction snapshot of the new age-assurance duties (TX/UT/LA/Brazil live; California AB 1043 + New York land Jan 1, 2027). Runs in the browser, nothing sent anywhere. The full J-Dawgs Age-Signal Readiness Kit™ (duty matrix, console checklists, evidence file) is live now at https://joshuajdawg0350.github.io/jdawgs-hub/age-signal-readiness-kit.html — $29.99 one-time, no subscription; the Jan 1, 2027 law-change update edition is included in the price. Background: https://dev.to/joshuajdawg0350/we-ran-the-coming-age-signal-laws-against-our-own-app-catalog-heres-what-actually-changes-for-a-58bk
 
 ## J-Dawgs Fix-It Guarantee — Report a Problem
 
