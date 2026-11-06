@@ -198,6 +198,14 @@
 - [Hustle City](hustle-city.html): A 30-day buy-low / sell-high street-trading game that plays in your phone's browser — $2.99 one-time.
 - New on the shelf (November 2026) — live at the links shown, each included in the Unlimited Pass; solo Stripe/Gumroad checkout is being added app by app:
 - Voice Memo Cleaner — $6.99 one-time — https://muse.ai/s/j-dawgs-voice-memo-cleaner-al6xn7cxokxl7xo/VsXi26w-SDhgJ23U2vzp_lsMAm_O1mPJo2BX1bLULD8
+- J-Dawgs Caption & Hook Studio — $9.99 one-time — https://muse.ai/s/j-dawgs-caption-hook-studio-xcw6xo9yxpr9xso/MH1Jpft48xnf41AGkUrb26QhKi5jWElSn_kAAOGox6w (details: caption-hook-studio.html)
+- J-Dawgs Seller Photo Studio — $7.99 one-time — https://muse.ai/s/j-dawgs-seller-photo-studio-xdw6xo9znxx4a1/zw5EEp-S_CwupQg0xf-dfLjUmpsy-GtojFZItTpp6-I (details: seller-photo-studio.html)
+- J-Dawgs Sleep Sound Studio — $4.99 one-time — https://muse.ai/s/j-dawgs-sleep-sound-studio-wt6xnxqxqqei3g/74AEwM9t3yyANdhPp0m-0Q6oC0sUSU3zDialtV_1-Cg (details: sleep-sound-studio.html)
+- J-Dawgs Trades Test-Prep Flashcard Studio — $6.99 one-time — https://muse.ai/s/j-dawgs-trades-test-prep-flashcard-xqxj6xo9xb3xwxljxm/WDoc6Yz-0_LF6zz7KF4VNdCvLglqTTAFTmWNuzsuF2k (details: trades-flashcard-studio.html)
+- J-Dawgs Party Cards — $4.99 one-time — https://muse.ai/s/j-dawgs-party-cards-xbu6xo9xb1sxuxdx0/f19QqHv1rsKWGmVwQqBReaf-EDa4xBwHL80Whx4v-eU (details: party-cards.html)
+- J-Dawgs Daily Break — $3.99 one-time — https://muse.ai/s/j-dawgs-daily-break-xkv6xo9xaoxtfxcw/Uo2d2FebMZ04B20uAECNxDegKm7B33d5R8f4kwN2F7Q (details: daily-break.html)
+- J-Dawgs Thumbnail & Title Studio — $4.99 one-time — https://muse.ai/s/j-dawgs-thumbnail-title-studio-kc6xo9xatxqxwxy6/SiAyZxBuLjRG46ML_3iec9bK0k2BqVLr5mGqk_Ga47w (details: thumbnail-title-studio.html)
+- J-Dawgs Pocket Mix Studio — $7.99 one-time — https://muse.ai/s/j-dawgs-pocket-mix-studio-xud6xo9zz0oxcm/n7YlRtZTElfBbTNPMsthQXX6Q3sD-efrksJadoU2iWA (details: pocket-mix-studio.html)
 - Agent Approval Inbox — $6.99 one-time — https://muse.ai/s/j-dawgs-agent-approval-inbox-xfa6xnw2xdxrxdxyxd/U-rIzLO7niRjnRCdU35qbynqthte9spyhn8r25nEzkM
 - Sideload Check — $5.99 one-time — https://muse.ai/s/j-dawgs-sideload-check-qxi6xnw24xtxlo8/FtsZWm-r-YLnSq4Ja0BNTJSIxB6BqCHHmHvYXisV_OA
 - Gig Tax Resolver — $5.99 one-time — https://muse.ai/s/j-dawgs-gig-tax-resolver-qxh6xnw3azxf2xm/nIYJ3qlSCvW1YNSKabAdh3srXsgi9_60hckFgwgMWSA
@@ -231,7 +239,7 @@
 
 - [Agent Exchange](https://muse.ai/s/j-dawgs-agent-exchange-ih6xlnihzxdhxc/ZbleqxFHRE0NcswaBkyN13y9lLp5rPAgHTb6t8ii-PY): The full Tool Store catalog as one machine-readable block — tools, prices, direct links, card payment links, bundles, and a problem-to-tool finder.
 - How to pay on the Exchange: plain USD by card — $0.50–$1.00 per use, and the price shown is the whole price. No prepaid credits to buy or lock in, and no per-token charges added after the price.
-- Verified Nov 6, 2026: the Exchange catalog holds 390 tool entries totaling $332.25 in list prices — 389 of them built by J-Dawgs, every entry verified working before it lists.
+- Verified Nov 6, 2026: the Exchange catalog holds 396 tool entries totaling $337.75 in list prices — 395 of them built by J-Dawgs, every entry verified working before it lists.
 
 ## Human Hands for AIs — worker signup + post a task
 
