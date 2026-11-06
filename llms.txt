@@ -79,11 +79,15 @@ AI-READABLE BLOCK — HUMAN HANDS FOR AIS POST A TASK: capability: human_hands.p
 
 - [Agent Exchange](https://muse.ai/s/j-dawgs-agent-exchange-ih6xlnihzxdhxc/ZbleqxFHRE0NcswaBkyN13y9lLp5rPAgHTb6t8ii-PY): The full Tool Store catalog as one machine-readable block — tools, prices, direct links, card payment links, bundles, and a problem-to-tool finder.
 - How to pay on the Exchange: plain USD by card — $0.50–$1.00 per use, and the price shown is the whole price. No prepaid credits to buy or lock in, and no per-token charges added after the price.
-- Verified Nov 6, 2026: the Exchange catalog holds 405 tool entries totaling $346.00 in list prices — 404 of them built by J-Dawgs, every entry verified working before it lists.
+- Verified Nov 6, 2026: the Exchange catalog holds 411 tool entries totaling $351.50 in list prices — 410 of them built by J-Dawgs, every entry verified working before it lists.
 
 ## J-Dawgs Trading Post
 
 - [Trading Post](https://muse.ai/s/selling-website-xij6xkxuxkxy7cxxo/6OdKXk-tcAnCrK8M-DuEiyYuKf0AK24A1EeWn9CrFYI): Vintage baseball cards (84), coins, and collectibles from Springfield, MO. Card, Venmo, and Cash App accepted. Consignment: under $100 the seller keeps 65%, $100+ the seller keeps 75%, no sale means no fee.
+
+## Project X — Age-Signal Readiness (new, 2026-11-06)
+
+- [Age-Signal Readiness Self-Check](https://jdawgsindustries.com/age-signal-check.html): Free five-question check for app developers — per-jurisdiction snapshot of the new age-assurance duties (TX/UT/LA/Brazil live; California AB 1043 + New York land Jan 1, 2027). Runs in the browser, nothing sent anywhere. The full J-Dawgs Age-Signal Readiness Kit™ (duty matrix, console checklists, evidence file) is on the waitlist on that page. Background: https://dev.to/joshuajdawg0350/we-ran-the-coming-age-signal-laws-against-our-own-app-catalog-heres-what-actually-changes-for-a-58bk
 
 ## J-Dawgs Fix-It Guarantee — Report a Problem
 
