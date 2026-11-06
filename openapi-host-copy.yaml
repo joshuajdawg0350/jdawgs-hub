@@ -1,0 +1,198 @@
+openapi: 3.1.0
+info:
+  title: J-Dawgs Config Safety Auditors
+  version: 1.0.0
+  description: >-
+    Deterministic, text-only safety audits for pasted server configuration
+    files. The API does not connect to a server, execute a configuration, or
+    store submitted configuration text in the gateway code.
+servers:
+  - url: https://jdawgs-config-auditors.vercel.app
+    description: Deployed gateway origin (production).
+paths:
+  /health:
+    get:
+      summary: Gateway health
+      operationId: health
+      responses:
+        '200':
+          description: Gateway is running.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+  /v1/auditors:
+    get:
+      summary: List auditors
+      operationId: listAuditors
+      responses:
+        '200':
+          description: The ten available auditors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditorList'
+  /v1/audit/nginx:
+    post:
+      $ref: '#/components/pathItems/AuditPost'
+  /v1/audit/ssh-server:
+    post:
+      $ref: '#/components/pathItems/AuditPost'
+  /v1/audit/systemd-unit:
+    post:
+      $ref: '#/components/pathItems/AuditPost'
+  /v1/audit/haproxy:
+    post:
+      $ref: '#/components/pathItems/AuditPost'
+  /v1/audit/mysql-server:
+    post:
+      $ref: '#/components/pathItems/AuditPost'
+  /v1/audit/openvpn:
+    post:
+      $ref: '#/components/pathItems/AuditPost'
+  /v1/audit/postfix:
+    post:
+      $ref: '#/components/pathItems/AuditPost'
+  /v1/audit/redis:
+    post:
+      $ref: '#/components/pathItems/AuditPost'
+  /v1/audit/caddy-server:
+    post:
+      $ref: '#/components/pathItems/AuditPost'
+  /v1/audit/pgbouncer:
+    post:
+      $ref: '#/components/pathItems/AuditPost'
+components:
+  pathItems:
+    AuditPost:
+      summary: Audit one pasted configuration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuditRequest'
+            example:
+              config: "bind 0.0.0.0\nprotected-mode no\nport 6379\n"
+      responses:
+        '200':
+          description: Audit completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditResponse'
+        '400':
+          description: Invalid JSON or missing string config field.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Unknown auditor slug.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '413':
+          description: Request body exceeds 2 MB.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: The auditor could not complete the request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  schemas:
+    Health:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        service:
+          type: string
+          example: j-dawgs-config-safety-auditors
+        version:
+          type: string
+          example: 1.0.0
+        auditors:
+          type: integer
+          example: 10
+    AuditorList:
+      type: object
+      properties:
+        auditors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Auditor'
+    Auditor:
+      type: object
+      properties:
+        slug:
+          type: string
+          example: redis
+        name:
+          type: string
+          example: J-Dawgs Redis Config Safety Auditor™
+        sourceSlug:
+          type: string
+          example: j-dawgs-redis-config-safety-auditor
+        inputFormat:
+          type: string
+        endpoint:
+          type: string
+          example: /v1/audit/redis
+    AuditRequest:
+      type: object
+      required:
+        - config
+      properties:
+        config:
+          type: string
+          description: The complete pasted configuration text to audit.
+    AuditResponse:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        inputFormat:
+          type: string
+        verdict:
+          type: string
+          description: The original auditor's verdict, preserved.
+        score:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: Gateway-normalized score; see scoreMethod.
+        scoreMethod:
+          type: string
+          example: gateway-normalized-v1
+        counts:
+          type: object
+          additionalProperties:
+            type: integer
+        findings:
+          type: array
+          description: Original finding objects from the extracted auditor.
+          items:
+            type: object
+            additionalProperties: true
+        details:
+          type: object
+          additionalProperties: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
