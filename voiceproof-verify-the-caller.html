@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voiceproof Verify-the-Caller™ — The Mid-Call Protocol | J-Dawgs Voiceproofing™</title>
+<meta name="description" content="A step-by-step protocol to run while a suspicious call is happening: buy time, hang up and call back on a number you hold, run the code check — plus a red-flag checklist with a risk readout. Free, no account. Part of J-Dawgs Voiceproofing™.">
+<link rel="canonical" href="https://joshuajdawg0350.github.io/jdawgs-hub/voiceproof-verify-the-caller.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style data-jd-design="2026-11">
+:root{--jd-navy:#0B2239;--jd-navy-2:#123C63;--jd-silver:#C7CEDA;--jd-silver-bright:#E9EDF3;--jd-ink:#182430;--jd-muted:#5B6B7C;--jd-paper:#FFFFFF;--jd-mist:#F3F5F8;--jd-line:#D9DFE8;--jd-good:#146c2e;--jd-bad:#a31621;--jd-warn:#8a6d00}
+*{box-sizing:border-box}
+body{margin:0 auto;max-width:70rem;padding:0 1.25rem 3.5rem;background:var(--jd-mist);color:var(--jd-ink);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:1rem;line-height:1.65}
+h1,h2,h3{font-family:"Archivo","Inter",system-ui,sans-serif;color:var(--jd-navy);line-height:1.15;letter-spacing:-.01em}
+h1{font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:800;margin:0 0 .6rem}
+h2{font-size:clamp(1.35rem,3vw,1.7rem);font-weight:700;margin:0 0 .75rem}
+p{margin:.65rem 0}
+a{color:var(--jd-navy-2)}
+header{background:linear-gradient(135deg,var(--jd-navy) 0%,var(--jd-navy-2) 100%);color:var(--jd-silver-bright);border-radius:0 0 14px 14px;padding:2.25rem 2rem 1.75rem;margin:0 0 1.5rem}
+header h1{color:#fff}
+header p{max-width:46rem}
+section{background:var(--jd-paper);border:1px solid var(--jd-line);border-radius:14px;padding:1.6rem 2rem;margin:0 0 1.25rem;box-shadow:0 1px 3px rgba(11,34,57,.05)}
+footer{border-top:2px solid var(--jd-silver);color:var(--jd-muted);font-size:.9rem;padding-top:1rem}
+.tagline{font-family:"Archivo","Inter",sans-serif;font-weight:700;color:var(--jd-navy)}
+button{font:inherit;font-weight:700;background:var(--jd-navy);color:#fff;border:0;border-radius:10px;padding:.7rem 1.2rem;cursor:pointer;margin:.25rem .35rem .25rem 0}
+button.secondary{background:#fff;color:var(--jd-navy);border:1.5px solid var(--jd-navy)}
+button.danger{background:var(--jd-bad)}
+button.choice[aria-pressed="true"]{background:var(--jd-navy-2);outline:3px solid var(--jd-silver)}
+.mini{font-size:.92rem;color:var(--jd-muted)}
+.script{font-size:1.15rem;font-style:italic;background:var(--jd-mist);border-left:4px solid var(--jd-navy);padding:.7rem 1rem;border-radius:0 10px 10px 0}
+.verdict{border-radius:10px;padding:.9rem 1.1rem;font-weight:600;margin-top:1rem}
+.verdict.good{background:#e6f4ea;color:var(--jd-good)}
+.verdict.bad{background:#fdecec;color:var(--jd-bad)}
+.verdict.warn{background:#fff6d6;color:var(--jd-warn)}
+.checkline{display:flex;gap:.55rem;align-items:flex-start;margin:.45rem 0}
+.checkline input{margin-top:.35rem;width:1.15rem;height:1.15rem}
+.stepnum{font-family:"Archivo",sans-serif;font-weight:800;color:var(--jd-navy-2)}
+.kit{list-style:none;padding:0}
+.kit li{margin:.45rem 0}
+.kit a{font-weight:600}
+</style>
+</head>
+<body>
+<header>
+  <h1>Voiceproof Verify-the-Caller™</h1>
+  <p>The call is happening <em>now</em> and something feels off. This page walks you through the protocol, one step at a time — with the exact words to say. Urgency is the scammer's only real weapon; every step below takes it away.</p>
+</header>
+<main>
+<section>
+  <h2>Step 0 — What's happening?</h2>
+  <div id="scenarios"></div>
+  <div id="runner" style="display:none">
+    <h3 id="scenario-title"></h3>
+    <p class="mini" id="scenario-opening"></p>
+    <div id="step-zone"></div>
+    <div id="verdict-zone"></div>
+  </div>
+</section>
+<section>
+  <h2>Red-flag rapid check</h2>
+  <p class="mini">Tick anything true about the call you're on (or just got). The readout updates as you go.</p>
+  <div id="flags"></div>
+  <div id="flag-verdict" class="verdict good">No flags ticked. Stay alert anyway — a calm, ordinary call can still be checked with a code word in ten seconds.</div>
+</section>
+<section>
+  <h2>Why this works</h2>
+  <p>Every voice-clone scam runs the same play: a familiar voice, a crisis, a deadline, and secrecy. The protocol breaks all four. You slow it down (crisis and deadline die), you call back on a number <strong>you</strong> hold (the spoofed or cloned channel dies), and you ask for the code (the missing secret dies). A legitimate caller — a real son, a real boss, a real bank — will pass every step without complaint. Only a scammer needs you to skip them.</p>
+  <p>If a call fails: <strong>hang up, send nothing, and log it</strong> in the <a href="voiceproof-scam-call-log.html">Scam Call Log</a> — then report it at <a href="https://reportfraud.ftc.gov" rel="noopener">ReportFraud.ftc.gov</a>. If money already moved, call your bank on the number on your card, immediately.</p>
+</section>
+<section>
+  <h2>The rest of the Voiceproofing™ kit</h2>
+  <ul class="kit">
+    <li><a href="voiceproof-callcode.html">Voiceproof CallCode™</a> — rotating spoken codes from a shared secret (the flagship).</li>
+    <li><a href="voiceproof-codeword-forge.html">Voiceproof CodeWord Forge™</a> — pick your code word, duress word, and safe verification questions.</li>
+    <li><a href="voiceproof-family-card.html">Voiceproof Family Card™</a> — a printable fridge &amp; wallet card with your circle's numbers and rules.</li>
+    <li><a href="voiceproof-scam-drill.html">Voiceproof Scam Drill™</a> — practice against 8 realistic scam scripts, scored.</li>
+    <li><a href="voiceproof-callback-policy.html">Voiceproof Callback Policy Builder™</a> — a one-page voice-payment policy for your business.</li>
+    <li><a href="voiceproof-scam-call-log.html">Voiceproof Scam Call Log™</a> — log suspicious calls in the format the FTC and FBI ask for.</li>
+    <li><a href="voiceproofing.html">About Voiceproofing™</a> — the category, and the numbers behind it.</li>
+  </ul>
+</section>
+</main>
+<footer>
+  <p class="tagline"><strong>No fancy logos. Just quality products.</strong></p>
+  <p>No ads. Free to use — no account, no install. Voiceproof Verify-the-Caller™ is part of the J-Dawgs Voiceproofing™ kit. Voiceproofing™ and Voiceproof™ are trademarks of J-Dawgs Industries, in use since 2026.</p>
+  <p>© 2026 Joshua Dawson, J-Dawgs Industries, Springfield, MO. All rights reserved.</p>
+</footer>
+<script id="tool-script">
+"use strict";
+var VP_SCENARIOS=[
+ {id:"family", title:"Family emergency", opening:"“It's me — I'm in trouble, I need money fast, please don't tell anyone.”",
+  steps:[
+   {do:"Buy time. Panic is the product being sold; a real emergency survives a two-minute pause.", say:"“I hear you. Stay on the line — I'm grabbing my other phone so I can hear you better.”"},
+   {do:"Ask for the code word — or open CallCode and compare the live code.", say:"“Before anything else: what's our code word?” (If you use CallCode: “Open CallCode and read me your code.”)"},
+   {do:"Whatever they answered, hang up and call the person back on the number already saved in your phone. Never the number they called or texted from.", say:"“I'm calling you right back on your number.” Then actually do it."},
+   {do:"If money is genuinely needed after verification, send it the slow way — your bank, in person, or a method you chose — never gift cards, wire, or crypto on a caller's instruction.", say:"“Verified first. Then we handle it together, out in the open.”"}
+  ],
+  fail:"Treat it as a scam. A real family member, called back on their real number, will confirm they're fine — and will be glad you checked."},
+ {id:"newphone", title:"“I lost my phone — this is my new number”", opening:"A text or call from an unknown number claiming to be your kid, partner, or parent.",
+  steps:[
+   {do:"Do not save the new number and do not continue the conversation on it. The old number is the identity you trust.", say:"“If that's you, answer from your old number — or tell me our code word.”"},
+   {do:"Ask for the code word, or a backup question from the Forge (a shared memory, not a fact).", say:"“What's our code word?”"},
+   {do:"Call the OLD number yourself. If the real person answers, the new number was a setup.", say:"“I'm checking on your old number now.”"},
+   {do:"Only update your contacts after a voice conversation on a channel you started.", say:"“We'll sort the new number out once I've heard you on the old one.”"}
+  ],
+  fail:"Treat it as a scam. Never send money, codes, or photos to the 'new number' — this exact setup opens most family imposter scams."},
+ {id:"boss", title:"Boss / coworker asking for payment", opening:"A voice note or call: “It's [the owner] — pay this invoice, move this deposit, don't loop anyone in.”",
+  steps:[
+   {do:"Stop at the secrecy. Legitimate business survives being double-checked; this request is built not to be.", say:"“Company rule — I have to verify any payment change by callback. Two minutes.”"},
+   {do:"Hang up and call the person on the number in the company directory — not a number from the message.", say:"(Dial the directory number yourself.)"},
+   {do:"Run the code check if your business uses one (the Callback Policy Builder sets this up).", say:"“What's today's code word for payments?”"},
+   {do:"Get the instruction in the normal written channel (email/PO system) before moving anything.", say:"“Send it through the usual system and I'll process it right away.”"}
+  ],
+  fail:"Treat it as a scam and alert whoever runs the books. Voice-cloned 'boss' payment orders are the highest-dollar version of this fraud."},
+ {id:"contractor", title:"Contractor change order by phone", opening:"“We found a problem — approve the extra work and pay the difference today or the job stops.”",
+  steps:[
+   {do:"No verbal approvals. Real change orders are written, priced, and signed — that's how legitimate contractors protect themselves too.", say:"“Send the change order in writing with the price and I'll sign it today.”"},
+   {do:"Call the company on the number from your contract or their truck/office listing — not the caller's number.", say:"“I'm confirming with the office directly.”"},
+   {do:"Ask what specifically was found and for photos of the problem before any approval.", say:"“Text me photos of what you found, then we'll talk price.”"},
+   {do:"Never pay a 'difference' by cash app, gift card, or cash to keep a job moving.", say:"“We pay by the contract, on paperwork. That's the deal.”"}
+  ],
+  fail:"Treat it as a scam. A real contractor will happily put it in writing — it's their protection as much as yours."},
+ {id:"bank", title:"Bank / agency “fraud department”", opening:"“This is your bank's fraud department. Your account is compromised — move your money to a safe account / read me the code we texted you.”",
+  steps:[
+   {do:"Know this first: banks and agencies do not ask you to move money to 'safe accounts,' and never need a code read back to them. That request IS the scam.", say:"“I'll call the number on the back of my card.”"},
+   {do:"Hang up. Wait a minute (scammers sometimes hold the line), then dial the number on your card or statement yourself.", say:"(Dial it yourself — don't use any number from the call or text.)"},
+   {do:"Ask the real institution if they contacted you. They'll tell you, and they'll flag the attempt.", say:"“Did your fraud department just call me?”"},
+   {do:"If you already shared a code or moved money, say so now — speed matters more than embarrassment.", say:"“I need to report a fraud in progress.”"}
+  ],
+  fail:"It was a scam. The real institution, reached on a number you trust, is the only voice that counts."}
+];
+var VP_FLAGS=[
+ {id:"urgency", label:"Extreme urgency — “right now or something terrible happens”", w:3},
+ {id:"secrecy", label:"Secrecy — “don't tell anyone / don't hang up / don't call them”", w:3},
+ {id:"money", label:"Money asked in an unusual form — gift cards, wire, crypto, cash app to a stranger", w:3},
+ {id:"novoice", label:"They resist or can't do the code word / CallCode check", w:3},
+ {id:"newnum", label:"New or unknown number claiming to be someone known", w:2},
+ {id:"callback", label:"They object to you hanging up and calling back", w:3},
+ {id:"story", label:"Story has holes — details wrong, vague, or shifting", w:2},
+ {id:"pressure", label:"Anger, tears, or guilt when you slow down", w:2},
+ {id:"code", label:"Asking YOU to read out a code that was texted to you", w:3},
+ {id:"toogood", label:"Unexpected prize, refund, or deal that needs a fee or details first", w:2}
+];
+function vpScoreFlags(ids){
+  var score=0, byId={}; VP_FLAGS.forEach(function(f){ byId[f.id]=f.w; });
+  ids.forEach(function(id){ if(byId[id]) score+=byId[id]; });
+  var level, advice;
+  if(score>=6){ level="STOP"; advice="Multiple heavy flags. End the call now, send nothing, and call the person or institution back on a number you hold. Then log the call — this pattern is a known scam shape."; }
+  else if(score>=3){ level="HIGH RISK"; advice="At least one heavy flag. Do not act on this call. Hang up, verify by callback on a trusted number, and run the code check before believing a word of it."; }
+  else if(score>=1){ level="CAUTION"; advice="Something is off. Slow down, ask for the code word, and verify on a channel you started before doing anything the caller asks."; }
+  else { level="NO FLAGS"; advice="No flags ticked. Stay alert anyway — a calm, ordinary call can still be checked with a code word in ten seconds."; }
+  return {score:score, level:level, advice:advice};
+}
+if(typeof document!=="undefined"){
+  var $=function(id){return document.getElementById(id);};
+  var sc=$("scenarios");
+  VP_SCENARIOS.forEach(function(s){
+    var b=document.createElement("button"); b.type="button"; b.className="choice"; b.textContent=s.title;
+    b.setAttribute("aria-pressed","false");
+    b.addEventListener("click",function(){
+      sc.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed","false");});
+      b.setAttribute("aria-pressed","true"); startScenario(s);
+    });
+    sc.appendChild(b);
+  });
+  var cur=null, idx=0;
+  function startScenario(s){
+    cur=s; idx=0; $("runner").style.display="block";
+    $("scenario-title").textContent=s.title;
+    $("scenario-opening").textContent="It sounds like: "+s.opening;
+    $("verdict-zone").innerHTML=""; renderStep();
+    $("runner").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+  function renderStep(){
+    var z=$("step-zone");
+    if(idx>=cur.steps.length){
+      z.innerHTML='<div class="verdict good">✅ Every step passed. Proceed — on the channel YOU started, at YOUR pace. That\'s what verified looks like.</div>';
+      return;
+    }
+    var st=cur.steps[idx];
+    z.innerHTML='<p><span class="stepnum">Step '+(idx+1)+' of '+cur.steps.length+'.</span> '+st.do+'</p><div class="script">Say this: '+st.say+'</div>'+
+      '<p><button type="button" id="st-done">Done — it worked</button> <button type="button" class="danger" id="st-fail">It failed / they refused</button></p>';
+    $("st-done").addEventListener("click",function(){ idx++; renderStep(); });
+    $("st-fail").addEventListener("click",function(){
+      z.innerHTML='<div class="verdict bad">🛑 STOP. Do not send money, codes, or information. '+cur.fail+'</div>';
+    });
+  }
+  var fz=$("flags");
+  VP_FLAGS.forEach(function(f){
+    var row=document.createElement("div"); row.className="checkline";
+    row.innerHTML='<input type="checkbox" id="flag-'+f.id+'"><label for="flag-'+f.id+'">'+f.label+'</label>';
+    fz.appendChild(row);
+  });
+  fz.addEventListener("change",function(){
+    var ids=VP_FLAGS.filter(function(f){ return $("flag-"+f.id).checked; }).map(function(f){ return f.id; });
+    var r=vpScoreFlags(ids), v=$("flag-verdict");
+    v.textContent=r.level+" — "+r.advice;
+    v.className="verdict "+(r.level==="STOP"||r.level==="HIGH RISK"?"bad":(r.level==="CAUTION"?"warn":"good"));
+  });
+}
+</script>
+</body>
+</html>

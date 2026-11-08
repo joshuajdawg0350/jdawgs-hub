@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voiceproof Scam Call Log™ — Record Suspicious Calls for the FTC &amp; FBI | J-Dawgs Voiceproofing™</title>
+<meta name="description" content="Log suspicious calls with exactly the fields ReportFraud.ftc.gov and the FBI's IC3 ask for — date, number shown, claimed identity, what they asked, red flags, outcome — stored only on your device, exportable as CSV and a printable report. Free. Part of J-Dawgs Voiceproofing™.">
+<link rel="canonical" href="https://joshuajdawg0350.github.io/jdawgs-hub/voiceproof-scam-call-log.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style data-jd-design="2026-11">
+:root{--jd-navy:#0B2239;--jd-navy-2:#123C63;--jd-silver:#C7CEDA;--jd-silver-bright:#E9EDF3;--jd-ink:#182430;--jd-muted:#5B6B7C;--jd-paper:#FFFFFF;--jd-mist:#F3F5F8;--jd-line:#D9DFE8;--jd-good:#146c2e;--jd-bad:#a31621}
+*{box-sizing:border-box}
+body{margin:0 auto;max-width:70rem;padding:0 1.25rem 3.5rem;background:var(--jd-mist);color:var(--jd-ink);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:1rem;line-height:1.65}
+h1,h2,h3{font-family:"Archivo","Inter",system-ui,sans-serif;color:var(--jd-navy);line-height:1.15;letter-spacing:-.01em}
+h1{font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:800;margin:0 0 .6rem}
+h2{font-size:clamp(1.35rem,3vw,1.7rem);font-weight:700;margin:0 0 .75rem}
+p{margin:.65rem 0}
+a{color:var(--jd-navy-2)}
+header{background:linear-gradient(135deg,var(--jd-navy) 0%,var(--jd-navy-2) 100%);color:var(--jd-silver-bright);border-radius:0 0 14px 14px;padding:2.25rem 2rem 1.75rem;margin:0 0 1.5rem}
+header h1{color:#fff}
+header p{max-width:46rem}
+section{background:var(--jd-paper);border:1px solid var(--jd-line);border-radius:14px;padding:1.6rem 2rem;margin:0 0 1.25rem;box-shadow:0 1px 3px rgba(11,34,57,.05)}
+footer{border-top:2px solid var(--jd-silver);color:var(--jd-muted);font-size:.9rem;padding-top:1rem}
+.tagline{font-family:"Archivo","Inter",sans-serif;font-weight:700;color:var(--jd-navy)}
+label{display:block;font-weight:600;margin:.8rem 0 .3rem}
+input[type=text],input[type=number],input[type=datetime-local],select,textarea{width:100%;padding:.6rem .75rem;border:1px solid var(--jd-line);border-radius:10px;font:inherit;background:#fff}
+button{font:inherit;font-weight:700;background:var(--jd-navy);color:#fff;border:0;border-radius:10px;padding:.7rem 1.2rem;cursor:pointer;margin:.25rem .35rem .25rem 0}
+button.secondary{background:#fff;color:var(--jd-navy);border:1.5px solid var(--jd-navy)}
+button.small{padding:.3rem .7rem;font-size:.88rem}
+.mini{font-size:.92rem;color:var(--jd-muted)}
+.grid{display:grid;gap:.6rem 1rem}
+@media(min-width:640px){.grid.two{grid-template-columns:1fr 1fr}}
+.checkline{display:flex;gap:.5rem;align-items:flex-start;margin:.35rem 0}
+.checkline input{margin-top:.35rem}
+table.log{border-collapse:collapse;width:100%;font-size:.9rem}
+table.log th{background:var(--jd-navy);color:#fff;text-align:left;padding:.5rem .6rem}
+table.log td{border:1px solid var(--jd-line);padding:.45rem .6rem;vertical-align:top}
+.stat{font-family:"Archivo",sans-serif;font-weight:800;color:var(--jd-navy);font-size:1.2rem}
+.report{white-space:pre-wrap;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem;background:var(--jd-mist);border:1px solid var(--jd-line);border-radius:10px;padding:1rem}
+.kit{list-style:none;padding:0}
+.kit li{margin:.45rem 0}
+.kit a{font-weight:600}
+@media print{
+  body{background:#fff;padding:0;max-width:none}
+  header,footer,section.no-print{display:none !important}
+  section{border:0;box-shadow:none;padding:0;margin:0}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Voiceproof Scam Call Log™</h1>
+  <p>When a suspicious call ends, the details evaporate — the number, the story, the exact ask. This log captures them in the fields the FTC and the FBI's Internet Crime Complaint Center (IC3) actually ask for, while they're fresh. Stored only on this device, exportable whenever you're ready to report.</p>
+</header>
+<main>
+<section class="no-print">
+  <h2>Log a call</h2>
+  <div class="grid two">
+    <div><label for="f-when">Date &amp; time of the contact</label><input type="datetime-local" id="f-when"></div>
+    <div><label for="f-channel">How they reached you</label>
+      <select id="f-channel"><option>Phone call</option><option>Text message</option><option>Video call</option><option>Voice note / voicemail</option><option>Email</option><option>Social media message</option></select></div>
+    <div><label for="f-number">Number / name shown to you</label><input type="text" id="f-number" placeholder="e.g. (800) 555-0142 or 'Bank Fraud Dept'"></div>
+    <div><label for="f-claimed">Who they claimed to be</label><input type="text" id="f-claimed" placeholder="e.g. My grandson / my bank / the IRS"></div>
+  </div>
+  <label for="f-asked">What they asked for</label>
+  <input type="text" id="f-asked" placeholder="e.g. $2,000 in gift cards for bail / read back a texted code / move money to a safe account">
+  <label>Red flags you noticed</label>
+  <div id="f-flags"></div>
+  <div class="grid two">
+    <div><label for="f-action">What you did</label>
+      <select id="f-action"><option>Hung up / ignored</option><option>Verified by callback — it was fake</option><option>Verified by callback — it was real</option><option>Shared information (no money)</option><option>Sent money</option><option>Still unsure</option></select></div>
+    <div><label for="f-lost">Amount lost, if any ($)</label><input type="number" id="f-lost" min="0" step="1" placeholder="0"></div>
+  </div>
+  <p><button type="button" id="add">Add to log</button></p>
+  <p class="mini" id="form-msg"></p>
+</section>
+<section>
+  <h2>Your log <span class="mini">(this device only)</span></h2>
+  <p><span class="stat" id="stat-count">0</span> contacts logged · <span class="stat" id="stat-lost">$0</span> total reported lost</p>
+  <div style="overflow-x:auto"><table class="log" id="log-table"><thead><tr><th>When</th><th>Channel</th><th>Shown as</th><th>Claimed</th><th>Asked for</th><th>Outcome</th><th></th></tr></thead><tbody id="log-body"></tbody></table></div>
+  <p class="no-print"><button type="button" class="secondary" id="csv">Export CSV</button> <button type="button" class="secondary" id="report-btn">Build report summary</button> <button type="button" class="secondary" id="print">Print report</button> <button type="button" class="secondary" id="clear">Clear log</button></p>
+  <div id="report-zone"></div>
+</section>
+<section class="no-print">
+  <h2>Where to report (free, official)</h2>
+  <p><strong>FTC:</strong> <a href="https://reportfraud.ftc.gov" rel="noopener">ReportFraud.ftc.gov</a> — consumer fraud reports that feed the Consumer Sentinel database used by law enforcement. <strong>FBI IC3:</strong> <a href="https://www.ic3.gov" rel="noopener">ic3.gov</a> — internet crime complaints; the IC3 created a dedicated AI-enabled fraud category in its 2025 report. <strong>If money moved:</strong> call your bank first, on the number on your card — speed beats paperwork. Your log entries above are organized so you can copy the answers straight into either form.</p>
+  <p class="mini">Privacy: the log lives in this browser's local storage on this device. J-Dawgs receives nothing. Export before switching browsers or clearing site data — the CSV is your backup.</p>
+</section>
+<section class="no-print">
+  <h2>The rest of the Voiceproofing™ kit</h2>
+  <ul class="kit">
+    <li><a href="voiceproof-callcode.html">Voiceproof CallCode™</a> — rotating spoken codes from a shared secret (the flagship).</li>
+    <li><a href="voiceproof-codeword-forge.html">Voiceproof CodeWord Forge™</a> — pick your code word, duress word, and safe verification questions.</li>
+    <li><a href="voiceproof-verify-the-caller.html">Voiceproof Verify-the-Caller™</a> — the step-by-step protocol to run mid-call.</li>
+    <li><a href="voiceproof-family-card.html">Voiceproof Family Card™</a> — a printable fridge &amp; wallet card with your circle's numbers and rules.</li>
+    <li><a href="voiceproof-scam-drill.html">Voiceproof Scam Drill™</a> — practice against 8 realistic scam scripts, scored.</li>
+    <li><a href="voiceproof-callback-policy.html">Voiceproof Callback Policy Builder™</a> — a one-page voice-payment policy for your business.</li>
+    <li><a href="voiceproofing.html">About Voiceproofing™</a> — the category, and the numbers behind it.</li>
+  </ul>
+</section>
+</main>
+<footer>
+  <p class="tagline"><strong>No fancy logos. Just quality products.</strong></p>
+  <p>No ads. Free to use — no account, no install. Voiceproof Scam Call Log™ is part of the J-Dawgs Voiceproofing™ kit. Voiceproofing™ and Voiceproof™ are trademarks of J-Dawgs Industries, in use since 2026.</p>
+  <p>© 2026 Joshua Dawson, J-Dawgs Industries, Springfield, MO. All rights reserved.</p>
+</footer>
+<script id="tool-script">
+"use strict";
+var VP_LOG_FLAGS=["Extreme urgency / countdown","Asked for secrecy","Gift cards, wire, or crypto demanded","Refused the code word / verification","New or unknown number","Objected to a callback","Asked me to read back a texted code","Voice or story felt 'off'"];
+function vpValidateEntry(e){
+  var errs=[];
+  if(!e.when) errs.push("date/time is required");
+  if(!e.claimed || !String(e.claimed).trim()) errs.push("who they claimed to be is required");
+  if(!e.askedFor || !String(e.askedFor).trim()) errs.push("what they asked for is required");
+  var lost=Number(e.amountLost||0);
+  if(isNaN(lost)||lost<0) errs.push("amount lost must be a number, 0 or more");
+  return errs;
+}
+function vpCsvCell(v){
+  var s=String(v===null||v===undefined?"":v);
+  if(/^[=+\-@]/.test(s)) s="'"+s; /* spreadsheet formula-injection guard */
+  if(/[",\n]/.test(s)) s='"'+s.replace(/"/g,'""')+'"';
+  return s;
+}
+function vpToCSV(entries){
+  var head=["date_time","channel","number_shown","claimed_identity","asked_for","red_flags","action_taken","amount_lost_usd"];
+  var lines=[head.join(",")];
+  entries.forEach(function(e){
+    lines.push([e.when,e.channel,e.numberShown,e.claimed,e.askedFor,(e.redFlags||[]).join("; "),e.actionTaken,Number(e.amountLost||0)].map(vpCsvCell).join(","));
+  });
+  return lines.join("\n");
+}
+function vpStats(entries){
+  var lost=0; entries.forEach(function(e){ lost+=Number(e.amountLost||0); });
+  return {count:entries.length, totalLost:lost};
+}
+function vpBuildReport(entries){
+  var st=vpStats(entries);
+  var out="SUSPICIOUS CONTACT REPORT — prepared for ReportFraud.ftc.gov / FBI IC3 (ic3.gov)\n"+
+    "Contacts logged: "+st.count+" · Total reported lost: $"+st.totalLost.toLocaleString("en-US")+"\n"+
+    "Note: 'number shown' is the caller ID / sender as displayed; caller ID can be spoofed.\n";
+  entries.forEach(function(e,i){
+    out+="\n--- Contact "+(i+1)+" ---\n"+
+      "Date/time: "+e.when+"\nChannel: "+e.channel+"\nNumber/name shown: "+(e.numberShown||"(not recorded)")+"\n"+
+      "Claimed identity: "+e.claimed+"\nWhat they asked for: "+e.askedFor+"\nRed flags: "+((e.redFlags||[]).join("; ")||"none recorded")+"\n"+
+      "Action taken: "+e.actionTaken+"\nAmount lost (USD): "+Number(e.amountLost||0)+"\n";
+  });
+  return out;
+}
+if(typeof document!=="undefined"){
+  var $=function(id){return document.getElementById(id);};
+  var KEY="vp_scamlog_v1", entries=[];
+  try{ entries=JSON.parse(localStorage.getItem(KEY)||"[]"); if(!Array.isArray(entries)) entries=[]; }catch(e){ entries=[]; }
+  var flagsZone=$("f-flags");
+  VP_LOG_FLAGS.forEach(function(f,i){
+    var row=document.createElement("div"); row.className="checkline";
+    row.innerHTML='<input type="checkbox" id="lf-'+i+'"><label for="lf-'+i+'" style="margin:0;font-weight:500">'+f+'</label>';
+    flagsZone.appendChild(row);
+  });
+  function esc(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(entries)); }catch(e){} }
+  function render(){
+    var st=vpStats(entries);
+    $("stat-count").textContent=st.count;
+    $("stat-lost").textContent="$"+st.totalLost.toLocaleString("en-US");
+    $("log-body").innerHTML=entries.map(function(e,i){
+      return "<tr><td>"+esc(e.when)+"</td><td>"+esc(e.channel)+"</td><td>"+esc(e.numberShown)+"</td><td>"+esc(e.claimed)+"</td><td>"+esc(e.askedFor)+"</td><td>"+esc(e.actionTaken)+(Number(e.amountLost||0)>0?" · lost $"+Number(e.amountLost).toLocaleString("en-US"):"")+'</td><td><button type="button" class="small secondary" data-del="'+i+'">Delete</button></td></tr>';
+    }).join("") || '<tr><td colspan="7" class="mini">Nothing logged yet.</td></tr>';
+    $("log-body").querySelectorAll("[data-del]").forEach(function(b){
+      b.addEventListener("click",function(){ entries.splice(Number(b.getAttribute("data-del")),1); save(); render(); });
+    });
+  }
+  try{ $("f-when").value=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,16); }catch(e){}
+  $("add").addEventListener("click",function(){
+    var flags=VP_LOG_FLAGS.filter(function(f,i){ return $("lf-"+i).checked; });
+    var e={ when:$("f-when").value, channel:$("f-channel").value, numberShown:$("f-number").value.trim(),
+      claimed:$("f-claimed").value, askedFor:$("f-asked").value, redFlags:flags,
+      actionTaken:$("f-action").value, amountLost:$("f-lost").value===""?0:Number($("f-lost").value) };
+    var errs=vpValidateEntry(e);
+    if(errs.length){ $("form-msg").textContent="Please fix: "+errs.join("; ")+"."; return; }
+    entries.unshift(e); save(); render();
+    $("form-msg").textContent="Logged. If money moved, call your bank now — then report with the summary below.";
+    $("f-number").value=""; $("f-claimed").value=""; $("f-asked").value=""; $("f-lost").value="";
+    VP_LOG_FLAGS.forEach(function(f,i){ $("lf-"+i).checked=false; });
+  });
+  function download(name, text){
+    var a=document.createElement("a");
+    a.href=URL.createObjectURL(new Blob([text],{type:"text/plain"}));
+    a.download=name; a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+  }
+  $("csv").addEventListener("click",function(){ download("voiceproof-scam-call-log.csv", vpToCSV(entries)); });
+  $("report-btn").addEventListener("click",function(){
+    $("report-zone").innerHTML = entries.length ? '<div class="report" id="report-text"></div>' : '<p class="mini">Log at least one contact first.</p>';
+    var rt=$("report-text"); if(rt) rt.textContent=vpBuildReport(entries);
+  });
+  $("print").addEventListener("click",function(){
+    if(!$("report-text")){ $("report-btn").click(); }
+    window.print();
+  });
+  $("clear").addEventListener("click",function(){
+    if(entries.length && window.confirm("Clear the whole log on this device? Export a CSV first if you need it.")){ entries=[]; save(); render(); $("report-zone").innerHTML=""; }
+  });
+  render();
+}
+</script>
+</body>
+</html>

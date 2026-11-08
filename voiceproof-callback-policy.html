@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voiceproof Callback Policy Builder™ — One-Page Voice Payment Policy | J-Dawgs Voiceproofing™</title>
+<meta name="description" content="Answer a few questions and get a printable one-page Voice Payment Authorization Policy for your business: no payment or bank-detail change on a voice instruction alone, callback thresholds, code words, sign-off line. Free, no account. Part of J-Dawgs Voiceproofing™.">
+<link rel="canonical" href="https://joshuajdawg0350.github.io/jdawgs-hub/voiceproof-callback-policy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style data-jd-design="2026-11">
+:root{--jd-navy:#0B2239;--jd-navy-2:#123C63;--jd-silver:#C7CEDA;--jd-silver-bright:#E9EDF3;--jd-ink:#182430;--jd-muted:#5B6B7C;--jd-paper:#FFFFFF;--jd-mist:#F3F5F8;--jd-line:#D9DFE8}
+*{box-sizing:border-box}
+body{margin:0 auto;max-width:70rem;padding:0 1.25rem 3.5rem;background:var(--jd-mist);color:var(--jd-ink);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:1rem;line-height:1.65}
+h1,h2,h3{font-family:"Archivo","Inter",system-ui,sans-serif;color:var(--jd-navy);line-height:1.15;letter-spacing:-.01em}
+h1{font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:800;margin:0 0 .6rem}
+h2{font-size:clamp(1.35rem,3vw,1.7rem);font-weight:700;margin:0 0 .75rem}
+p{margin:.65rem 0}
+a{color:var(--jd-navy-2)}
+header{background:linear-gradient(135deg,var(--jd-navy) 0%,var(--jd-navy-2) 100%);color:var(--jd-silver-bright);border-radius:0 0 14px 14px;padding:2.25rem 2rem 1.75rem;margin:0 0 1.5rem}
+header h1{color:#fff}
+header p{max-width:46rem}
+section{background:var(--jd-paper);border:1px solid var(--jd-line);border-radius:14px;padding:1.6rem 2rem;margin:0 0 1.25rem;box-shadow:0 1px 3px rgba(11,34,57,.05)}
+footer{border-top:2px solid var(--jd-silver);color:var(--jd-muted);font-size:.9rem;padding-top:1rem}
+.tagline{font-family:"Archivo","Inter",sans-serif;font-weight:700;color:var(--jd-navy)}
+label{display:block;font-weight:600;margin:.8rem 0 .3rem}
+input[type=text],input[type=number],input[type=date]{width:100%;padding:.6rem .75rem;border:1px solid var(--jd-line);border-radius:10px;font:inherit}
+button{font:inherit;font-weight:700;background:var(--jd-navy);color:#fff;border:0;border-radius:10px;padding:.7rem 1.2rem;cursor:pointer;margin:.25rem .35rem .25rem 0}
+button.secondary{background:#fff;color:var(--jd-navy);border:1.5px solid var(--jd-navy)}
+.mini{font-size:.92rem;color:var(--jd-muted)}
+.grid{display:grid;gap:.6rem 1rem}
+@media(min-width:640px){.grid.two{grid-template-columns:1fr 1fr}}
+.checkline{display:flex;gap:.5rem;align-items:flex-start;margin:.5rem 0}
+.checkline input{margin-top:.35rem}
+.policy{border:2.5px solid var(--jd-navy);border-radius:8px;padding:1.6rem 1.8rem;background:#fff;font-size:.99rem}
+.policy h3{font-size:1.45rem;text-align:center;margin:.2rem 0}
+.policy .sub{text-align:center;color:var(--jd-muted);margin-bottom:1rem}
+.policy ol li{margin:.4rem 0}
+.policy .sig{margin-top:1.6rem;border-top:1px solid var(--jd-line);padding-top:.8rem}
+.kit{list-style:none;padding:0}
+.kit li{margin:.45rem 0}
+.kit a{font-weight:600}
+@media print{
+  body{background:#fff;padding:0;max-width:none}
+  header,footer,section.no-print{display:none !important}
+  section{border:0;box-shadow:none;padding:0;margin:0}
+  .policy{border-width:2px}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Voiceproof Callback Policy Builder™</h1>
+  <p>The highest-dollar version of the voice-clone scam hits businesses: a perfect copy of the owner's voice ordering a payment. The defense isn't suspicion — it's a one-page rule that every employee follows the same way. Answer seven questions; get the policy, ready to print and sign.</p>
+</header>
+<main>
+<section class="no-print">
+  <h2>Your business, your thresholds</h2>
+  <div class="grid two">
+    <div><label for="biz">Business name</label><input type="text" id="biz" placeholder="e.g. Dawson Construction LLC"></div>
+    <div><label for="owner">Policy owner (name / title)</label><input type="text" id="owner" placeholder="e.g. J. Dawson, Owner"></div>
+    <div><label for="threshold">Callback mandatory above ($)</label><input type="number" id="threshold" value="500" min="0" step="50"></div>
+    <div><label for="effective">Effective date</label><input type="date" id="effective"></div>
+    <div><label for="requesters">Who may REQUEST payments (roles)</label><input type="text" id="requesters" placeholder="e.g. Owner, Project Managers"></div>
+    <div><label for="approvers">Who may APPROVE payments (roles)</label><input type="text" id="approvers" placeholder="e.g. Owner, Office Manager"></div>
+  </div>
+  <label for="callback-numbers">Callback numbers (the directory numbers staff must dial — one per line)</label>
+  <textarea id="callback-numbers" rows="3" style="width:100%;padding:.6rem .75rem;border:1px solid var(--jd-line);border-radius:10px;font:inherit" placeholder="Owner — (417) 555-0100&#10;Office — (417) 555-0101"></textarea>
+  <div class="checkline"><input type="checkbox" id="use-codeword" checked><label for="use-codeword" style="margin:0;font-weight:500">Include the payment code-word rule (a rotating or fixed code word required on the callback — set it up with the CodeWord Forge / CallCode)</label></div>
+  <div class="checkline"><input type="checkbox" id="bank-change" checked><label for="bank-change" style="margin:0;font-weight:500">Include the bank-detail-change rule (any change to where money goes gets the full callback treatment, at any amount)</label></div>
+  <p><button type="button" id="build">Build my policy</button> <button type="button" class="secondary" id="print">Print / save as PDF</button> <button type="button" class="secondary" id="download">Download as text</button></p>
+  <p class="mini">Everything stays in this browser tab — nothing is stored or sent. Print two copies: one for the wall by the phone, one signed for the file.</p>
+</section>
+<section>
+  <h2>Your policy</h2>
+  <div id="policy-zone"><p class="mini">Fill in the form above and press “Build my policy.”</p></div>
+</section>
+<section class="no-print">
+  <h2>Why a page of paper beats “be careful”</h2>
+  <p>The famous losses in this category — including the ~$25M paid out after a single deepfaked video call in Hong Kong in 2024 — didn't happen because employees were careless. They happened because <em>verifying felt like insubordination</em>. A signed policy flips that: the callback isn't doubting the boss, it's following the boss's own standing order. Print it, sign it, and the next cloned voice note meets a procedure instead of a judgment call.</p>
+</section>
+<section class="no-print">
+  <h2>The rest of the Voiceproofing™ kit</h2>
+  <ul class="kit">
+    <li><a href="voiceproof-callcode.html">Voiceproof CallCode™</a> — rotating spoken codes from a shared secret (the flagship).</li>
+    <li><a href="voiceproof-codeword-forge.html">Voiceproof CodeWord Forge™</a> — pick your code word, duress word, and safe verification questions.</li>
+    <li><a href="voiceproof-verify-the-caller.html">Voiceproof Verify-the-Caller™</a> — the step-by-step protocol to run mid-call.</li>
+    <li><a href="voiceproof-family-card.html">Voiceproof Family Card™</a> — a printable fridge &amp; wallet card with your circle's numbers and rules.</li>
+    <li><a href="voiceproof-scam-drill.html">Voiceproof Scam Drill™</a> — practice against 8 realistic scam scripts, scored.</li>
+    <li><a href="voiceproof-scam-call-log.html">Voiceproof Scam Call Log™</a> — log suspicious calls in the format the FTC and FBI ask for.</li>
+    <li><a href="voiceproofing.html">About Voiceproofing™</a> — the category, and the numbers behind it.</li>
+  </ul>
+</section>
+</main>
+<footer>
+  <p class="tagline"><strong>No fancy logos. Just quality products.</strong></p>
+  <p>No ads. Free to use — no account, no install. Voiceproof Callback Policy Builder™ is part of the J-Dawgs Voiceproofing™ kit. Voiceproofing™ and Voiceproof™ are trademarks of J-Dawgs Industries, in use since 2026. This builder produces a plain-language internal policy template, not legal advice.</p>
+  <p>© 2026 Joshua Dawson, J-Dawgs Industries, Springfield, MO. All rights reserved.</p>
+</footer>
+<script id="tool-script">
+"use strict";
+function vpEsc2(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function vpMoney(v){ var n=Number(v); if(isNaN(n)||n<0) n=0; return "$"+n.toLocaleString("en-US",{minimumFractionDigits:0, maximumFractionDigits:0}); }
+function vpBuildPolicy(d){
+  var thr=vpMoney(d.threshold);
+  var rules=[];
+  rules.push("<strong>No payment on a voice instruction alone.</strong> No employee of "+vpEsc2(d.business)+" shall send, release, or schedule any payment based solely on a phone call, voice note, text, or video message — regardless of how familiar the voice or face appears. Voice and video can be cloned; a voice is not an authorization.");
+  rules.push("<strong>Callback verification is mandatory</strong> for every payment of "+thr+" or more, and for every first payment to a new payee at any amount. The employee shall hang up and call the requester on a number from the directory below — never a number supplied in the requesting message — and confirm the amount, the payee, and the purpose out loud.");
+  if(d.bankChange){ rules.push("<strong>Bank-detail changes get full treatment at any amount.</strong> Any request to change where money goes — a new account, a new payment app, a 'corrected' routing number — is verified by callback to a known number AND confirmed in the normal written channel before it takes effect."); }
+  if(d.useCodeWord){ rules.push("<strong>Payment code word.</strong> On the verification callback, the requester states the current payment code word (or the live Voiceproof CallCode™). A requester who cannot produce it cannot authorize payment, full stop — including the owner."); }
+  rules.push("<strong>Secrecy is a stop sign.</strong> Any instruction accompanied by 'don't tell anyone,' 'skip accounting,' or 'this must happen in the next hour' is automatically escalated, never expedited. Urgency plus secrecy equals verification, every time.");
+  rules.push("<strong>Roles.</strong> Payments may be requested by: "+vpEsc2(d.requesters||"—")+". Payments may be approved by: "+vpEsc2(d.approvers||"—")+". No person may both request and approve the same payment above "+thr+".");
+  rules.push("<strong>Failed verification.</strong> If a callback fails, a code word is wrong, or anything feels off: stop, preserve the message, and report it to "+vpEsc2(d.owner||"the policy owner")+" the same day. No employee will ever be disciplined for verifying; skipping verification is the violation.");
+  var nums=(d.callbackNumbers||"").split(/\n+/).map(function(x){return x.trim();}).filter(Boolean).map(function(x){return "<li>"+vpEsc2(x)+"</li>";}).join("");
+  if(!nums) nums="<li>(add the directory numbers before printing)</li>";
+  var html='<div class="policy"><h3>VOICE PAYMENT AUTHORIZATION POLICY</h3><div class="sub">'+vpEsc2(d.business)+' · Effective '+vpEsc2(d.effective||"")+' · Policy owner: '+vpEsc2(d.owner||"")+'</div>'+
+    '<ol>'+rules.map(function(r){return "<li>"+r+"</li>";}).join("")+'</ol>'+
+    '<p><strong>Directory — the only numbers used for callbacks:</strong></p><ul>'+nums+'</ul>'+
+    '<div class="sig"><p>Adopted by: ______________________________ &nbsp; Date: ____________</p>'+
+    '<p>Employee acknowledgment — I have read this policy and understand that verifying a payment is always allowed and skipping verification is a violation: </p>'+
+    '<p>Signature: ______________________________ &nbsp; Printed name: ______________________________ &nbsp; Date: ____________</p></div>'+
+    '<p class="mini">Generated with Voiceproof Callback Policy Builder™ · J-Dawgs Voiceproofing™ · jdawgsindustries.com/voiceproofing.html</p></div>';
+  var text=d.business.toUpperCase()+" — VOICE PAYMENT AUTHORIZATION POLICY\nEffective "+(d.effective||"")+" · Policy owner: "+(d.owner||"")+"\n\n"+
+    rules.map(function(r,i){ return (i+1)+". "+r.replace(/<[^>]+>/g,""); }).join("\n\n")+
+    "\n\nDIRECTORY (the only numbers used for callbacks):\n"+(d.callbackNumbers||"(add before use)")+
+    "\n\nAdopted by: ____________________  Date: ____________\nEmployee acknowledgment signature: ____________________  Printed name: ____________________  Date: ____________\n\nGenerated with Voiceproof Callback Policy Builder - J-Dawgs Voiceproofing.";
+  return {html:html, text:text};
+}
+if(typeof document!=="undefined"){
+  var $=function(id){return document.getElementById(id);};
+  try{ $("effective").value=new Date().toISOString().slice(0,10); }catch(e){}
+  function collect(){
+    return { business:$("biz").value||"Your Business", owner:$("owner").value, threshold:$("threshold").value,
+      effective:$("effective").value, requesters:$("requesters").value, approvers:$("approvers").value,
+      callbackNumbers:$("callback-numbers").value, useCodeWord:$("use-codeword").checked, bankChange:$("bank-change").checked };
+  }
+  var lastText="";
+  $("build").addEventListener("click",function(){ var p=vpBuildPolicy(collect()); $("policy-zone").innerHTML=p.html; lastText=p.text; });
+  $("print").addEventListener("click",function(){
+    if(!$("policy-zone").querySelector(".policy")){ var p=vpBuildPolicy(collect()); $("policy-zone").innerHTML=p.html; lastText=p.text; }
+    window.print();
+  });
+  $("download").addEventListener("click",function(){
+    if(!lastText){ var p=vpBuildPolicy(collect()); $("policy-zone").innerHTML=p.html; lastText=p.text; }
+    var a=document.createElement("a");
+    a.href=URL.createObjectURL(new Blob([lastText],{type:"text/plain"}));
+    a.download="voice-payment-policy.txt"; a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+  });
+}
+</script>
+</body>
+</html>

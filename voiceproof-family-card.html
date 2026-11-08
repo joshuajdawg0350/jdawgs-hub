@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voiceproof Family Card™ — Printable Verification Card | J-Dawgs Voiceproofing™</title>
+<meta name="description" content="Build a printable fridge and wallet verification card for your family: real callback numbers, code word and duress word, and the 4-step rule for suspicious calls. Free, no account, nothing leaves your browser. Part of J-Dawgs Voiceproofing™.">
+<link rel="canonical" href="https://joshuajdawg0350.github.io/jdawgs-hub/voiceproof-family-card.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style data-jd-design="2026-11">
+:root{--jd-navy:#0B2239;--jd-navy-2:#123C63;--jd-silver:#C7CEDA;--jd-silver-bright:#E9EDF3;--jd-ink:#182430;--jd-muted:#5B6B7C;--jd-paper:#FFFFFF;--jd-mist:#F3F5F8;--jd-line:#D9DFE8;--jd-bad:#a31621}
+*{box-sizing:border-box}
+body{margin:0 auto;max-width:70rem;padding:0 1.25rem 3.5rem;background:var(--jd-mist);color:var(--jd-ink);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:1rem;line-height:1.65}
+h1,h2,h3{font-family:"Archivo","Inter",system-ui,sans-serif;color:var(--jd-navy);line-height:1.15;letter-spacing:-.01em}
+h1{font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:800;margin:0 0 .6rem}
+h2{font-size:clamp(1.35rem,3vw,1.7rem);font-weight:700;margin:0 0 .75rem}
+p{margin:.65rem 0}
+a{color:var(--jd-navy-2)}
+header{background:linear-gradient(135deg,var(--jd-navy) 0%,var(--jd-navy-2) 100%);color:var(--jd-silver-bright);border-radius:0 0 14px 14px;padding:2.25rem 2rem 1.75rem;margin:0 0 1.5rem}
+header h1{color:#fff}
+header p{max-width:46rem}
+section{background:var(--jd-paper);border:1px solid var(--jd-line);border-radius:14px;padding:1.6rem 2rem;margin:0 0 1.25rem;box-shadow:0 1px 3px rgba(11,34,57,.05)}
+footer{border-top:2px solid var(--jd-silver);color:var(--jd-muted);font-size:.9rem;padding-top:1rem}
+.tagline{font-family:"Archivo","Inter",sans-serif;font-weight:700;color:var(--jd-navy)}
+label{display:block;font-weight:600;margin:.8rem 0 .3rem}
+input[type=text]{width:100%;padding:.6rem .75rem;border:1px solid var(--jd-line);border-radius:10px;font:inherit}
+button{font:inherit;font-weight:700;background:var(--jd-navy);color:#fff;border:0;border-radius:10px;padding:.7rem 1.2rem;cursor:pointer;margin:.25rem .35rem .25rem 0}
+button.secondary{background:#fff;color:var(--jd-navy);border:1.5px solid var(--jd-navy)}
+.mini{font-size:.92rem;color:var(--jd-muted)}
+.grid{display:grid;gap:.6rem 1rem}
+@media(min-width:640px){.grid.two{grid-template-columns:1fr 1fr}}
+.checkline{display:flex;gap:.5rem;align-items:flex-start;margin:.5rem 0}
+.checkline input{margin-top:.35rem}
+.vcard{border:2.5px solid var(--jd-navy);border-radius:14px;padding:1.1rem 1.3rem;margin:1rem 0;background:#fff}
+.vcard h3{margin:.1rem 0 .5rem;font-size:1.3rem}
+.vcard .rule{font-weight:700;color:var(--jd-navy)}
+.vcard table{border-collapse:collapse;width:100%}
+.vcard td{padding:.2rem .4rem;border-bottom:1px dashed var(--jd-line)}
+.vcard .duress{color:var(--jd-bad);font-weight:700}
+.blankline{display:inline-block;min-width:9rem;border-bottom:2px solid var(--jd-ink)}
+.kit{list-style:none;padding:0}
+.kit li{margin:.45rem 0}
+.kit a{font-weight:600}
+@media print{
+  body{background:#fff;padding:0;max-width:none}
+  header,footer,section.no-print{display:none !important}
+  section{border:0;box-shadow:none;padding:0;margin:0}
+  .vcard{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Voiceproof Family Card™</h1>
+  <p>The whole system, on one card: the real numbers to call back, the code word, the duress word, and the four-step rule — printed for the fridge and cut down for a wallet. When the scary call comes, nobody has to remember anything. It's on the card.</p>
+</header>
+<main>
+<section class="no-print">
+  <h2>Fill in your circle</h2>
+  <label for="fam">Circle name (e.g. “The Dawson Family” or “Mom's Circle”)</label>
+  <input type="text" id="fam" placeholder="The ______ Family">
+  <div class="grid two" id="members"></div>
+  <label for="codeword">Code word <span class="mini">(from the <a href="voiceproof-codeword-forge.html">CodeWord Forge</a>)</span></label>
+  <input type="text" id="codeword" placeholder="e.g. nimble orchard">
+  <div class="checkline"><input type="checkbox" id="blank-code"><label for="blank-code" style="margin:0;font-weight:500">Leave it blank on the card — we'll write it in by hand (safer if the card might be photographed)</label></div>
+  <label for="duress">Duress word</label>
+  <input type="text" id="duress" placeholder="e.g. watercress">
+  <div class="checkline"><input type="checkbox" id="blank-duress"><label for="blank-duress" style="margin:0;font-weight:500">Leave the duress word blank too</label></div>
+  <div class="checkline"><input type="checkbox" id="use-callcode"><label for="use-callcode" style="margin:0;font-weight:500">We also use Voiceproof CallCode™ (adds a line to the card)</label></div>
+  <p><button type="button" id="build">Build my card</button> <button type="button" class="secondary" id="print">Print / save as PDF</button></p>
+  <p class="mini">Privacy: everything you type stays in this browser tab. Nothing is stored, sent, or tracked. If you close the tab, it's gone — that's deliberate.</p>
+</section>
+<section>
+  <h2>Your card</h2>
+  <div id="card-zone"><p class="mini">Fill in the form above and press “Build my card.”</p></div>
+</section>
+<section class="no-print">
+  <h2>How to roll it out</h2>
+  <p><strong>1.</strong> Agree the words in person or on a call <em>you</em> placed — never by text or group chat. <strong>2.</strong> Print two: fridge (big) and wallet (small). <strong>3.</strong> Every phone in the circle saves every member's real number — the callback only works with numbers you already hold. <strong>4.</strong> Run the <a href="voiceproof-scam-drill.html">Scam Drill</a> once together so the card isn't new in a crisis. <strong>5.</strong> Rebuild the card whenever a number or a word changes — and shred the old one.</p>
+</section>
+<section class="no-print">
+  <h2>The rest of the Voiceproofing™ kit</h2>
+  <ul class="kit">
+    <li><a href="voiceproof-callcode.html">Voiceproof CallCode™</a> — rotating spoken codes from a shared secret (the flagship).</li>
+    <li><a href="voiceproof-codeword-forge.html">Voiceproof CodeWord Forge™</a> — pick your code word, duress word, and safe verification questions.</li>
+    <li><a href="voiceproof-verify-the-caller.html">Voiceproof Verify-the-Caller™</a> — the step-by-step protocol to run mid-call.</li>
+    <li><a href="voiceproof-scam-drill.html">Voiceproof Scam Drill™</a> — practice against 8 realistic scam scripts, scored.</li>
+    <li><a href="voiceproof-callback-policy.html">Voiceproof Callback Policy Builder™</a> — a one-page voice-payment policy for your business.</li>
+    <li><a href="voiceproof-scam-call-log.html">Voiceproof Scam Call Log™</a> — log suspicious calls in the format the FTC and FBI ask for.</li>
+    <li><a href="voiceproofing.html">About Voiceproofing™</a> — the category, and the numbers behind it.</li>
+  </ul>
+</section>
+</main>
+<footer>
+  <p class="tagline"><strong>No fancy logos. Just quality products.</strong></p>
+  <p>No ads. Free to use — no account, no install. Voiceproof Family Card™ is part of the J-Dawgs Voiceproofing™ kit. Voiceproofing™ and Voiceproof™ are trademarks of J-Dawgs Industries, in use since 2026.</p>
+  <p>© 2026 Joshua Dawson, J-Dawgs Industries, Springfield, MO. All rights reserved.</p>
+</footer>
+<script id="tool-script">
+"use strict";
+function vpEsc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function vpBuildCard(d){
+  var members=(d.members||[]).filter(function(m){return (m.name||"").trim()|| (m.phone||"").trim();});
+  var rows=members.map(function(m){return "<tr><td><strong>"+vpEsc(m.name)+"</strong></td><td>"+vpEsc(m.phone)+"</td></tr>";}).join("");
+  if(!rows) rows='<tr><td colspan="2">(add your circle members)</td></tr>';
+  var cw = d.blankCode ? '<span class="blankline">&nbsp;</span> <span class="mini">(write it in by hand)</span>' : "<strong>"+vpEsc(d.codeWord||"—")+"</strong>";
+  var dw = d.blankDuress ? '<span class="blankline">&nbsp;</span>' : "<strong>"+vpEsc(d.duressWord||"—")+"</strong>";
+  var cc = d.useCallCode ? "<p>📱 <strong>CallCode:</strong> open Voiceproof CallCode™ and compare the live code — a new one every 5 minutes.</p>" : "";
+  var rules="<p class='rule'>THE RULE — a call asking for money, codes, or secrecy:</p><ol>"+
+    "<li><strong>Slow down.</strong> Real emergencies survive a two-minute check.</li>"+
+    "<li><strong>Ask the code word.</strong> No word, no trust.</li>"+
+    "<li><strong>Hang up. Call back</strong> on a number from this card — never the number that called you.</li>"+
+    "<li><strong>Never</strong> pay by gift card, wire, or crypto on a caller's say-so.</li></ol>";
+  var inner="<h3>🛡️ "+vpEsc(d.familyName||"Our Circle")+" — Voiceproof Card</h3>"+
+    "<table>"+rows+"</table>"+
+    "<p>🔑 <strong>Code word:</strong> "+cw+"</p>"+
+    "<p class='duress'>🆘 Duress word: "+dw+" — if anyone uses it, the call is NOT real: hang up, send nothing, call back and check on them.</p>"+
+    cc + rules +
+    "<p class='mini'>Set up "+vpEsc(d.setupDate||"")+" · J-Dawgs Voiceproofing™ · jdawgsindustries.com/voiceproofing.html</p>";
+  return '<div class="vcard">'+inner+'</div><div class="vcard" style="max-width:26rem"><h3 style="font-size:1.05rem">✂️ Wallet copy</h3>'+inner.replace(/<h3>.*?<\/h3>/,"")+"</div>";
+}
+if(typeof document!=="undefined"){
+  var $=function(id){return document.getElementById(id);};
+  var mg=$("members");
+  for(var i=0;i<5;i++){
+    var wrap=document.createElement("div");
+    wrap.innerHTML='<label>Member '+(i+1)+' name</label><input type="text" id="m-name-'+i+'" placeholder="Name">'+
+                   '<label>Real callback number</label><input type="text" id="m-phone-'+i+'" placeholder="(555) 555-5555">';
+    mg.appendChild(wrap);
+  }
+  function collect(){
+    var ms=[]; for(var i=0;i<5;i++){ ms.push({name:$("m-name-"+i).value, phone:$("m-phone-"+i).value}); }
+    return { familyName:$("fam").value, members:ms, codeWord:$("codeword").value, duressWord:$("duress").value,
+      blankCode:$("blank-code").checked, blankDuress:$("blank-duress").checked, useCallCode:$("use-callcode").checked,
+      setupDate:new Date().toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"}) };
+  }
+  $("build").addEventListener("click",function(){ $("card-zone").innerHTML=vpBuildCard(collect()); });
+  $("print").addEventListener("click",function(){
+    if($("card-zone").querySelector(".vcard")===null){ $("card-zone").innerHTML=vpBuildCard(collect()); }
+    window.print();
+  });
+}
+</script>
+</body>
+</html>

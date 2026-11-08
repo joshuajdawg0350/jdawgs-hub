@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voiceproof CodeWord Forge™ — Code Word, Duress Word &amp; Safe Questions | J-Dawgs Voiceproofing™</title>
+<meta name="description" content="Forge your circle's verification kit: a family code word, a separate duress word that silently means 'this isn't real — hang up and send nothing', and verification questions whose answers aren't on social media. Free, no account, runs in your browser. Part of J-Dawgs Voiceproofing™.">
+<link rel="canonical" href="https://joshuajdawg0350.github.io/jdawgs-hub/voiceproof-codeword-forge.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style data-jd-design="2026-11">
+:root{--jd-navy:#0B2239;--jd-navy-2:#123C63;--jd-silver:#C7CEDA;--jd-silver-bright:#E9EDF3;--jd-ink:#182430;--jd-muted:#5B6B7C;--jd-paper:#FFFFFF;--jd-mist:#F3F5F8;--jd-line:#D9DFE8;--jd-good:#146c2e;--jd-bad:#a31621;--jd-warn:#8a6d00}
+*{box-sizing:border-box}
+body{margin:0 auto;max-width:70rem;padding:0 1.25rem 3.5rem;background:var(--jd-mist);color:var(--jd-ink);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:1rem;line-height:1.65}
+h1,h2,h3{font-family:"Archivo","Inter",system-ui,sans-serif;color:var(--jd-navy);line-height:1.15;letter-spacing:-.01em}
+h1{font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:800;margin:0 0 .6rem}
+h2{font-size:clamp(1.35rem,3vw,1.7rem);font-weight:700;margin:0 0 .75rem}
+p{margin:.65rem 0}
+a{color:var(--jd-navy-2)}
+header{background:linear-gradient(135deg,var(--jd-navy) 0%,var(--jd-navy-2) 100%);color:var(--jd-silver-bright);border-radius:0 0 14px 14px;padding:2.25rem 2rem 1.75rem;margin:0 0 1.5rem}
+header h1{color:#fff}
+header p{max-width:46rem}
+section{background:var(--jd-paper);border:1px solid var(--jd-line);border-radius:14px;padding:1.6rem 2rem;margin:0 0 1.25rem;box-shadow:0 1px 3px rgba(11,34,57,.05)}
+footer{border-top:2px solid var(--jd-silver);color:var(--jd-muted);font-size:.9rem;padding-top:1rem}
+.tagline{font-family:"Archivo","Inter",sans-serif;font-weight:700;color:var(--jd-navy)}
+button{font:inherit;font-weight:700;background:var(--jd-navy);color:#fff;border:0;border-radius:10px;padding:.7rem 1.2rem;cursor:pointer}
+button.secondary{background:#fff;color:var(--jd-navy);border:1.5px solid var(--jd-navy)}
+.mini{font-size:.92rem;color:var(--jd-muted)}
+.result{font-family:"Archivo",sans-serif;font-weight:800;font-size:clamp(1.4rem,5vw,2rem);color:var(--jd-navy);letter-spacing:.02em}
+.grid{display:grid;gap:1rem}
+@media(min-width:640px){.grid.two{grid-template-columns:1fr 1fr}}
+.card{border:1.5px solid var(--jd-line);border-radius:12px;padding:1rem 1.2rem}
+.card.danger{border-color:var(--jd-bad)}
+.kit{list-style:none;padding:0}
+.kit li{margin:.45rem 0}
+.kit a{font-weight:600}
+</style>
+</head>
+<body>
+<header>
+  <h1>Voiceproof CodeWord Forge™</h1>
+  <p>Before you can verify a caller, your circle needs three things agreed in advance: a <strong>code word</strong> only you know, a <strong>duress word</strong> that silently means "this isn't real," and <strong>questions</strong> a scraper can't answer. Forge all three here — nothing is stored or sent anywhere.</p>
+</header>
+<main>
+<section>
+  <h2>Forge your kit</h2>
+  <p><button id="forge" type="button">Forge a new kit</button> <button class="secondary" id="print" type="button">Print this kit</button></p>
+  <div class="grid two">
+    <div class="card">
+      <h3 style="margin-top:0">✅ The code word</h3>
+      <div class="result" id="codeword">—</div>
+      <p class="mini">Ask for it on any call that asks for money, codes, or secrecy. Real family knows it instantly. A cloned voice doesn't.</p>
+    </div>
+    <div class="card danger">
+      <h3 style="margin-top:0">🆘 The duress word</h3>
+      <div class="result" id="duress">—</div>
+      <p class="mini">Works the other way: if YOU are ever forced to make a call, or a caller uses this word, it means <strong>"this is not real — hang up, send nothing, call back on the real number and check on me."</strong> It must sound ordinary in a sentence: <em>"Tell everyone the word is <span id="duress-inline">…</span>"</em> should never happen — instead it slips in naturally, like <em>"…and grab the <span id="duress-inline2">…</span> while you're out."</em></p>
+    </div>
+  </div>
+  <h3>Backup questions (answers that are NOT online)</h3>
+  <div id="questions"></div>
+  <p class="mini">Use these when a code word isn't practical — on a first call to set up, or with relatives who can't manage codes. Strong questions are about <strong>shared experiences</strong>, not facts: birthdays, schools, pet names, and maiden names are all findable or guessable, and classic "security questions" are the first thing a scammer researches.</p>
+</section>
+<section>
+  <h2>The rules that make it work</h2>
+  <p><strong>1. Agree it in person or on a call you placed.</strong> Never set or change the code word on an inbound call or by text — that's exactly the channel scammers control. <strong>2. Never post it, text it around, or put it in a group chat.</strong> Share it face-to-face or by a call you dialed. <strong>3. One word for the whole circle.</strong> Simplicity beats cleverness at 2 a.m. during a panic call. <strong>4. Change it if it leaks,</strong> the same day, the same in-person way. <strong>5. Practice once.</strong> Run the <a href="voiceproof-scam-drill.html">Scam Drill</a> together so the first time anyone hears "what's the code word?" isn't during a real emergency.</p>
+  <p>Put the finished kit on the fridge with the <a href="voiceproof-family-card.html">Family Card</a>, and use <a href="voiceproof-callcode.html">CallCode</a> when you want a fresh code every five minutes instead of one fixed word.</p>
+</section>
+<section>
+  <h2>The rest of the Voiceproofing™ kit</h2>
+  <ul class="kit">
+    <li><a href="voiceproof-callcode.html">Voiceproof CallCode™</a> — rotating spoken codes from a shared secret (the flagship).</li>
+    <li><a href="voiceproof-verify-the-caller.html">Voiceproof Verify-the-Caller™</a> — the step-by-step protocol to run mid-call.</li>
+    <li><a href="voiceproof-family-card.html">Voiceproof Family Card™</a> — a printable fridge &amp; wallet card with your circle's numbers and rules.</li>
+    <li><a href="voiceproof-scam-drill.html">Voiceproof Scam Drill™</a> — practice against 8 realistic scam scripts, scored.</li>
+    <li><a href="voiceproof-callback-policy.html">Voiceproof Callback Policy Builder™</a> — a one-page voice-payment policy for your business.</li>
+    <li><a href="voiceproof-scam-call-log.html">Voiceproof Scam Call Log™</a> — log suspicious calls in the format the FTC and FBI ask for.</li>
+    <li><a href="voiceproofing.html">About Voiceproofing™</a> — the category, and the numbers behind it.</li>
+  </ul>
+</section>
+</main>
+<footer>
+  <p class="tagline"><strong>No fancy logos. Just quality products.</strong></p>
+  <p>No ads. Free to use — no account, no install. Voiceproof CodeWord Forge™ is part of the J-Dawgs Voiceproofing™ kit. Voiceproofing™ and Voiceproof™ are trademarks of J-Dawgs Industries, in use since 2026.</p>
+  <p>© 2026 Joshua Dawson, J-Dawgs Industries, Springfield, MO. All rights reserved.</p>
+</footer>
+<script id="tool-script">
+"use strict";
+var VP_ADJ=["amber","brisk","cosmic","dusty","electric","frosty","golden","hollow","ivory","jade","kindly","lunar","mellow","nimble","olive","plucky","quiet","rustic","solar","tundra","velvet","wandering","yellow","zealous"];
+var VP_NOUN=["badger","compass","dumpling","falcon","garden","harbor","kettle","lantern","meadow","notebook","orchard","penguin","quilt","riverboat","saddle","teapot","umbrella","violin","walnut","yonder"];
+var VP_DURESS=["pineapple","trombone","lighthouse","butterscotch","periwinkle","saxophone","tapioca","windmill","chandelier","peppermint","avalanche","cuckoo","marzipan","obelisk","sarsaparilla","turtleneck","ukulele","vuvuzela","watercress","zucchini"];
+var VP_QUESTIONS=[
+ {q:"What did we eat the night of the big power outage / storm?", why:"A shared memory, not a fact — it was never posted anywhere."},
+ {q:"What's the worst meal a family member ever cooked, and who cooked it?", why:"Shared experience with a story attached; a scraper has nothing to scrape."},
+ {q:"Where did we hide the spare key / the good scissors / the remote at the old place?", why:"Known only to people who were actually there."},
+ {q:"What did [a relative] always say when leaving?", why:"A family catchphrase is spoken, rarely written down publicly."},
+ {q:"What was the name of the street we lived on when [event only your circle discusses]?", why:"Pair it with an event, not a public record."},
+ {q:"Who taught you to drive / swim / fish, and where?", why:"The 'where' is the part that isn't in any database."},
+ {q:"What song did we always play on road trips?", why:"Lived experience; not in profiles or bios."},
+ {q:"What's the story behind the dent / scar / broken thing everyone in the family knows about?", why:"Insider knowledge with no public footprint."},
+ {q:"What did Grandma call [person] that nobody else did?", why:"Nicknames inside a family rarely reach the internet."},
+ {q:"What was in the box / drawer / closet we weren't allowed to touch as kids?", why:"Only people raised in that house know."}
+];
+function vpPick(arr, rand){ return arr[Math.floor(rand()*arr.length)]; }
+function vpForgeKit(rand){
+  rand = rand || Math.random;
+  var cw = vpPick(VP_ADJ, rand)+" "+vpPick(VP_NOUN, rand);
+  var dw = vpPick(VP_DURESS, rand);
+  var pool = VP_QUESTIONS.slice(), qs=[];
+  for(var i=0;i<3 && pool.length;i++){ qs.push(pool.splice(Math.floor(rand()*pool.length),1)[0]); }
+  return {codeWord: cw, duressWord: dw, questions: qs};
+}
+if(typeof document!=="undefined"){
+  var $=function(id){return document.getElementById(id);};
+  function render(){
+    var kit=vpForgeKit();
+    $("codeword").textContent=kit.codeWord;
+    $("duress").textContent=kit.duressWord;
+    $("duress-inline").textContent=kit.duressWord;
+    $("duress-inline2").textContent=kit.duressWord;
+    $("questions").innerHTML=kit.questions.map(function(x,i){
+      return '<div class="card" style="margin:.6rem 0"><strong>Q'+(i+1)+'.</strong> '+x.q+'<div class="mini">'+x.why+'</div></div>';
+    }).join("");
+  }
+  $("forge").addEventListener("click", render);
+  $("print").addEventListener("click", function(){ window.print(); });
+  render();
+}
+</script>
+</body>
+</html>
