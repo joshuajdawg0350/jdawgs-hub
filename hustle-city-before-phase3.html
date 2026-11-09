@@ -1,0 +1,1785 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<link rel="icon" href="data:," />
+<title>Hustle City</title>
+<style>
+  :root{
+    --bg:#07090c; --bg2:#0b0e13; --panel:#10141b; --panel2:#151b24; --panel3:#1a222e;
+    --line:#2a323f; --line2:#39434f;
+    --text:#f2f5f9; --dim:#aeb9c6; --faint:#7d8896;
+    --silver:#d7dee9; --gold:#f0b73e; --green:#3ecf6f; --red:#ff5147; --amber:#ffb02e;
+    --neon:#39c2ff; --lime:#b6ff2e; --pink:#ff2e88; --cyan:#29e6ff; --yellow:#ffd21f;
+    --ink:#05070a;
+    --spring:cubic-bezier(.34,1.56,.64,1); --spring-soft:cubic-bezier(.22,1.28,.36,1);
+    --sat: env(safe-area-inset-top, 0px); --sab: env(safe-area-inset-bottom, 0px);
+    --sal: env(safe-area-inset-left, 0px); --sar: env(safe-area-inset-right, 0px);
+  }
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); }
+  body{
+    font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:16px; line-height:1.45; overflow-x:hidden; font-variant-numeric:tabular-nums;
+    padding-top:var(--sat); padding-bottom:var(--sab);
+  }
+  @keyframes screenIn{ from{ opacity:0; transform:translateY(10px) } to{ opacity:1; transform:none } }
+  @keyframes sceneIn{ 0%{ opacity:0; transform:translateY(14px) scale(.975) } 60%{ opacity:1; transform:translateY(-2px) scale(1.008) } 100%{ opacity:1; transform:none } }
+  @keyframes fadeUp{ from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:none } }
+  @keyframes letterIn{ 0%{ opacity:0 } 100%{ opacity:1 } }
+  @keyframes popStar{ 0%{ transform:scale(1) } 45%{ transform:scale(1.45) rotate(8deg) } 100%{ transform:scale(1) } }
+  @keyframes countBounce{ 0%{ transform:scale(1) } 40%{ transform:scale(1.14) } 100%{ transform:scale(1) } }
+  @keyframes glowBreathe{ 0%,100%{ opacity:.55; transform:scaleX(.92) } 50%{ opacity:1; transform:scaleX(1) } }
+  @keyframes arrowUp{ 0%{ transform:translateY(2px) } 100%{ transform:translateY(0) } }
+  @keyframes arrowDown{ 0%{ transform:translateY(-2px) } 100%{ transform:translateY(0) } }
+  @keyframes sparklePulse{ 0%,100%{ opacity:.35 } 50%{ opacity:1 } }
+  @keyframes herePulse{ 0%,100%{ opacity:.85 } 50%{ opacity:.2 } }
+  .herePulse{ animation:herePulse 1.6s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce){ .herePulse{ animation:none; } }
+  .screen-enter{ animation:screenIn .38s var(--spring-soft) both; }
+  .num-pop{ display:inline-block; animation:countBounce .38s var(--spring) both; }
+  .stars-pop{ display:inline-block; animation:popStar .42s var(--spring) both; }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{ animation-duration:.001s !important; animation-iteration-count:1 !important; transition-duration:.001s !important; scroll-behavior:auto !important; }
+    .screen-enter,.scene-panel,.num-pop,.stars-pop{ animation:none !important; }
+  }
+  button{ font-family:inherit; cursor:pointer; }
+  .hidden{ display:none !important; }
+
+  /* ---------- generic ---------- */
+  .wrap{ max-width:620px; margin:0 auto; padding:0 14px 28px; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    min-height:48px; padding:10px 18px; border-radius:10px; border:2px solid var(--ink); outline:1px solid var(--line2);
+    background:linear-gradient(180deg,#232d3c,#151b24); color:var(--text); font-size:16px; font-weight:800;
+    letter-spacing:.02em; touch-action:manipulation; user-select:none;
+    transition:transform .16s var(--spring), box-shadow .16s ease, background .16s ease; box-shadow:0 3px 0 var(--ink), 0 8px 18px rgba(0,0,0,.28);
+  }
+  .btn:active{ transform:scale(.965) translateY(2px); box-shadow:0 1px 0 var(--ink); }
+  .btn.primary{ background:linear-gradient(180deg,#ffffff,#c9d1dc); color:#0b0e13; border-color:var(--ink); }
+  .btn.gold{ background:linear-gradient(180deg,#ffd873,#e0aa3e); color:#171106; border-color:var(--ink); }
+  .btn.danger{ background:linear-gradient(180deg,#5a1d17,#3a1512); border-color:var(--ink); color:#ffb3ac; }
+  .btn.ghost{ background:rgba(255,255,255,.04); box-shadow:none; }
+  .btn.small{ min-height:44px; padding:8px 12px; font-size:14px; }
+  .btn:disabled{ opacity:.38; cursor:not-allowed; }
+  .panel{ background:linear-gradient(165deg,rgba(255,255,255,.075),rgba(255,255,255,.018) 42%,rgba(0,0,0,.18)),var(--panel); border:1px solid var(--line2); border-radius:16px; padding:14px; margin-top:14px; box-shadow:inset 0 1px 0 rgba(255,255,255,.09), 0 12px 28px rgba(0,0,0,.32); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); animation:fadeUp .42s var(--spring-soft) both; }
+  .panel h2{ margin:0 0 4px; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--text); font-weight:900; }
+  .panel .sub{ color:var(--dim); font-size:13px; margin:0 0 10px; }
+
+  /* ---------- HUD ---------- */
+  #hud{
+    position:sticky; top:0; z-index:40; background:linear-gradient(180deg,rgba(18,24,34,.97),rgba(9,11,15,.94));
+    border-bottom:2px solid var(--ink); box-shadow:0 1px 0 var(--line2), 0 10px 24px rgba(0,0,0,.35); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); padding:9px 12px;
+    padding-left:calc(12px + var(--sal)); padding-right:calc(12px + var(--sar));
+  }
+  #hud .row1{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; }
+  #hud .hoodname{ font-size:21px; font-weight:900; letter-spacing:-.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-family:"Arial Black","Avenir Next",system-ui,sans-serif; text-transform:uppercase; }
+  #hud .day{ font-size:15px; font-weight:900; color:var(--silver); white-space:nowrap; font-variant-numeric:tabular-nums; }
+  #hud .stars{ color:var(--amber); font-size:18px; letter-spacing:2px; white-space:nowrap; text-shadow:0 2px 0 var(--ink); }
+  #hud .stars .off{ color:#39414d; }
+  #hud .row2{ display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:5px; font-size:14px; }
+  #hud .stat b{ font-weight:900; font-size:16.5px; letter-spacing:-.01em; font-variant-numeric:tabular-nums; }
+  #hud .cash b{ color:var(--green); } #hud .debt b{ color:var(--red); }
+  #hud .debt .rate{ color:var(--faint); font-size:12px; font-weight:600; }
+  #hud .nw b{ color:var(--gold); }
+  #hud .healthbar{ display:flex; align-items:center; gap:7px; }
+  #hud .hbar{ width:74px; height:9px; border-radius:5px; background:#262d38; overflow:hidden; }
+  #hud .hbar i{ display:block; height:100%; background:var(--green); border-radius:5px; }
+  #hud .hbar i.low{ background:var(--red); } #hud .hbar i.mid{ background:var(--amber); }
+  #muteBtn{ position:absolute; top:8px; right:calc(10px + var(--sar)); }
+  .iconbtn{ width:44px; height:44px; border-radius:10px; border:1px solid var(--line); background:var(--panel2); color:var(--silver); font-size:18px; display:inline-flex; align-items:center; justify-content:center; }
+
+  /* ---------- title ---------- */
+  #screen-title{ min-height:100dvh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:32px 20px; background:radial-gradient(120% 60% at 50% 0%, #131a24 0%, var(--bg) 62%); }
+  .logo-city{ font-size:14px; letter-spacing:.52em; color:var(--neon); font-weight:900; text-transform:uppercase; margin-bottom:8px; padding-left:.52em; }
+  .logo-main{ font-size:clamp(52px, 15vw, 92px); line-height:.95; font-weight:900; letter-spacing:.01em; color:var(--silver); text-transform:uppercase; }
+  .logo-main .tm{ font-size:.28em; vertical-align:super; color:var(--dim); letter-spacing:0; }
+  .logo-rule{ width:min(340px,72vw); height:4px; background:var(--neon); border-radius:2px; margin:18px auto 14px; box-shadow:0 0 18px var(--neon); animation:glowBreathe 3.2s ease-in-out infinite; }
+  .brandline{ color:var(--silver); font-size:16.5px; font-weight:800; margin:0 0 2px; }
+  .noads{ color:var(--faint); font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; margin:0 0 6px; }
+  .tagline{ color:var(--text); font-size:17px; max-width:420px; margin:4px auto 0; }
+  .title-btns{ display:flex; flex-direction:column; gap:12px; width:min(320px,86vw); margin-top:30px; }
+  .title-btns .btn{ min-height:56px; font-size:18px; }
+  .bestscore{ margin-top:20px; color:var(--gold); font-weight:800; font-size:15px; min-height:22px; }
+  .foot{ margin-top:34px; color:var(--faint); font-size:12.5px; letter-spacing:.04em; }
+
+  /* ---------- market ---------- */
+  .goodrow{
+    display:flex; align-items:center; gap:10px; width:100%; text-align:left;
+    background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.01)),var(--panel2); border:2px solid var(--ink); outline:1px solid var(--line); border-radius:12px;
+    padding:10px 12px; margin-top:8px; min-height:60px; color:var(--text);
+    transition:transform .16s var(--spring), background .16s ease; box-shadow:0 3px 0 rgba(0,0,0,.55);
+    animation:fadeUp .38s var(--spring-soft) both;
+  }
+  .goodrow:active{ background:var(--panel3); transform:scale(.985); }
+  .goodrow.sel{ border-color:var(--neon); outline-color:var(--neon); box-shadow:0 0 0 1px var(--neon), 0 3px 0 rgba(0,0,0,.55), 0 0 18px rgba(57,194,255,.22); }
+  .goodrow .gname{ font-weight:900; font-size:17px; letter-spacing:-.01em; }
+  .goodrow .gunit{ color:var(--dim); font-size:12px; display:block; font-weight:600; }
+  .goodrow .gmid{ margin-left:auto; text-align:right; }
+  .goodrow .gprice{ font-weight:900; font-size:19px; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+  .goodrow .gdelta{ font-size:12px; font-weight:800; display:block; }
+  .gdelta.up{ animation:arrowUp .35s var(--spring) both; } .gdelta.down{ animation:arrowDown .35s var(--spring) both; }
+  .up{ color:#ff7a72; } .down{ color:#5ee68d; } .flat{ color:var(--faint); }
+  .goodrow .gown{ min-width:54px; text-align:center; background:#0a0d12; border:2px solid var(--ink); outline:1px solid var(--line2); border-radius:9px; padding:4px 2px; }
+  .goodrow .gown b{ font-size:17px; } .goodrow .gown span{ display:block; color:var(--dim); font-size:10px; font-weight:800; letter-spacing:.07em; }
+  .notsold{ color:var(--faint); font-weight:700; font-size:14px; }
+  .evtag{ display:inline-block; font-size:10.5px; font-weight:900; letter-spacing:.08em; padding:2px 6px; border-radius:5px; margin-left:6px; vertical-align:2px; }
+  .evtag.flood{ background:#0e2f1d; color:var(--green); border:1px solid #1f5c38; }
+  .evtag.exp{ background:#3a2408; color:var(--amber); border:1px solid #7a5410; }
+
+  /* trade panel */
+  #tradepanel{ border-color:var(--line2); scroll-margin-top:150px; }
+  #tradepanel .tp-head{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; }
+  #tradepanel .tp-name{ font-size:20px; font-weight:900; }
+  #tradepanel .tp-price{ font-size:20px; font-weight:900; color:var(--gold); }
+  #tradepanel .tp-meta{ color:var(--dim); font-size:13.5px; margin-top:2px; }
+  .stepper{ display:flex; align-items:center; gap:8px; margin:14px 0 12px; flex-wrap:wrap; }
+  .stepper .btn{ min-width:52px; padding:8px 10px; }
+  .qtybox{ min-width:64px; text-align:center; font-size:24px; font-weight:900; background:var(--bg2); border:1px solid var(--line); border-radius:10px; padding:6px 4px; }
+  .qtybox small{ display:block; font-size:10px; color:var(--faint); letter-spacing:.1em; font-weight:800; }
+  .trade-actions{ display:flex; gap:10px; }
+  .trade-actions .btn{ flex:1; min-height:54px; font-size:17px; }
+  #tpMsg{ min-height:20px; font-size:13.5px; color:var(--amber); margin-top:8px; font-weight:600; }
+
+  /* stash strip — pinned as a row inside the sticky HUD, always visible */
+  .stashstrip{ display:flex; gap:6px; align-items:center; overflow-x:auto; margin-top:7px; padding-bottom:2px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .stashstrip::-webkit-scrollbar{ display:none; }
+  .stashstrip .ss-label{ flex:0 0 auto; font-size:11px; font-weight:900; letter-spacing:.1em; color:var(--faint); white-space:nowrap; text-transform:uppercase; }
+  .stashstrip .ss-empty{ font-size:13px; color:var(--dim); white-space:nowrap; }
+  .ss-chip{ flex:0 0 auto; background:#0a0d12; border:1.5px solid var(--ink); outline:1px solid var(--line2); color:var(--text); border-radius:999px; padding:5px 10px; font-size:13px; font-weight:800; cursor:pointer; white-space:nowrap; font-family:inherit; }
+  .ss-chip b{ color:var(--gold); }
+  .ss-chip .ss-val{ color:var(--green); font-weight:900; }
+  .ss-sellall{ flex:0 0 auto; background:var(--green); color:#04150a; border:2px solid var(--ink); border-radius:999px; padding:5px 12px; font-size:13px; font-weight:900; cursor:pointer; white-space:nowrap; font-family:inherit; }
+
+  /* live money feed — last transactions, pinned under the HUD rows */
+  .moneyfeed{ margin-top:5px; font-size:12.5px; font-weight:700; color:var(--dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-variant-numeric:tabular-nums; }
+  .moneyfeed .mf-in{ color:var(--green); } .moneyfeed .mf-out{ color:var(--red); }
+  .moneyfeed .mf-bal{ color:var(--silver); }
+  .moneyfeed .mf-sep{ color:var(--faint); margin:0 5px; }
+
+  /* floating +$X / −$X chips off the HUD cash value */
+  #hudCashWrap{ position:relative; display:inline-block; }
+  .money-float{ position:absolute; left:50%; top:-4px; transform:translateX(-50%); font-weight:900; font-size:15px; pointer-events:none; white-space:nowrap; animation:moneyFloat 1.5s ease-out both; text-shadow:0 2px 0 var(--ink); z-index:5; }
+  .money-float.in{ color:var(--green); } .money-float.out{ color:var(--red); }
+  @keyframes moneyFloat{ 0%{ opacity:0; transform:translate(-50%,4px) } 18%{ opacity:1 } 100%{ opacity:0; transform:translate(-50%,-26px) } }
+  @media (prefers-reduced-motion: reduce){ .money-float{ animation:moneyFade 1.5s ease-out both; } }
+  @keyframes moneyFade{ 0%{ opacity:0 } 18%{ opacity:1 } 100%{ opacity:0 } }
+
+  /* sticky bottom trade bar (good selected) + section nav */
+  #tradeBar{ position:fixed; left:0; right:0; bottom:calc(54px + var(--sab)); z-index:45; display:flex; align-items:center; gap:8px; padding:8px 10px; background:linear-gradient(180deg,rgba(18,24,34,.97),rgba(9,11,15,.96)); border-top:1px solid var(--line2); box-shadow:0 -8px 22px rgba(0,0,0,.35); }
+  #tradeBar .tb-info{ display:flex; flex-direction:column; min-width:0; margin-right:auto; }
+  #tbName{ font-weight:900; font-size:14.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  #tbPrice{ color:var(--gold); font-weight:900; font-size:13px; white-space:nowrap; }
+  #tradeBar .tb-stepper{ display:flex; align-items:center; gap:5px; }
+  #tradeBar .tb-stepper .btn{ min-width:38px; padding:7px 8px; }
+  #tbQty{ min-width:24px; text-align:center; font-weight:900; font-size:16px; font-variant-numeric:tabular-nums; }
+  #tradeBar > .btn{ min-height:44px; padding:8px 13px; font-size:15px; flex:0 0 auto; }
+  #tradeNav{ position:fixed; left:0; right:0; bottom:0; z-index:46; height:calc(54px + var(--sab)); display:flex; background:rgba(9,11,15,.97); border-top:1px solid var(--line2); padding-bottom:var(--sab); }
+  #tradeNav button{ flex:1; background:none; border:none; color:var(--silver); font-size:13.5px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; cursor:pointer; font-family:inherit; }
+  #tradeNav button:active{ color:var(--gold); }
+  #secMarket, #secMoney, #secMove, #secCalc{ scroll-margin-top:150px; }
+  #screen-trade .wrap{ padding-bottom:160px; }
+  .moneysub{ font-size:12px; font-weight:900; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); margin:8px 0 6px; }
+
+  /* hustle calculator */
+  .calc-modes{ display:flex; gap:8px; margin-bottom:12px; }
+  .calc-modes .btn{ flex:1; min-height:46px; }
+  .calc-good{ font-size:17px; font-weight:900; margin-bottom:6px; }
+  .calc-lines{ font-size:14.5px; color:var(--dim); line-height:1.55; }
+  .calc-lines b{ color:var(--text); font-variant-numeric:tabular-nums; }
+  .calc-field{ display:block; font-size:13px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--dim); margin-bottom:10px; }
+  .calc-field input{ display:block; width:100%; box-sizing:border-box; margin-top:5px; font-size:18px; font-weight:800; padding:12px; border-radius:10px; border:1px solid var(--line2); background:var(--bg2); color:var(--text); font-family:inherit; }
+  .calc-answers{ margin-top:14px; border-top:1px solid var(--line2); padding-top:12px; }
+  .ca-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:16px; font-weight:800; padding:3px 0; }
+  .ca-row b{ font-size:21px; font-weight:900; font-variant-numeric:tabular-nums; }
+  .ca-row.profit b{ font-size:27px; }
+  .ca-row.profit b.pos{ color:var(--green); } .ca-row.profit b.neg{ color:var(--red); }
+  .ca-sub{ font-size:14px; color:var(--dim); font-weight:700; margin-top:5px; font-variant-numeric:tabular-nums; }
+  .ca-note{ font-size:12.5px; color:var(--faint); margin-top:3px; }
+
+  /* destinations */
+  .destrow{ display:flex; align-items:center; gap:10px; width:100%; text-align:left; background:var(--panel2); border:1px solid var(--line); border-radius:12px; padding:11px 12px; margin-top:8px; min-height:60px; color:var(--text); }
+  .destrow .dname{ font-weight:800; font-size:16px; }
+  .destrow .drumor{ display:block; color:var(--dim); font-size:12.5px; font-weight:600; }
+  .destrow .dpol{ margin-left:auto; text-align:right; font-size:12px; font-weight:800; white-space:nowrap; }
+  .pol-hi{ color:var(--red); } .pol-md{ color:var(--amber); } .pol-lo{ color:var(--green); }
+  .destrow .go{ font-weight:900; color:var(--neon); font-size:14px; white-space:nowrap; }
+  .finrow{ display:flex; gap:10px; flex-wrap:wrap; }
+  .finrow .btn{ flex:1; min-width:130px; }
+  .big-actions{ display:flex; gap:10px; margin-top:14px; }
+  .big-actions .btn{ flex:1; min-height:54px; }
+
+  /* ---------- modals ---------- */
+  .overlay{ position:fixed; inset:0; z-index:80; background:rgba(3,4,6,.84); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; padding:18px; padding-top:calc(18px + var(--sat)); padding-bottom:calc(18px + var(--sab)); animation:fadeUp .25s ease both; }
+  .modal{ background:linear-gradient(165deg,rgba(255,255,255,.08),rgba(255,255,255,.02) 45%,rgba(0,0,0,.2)),var(--panel); border:2px solid var(--ink); outline:1px solid var(--line2); border-radius:18px; max-width:520px; width:100%; max-height:88dvh; overflow-y:auto; padding:22px 20px; box-shadow:0 24px 60px rgba(0,0,0,.6); animation:sceneIn .45s var(--spring) both; }
+  .modal h3{ letter-spacing:-.02em; }
+  .modal .kicker{ font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--neon); font-weight:900; margin:0 0 6px; }
+  .modal h3{ margin:0 0 10px; font-size:23px; font-weight:900; line-height:1.2; }
+  .modal p{ margin:0 0 10px; color:var(--silver); font-size:15.5px; }
+  .modal .choices{ display:flex; flex-direction:column; gap:10px; margin-top:16px; }
+  .modal .choices .btn{ width:100%; min-height:52px; }
+  .modal.boss{ border-color:#6d1420; box-shadow:0 0 0 1px #6d1420, 0 18px 60px rgba(0,0,0,.7); }
+  .modal.boss .kicker{ color:var(--red); }
+  .rules-body{ font-size:15px; color:var(--silver); }
+  .rules-body h4{ color:var(--text); margin:18px 0 6px; font-size:16px; }
+  .rules-body p, .rules-body li{ color:var(--silver); }
+  .rules-body ul{ margin:6px 0; padding-left:20px; }
+  .rules-body li{ margin-bottom:5px; }
+
+  /* ---------- game over ---------- */
+  #screen-over{ min-height:100dvh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:30px 20px; }
+  #screen-over .grade{ font-size:clamp(34px,9vw,52px); font-weight:900; color:var(--gold); line-height:1.05; margin:6px 0; }
+  #screen-over .finalnw{ font-size:21px; font-weight:800; }
+  .statgrid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; width:min(420px,92vw); margin:22px auto; }
+  .statgrid .cell{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .statgrid .cell b{ display:block; font-size:20px; } .statgrid .cell span{ color:var(--dim); font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+
+  /* ---------- graffiti scenes ---------- */
+  .graf-font{ font-family:"Arial Black","Avenir Next",system-ui,sans-serif; }
+  .scene-panel{ border:3px solid #05070a; border-radius:16px; overflow:hidden; margin-top:14px; background:#14100e; box-shadow:0 0 0 2px var(--line2), 0 14px 34px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.12); animation:sceneIn .52s var(--spring) both; }
+  .scene-panel svg{ display:block; width:100%; height:auto; }
+  .scene-panel svg .spray-letter{ animation:letterIn .34s var(--spring) both; }
+  .scene-panel svg .sparkle{ animation:sparklePulse 1.8s ease-in-out infinite; transform-origin:center; }
+  .scene-cap{ padding:11px 14px 13px; background:linear-gradient(180deg,#171c26,#0d0f13); border-top:3px solid #05070a; animation:fadeUp .4s .1s var(--spring-soft) both; }
+  .scene-cap .sc-title{ font-family:"Arial Black","Avenir Next",sans-serif; font-size:20px; letter-spacing:-.01em; text-transform:uppercase; line-height:1.12; }
+  .scene-cap .sc-text{ color:var(--silver); font-size:14.5px; margin-top:3px; }
+  .spray-buy{ color:#b6ff2e; text-shadow:2px 2px 0 #0a5c1e, -1px -1px 0 #05070a; }
+  .spray-sell{ color:#ffd21f; text-shadow:2px 2px 0 #8a5a00, -1px -1px 0 #05070a; }
+  .spray-hot{ color:#ff2e88; text-shadow:2px 2px 0 #5c0a2e, -1px -1px 0 #05070a; }
+  .spray-bad{ color:#ff5147; text-shadow:2px 2px 0 #5c0f0a, -1px -1px 0 #05070a; }
+  .spray-cool{ color:#29e6ff; text-shadow:2px 2px 0 #0a4a5c, -1px -1px 0 #05070a; }
+  .modal .scene-panel{ margin:0 0 14px; }
+  /* graffiti travel board */
+  .mapboard{ border:3px solid #05070a; border-radius:16px; overflow:hidden; background:#171310; box-shadow:0 0 0 2px var(--line2), 0 12px 28px rgba(0,0,0,.45); margin-bottom:6px; animation:sceneIn .5s var(--spring) both; }
+  .mapboard svg{ display:block; width:100%; height:auto; }
+  .destrow{ border:2px solid var(--ink); outline:1px solid var(--line); background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01)),var(--panel2); box-shadow:0 3px 0 rgba(0,0,0,.55); transition:transform .16s var(--spring); animation:fadeUp .38s var(--spring-soft) both; }
+  .destrow:active{ transform:scale(.98); }
+  .destrow .dtag{ font-family:"Arial Black","Avenir Next",sans-serif; text-transform:uppercase; letter-spacing:-.01em; font-size:17px; text-shadow:2px 2px 0 var(--ink); }
+  .destrow .go{ color:#b6ff2e; text-shadow:1px 1px 0 var(--ink); }
+  /* title graffiti */
+  #screen-title{ background:radial-gradient(130% 70% at 50% 0%, #241a33 0%, #12141f 42%, var(--bg) 72%); }
+  .graf-title{ transform:rotate(-2.5deg); line-height:.9; text-transform:uppercase; font-family:"Arial Black","Avenir Next",sans-serif; animation:sceneIn .65s var(--spring) both; filter:drop-shadow(0 10px 22px rgba(0,0,0,.55)); }
+  .graf-title .l1{ display:block; font-size:clamp(48px,14vw,88px); color:#ffd21f; text-shadow:0 0 0 #ffd21f, 4px 4px 0 #ff2e88, 8px 8px 0 #0a4a5c, -2.5px -2.5px 0 #05070a, 2.5px -2.5px 0 #05070a, -2.5px 2.5px 0 #05070a, 0 6px 0 #05070a; letter-spacing:-.02em; }
+  .graf-title .l2{ display:block; font-size:clamp(60px,17.5vw,110px); color:#29e6ff; text-shadow:4px 4px 0 #b6ff2e, 8px 8px 0 #5c0a2e, -2.5px -2.5px 0 #05070a, 2.5px -2.5px 0 #05070a, -2.5px 2.5px 0 #05070a, 0 6px 0 #05070a; letter-spacing:-.02em; }
+  .graf-title .tm{ font-size:.22em; color:var(--silver); text-shadow:none; vertical-align:super; font-family:"Avenir Next",sans-serif; font-weight:800; }
+  .title-art{ width:min(420px,90vw); margin:8px auto 4px; animation:fadeUp .55s .12s var(--spring-soft) both; filter:drop-shadow(0 8px 18px rgba(0,0,0,.45)); }
+  .title-art svg{ display:block; width:100%; height:auto; }
+  .brandline{ font-weight:900; }
+</style>
+</head>
+<body>
+
+<!-- TITLE -->
+<section id="screen-title">
+  <div class="logo-city">Welcome to</div>
+  <div class="graf-title" aria-label="Hustle City"><span class="l1">Hustle</span><span class="l2">City<span class="tm">™</span></span></div>
+  <div class="title-art" id="titleArt"></div>
+  <p class="brandline">No fancy logos. Just quality products.</p>
+  <p class="noads">No ads.</p>
+  <p class="tagline">Buy low. Sell high. Work the corners, watch the law — and whatever you do, pay the Boss Man back.</p>
+  <div class="title-btns">
+    <button class="btn primary" id="btnNewGame">NEW GAME</button>
+    <button class="btn" id="btnRules">HOW TO PLAY</button>
+    <button class="btn ghost" id="btnMuteTitle">SOUND: ON</button>
+  </div>
+  <div class="bestscore" id="bestScore"></div>
+  <div class="foot">HUSTLE CITY™ · J-DAWGS INDUSTRIES · © 2026 Joshua Dawson</div>
+</section>
+
+<!-- HUD -->
+<header id="hud" class="hidden">
+  <div class="row1">
+    <div class="hoodname" id="hudHood">Downtown</div>
+    <div class="stars" id="hudStars"></div>
+    <div class="day" id="hudDay">Day 1/30</div>
+  </div>
+  <div class="row2">
+    <span class="stat cash">Cash <span id="hudCashWrap"><b id="hudCash">$0</b></span></span>
+    <span class="stat debt">Debt <b id="hudDebt">$0</b> <span class="rate">(+10%/day)</span></span>
+    <span class="stat nw">Net worth <b id="hudNW">$0</b></span>
+    <span class="stat">Coat <b id="hudSlots">0/100</b></span>
+    <span class="healthbar">Health <span class="hbar"><i id="hudHealthFill" style="width:100%"></i></span> <b id="hudHealth">100</b></span>
+  </div>
+  <div id="stashStrip" class="stashstrip"></div>
+  <div id="moneyFeed" class="moneyfeed hidden"></div>
+  <button class="iconbtn hidden" id="muteBtn" title="Toggle sound">♪</button>
+</header>
+
+<!-- TRADE -->
+<main id="screen-trade" class="hidden">
+  <div class="wrap" id="tradeTop">
+    <div id="flash" class="hidden" style="margin-top:12px; background:#23180a; border:1px solid #7a5410; color:#ffd98a; border-radius:12px; padding:11px 13px; font-size:14.5px; font-weight:600;"></div>
+    <section class="scene-panel hidden" id="dealScene"></section>
+    <section class="panel" id="secMarket" style="margin-top:12px">
+      <h2>Today's Market</h2>
+      <p class="sub" id="marketSub">Prices change every day, every neighborhood.</p>
+      <div id="marketList"></div>
+    </section>
+
+    <section class="panel hidden" id="tradepanel">
+      <div class="tp-head"><div class="tp-name" id="tpName">—</div><div class="tp-price" id="tpPrice">—</div></div>
+      <div class="tp-meta" id="tpMeta">—</div>
+      <div class="stepper">
+        <button class="btn small" data-step="-10">−10</button>
+        <button class="btn small" data-step="-1">−1</button>
+        <div class="qtybox"><span id="tpQty">1</span><small>QTY</small></div>
+        <button class="btn small" data-step="1">+1</button>
+        <button class="btn small" data-step="10">+10</button>
+        <button class="btn small" data-step="max">MAX</button>
+      </div>
+      <div class="trade-actions">
+        <button class="btn gold" id="btnBuy">BUY</button>
+        <button class="btn primary" id="btnSell">SELL</button>
+        <button class="btn" id="btnSellAll">SELL ALL</button>
+      </div>
+      <div id="tpMsg"></div>
+    </section>
+
+    <section class="panel" id="secMoney">
+      <h2>Money</h2>
+      <p class="sub">The shark and the bank, one stop. Debt grows 10% a day until it's gone; banked cash earns 5% a day and can't be mugged.</p>
+      <div id="hqCar" class="hidden"></div>
+      <div class="moneysub">The Loan Shark — pay by phone, from anywhere</div>
+      <div class="finrow">
+        <button class="btn" id="btnPay100">PAY DEBT $100</button>
+        <button class="btn gold" id="btnPayMax">PAY MAX</button>
+      </div>
+      <div class="moneysub" style="margin-top:12px">The Bank — balance: <b id="bankBalance" style="color:var(--green)">$0</b></div>
+      <div class="finrow">
+        <button class="btn" id="btnDep100">DEPOSIT $100</button>
+        <button class="btn gold" id="btnDepMax">DEPOSIT MAX</button>
+      </div>
+      <div class="finrow" style="margin-top:10px">
+        <button class="btn" id="btnWd100">WITHDRAW $100</button>
+        <button class="btn gold" id="btnWdMax">WITHDRAW MAX</button>
+      </div>
+    </section>
+
+    <section class="panel" id="secCalc">
+      <h2>Hustle Calculator</h2>
+      <p class="sub">Run the numbers before you move. Plain math, no guessing.</p>
+      <div class="calc-modes">
+        <button class="btn small primary" id="calcModeAuto">AUTO — THIS PRODUCT</button>
+        <button class="btn small" id="calcModeManual">MANUAL — ANY DEAL</button>
+      </div>
+      <div id="calcAuto">
+        <div class="calc-good" id="calcGood">Tap a product in the market first.</div>
+        <div class="calc-lines">
+          <div>Price here (buy): <b id="calcBuyHere">—</b></div>
+          <div>Sell here now: <b id="calcSellHere">—</b></div>
+          <div>Your average cost: <b id="calcAvg">—</b></div>
+        </div>
+        <div class="stepper">
+          <button class="btn small" data-cstep="-10">−10</button>
+          <button class="btn small" data-cstep="-1">−1</button>
+          <div class="qtybox"><span id="calcQty">1</span><small>QTY</small></div>
+          <button class="btn small" data-cstep="1">+1</button>
+          <button class="btn small" data-cstep="10">+10</button>
+          <button class="btn small" data-cstep="max">MAX</button>
+        </div>
+      </div>
+      <div id="calcManual" class="hidden">
+        <label class="calc-field">What you paid (each)<input id="calcInPaid" type="number" inputmode="decimal" min="0" step="any" placeholder="0"></label>
+        <label class="calc-field">What you'll sell for (each)<input id="calcInSell" type="number" inputmode="decimal" min="0" step="any" placeholder="0"></label>
+        <label class="calc-field">How many<input id="calcInQty" type="number" inputmode="numeric" min="0" step="1" placeholder="0"></label>
+      </div>
+      <div class="calc-answers">
+        <div class="ca-row"><span>Costs you</span><b id="calcCost">—</b></div>
+        <div class="ca-row"><span>Sells for</span><b id="calcSellOut">—</b></div>
+        <div class="ca-row profit"><span>Profit</span><b id="calcProfit">—</b></div>
+        <div class="ca-sub" id="calcDetail">—</div>
+        <div class="ca-note" id="calcNote"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="secMove">
+      <h2>Move — Pick A Spot</h2>
+      <p class="sub">The city map, tagged up. Tap a neighborhood: the trip takes the rest of the day. New block, new prices, new trouble.</p>
+      <div class="mapboard" id="mapBoard"></div>
+      <div id="destList"></div>
+      <div class="big-actions">
+        <button class="btn" id="btnWait">WAIT A DAY</button>
+      </div>
+    </section>
+    <div class="foot" style="text-align:center">HUSTLE CITY™ · J-DAWGS INDUSTRIES · © 2026 Joshua Dawson</div>
+  </div>
+  <div id="tradeBar" class="hidden">
+    <div class="tb-info"><span id="tbName">—</span><span id="tbPrice">—</span></div>
+    <div class="tb-stepper">
+      <button class="btn small" data-bstep="-1">−</button>
+      <span id="tbQty">1</span>
+      <button class="btn small" data-bstep="1">+</button>
+      <button class="btn small" data-bstep="max">MAX</button>
+    </div>
+    <button class="btn gold" id="tbBuy">BUY</button>
+    <button class="btn primary" id="tbSell">SELL</button>
+  </div>
+  <nav id="tradeNav">
+    <button data-nav="secMarket">Market</button>
+    <button data-nav="tradeTop">Stash</button>
+    <button data-nav="secMoney">Money</button>
+    <button data-nav="secCalc">Calc</button>
+    <button data-nav="secMove">Move</button>
+  </nav>
+</main>
+
+<!-- EVENT MODAL -->
+<div class="overlay hidden" id="modal-event">
+  <div class="modal" id="eventModalBox">
+    <p class="kicker" id="evKicker">Word on the street</p>
+    <h3 id="evTitle">—</h3>
+    <div id="evScene"></div>
+    <div id="evBody"></div>
+    <div class="choices" id="evChoices"></div>
+  </div>
+</div>
+
+<!-- BOSS MODAL -->
+<div class="overlay hidden" id="modal-boss">
+  <div class="modal boss">
+    <p class="kicker">The Boss Man</p>
+    <h3 id="bossTitle">The J-Dawg slides to a stop.</h3>
+    <div id="bossScene"></div>
+    <p id="bossText">The Boss Man wants his money.</p>
+    <div class="choices" id="bossChoices"></div>
+  </div>
+</div>
+
+<!-- SCENE MODAL (foot chase results, etc.) -->
+<div class="overlay hidden" id="modal-scene">
+  <div class="modal">
+    <p class="kicker" id="scKicker">On the street</p>
+    <h3 id="scTitle">—</h3>
+    <div id="scScene"></div>
+    <p id="scText"></p>
+    <div class="choices"><button class="btn primary" id="btnSceneOk">KEEP MOVING</button></div>
+  </div>
+</div>
+
+<!-- RULES -->
+<div class="overlay hidden" id="modal-rules">
+  <div class="modal">
+    <p class="kicker">How to play</p>
+    <h3>The Rules of the Street</h3>
+    <div class="rules-body">
+      <p>You've got <b>30 days</b>, <b>$2,000</b> in your pocket, and a <b>$5,500 debt</b> to the loan shark. Buy product cheap in one neighborhood, move it across the city, sell it high somewhere else. Every deal plays out right on the corner — watch for the scene panels. When day 30 ends, your score is your <b>net worth</b>: cash + bank + stash value − debt.</p>
+      <h4>The Market</h4>
+      <ul>
+        <li>Prices are rolled fresh every day in every neighborhood, and each neighborhood only stocks <b>some</b> goods each day. "Not sold here" means no buying — but you can always <b>sell</b> what you carry, anywhere.</li>
+        <li>Watch the ▲▼ arrows: they compare today's price to the last price you saw for that good.</li>
+        <li>Your coat holds <b>100 slots</b>. Most goods take 1 slot per unit. A pint of Lean takes <b>4 slots</b>.</li>
+        <li>Floods crash a price to a quarter. Shortages spike it times four. The headlines tell you which is which.</li>
+      </ul>
+      <h4>Time &amp; Travel</h4>
+      <ul>
+        <li><b>Moving to another neighborhood takes the rest of the day.</b> Pick a spot on the tagged-up city map. When you arrive: interest hits, prices re-roll, and the day counter moves.</li>
+        <li><b>Wait a Day</b> stays put, moves the day, and cools your heat by 1 star.</li>
+        <li>Debt grows <b>10% per day</b>, compounding, until it's paid. Pay the shark by phone from anywhere — use the PAY DEBT buttons.</li>
+        <li><b>The Bank:</b> stash cash in the bank with the DEPOSIT buttons and pull it back out with WITHDRAW. Banked cash earns 5%/day and can't be mugged — muggings and bust fines only ever touch the cash in your pocket, never your bank balance.</li>
+      </ul>
+      <h4>Heat</h4>
+      <ul>
+        <li>The stars up top are your wanted level, 0 to 5. Big sales days, busts, and running from trouble raise it. Quiet days lower it.</li>
+        <li>Every good carries its own heat. Heavy, hot product in your coat raises your bust odds every single day you hold it — fentanyl most of all. Get busted holding fentanyl and you lose <b>everything</b>: stash and cash.</li>
+        <li>The hotter you run, the harder the named tiers come down: Patrol Officer Reyes on the quiet beats, Detective Voss on the busy ones, and Task Force Commander Kane when you're really loud.</li>
+      </ul>
+      <h4>The J-Dawg</h4>
+      <ul>
+        <li>The Boss Man's ride is a blacked-out boss sedan called the <b>J-Dawg</b>. You'll see it parked outside the Loan Shark HQ in Downtown.</li>
+        <li>Run your heat up, run the clock down, or sit on his money too long, and the J-Dawg rolls up on you. You can <b>pay up</b>, <b>run</b> — a foot chase through the alleys, and getting caught costs like a bust — or <b>face him</b> and take what comes.</li>
+        <li>Pay the debt off in full and the money visits stop. Owe him on day 29 or 30 and he's still out there looking for you.</li>
+      </ul>
+    </div>
+    <div class="choices"><button class="btn primary" id="btnCloseRules">GOT IT</button></div>
+  </div>
+</div>
+
+<!-- GAME OVER -->
+<section id="screen-over" class="hidden">
+  <div class="logo-city">Final Score</div>
+  <div class="grade" id="overGrade">Hustler</div>
+  <div class="finalnw" id="overNW">Net worth $0</div>
+  <p id="overNote" style="color:var(--dim); max-width:420px;"></p>
+  <div class="statgrid">
+    <div class="cell"><b id="ovDays">0</b><span>Days survived</span></div>
+    <div class="cell"><b id="ovTrades">0</b><span>Trades made</span></div>
+    <div class="cell"><b id="ovPeak">$0</b><span>Peak net worth</span></div>
+    <div class="cell"><b id="ovBest">$0</b><span>Best ever</span></div>
+  </div>
+  <div class="title-btns">
+    <button class="btn primary" id="btnAgain">PLAY AGAIN</button>
+    <button class="btn ghost" id="btnToTitle">TITLE SCREEN</button>
+  </div>
+  <div class="foot">HUSTLE CITY™ · J-DAWGS INDUSTRIES · © 2026 Joshua Dawson</div>
+</section>
+
+<script>
+"use strict";
+/* ================================================================
+   HUSTLE CITY™ — a J-DAWGS INDUSTRIES game
+   © 2026 Joshua Dawson. Original game: code, art, names, text.
+   ================================================================ */
+
+/* ================= SEEDED RNG (mulberry32) ================= */
+function mulberry32(a){ return function(){ a|=0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+let rng = mulberry32(1337);            // gameplay stream (seeded per game)
+const vrng = mulberry32(90210);        // visual-only stream (never affects gameplay)
+function ri(min, max){ return min + Math.floor(rng() * (max - min + 1)); }        // int in [min,max]
+function rf(min, max){ return min + rng() * (max - min); }
+function pick(arr){ return arr[Math.floor(rng() * arr.length)]; }
+function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+function money(n){ n = Math.round(n); const s = Math.abs(n).toLocaleString("en-US"); return (n < 0 ? "-$" : "$") + s; }
+
+/* ================================================================
+   ECONOMY — every game-balance number lives in this one block.
+   Swap values here; the logic below never hard-codes prices.
+   ================================================================ */
+const ECONOMY = {
+  startCash: 2000,
+  startDebt: 5500,
+  startHealth: 100,
+  startCapacity: 100,
+  totalDays: 30,
+  interestRate: 0.10,              // per day on outstanding debt
+  bankInterestRate: 0.05,          // per day earned on banked cash
+  trenchcoatCost: [250, 600],      // random offer price range
+  trenchcoatGain: 50,              // slots gained
+  // id, name, unit label, price min/max, event flag, heat (bust weight), coat slots per unit
+  goods: [
+    { id:"weed",     name:"Weed",      unit:"Ounce",            min:60,   max:400,  event:"flood",     heat:1, slots:1 },
+    { id:"carts",    name:"THC Carts", unit:"Cart (1 g)",       min:15,   max:70,   event:"flood",     heat:1, slots:1 },
+    { id:"acid",     name:"Acid",      unit:"Strip (10 tabs)",  min:50,   max:250,  event:"flood",     heat:2, slots:1 },
+    { id:"shrooms",  name:"Shrooms",   unit:"Ounce",            min:50,   max:250,  event:"flood",     heat:1, slots:1 },
+    { id:"crack",    name:"Crack",     unit:"10 rocks",         min:50,   max:250,  event:"expensive", heat:3, slots:1 },
+    { id:"meth",     name:"Meth",      unit:"Ounce",            min:150,  max:800,  event:"flood",     heat:4, slots:1 },
+    { id:"mdma",     name:"MDMA",      unit:"10 pills",         min:100,  max:450,  event:"expensive", heat:3, slots:1 },
+    { id:"heroin",   name:"Heroin",    unit:"Gram",             min:75,   max:350,  event:"expensive", heat:4, slots:1 },
+    { id:"oxy",      name:"Oxycodone", unit:"10 × 30 mg pills", min:150,  max:500,  event:"expensive", heat:3, slots:1 },
+    { id:"ketamine", name:"Ketamine",  unit:"10 g lot",         min:500,  max:1500, event:null,        heat:3, slots:1 },
+    { id:"cocaine",  name:"Cocaine",   unit:"Ounce",            min:1200, max:3000, event:"expensive", heat:5, slots:1 },
+    { id:"fentanyl", name:"Fentanyl",  unit:"Sleeve (100 pills)", min:200, max:2500, event:"both",     heat:6, slots:1 },
+    { id:"lean",     name:"Lean",      unit:"Pint (16 oz)",     min:400,  max:2500, event:null,        heat:4, slots:4, rare:true }
+  ],
+  // neighborhoods: police presence 0-100, goods offered per arrival [min,max],
+  // leanChance = odds Lean is stocked, leans = per-good price multipliers (default 1)
+  hoods: [
+    { id:"downtown",   name:"Downtown",           police:70, offers:[4,10],  leanChance:0.10, neon:"#39c2ff",
+      palette:{ sky:["#0a1220","#16283f"], ground:"#11151c", block:"#1a212c", bld:["#2b3a4d","#33465c","#27384c","#3a4f68"], win:"#ffd98a" },
+      leans:{ cocaine:1.1, ketamine:1.05 } },
+    { id:"harbor",     name:"Harbor Docks",       police:20, offers:[6,12],  leanChance:0.15, neon:"#4fd8c8",
+      palette:{ sky:["#0a141c","#1b3038"], ground:"#10161a", block:"#182228", bld:["#2c3e4a","#36485a","#2a3a46","#40536b"], win:"#cfe8ff" },
+      leans:{ weed:0.6, carts:0.6, heroin:1.1 } },
+    { id:"uptown",     name:"Uptown Heights",     police:90, offers:[4,10],  leanChance:0.20, neon:"#ffd166",
+      palette:{ sky:["#0d1020","#232a45"], ground:"#12141c", block:"#1c202c", bld:["#39415c","#424c6b","#343d57","#4a5578"], win:"#ffe9b0" },
+      leans:{ cocaine:1.4, fentanyl:1.35, weed:1.15, carts:1.1, lean:1.2 } },
+    { id:"southside",  name:"Southside Blocks",   police:10, offers:[7,12],  leanChance:0.15, neon:"#ff7847",
+      palette:{ sky:["#140f0c","#2b2018"], ground:"#141110", block:"#201a17", bld:["#4a3428","#573d2d","#423026","#5f4634"], win:"#ffc98a" },
+      leans:{ crack:0.7, meth:0.7, weed:0.85, heroin:0.9 } },
+    { id:"university", name:"University District", police:15, offers:[6,12], leanChance:0.12, neon:"#7ee787",
+      palette:{ sky:["#0b1410","#1d3020"], ground:"#10140f", block:"#1a2018", bld:["#37452f","#43543a","#323f2c","#4d5f42"], win:"#e6ffb0" },
+      leans:{ acid:0.7, shrooms:0.8, mdma:1.35, carts:0.9 } },
+    { id:"industrial", name:"Industrial Yard",    police:5,  offers:[8,12],  leanChance:0.18, neon:"#b8c4d4",
+      palette:{ sky:["#0e1013","#23262b"], ground:"#121315", block:"#1b1d20", bld:["#3a3d42","#46484e","#33363b","#505258"], win:"#d8e2ee" },
+      leans:{ weed:0.6, carts:0.6, meth:0.9 } },
+    { id:"airport",    name:"Airport Strip",      police:50, offers:[6,12],  leanChance:0.45, neon:"#ff5da2",
+      palette:{ sky:["#120a16","#2b1836"], ground:"#130f16", block:"#1f1824", bld:["#42304f","#4d385c","#3a2b48","#573f6b"], win:"#ffd2e8" },
+      leans:{ ketamine:0.8, lean:0.9, cocaine:1.15 } }
+  ],
+  floodHeadlines: [
+    "The market is flooded — {name} prices bottomed out!",
+    "A truckload of {name} hit the streets — prices in the dirt!",
+    "Every corner is holding {name} — nobody's paying real money for it today."
+  ],
+  expensiveHeadlines: [
+    "Cops made a big bust! {name} prices are outrageous!",
+    "Word is {name} is bone dry — buyers are paying crazy money!",
+    "Demand for {name} just went through the roof — prices are wild!"
+  ],
+  grades: [ // [minNetWorth, title]
+    [50000, "Street Legend"], [20000, "Neighborhood Kingpin"], [8000, "Hustler"],
+    [1000, "Corner Regular"], [0, "Still Breathing"], [-1000000000, "Broke Dawg"]
+  ]
+};
+const GOOD = {}; ECONOMY.goods.forEach(g => GOOD[g.id] = g);
+const HOOD = {}; ECONOMY.hoods.forEach(h => HOOD[h.id] = h);
+
+/* ================= AUDIO (WebAudio, all synthesized) ================= */
+function safeStoreGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function safeStoreSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+const AudioSys = {
+  ctx:null, muted: safeStoreGet("hc_muted") === "1",
+  ensure(){ if(!this.ctx){ try{ this.ctx = new (window.AudioContext || window.webkitAudioContext)(); }catch(e){ this.ctx = null; } }
+    if(this.ctx && this.ctx.state === "suspended") this.ctx.resume(); },
+  tone(freq, t0, dur, type, vol, slideTo){
+    if(this.muted || !this.ctx) return;
+    const c = this.ctx, o = c.createOscillator(), g = c.createGain();
+    o.type = type || "sine"; o.frequency.setValueAtTime(freq, c.currentTime + t0);
+    if(slideTo) o.frequency.exponentialRampToValueAtTime(slideTo, c.currentTime + t0 + dur);
+    g.gain.setValueAtTime(0.0001, c.currentTime + t0);
+    g.gain.exponentialRampToValueAtTime(vol || 0.15, c.currentTime + t0 + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + t0 + dur);
+    o.connect(g); g.connect(c.destination); o.start(c.currentTime + t0); o.stop(c.currentTime + t0 + dur + 0.05);
+  },
+  click(){ this.tone(660, 0, 0.05, "square", 0.05); },
+  noiseBurst(dur, freq, vol){
+    if(this.muted || !this.ctx) return;
+    try{
+      const c = this.ctx, len = Math.floor(c.sampleRate * dur), buf = c.createBuffer(1, len, c.sampleRate), d = buf.getChannelData(0);
+      for(let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+      const src = c.createBufferSource(); src.buffer = buf;
+      const f = c.createBiquadFilter(); f.type = "bandpass"; f.frequency.value = freq || 6500; f.Q.value = 0.9;
+      const g = c.createGain(); const t = c.currentTime;
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol || 0.11, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      src.connect(f); f.connect(g); g.connect(c.destination); src.start(t); src.stop(t + dur + 0.05);
+    }catch(e){}
+  },
+  sprayHiss(){ this.noiseBurst(0.38, 6800, 0.10); this.tone(5200, 0.02, 0.08, "sine", 0.015); },
+  chaChing(){ this.tone(988, 0, 0.09, "square", 0.09); this.tone(1319, 0.06, 0.13, "square", 0.09); this.tone(1568, 0.12, 0.18, "triangle", 0.09); this.tone(1976, 0.17, 0.22, "sine", 0.07); this.tone(2637, 0.20, 0.16, "sine", 0.04); this.noiseBurst(0.08, 9000, 0.03); },
+  sting(){ this.tone(147, 0, 0.32, "sawtooth", 0.13); this.tone(139, 0.11, 0.42, "sawtooth", 0.13); this.tone(73, 0, 0.45, "triangle", 0.14, 49); this.noiseBurst(0.18, 900, 0.05); },
+  bossSting(){ this.tone(55, 0, 0.85, "sawtooth", 0.22, 41); this.tone(82, 0.08, 0.7, "triangle", 0.16, 55); this.tone(110, 0.18, 0.5, "sawtooth", 0.08, 73); this.noiseBurst(0.3, 500, 0.06); },
+  siren(){ this.tone(740, 0, 0.16, "square", 0.06, 988); this.tone(988, 0.18, 0.16, "square", 0.06, 740); },
+  crash(){ this.tone(90, 0, 0.22, "sawtooth", 0.16, 40); this.noiseBurst(0.2, 700, 0.07); }
+};
+document.addEventListener("pointerdown", () => AudioSys.ensure(), { passive:true });
+
+/* ================= GAME STATE ================= */
+let S = null;
+function freshState(seed){
+  const stash = {}; ECONOMY.goods.forEach(g => stash[g.id] = 0);
+  const avgCost = {}; ECONOMY.goods.forEach(g => avgCost[g.id] = 0);
+  return {
+    screen:"title", seed:seed, day:1, cash:ECONOMY.startCash, bank:0, debt:ECONOMY.startDebt,
+    health:ECONOMY.startHealth, heat:0, hood:"downtown", capacity:ECONOMY.startCapacity,
+    stash:stash, avgCost:avgCost, prices:{}, lastPrices:{}, priceEvents:{}, stocked:[],
+    trades:0, peakNW:0, dailySoldQty:0, lastBossDay:-99, bossCount:0,
+    pendingEvent:null, eventQueue:[], pendingBoss:null, gameOver:false,
+    lastEvent:null, endNote:"", travelTarget:null, pursuit:false,
+    doctorSeen:false, lastDeal:null, scene:null
+  };
+}
+function slotsUsed(){ let n = 0; for(const id in S.stash) n += S.stash[id] * GOOD[id].slots; return n; }
+function stashUnits(){ let n = 0; for(const id in S.stash) n += S.stash[id]; return n; }
+function stashValue(){ let v = 0; for(const id in S.stash) v += S.stash[id] * (S.prices[id] || 0); return v; }
+function netWorth(){ return Math.round(S.cash + S.bank + stashValue() - S.debt); }
+function carriedHeat(){ let h = 0; for(const id in S.stash) h += S.stash[id] * GOOD[id].heat; return h; }
+function trackPeak(){ const nw = netWorth(); if(nw > S.peakNW) S.peakNW = nw; }
+
+/* ================= MARKET ================= */
+function rollMarket(){
+  S.lastPrices = Object.assign({}, S.prices);
+  const hood = HOOD[S.hood];
+  S.prices = {}; S.priceEvents = {};
+  for(const g of ECONOMY.goods){
+    const lean = (hood.leans && hood.leans[g.id]) || 1;
+    S.prices[g.id] = Math.max(1, Math.round(rf(g.min, g.max) * lean));
+  }
+  // scarcity: only a subset is stocked here today
+  const count = ri(hood.offers[0], hood.offers[1]);
+  const pool = ECONOMY.goods.filter(g => !g.rare);
+  for(let i = pool.length - 1; i > 0; i--){ const j = Math.floor(rng() * (i + 1)); const t = pool[i]; pool[i] = pool[j]; pool[j] = t; }
+  S.stocked = pool.slice(0, count).map(g => g.id);
+  if(rng() < hood.leanChance) S.stocked.push("lean");
+  // price events among stocked, flagged goods
+  const headlines = [];
+  const flagged = S.stocked.filter(id => GOOD[id].event);
+  for(const id of flagged){
+    const g = GOOD[id];
+    const roll = rng();
+    if(g.event === "flood" && roll < 0.16){ applyPriceEvent(id, "flood", headlines); }
+    else if(g.event === "expensive" && roll < 0.16){ applyPriceEvent(id, "expensive", headlines); }
+    else if(g.event === "both" && roll < 0.22){ applyPriceEvent(id, rng() < 0.5 ? "flood" : "expensive", headlines); }
+  }
+  if(headlines.length === 0 && flagged.length && rng() < 0.65){ // strong chance of at least one event
+    const id = pick(flagged); const g = GOOD[id];
+    applyPriceEvent(id, g.event === "both" ? (rng() < 0.5 ? "flood" : "expensive") : g.event, headlines);
+  }
+  if(headlines.length){
+    queueEvent({ kind:"price", kicker:"Word on the street", title:"Prices are moving",
+      text: headlines.join("\n"), choices:[{ label:"OK" }] });
+  }
+}
+function applyPriceEvent(id, kind, headlines){
+  const g = GOOD[id];
+  if(kind === "flood"){ S.prices[id] = Math.max(1, Math.round(S.prices[id] / 4)); S.priceEvents[id] = "flood";
+    headlines.push(pick(ECONOMY.floodHeadlines).replace("{name}", g.name)); }
+  else { S.prices[id] = S.prices[id] * 4; S.priceEvents[id] = "expensive";
+    headlines.push(pick(ECONOMY.expensiveHeadlines).replace("{name}", g.name)); }
+}
+function queueEvent(ev){ S.eventQueue.push(ev); if(!S.pendingEvent) S.pendingEvent = S.eventQueue[0]; }
+
+/* ================= DAY / TRAVEL FLOW ================= */
+function advanceDay(){
+  // interest first — the shark never sleeps
+  if(S.debt > 0) S.debt = Math.round(S.debt * (1 + ECONOMY.interestRate));
+  if(S.bank > 0) S.bank = Math.round(S.bank * (1 + ECONOMY.bankInterestRate)); // banked cash earns its keep
+  S.day += 1;
+  if(S.dailySoldQty >= 20){ setHeat(S.heat + 1); } // a loud sales day draws eyes
+  S.dailySoldQty = 0;
+  if(S.day > ECONOMY.totalDays || S.health <= 0){ endGame(); return; }
+  rollMarket();
+  dayStartChecks();
+  trackPeak();
+}
+/* Police pressure tier — flavor only. Picked from the same pressure terms
+   (neighborhood police presence, carried-goods heat, wanted stars) that
+   drive the bust odds in dayStartChecks below; the odds are unchanged. */
+function copTier(){
+  if(S.heat >= 4 || S.stash.fentanyl >= 5 || S.stash.cocaine >= 5) return 2; // Kane's task force
+  const pressure = HOOD[S.hood].police * 0.0016 + Math.min(carriedHeat(), 60) * 0.0035 + S.heat * 0.035;
+  return pressure >= 0.13 ? 1 : 0; // Voss works the busy beats; Reyes walks the quiet ones
+}
+function copName(){ return ["Patrol Officer Reyes", "Detective Voss", "Task Force Commander Kane"][copTier()]; }
+function dayStartChecks(){
+  // police bust roll — odds scale with police presence, carried heat, star heat
+  const hood = HOOD[S.hood];
+  let chance = hood.police * 0.0016 + Math.min(carriedHeat(), 60) * 0.0035 + S.heat * 0.035;
+  if(S.stash.fentanyl > 0) chance += 0.05;                 // carrying fentanyl is a daily gamble
+  if(stashUnits() === 0) chance *= 0.25;
+  if(rng() < Math.min(chance, 0.65)){ doBust(); return; }
+  rollRandomEvent();
+  maybeBoss();
+}
+function doBust(){
+  setHeat(S.heat + 1);
+  if(S.stash.fentanyl > 0){
+    S.stash = freshStash(); S.avgCost = freshStash(); moveCash(-S.cash, "Busted — lost it all");
+    queueEvent({ kind:"info", kicker:"Busted", title:"Catastrophic bust!",
+      text: copName() + " was waiting with the task force. Because you were holding fentanyl, they took EVERYTHING — your whole stash and every dollar in your pocket. You walk away with your health and your debt. That's all.",
+      choices:[{ label:"TAKE THE HIT" }] });
+  } else if(stashUnits() > 0){
+    for(const id in S.stash) S.stash[id] = Math.floor(S.stash[id] / 2);
+    const fine = Math.min(S.cash, Math.round(100 + S.cash * 0.10));
+    if(fine > 0) moveCash(-fine, "Bust fine");
+    queueEvent({ kind:"info", kicker:"Busted", title:"The law caught up with you",
+      text: copName() + " rolled you up in " + HOOD[S.hood].name + ". They seized half your stash and fined you " + money(fine) + ". Your heat is up a star.",
+      choices:[{ label:"TAKE THE HIT" }] });
+  } else {
+    const fine = Math.min(S.cash, 150); if(fine > 0) moveCash(-fine, "Bust fine");
+    queueEvent({ kind:"info", kicker:"Busted", title:"Shaken down",
+      text: copName() + " tossed you against a wall and found nothing worth taking — just a " + money(fine) + " 'fine' out of your pocket. Your heat is up a star.",
+      choices:[{ label:"TAKE THE HIT" }] });
+  }
+  AudioSys.sting();
+}
+function freshStash(){ const s = {}; ECONOMY.goods.forEach(g => s[g.id] = 0); return s; }
+function rollRandomEvent(){
+  if(rng() > 0.52) return; // quiet day
+  const options = [];
+  if(S.cash >= 150) options.push("mugging");
+  options.push("find");
+  if(S.stash.weed + S.stash.carts + S.stash.shrooms > 0) options.push("dogs");
+  if(S.cash >= ECONOMY.trenchcoatCost[0]) options.push("trenchcoat");
+  if(S.health <= 80) options.push("doctor");
+  if(S.day >= 18 && S.debt > 0) options.push("shark");
+  const kind = pick(options);
+  if(kind === "mugging"){
+    const lost = Math.min(S.cash, Math.round(S.cash * rf(0.05, 0.20)));
+    if(lost > 0) moveCash(-lost, "Mugged");
+    queueEvent({ kind:"info", kicker:"Jumped", title:"You got mugged!",
+      text:"Two guys came out of an alley fast. They got " + money(lost) + " off you before you could move. Money already paid to the shark is gone from your pocket — and safe. Cash in hand is not.",
+      choices:[{ label:"SHAKE IT OFF" }] });
+    AudioSys.sting();
+  } else if(kind === "find"){
+    const g = pick([GOOD.weed, GOOD.carts]); const n = ri(3, 7);
+    const fit = Math.min(n, Math.floor((S.capacity - slotsUsed()) / g.slots));
+    if(fit > 0){ const _fn = S.stash[g.id]; S.avgCost[g.id] = (_fn + fit) > 0 ? ((S.avgCost[g.id] || 0) * _fn) / (_fn + fit) : 0; S.stash[g.id] += fit; // found units cost $0 — they dilute the average
+      queueEvent({ kind:"info", kicker:"Lucky break", title:"Street find!",
+        text:"A dropped backpack, no owner in sight. Inside: " + fit + " × " + g.name + " (" + g.unit + "). It's in your coat now.",
+        choices:[{ label:"NICE" }] });
+    }
+  } else if(kind === "dogs"){
+    const carried = ["weed","carts","shrooms"].filter(id => S.stash[id] > 0);
+    const id = pick(carried); const lost = Math.min(S.stash[id], ri(3, 7)); S.stash[id] -= lost;
+    queueEvent({ kind:"info", kicker:"Too close", title:"Police dogs!",
+      text: copName() + " brought a K-9 unit through the block and the dog hit on your coat. You ditched " + lost + " × " + GOOD[id].name + " down a storm drain before they closed in. Gone, but so are they.",
+      choices:[{ label:"CLOSE ONE" }] });
+    AudioSys.sting();
+  } else if(kind === "trenchcoat"){
+    const cost = ri(ECONOMY.trenchcoatCost[0], ECONOMY.trenchcoatCost[1]);
+    queueEvent({ kind:"trenchcoat", kicker:"An offer", title:"A guy with a trenchcoat full of pockets",
+      text:"\"Psst. Tailor-made, friend. Fifty extra slots sewn right in.\" He wants " + money(cost) + " for the bigger coat. Yours holds " + S.capacity + " slots now.",
+      choices:[{ label:"BUY THE COAT — " + money(cost) }, { label:"NO THANKS" }], data:{ cost:cost } });
+  } else if(kind === "doctor"){
+    const cost = Math.max(50, (100 - S.health) * 3);
+    queueEvent({ kind:"doctor", kicker:"An offer", title:"A doctor who doesn't ask questions",
+      text:"A quiet clinic, cash only, no names. Full patch-up back to 100 health for " + money(cost) + ". You're at " + S.health + ".",
+      choices:[{ label:"GET PATCHED UP — " + money(cost) }, { label:"WALK IT OFF" }], data:{ cost:cost } });
+  } else if(kind === "shark"){
+    const chunk = Math.min(S.cash, Math.ceil(S.debt * 0.30));
+    queueEvent({ kind:"shark", kicker:"A phone call", title:"The shark is circling",
+      text:"\"Day " + S.day + ", friend. You still owe " + money(S.debt) + ". Pay " + money(chunk) + " right now as a show of faith — or my boys explain interest rates to you in person.\"",
+      choices:[{ label:"PAY " + money(chunk) }, { label:"TELL HIM TO WAIT" }], data:{ chunk:chunk } });
+    AudioSys.sting();
+  }
+}
+function setHeat(n){ S.heat = clamp(Math.round(n), 0, 5); }
+
+/* ================= BOSS (THE J-DAWG) ================= */
+function bossTriggerApplies(){
+  if(S.gameOver || S.pendingBoss || S.pendingEvent) return false;
+  if(S.day - S.lastBossDay < 4) return false; // at least 4 days between encounters
+  return S.heat >= 4 || S.day >= 24 || (S.debt > 2500 && S.day >= 15);
+}
+function maybeBoss(){
+  if(!bossTriggerApplies()) return;
+  if(rng() > 0.55) return;
+  S.lastBossDay = S.day; S.bossCount += 1;
+  S.pendingBoss = { warning: S.debt <= 0, day: S.day };
+}
+function bossChoice(i){
+  if(!S.pendingBoss) return false;
+  const b = S.pendingBoss;
+  if(b.warning){ S.pendingBoss = null; refresh(); return true; } // paid-up: warning only
+  if(i === 0){ // PAY UP
+    const pay = Math.min(S.cash, Math.round(S.debt * 0.40));
+    if(pay > 0) moveCash(-pay, "Paid the Boss Man"); S.debt -= pay; setHeat(S.heat - 1);
+    S.pendingBoss = null; S.lastEvent = { kind:"boss", text:"You paid the Boss Man " + money(pay) + ". He nods, once, and the J-Dawg rolls away." };
+    AudioSys.chaChing(); trackPeak(); refresh(); return true;
+  }
+  if(i === 1){ // RUN — foot chase through the alleys, resolved on the spot
+    S.pendingBoss = null;
+    resolveFootChase(rng() < chaseEscapeChance());
+    return true;
+  }
+  if(i === 2){ // FACE HIM
+    if(stashUnits() > 0){
+      for(const id in S.stash) S.stash[id] = Math.floor(S.stash[id] / 2);
+      S.lastEvent = { kind:"boss", text:"The Boss Man's boys emptied half your coat into the J-Dawg's trunk. \"Pleasure doing business.\"" };
+    } else {
+      S.health -= 20; S.debt += 750;
+      S.lastEvent = { kind:"boss", text:"Nothing in your coat to take. The Boss Man sighs, his boys rough you up (−20 health), and he adds $750 to your tab. \"Late fee.\"" };
+    }
+    S.pendingBoss = null; AudioSys.sting();
+    if(S.health <= 0){ endGame(); } refresh(); return true;
+  }
+  return false;
+}
+/* Foot chase: you bolt on foot and the Boss Man's boys come after you
+   through the alleys. Odds tilt against you as your heat and the day
+   climb — and getting caught costs like a bust, never a free escape. */
+function chaseEscapeChance(){
+  return clamp(0.58 - S.heat * 0.07 - Math.max(0, S.day - 15) * 0.008, 0.18, 0.62);
+}
+function resolveFootChase(escaped){
+  S.pursuit = false;
+  if(escaped){
+    setHeat(S.heat + 1);
+    S.lastEvent = { kind:"boss", text:"You lost them in the alleys. The Boss Man will remember that — your heat is up a star." };
+    S.scene = { type:"chase", kicker:"Foot chase", title:"You gave them the slip!",
+      text:"Fences, fire escapes, a dumpster lid for a bridge — you were gone before the J-Dawg even stopped rolling. But word travels: your heat is up a star." };
+  } else {
+    if(stashUnits() > 0) for(const id in S.stash) S.stash[id] = Math.floor(S.stash[id] / 2);
+    S.health -= 15; S.debt += 500; setHeat(S.heat + 1);
+    S.lastEvent = { kind:"boss", text:"They ran you down in the alley. Half your stash gone, a beating (−15 health), a $500 late fee on your debt, and your heat is up a star." };
+    S.scene = { type:"caught", kicker:"Foot chase", title:"Ran down in the alley!",
+      text:"Three alleys deep and your legs gave out. The Boss Man's boys took half your stash, worked you over (−15 health), and added a $500 late fee to your debt. Running is never free." };
+    AudioSys.sting();
+  }
+  S.screen = "trade";
+  if(S.health <= 0){ S.scene = null; endGame(); }
+  refresh();
+}
+function resolvePursuit(escaped){ resolveFootChase(escaped); } // legacy alias — no driving remains
+
+/* ================= TRADE / FINANCE ================= */
+function buy(id, qty){
+  const g = GOOD[id]; if(!g || S.gameOver) return false;
+  qty = Math.floor(qty); if(qty <= 0) return false;
+  if(S.stocked.indexOf(id) === -1) return false;                    // not sold here today
+  const cost = S.prices[id] * qty;
+  if(cost > S.cash) return false;
+  if(slotsUsed() + qty * g.slots > S.capacity) return false;
+  moveCash(-cost, "Bought " + qty + " × " + g.name);
+  const _n = S.stash[id]; // average cost basis of the position (bookkeeping only — never affects prices or cash)
+  S.avgCost[id] = (_n + qty) > 0 ? ((S.avgCost[id] || 0) * _n + S.prices[id] * qty) / (_n + qty) : S.prices[id];
+  S.stash[id] += qty; S.trades += 1;
+  S.lastDeal = { type:"buy", good:id, qty:qty, price:S.prices[id], total:cost };
+  AudioSys.chaChing(); trackPeak(); refresh(); return true;
+}
+function sell(id, qty){
+  const g = GOOD[id]; if(!g || S.gameOver) return false;
+  qty = Math.floor(qty); if(qty <= 0) return false;
+  if(qty > S.stash[id]) return false;
+  S.stash[id] -= qty; if(S.stash[id] <= 0) S.avgCost[id] = 0; // position closed — no average until the next buy
+  moveCash(S.prices[id] * qty, "Sold " + qty + " × " + g.name); S.trades += 1;
+  S.lastDeal = { type:"sell", good:id, qty:qty, price:S.prices[id], total:S.prices[id] * qty };
+  S.dailySoldQty += qty;
+  AudioSys.chaChing(); trackPeak(); refresh(); return true;
+}
+function payDebt(amount){
+  if(S.gameOver) return 0;
+  const pay = Math.max(0, Math.min(Math.floor(amount), S.cash, S.debt));
+  if(pay > 0) moveCash(-pay, "Paid the shark"); S.debt -= pay;
+  if(pay > 0) AudioSys.chaChing();
+  trackPeak(); refresh(); return pay;
+}
+function deposit(amount){
+  if(S.gameOver) return 0;
+  const dep = Math.max(0, Math.min(Math.floor(amount), S.cash));
+  if(dep > 0) moveCash(-dep, "Bank deposit"); S.bank += dep;
+  if(dep > 0) AudioSys.chaChing();
+  trackPeak(); refresh(); return dep;
+}
+function withdraw(amount){
+  if(S.gameOver) return 0;
+  const wd = Math.max(0, Math.min(Math.floor(amount), S.bank));
+  S.bank -= wd; if(wd > 0) moveCash(wd, "Bank withdrawal");
+  if(wd > 0) AudioSys.chaChing();
+  trackPeak(); refresh(); return wd;
+}
+function waitDay(){
+  if(S.gameOver || S.screen !== "trade") return false;
+  setHeat(S.heat - 1); // a quiet day cools things down
+  S.screen = "trade";
+  advanceDay();
+  refresh(); return true;
+}
+function travelTo(hoodId){
+  // Instant travel — tap a spot on the map board, the day passes, you arrive.
+  if(S.gameOver || !HOOD[hoodId] || hoodId === S.hood) return false;
+  if(S.screen !== "trade") return false;
+  S.pursuit = false; S.travelTarget = null;
+  S.hood = hoodId;
+  S.screen = "trade";
+  S.lastEvent = null;
+  advanceDay();
+  refresh();
+  return true;
+}
+function completeTravel(){
+  // Travel is instant in this build; kept so the test API surface is unchanged.
+  if(S.pursuit){ resolveFootChase(true); return true; }
+  return false;
+}
+function chooseEvent(index){
+  const ev = S.pendingEvent; if(!ev) return false;
+  if(ev.kind === "trenchcoat"){
+    if(index === 0 && S.cash >= ev.data.cost){ moveCash(-ev.data.cost, "Bigger coat"); S.capacity += ECONOMY.trenchcoatGain; AudioSys.chaChing(); }
+  } else if(ev.kind === "doctor"){
+    if(index === 0 && S.cash >= ev.data.cost){ moveCash(-ev.data.cost, "Doctor — patched up"); S.health = 100; AudioSys.chaChing(); }
+  } else if(ev.kind === "shark"){
+    if(index === 0){ const pay = Math.min(ev.data.chunk, S.cash, S.debt); if(pay > 0) moveCash(-pay, "Paid the shark"); S.debt -= pay; AudioSys.chaChing(); }
+    else { S.health -= 12; AudioSys.sting(); if(S.health <= 0){ S.pendingEvent = null; S.eventQueue = []; endGame(); refresh(); return true; } }
+  }
+  S.lastEvent = { kind: ev.kind, title: ev.title };
+  S.eventQueue.shift();
+  S.pendingEvent = S.eventQueue.length ? S.eventQueue[0] : null;
+  if(!S.pendingEvent) maybeBoss();
+  trackPeak(); refresh(); return true;
+}
+function endGame(){
+  S.gameOver = true; S.screen = "over"; S.pendingEvent = null; S.pendingBoss = null; S.eventQueue = [];
+  const nw = netWorth();
+  if(S.health <= 0) S.endNote = "You woke up in a hospital bed. The hustle is over — the debt collectors get the coat, the stash, and the story.";
+  else if(S.debt > 0 && S.day > 28) S.endNote = "Day 30 is done, but you still owe " + money(S.debt) + ". Somewhere out there, the J-Dawg is still looking for you.";
+  else if(S.debt <= 0) S.endNote = "Debt paid in full, thirty days survived, and the Boss Man has no reason to come looking. Clean exit.";
+  else S.endNote = "Thirty days on the street. What's left is what's yours.";
+  try{
+    const prev = parseInt(localStorage.getItem("hc_best") || "-999999999", 10);
+    if(nw > prev) localStorage.setItem("hc_best", String(nw));
+  }catch(e){}
+  refresh();
+}
+function gradeFor(nw){ for(const row of ECONOMY.grades){ if(nw >= row[0]) return row[1]; } return "Broke Dawg"; }
+function newGame(seed){
+  if(seed === undefined || seed === null) seed = Math.floor(Math.random() * 1000000000);
+  rng = mulberry32(seed >>> 0);
+  S = freshState(seed >>> 0);
+  _ledger = []; renderMoneyFeed(); // the money feed starts clean on a new run
+  S.screen = "trade";
+  rollMarket();
+  S.pendingEvent = null; S.eventQueue = []; // day-1 market headlines stay silent; play starts clean
+  S.priceEvents = S.priceEvents; // (kept: tags still show on the market list)
+  trackPeak();
+  refresh();
+  return true;
+}
+
+/* ================= UI ================= */
+const $ = id => document.getElementById(id);
+let selGood = null, selQty = 1, bossShownFor = null;
+let _tpBlock = ""; // last can't-buy reason written by renderTradePanel (cleared when stale)
+let _calcMode = "auto"; // hustle calculator: "auto" (selected good, live numbers) or "manual" (any deal)
+
+/* ================= LIVE MONEY FLOW =================
+   Every pocket-cash change in the game routes through moveCash(): it applies
+   the delta, writes one ledger entry, floats a +$X/−$X chip off the HUD cash
+   value, and refreshes the always-visible money feed. (The currency formatter
+   already owns the name money(), so the helper is moveCash.) */
+let _ledger = [];        // newest first: { delta, label, bal }
+let _ledgerMute = false; // set during Sell-everything so it logs ONE summed entry
+function logMoneyEntry(delta, label){
+  _ledger.unshift({ delta: delta, label: label || "", bal: S.cash });
+  if(_ledger.length > 12) _ledger.length = 12;
+  renderMoneyFeed();
+  spawnMoneyFloat(delta);
+}
+function moveCash(delta, label){
+  if(!delta) return 0;
+  S.cash += delta;
+  if(!_ledgerMute) logMoneyEntry(delta, label);
+  return delta;
+}
+function renderMoneyFeed(){
+  const el = $("moneyFeed"); if(!el) return;
+  if(!_ledger.length){ el.classList.add("hidden"); el.innerHTML = ""; return; }
+  el.classList.remove("hidden");
+  el.innerHTML = _ledger.slice(0, 3).map((e, i) =>
+    (i ? '<span class="mf-sep">·</span>' : "")
+    + '<span class="' + (e.delta >= 0 ? "mf-in" : "mf-out") + '">' + e.label + " " + (e.delta >= 0 ? "+" : "−") + money(Math.abs(e.delta)) + '</span> <span class="mf-bal">Bal ' + money(e.bal) + "</span>"
+  ).join("");
+}
+function spawnMoneyFloat(delta){
+  const wrap = $("hudCashWrap"); if(!wrap) return;
+  const chip = document.createElement("span");
+  chip.className = "money-float " + (delta >= 0 ? "in" : "out");
+  chip.textContent = (delta >= 0 ? "+" : "−") + money(Math.abs(delta));
+  const live = wrap.querySelectorAll(".money-float").length; // rapid changes stack upward, no overlap
+  chip.style.marginTop = (live * -19) + "px";
+  wrap.appendChild(chip);
+  setTimeout(() => { chip.remove(); }, 1650);
+}
+
+let _prevScreen = null, _prevHeat = null, _lastDealKey = null, _lastSceneKey = null, _lastEventKey = null;
+function reducedMotion(){ try{ return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){ return false; } }
+function setAnimatedMoney(el, val){
+  if(!el) return;
+  const prev = el._v;
+  el._v = val;
+  if(prev === undefined || prev === val || reducedMotion() || typeof requestAnimationFrame !== "function"){ el.textContent = money(val); return; }
+  if(el._raf) cancelAnimationFrame(el._raf);
+  el.classList.remove("num-pop"); void el.offsetWidth; el.classList.add("num-pop");
+  const start = performance.now(), dur = 380, from = prev, diff = val - prev;
+  const step = function(now){
+    const k = Math.min(1, (now - start) / dur), ease = 1 - Math.pow(1 - k, 3);
+    el.textContent = money(Math.round(from + diff * ease));
+    if(k < 1) el._raf = requestAnimationFrame(step); else { el.textContent = money(val); el._raf = null; }
+  };
+  el._raf = requestAnimationFrame(step);
+}
+function showScreen(name){
+  $("screen-title").classList.toggle("hidden", name !== "title");
+  $("screen-trade").classList.toggle("hidden", name !== "trade");
+  $("screen-over").classList.toggle("hidden", name !== "over");
+  $("hud").classList.toggle("hidden", !(name === "trade"));
+  document.documentElement.style.setProperty("--neon", HOOD[S ? S.hood : "downtown"].neon);
+  if(_prevScreen !== name && !reducedMotion()){
+    const el = name === "title" ? $("screen-title") : (name === "over" ? $("screen-over") : $("screen-trade"));
+    if(el){ el.classList.remove("screen-enter"); void el.offsetWidth; el.classList.add("screen-enter"); }
+  }
+  _prevScreen = name;
+}
+function starsHTML(){ let s = ""; for(let i = 0; i < 5; i++) s += i < S.heat ? "★" : '<span class="off">★</span>'; return s; }
+function renderHUD(){
+  $("hudHood").textContent = HOOD[S.hood].name;
+  $("hudDay").textContent = "Day " + Math.min(S.day, ECONOMY.totalDays) + "/" + ECONOMY.totalDays;
+  const starsEl = $("hudStars"); starsEl.innerHTML = starsHTML();
+  if(_prevHeat !== null && _prevHeat !== S.heat && !reducedMotion()){ starsEl.classList.remove("stars-pop"); void starsEl.offsetWidth; starsEl.classList.add("stars-pop"); }
+  _prevHeat = S.heat;
+  setAnimatedMoney($("hudCash"), S.cash);
+  setAnimatedMoney($("bankBalance"), S.bank);
+  setAnimatedMoney($("hudDebt"), S.debt);
+  setAnimatedMoney($("hudNW"), netWorth());
+  $("hudSlots").textContent = slotsUsed() + "/" + S.capacity;
+  $("hudHealth").textContent = Math.max(0, S.health);
+  const f = $("hudHealthFill"); f.style.width = clamp(S.health, 0, 100) + "%";
+  f.className = S.health <= 30 ? "low" : (S.health <= 60 ? "mid" : "");
+  renderStashStrip();
+}
+function deltaHTML(id){
+  const last = S.lastPrices[id];
+  if(last === undefined) return '<span class="gdelta flat">— new</span>';
+  const now = S.prices[id];
+  if(now > last) return '<span class="gdelta up">▲ ' + money(now - last) + "</span>";
+  if(now < last) return '<span class="gdelta down">▼ ' + money(last - now) + "</span>";
+  return '<span class="gdelta flat">— flat</span>';
+}
+function renderMarket(){
+  const list = $("marketList"); let html = ""; let _ri = 0;
+  for(const g of ECONOMY.goods){ const _d = (_ri++) * 45;
+    const stocked = S.stocked.indexOf(g.id) !== -1;
+    const ev = S.priceEvents[g.id];
+    const tag = ev === "flood" ? '<span class="evtag flood">FLOODED</span>' : (ev === "expensive" ? '<span class="evtag exp">HOT</span>' : "");
+    html += '<button style="animation-delay:' + _d + 'ms" class="goodrow' + (selGood === g.id ? " sel" : "") + '" data-good="' + g.id + '">'
+      + '<span><span class="gname">' + g.name + "</span>" + tag + '<span class="gunit">per ' + g.unit + " · heat " + g.heat + "</span></span>"
+      + '<span class="gmid">' + (stocked ? '<span class="gprice">' + money(S.prices[g.id]) + "</span>" + deltaHTML(g.id) : '<span class="notsold">Not sold here today</span>') + "</span>"
+      + '<span class="gown"><b>' + S.stash[g.id] + '</b><span>OWNED</span></span></button>';
+  }
+  list.innerHTML = html;
+  list.querySelectorAll("[data-good]").forEach(b => b.addEventListener("click", () => {
+    AudioSys.ensure(); AudioSys.click();
+    // Bring the trade panel to the tap — on a phone it renders far below the list
+    selectGood(b.getAttribute("data-good"), true);
+  }));
+  const fl = $("flash");
+  if(S.lastEvent && S.lastEvent.text){ fl.textContent = S.lastEvent.text; fl.classList.remove("hidden"); }
+  else fl.classList.add("hidden");
+}
+function scrollToEl(el){
+  if(el && typeof el.scrollIntoView === "function") el.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
+}
+function selectGood(id, scroll){
+  if(!GOOD[id]) return;
+  selGood = id; selQty = 1; renderMarket(); renderTradePanel();
+  if(scroll) scrollToEl($("tradepanel"));
+}
+function renderStashStrip(){
+  const el = $("stashStrip"); if(!el || !S) return;
+  let html = '<span class="ss-label">Stash</span>', total = 0, any = false;
+  for(const g of ECONOMY.goods){
+    const n = S.stash[g.id]; if(!n) continue; any = true;
+    const v = n * S.prices[g.id]; total += v;
+    html += '<button class="ss-chip" data-stash="' + g.id + '">' + g.name + ' <b>×' + n + '</b> · <span class="ss-val">' + money(v) + "</span></button>";
+  }
+  if(!any) html += '<span class="ss-empty">Coat\'s empty — buy low, sell high.</span>';
+  else html += '<button class="ss-sellall" id="btnSellEverything">SELL EVERYTHING · ' + money(total) + "</button>";
+  el.innerHTML = html;
+  el.querySelectorAll("[data-stash]").forEach(b => b.addEventListener("click", () => { AudioSys.ensure(); AudioSys.click(); selectGood(b.getAttribute("data-stash"), true); }));
+  const se = $("btnSellEverything");
+  if(se) se.addEventListener("click", () => { AudioSys.ensure(); sellEverything(); });
+}
+function sellEverything(){
+  if(!S || S.gameOver) return 0;
+  let total = 0, units = 0;
+  _ledgerMute = true; // the individual sells stay silent — one summed entry below
+  for(const g of ECONOMY.goods){
+    const n = S.stash[g.id];
+    if(n > 0 && sell(g.id, n)){ total += S.prices[g.id] * n; units += n; }
+  }
+  _ledgerMute = false;
+  if(units > 0){
+    logMoneyEntry(total, "Sold everything (" + units + " units)");
+    flashFin("Sold everything — " + units + " units for " + money(total) + ".");
+  }
+  return total;
+}
+function maxBuyable(id){
+  const g = GOOD[id];
+  if(S.stocked.indexOf(id) === -1) return 0;
+  return Math.max(0, Math.min(Math.floor(S.cash / S.prices[id]), Math.floor((S.capacity - slotsUsed()) / g.slots)));
+}
+function renderTradePanel(){
+  const tp = $("tradepanel");
+  if(!selGood || !GOOD[selGood]){ tp.classList.add("hidden"); const b0 = $("tradeBar"); if(b0) b0.classList.add("hidden"); return; }
+  const g = GOOD[selGood]; tp.classList.remove("hidden");
+  const stocked = S.stocked.indexOf(g.id) !== -1;
+  $("tpName").textContent = g.name;
+  $("tpPrice").textContent = money(S.prices[g.id]);
+  const mb = maxBuyable(g.id);
+  const cap = Math.max(1, mb, S.stash[g.id]);
+  selQty = clamp(selQty, 1, cap);
+  $("tpQty").textContent = selQty;
+  $("tpMeta").textContent = "Per " + g.unit + " · takes " + g.slots + (g.slots > 1 ? " slots" : " slot") + " each · you own " + S.stash[g.id]
+    + (stocked ? " · you can buy up to " + mb : " · not sold here today — selling only");
+  const canBuy = stocked && mb > 0, own = S.stash[g.id];
+  $("btnBuy").disabled = !canBuy;
+  $("btnSell").disabled = own <= 0;
+  // When a trade can't go through, show the real per-unit price — never a silent "$0"
+  $("btnBuy").textContent = "BUY — " + money(canBuy ? S.prices[g.id] * Math.min(selQty, mb) : S.prices[g.id]);
+  $("btnSell").textContent = "SELL — " + money(own > 0 ? S.prices[g.id] * Math.min(selQty, own) : S.prices[g.id]);
+  // Name the blocker under the buttons, and clear it once it no longer applies
+  let block = "";
+  if(stocked && mb <= 0){
+    if(Math.floor(S.cash / S.prices[g.id]) <= 0) block = "Can't buy — " + g.name + " costs " + money(S.prices[g.id]) + " each and you've got " + money(S.cash) + ".";
+    else block = "Can't buy — your coat is full (" + slotsUsed() + "/" + S.capacity + " slots). Sell something to make room.";
+  }
+  const msg = $("tpMsg");
+  if(block) msg.textContent = block;
+  else if(_tpBlock && msg.textContent === _tpBlock) msg.textContent = "";
+  _tpBlock = block;
+  // SELL ALL mirrors the owned quantity
+  const sa = $("btnSellAll");
+  if(sa){ sa.disabled = own <= 0; sa.textContent = own > 0 ? "SELL ALL — " + money(S.prices[g.id] * own) : "SELL ALL"; }
+  // Sticky bottom trade bar mirrors the panel — BUY/SELL reachable with zero scrolling
+  const bar = $("tradeBar");
+  if(bar){
+    bar.classList.remove("hidden");
+    $("tbName").textContent = g.name;
+    $("tbPrice").textContent = money(S.prices[g.id]) + " · own " + own;
+    $("tbQty").textContent = selQty;
+    const bb = $("tbBuy"), sb = $("tbSell");
+    bb.disabled = !canBuy; bb.textContent = $("btnBuy").textContent;
+    sb.disabled = own <= 0; sb.textContent = $("btnSell").textContent;
+  }
+  renderCalc();
+}
+function rumorFor(hood){
+  if(hood.id === "airport") return "Ketamine and Lean show up here more often than anywhere.";
+  let hi = null, lo = null;
+  for(const id in (hood.leans || {})){
+    if(hood.leans[id] >= 1.3) hi = GOOD[id].name;
+    if(hood.leans[id] <= 0.7) lo = GOOD[id].name;
+  }
+  if(hi && lo) return hi + " pays top dollar · " + lo + " goes cheap.";
+  if(hi) return hi + " pays top dollar here.";
+  if(lo) return lo + " goes dirt cheap here.";
+  return hood.police >= 60 ? "Suits, money, and a lot of badges." : "Quiet streets, loose prices.";
+}
+function renderDests(){
+  const el = $("destList"); let html = ""; let _di = 0;
+  for(const h of ECONOMY.hoods){ const _dd = (_di++) * 50;
+    if(h.id === S.hood) continue;
+    const pol = h.police >= 60 ? ['POLICE: HEAVY', "pol-hi"] : (h.police >= 30 ? ['POLICE: MEDIUM', "pol-md"] : ['POLICE: LIGHT', "pol-lo"]);
+    html += '<button style="animation-delay:' + _dd + 'ms" class="destrow" data-dest="' + h.id + '"><span><span class="dname dtag" style="color:' + h.neon + '">' + h.name + '</span><span class="drumor">' + rumorFor(h) + '</span></span>'
+      + '<span class="dpol ' + pol[1] + '">' + pol[0] + '</span><span class="go">GO ▸</span></button>';
+  }
+  el.innerHTML = html;
+  el.querySelectorAll("[data-dest]").forEach(b => b.addEventListener("click", () => { AudioSys.ensure(); AudioSys.click(); travelTo(b.getAttribute("data-dest")); }));
+}
+function renderEventModal(){
+  const ev = S.pendingEvent;
+  $("modal-event").classList.toggle("hidden", !ev);
+  if(!ev){ _lastEventKey = null; return; }
+  const _ek = (ev.kicker||"") + ":" + (ev.title||"") + ":" + S.day;
+  if(_ek !== _lastEventKey){ _lastEventKey = _ek; const _es = eventSceneType(ev); if(_es && AudioSys.ctx && !AudioSys.muted) AudioSys.sprayHiss(); }
+  $("evKicker").textContent = ev.kicker || "Heads up";
+  $("evTitle").textContent = ev.title || "";
+  const evScene = eventSceneType(ev);
+  $("evScene").innerHTML = evScene ? sceneSVG(evScene) : "";
+  $("evBody").innerHTML = (ev.text || "").split("\n").map(l => "<p>" + l + "</p>").join("");
+  const box = $("evChoices"); box.innerHTML = "";
+  (ev.choices || [{ label:"OK" }]).forEach((c, i) => {
+    const b = document.createElement("button");
+    b.className = "btn" + (i === 0 ? " primary" : ""); b.textContent = c.label;
+    b.addEventListener("click", () => { AudioSys.ensure(); AudioSys.click(); chooseEvent(i); });
+    box.appendChild(b);
+  });
+}
+function renderBossModal(){
+  const b = S.pendingBoss;
+  const show = !!b && !S.pendingEvent;
+  $("modal-boss").classList.toggle("hidden", !show);
+  if(!show){ bossShownFor = null; return; }
+  if(bossShownFor !== b){ bossShownFor = b; AudioSys.bossSting(); if(AudioSys.ctx && !AudioSys.muted) AudioSys.sprayHiss(); }
+  const box = $("bossChoices"); box.innerHTML = "";
+  $("bossScene").innerHTML = sceneSVG("boss");
+  if(b.warning){
+    $("bossTitle").textContent = "The J-Dawg rolls past, slow.";
+    $("bossText").textContent = "The Boss Man looks you over through tinted glass. Your debt is paid — he has no business with you. This time it's just a reminder of who runs this city.";
+    const btn = document.createElement("button"); btn.className = "btn primary"; btn.textContent = "KEEP MOVING";
+    btn.addEventListener("click", () => { AudioSys.click(); bossChoice(0); });
+    box.appendChild(btn); return;
+  }
+  $("bossTitle").textContent = "The J-Dawg slides to a stop.";
+  const payAmt = Math.min(S.cash, Math.round(S.debt * 0.40));
+  $("bossText").textContent = "The Boss Man wants his money. You owe " + money(S.debt) + " and you're holding " + money(S.cash) + ". The J-Dawg's engine doesn't even turn off.";
+  const defs = [
+    { label:"PAY UP — " + money(payAmt) + " now", cls:"btn gold" },
+    { label:"RUN — lose him in the alleys", cls:"btn danger" },
+    { label:"FACE HIM — take what comes", cls:"btn" }
+  ];
+  defs.forEach((d, i) => {
+    const btn = document.createElement("button"); btn.className = d.cls; btn.textContent = d.label;
+    btn.addEventListener("click", () => { AudioSys.ensure(); bossChoice(i); });
+    box.appendChild(btn);
+  });
+}
+function renderOver(){
+  $("overGrade").textContent = S.health <= 0 ? "Flatlined" : gradeFor(netWorth());
+  $("overNW").textContent = "Net worth " + money(netWorth());
+  $("overNote").textContent = S.endNote || "";
+  $("ovDays").textContent = Math.min(S.day, ECONOMY.totalDays);
+  $("ovTrades").textContent = S.trades;
+  $("ovPeak").textContent = money(S.peakNW);
+  let best = netWorth();
+  try{ best = Math.max(best, parseInt(localStorage.getItem("hc_best") || "-999999999", 10)); }catch(e){}
+  $("ovBest").textContent = money(best);
+}
+function renderTitle(){
+  $("titleArt").innerHTML = '<svg viewBox="0 0 400 120" role="img" aria-label="Graffiti skyline with the J-Dawg parked under a street lamp"><defs>' + pieceGradients("title") + '</defs>'
+    + '<rect x="4" y="96" width="392" height="20" fill="rgba(0,0,0,.35)"/><rect x="8" y="30" width="52" height="66" fill="#1c222e"/><rect x="70" y="14" width="60" height="82" fill="#232b3a"/><rect x="276" y="20" width="56" height="76" fill="#1c222e"/><rect x="340" y="38" width="48" height="58" fill="#232b3a"/>'
+    + '<g fill="#ffd98a" opacity=".85"><rect x="18" y="42" width="8" height="10"/><rect x="36" y="60" width="8" height="10"/><rect x="84" y="28" width="8" height="10"/><rect x="102" y="50" width="8" height="10"/><rect x="290" y="34" width="8" height="10"/><rect x="352" y="52" width="8" height="10"/></g>'
+    + '<rect x="198" y="22" width="4" height="75" fill="#39434f"/><circle cx="200" cy="20" r="7" fill="#ffd98a"/><circle cx="200" cy="20" r="16" fill="rgba(255,217,138,.18)"/>'
+    + '<g transform="translate(200 68) scale(1.18)"><ellipse cx="0" cy="22" rx="41" ry="4.2" fill="rgba(0,0,0,.55)"/>'
+    + '<path d="M-36 15 L-31 -3 L-14 -10 L24 -10 L34 -3 L38 15 L32 20 L-30 20 Z" fill="#0d0e12" stroke="#454b55" stroke-width="1.8"/>'
+    + '<path d="M-30 -1 L-15 -7 L23 -7 L32 -1 L33 3 L-28 3 Z" fill="rgba(255,255,255,.09)"/>'
+    + '<path d="M-13 -10 L-7 -19 L21 -19 L27 -10 Z" fill="#0a1220" stroke="#454b55" stroke-width="1.6"/>'
+    + '<path d="M-9 -11.5 L-4 -17.5 L5 -17.5 L5 -11.5 Z" fill="rgba(120,200,255,.30)"/>'
+    + '<rect x="5" y="-19" width="3.4" height="9" fill="#05070a"/>'
+    + '<path d="M9 -10.5 L9 14" stroke="rgba(0,0,0,.65)" stroke-width="1.6"/><rect x="-2" y="-4" width="8" height="2.6" rx="1.3" fill="#c9d1dc"/>'
+    + '<rect x="-30" y="3" width="66" height="7.5" rx="3.5" fill="#08090b" stroke="#c9d1dc" stroke-width="2"/>'
+    + '<rect x="-35" y="5.5" width="5.5" height="4" rx="1.5" fill="#ffe9a8"/><rect x="30.5" y="5.5" width="5.5" height="4" rx="1.5" fill="#ff5147"/>'
+    + '<g transform="translate(-21 20)"><circle r="7" fill="#0a0a0c" stroke="#222" stroke-width="1.6"/><circle r="4.6" fill="#9aa5b3"/><path d="M0 -4.6 L0 4.6 M-4.6 0 L4.6 0" stroke="#5a636e" stroke-width="1.6"/><circle r="1.4" fill="#e8edf3"/></g>'
+    + '<g transform="translate(25 20)"><circle r="7" fill="#0a0a0c" stroke="#222" stroke-width="1.6"/><circle r="4.6" fill="#9aa5b3"/><path d="M0 -4.6 L0 4.6 M-4.6 0 L4.6 0" stroke="#5a636e" stroke-width="1.6"/><circle r="1.4" fill="#e8edf3"/></g></g>'
+    + '<rect y="97" width="400" height="3" fill="#39434f"/>'
+    + sprayText(88, 76, 15, "#ff2e88", "#05070a", "BUY LOW", -4) + sprayText(316, 74, 15, "#29e6ff", "#05070a", "SELL HIGH", 3)
+    + '</svg>';
+  let best = null;
+  try{ const v = localStorage.getItem("hc_best"); if(v !== null) best = parseInt(v, 10); }catch(e){}
+  $("bestScore").textContent = best !== null && best > -999999999 ? "BEST NET WORTH SO FAR: " + money(best) : "";
+  updateMuteLabels();
+}
+function updateMuteLabels(){
+  $("btnMuteTitle").textContent = AudioSys.muted ? "SOUND: OFF" : "SOUND: ON";
+}
+function refresh(){
+  if(!S) return;
+  showScreen(S.screen);
+  if(S.screen === "trade"){ renderHUD(); renderDealScene(); renderMarket(); renderTradePanel(); renderHQCar(); renderMapBoard(); renderDests(); }
+  if(S.screen === "over") renderOver();
+  if(S.screen === "title") renderTitle();
+  renderEventModal(); renderBossModal(); renderSceneModal();
+}
+
+/* ================= GRAFFITI SCENE ART (all original, drawn in code) =================
+   Spray-paint street scenes as inline SVG: brick walls, bold outlines,
+   wildstyle-flavored headers. No external assets, ever. */
+function pieceGradients(id){
+  return '<linearGradient id="pgY" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3a3"/><stop offset=".45" stop-color="#ffd21f"/><stop offset="1" stop-color="#ff9a1f"/></linearGradient>'
+    + '<linearGradient id="pgC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bffcff"/><stop offset=".5" stop-color="#29e6ff"/><stop offset="1" stop-color="#0e7fd6"/></linearGradient>'
+    + '<linearGradient id="pgP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb3d9"/><stop offset=".5" stop-color="#ff2e88"/><stop offset="1" stop-color="#b3125f"/></linearGradient>'
+    + '<linearGradient id="pgL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eaffb0"/><stop offset=".5" stop-color="#b6ff2e"/><stop offset="1" stop-color="#3fa312"/></linearGradient>'
+    + '<linearGradient id="pgW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#c9d1dc"/></linearGradient>'
+    + '<linearGradient id="pgR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb3ac"/><stop offset=".5" stop-color="#ff5147"/><stop offset="1" stop-color="#b3121f"/></linearGradient>';
+}
+function gradFor(fill){
+  const m = { "#ffd21f":"pgY", "#29e6ff":"pgC", "#39c2ff":"pgC", "#ff2e88":"pgP", "#b6ff2e":"pgL", "#e9edf3":"pgW", "#ffffff":"pgW", "#ff5147":"pgR" };
+  const k = m[(fill || "").toLowerCase()]; return k ? "url(#" + k + ")" : fill;
+}
+function sparkle(x, y, s, color){
+  return '<path class="sparkle" d="M' + x + ' ' + (y - s) + ' L' + (x + s * .28) + ' ' + (y - s * .28) + ' L' + (x + s) + ' ' + y + ' L' + (x + s * .28) + ' ' + (y + s * .28) + ' L' + x + ' ' + (y + s) + ' L' + (x - s * .28) + ' ' + (y + s * .28) + ' L' + (x - s) + ' ' + y + ' L' + (x - s * .28) + ' ' + (y - s * .28) + ' Z" fill="' + (color || "#fff") + '" stroke="#05070a" stroke-width="1.2"/>';
+}
+function fenceLayer(y){
+  let bars = ""; for(let i = 0; i < 14; i++){ bars += '<rect x="' + (6 + i * 29) + '" y="' + y + '" width="5" height="34" fill="#05070a" opacity=".88"/>'; }
+  return '<g opacity=".92"><rect x="0" y="' + y + '" width="400" height="5" fill="#05070a"/><rect x="0" y="' + (y + 16) + '" width="400" height="4" fill="#05070a"/>' + bars + '</g>';
+}
+let _pieceSeq = 0;
+function brickWall(id, c1, c2){
+  let bricks = "", speck = "";
+  for(let r = 0; r < 6; r++){
+    const y = 8 + r * 26, off = (r % 2) * 34;
+    for(let cx = -1; cx < 6; cx++){ bricks += '<rect x="' + (cx * 68 + off) + '" y="' + y + '" width="62" height="20" rx="3" fill="none" stroke="rgba(0,0,0,.38)" stroke-width="2"/>'; }
+  }
+  for(let i = 0; i < 22; i++){ const sx = (vrng() * 392 + 4).toFixed(0), sy = (vrng() * 150 + 6).toFixed(0); speck += '<circle cx="' + sx + '" cy="' + sy + '" r="1.3" fill="rgba(255,255,255,.07)"/>'; }
+  // distant skyline + haze for depth (backdrop layer)
+  const skyline = '<g fill="#05070a" opacity=".34"><rect x="4" y="18" width="38" height="62"/><rect x="48" y="8" width="30" height="72"/><rect x="322" y="12" width="34" height="68"/><rect x="362" y="24" width="34" height="56"/></g><ellipse cx="200" cy="34" rx="210" ry="42" fill="rgba(255,255,255,.055)"/>';
+  return '<defs><linearGradient id="wall' + id + '" x1="0" y1="0" x2="0" y2="1">'
+    + '<stop offset="0" stop-color="' + c1 + '"/><stop offset="1" stop-color="' + c2 + '"/></linearGradient>' + pieceGradients(id) + '</defs>'
+    + '<rect width="400" height="190" fill="url(#wall' + id + ')"/>' + skyline + bricks + speck
+    + '<rect y="158" width="400" height="32" fill="#0a0a0c"/><rect y="158" width="400" height="3" fill="rgba(255,255,255,.10)"/>';
+}
+function sprayText(x, y, size, fill, stroke, text, rot, dripMax){
+  _pieceSeq++; const gid = _pieceSeq;
+  const mainFill = gradFor(fill);
+  const sw = Math.max(2.5, size / 6.5);
+  const tr = rot ? ' transform="rotate(' + rot + ' ' + x + ' ' + y + ')"' : "";
+  // drips (deterministic, visual-only; dripMax caps their length near frame edges)
+  let drips = ""; const dl = Math.min(4, Math.max(1, Math.floor(text.length / 3)));
+  for(let i = 0; i < dl; i++){ const dx = x - (text.length * size * .28) + i * (size * .85) + 6; const dh = Math.min(7 + ((i * 7 + text.length) % 11), dripMax || 99); drips += '<rect x="' + dx.toFixed(0) + '" y="' + (y + 2) + '" width="' + Math.max(3, size / 7).toFixed(1) + '" height="' + dh + '" rx="2" fill="' + fill + '" stroke="#05070a" stroke-width="1"/>'; }
+  const shineW = Math.max(30, text.length * size * .42);
+  return '<g' + tr + '>'
+    + '<text x="' + (x + Math.max(3, size / 5)) + '" y="' + (y + Math.max(3, size / 5)) + '" font-family="Arial Black, sans-serif" font-size="' + size + '" fill="#05070a" text-anchor="middle" letter-spacing="-1">' + text + '</text>'
+    + '<text class="spray-letter" x="' + x + '" y="' + y + '" font-family="Arial Black, sans-serif" font-size="' + size + '" fill="' + mainFill + '" stroke="#05070a" stroke-width="' + (sw + 2.5) + '" paint-order="stroke" text-anchor="middle" letter-spacing="-1" style="animation-delay:' + (gid % 5 * 45) + 'ms">' + text + '</text>'
+    + '<text x="' + x + '" y="' + y + '" font-family="Arial Black, sans-serif" font-size="' + size + '" fill="none" stroke="rgba(255,255,255,.38)" stroke-width="1" text-anchor="middle" letter-spacing="-1" transform="translate(-1 -1.5)">' + text + '</text>'
+    + '<rect x="' + (x - shineW / 2) + '" y="' + (y - size * .78) + '" width="' + shineW + '" height="' + Math.max(2.5, size / 9) + '" rx="2" fill="rgba(255,255,255,.34)" transform="rotate(-4 ' + x + ' ' + y + ')"/>'
+    + drips
+    + sparkle(x - shineW / 2 - 8, y - size * .7, Math.max(5, size / 3.2), "#fff") + sparkle(x + shineW / 2 + 8, y - size * .15, Math.max(4, size / 4), fill)
+    + '</g>';
+}
+function shade(hex, f){
+  // f < 1 darkens, f > 1 lightens — two-tone shading for figures and props
+  const n = parseInt((hex || "#888888").slice(1), 16);
+  let r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+  if(f < 1){ r = Math.round(r * f); g = Math.round(g * f); b = Math.round(b * f); }
+  else { const t = Math.min(1, f - 1); r = Math.round(r + (255 - r) * t); g = Math.round(g + (255 - g) * t); b = Math.round(b + (255 - b) * t); }
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+function figure(x, y, s, coat, skin, pose, flip){
+  // Street character: shaded hoodie with seams + zipper, denim legs, shoes,
+  // capped head with a shaded jaw, hands that land where the arms end.
+  // Faces +x; pass flip=true to mirror (right-side figures face the action).
+  const dark = shade(coat, .66), darker = shade(coat, .48), light = shade(coat, 1.22);
+  const pants = "#272b34", pantsD = "#161920";
+  const shoe = (sx, sy) => '<ellipse cx="' + sx + '" cy="' + sy + '" rx="7.5" ry="3.4" fill="#0b0b0d" stroke="#000" stroke-width="1"/>';
+  const hand = (hx, hy) => '<circle cx="' + hx + '" cy="' + hy + '" r="3.6" fill="' + skin + '" stroke="#05070a" stroke-width="1.3"/>';
+  const sleeve = (d, c) => '<path d="' + d + '" stroke="' + c + '" stroke-width="7.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>';
+  let legs = "", arms = "";
+  if(pose === "run"){
+    legs = '<path d="M2 32 L-11 44 L-23 56" stroke="' + pantsD + '" stroke-width="9.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+      + '<path d="M-2 32 L9 46 L21 60" stroke="' + pants + '" stroke-width="9.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' + shoe(-25, 58) + shoe(23, 62);
+    arms = sleeve("M-9 -1 L-19 5 L-12 -4", dark) + hand(-11, -6)
+      + sleeve("M9 -1 L20 7 L13 17", coat) + hand(12, 19);
+  } else if(pose === "reach"){
+    legs = '<path d="M-4 33 L-9 62" stroke="' + pantsD + '" stroke-width="10" fill="none" stroke-linecap="round"/>'
+      + '<path d="M4 33 L11 62" stroke="' + pants + '" stroke-width="10" fill="none" stroke-linecap="round"/>' + shoe(-10, 65) + shoe(12, 65);
+    arms = sleeve("M-9 -1 L-14 12 L-13 21", dark) + hand(-12, 24)
+      + sleeve("M9 -1 L19 6 L27 13", coat) + hand(29, 15);
+  } else if(pose === "handsup"){
+    legs = '<path d="M-4 33 L-8 62" stroke="' + pantsD + '" stroke-width="10" fill="none" stroke-linecap="round"/>'
+      + '<path d="M4 33 L9 62" stroke="' + pants + '" stroke-width="10" fill="none" stroke-linecap="round"/>' + shoe(-9, 65) + shoe(10, 65);
+    arms = sleeve("M-9 -2 L-16 -12 L-19 -20", dark) + hand(-20, -23)
+      + sleeve("M9 -2 L16 -12 L19 -20", coat) + hand(20, -23);
+  } else { // stand
+    legs = '<path d="M-4 33 L-8 62" stroke="' + pantsD + '" stroke-width="10" fill="none" stroke-linecap="round"/>'
+      + '<path d="M4 33 L9 62" stroke="' + pants + '" stroke-width="10" fill="none" stroke-linecap="round"/>' + shoe(-9, 65) + shoe(10, 65);
+    arms = sleeve("M-9 0 L-15 13 L-14 22", dark) + hand(-13, 25)
+      + sleeve("M9 0 L15 13 L14 22", coat) + hand(13, 25);
+  }
+  const torso = '<path d="M-11 -5 L11 -5 L9 35 L-9 35 Z" fill="' + coat + '" stroke="#05070a" stroke-width="2.4"/>'
+    + '<path d="M3 -5 L11 -5 L9 35 L2 35 Z" fill="' + dark + '" opacity=".7"/>'                       // shadow side
+    + '<path d="M-8 -3 L-6.5 30" stroke="' + light + '" stroke-width="2.2" opacity=".45"/>'          // chest sheen
+    + '<line x1="0" y1="-3" x2="0" y2="33" stroke="' + darker + '" stroke-width="1.6"/>'              // zipper
+    + '<path d="M-7.5 25 L-1 25 M1 25 L7.5 25" stroke="' + darker + '" stroke-width="1.6"/>'        // pocket seams
+    + '<path d="M-11 6 L11 6" stroke="' + darker + '" stroke-width="1.3" opacity=".55"/>';           // chest seam
+  const head = '<path d="M-12.5 -8 A13 9.5 0 0 1 12.5 -8 L12.5 -4.5 L-12.5 -4.5 Z" fill="' + dark + '"/>' // hood behind the head
+    + '<circle cx="0" cy="-16" r="10" fill="' + skin + '" stroke="#05070a" stroke-width="2.2"/>'
+    + '<path d="M-6.8 -9.6 A8.8 8.8 0 0 0 6.8 -9.6 A10.5 10.5 0 0 1 -6.8 -9.6 Z" fill="' + shade(skin, .7) + '" opacity=".5"/>' // jaw shade
+    + '<path d="M-11 -17.5 A11 11 0 0 1 11 -17.5 L11 -15 L-11 -15 Z" fill="#141519" stroke="#05070a" stroke-width="1.4"/>'     // cap dome
+    + '<path d="M-8.5 -23 A10 10 0 0 1 4 -26.8" stroke="rgba(255,255,255,.25)" stroke-width="1.8" fill="none"/>'               // cap sheen
+    + '<rect x="1" y="-20" width="21" height="4.2" rx="2.1" fill="#0e0f12"/>';                                                   // brim
+  return '<g transform="translate(' + x + ' ' + y + ') scale(' + (flip ? -s : s) + ' ' + s + ')">'
+    + '<ellipse cx="0" cy="67" rx="22" ry="4.5" fill="rgba(0,0,0,.5)"/>'
+    + legs + arms + torso + head + '</g>';
+}
+function bossCarSVG(w){
+  // The J-Dawg, front 3/4: glossy black, hood scoop, chrome grille surround,
+  // big chrome 5-spokes, tinted glass, sunroof. No badges, no lettering.
+  return '<svg viewBox="0 0 400 190" role="img" aria-label="The J-Dawg, a blacked-out boss sedan">'
+    + brickWall("car", "#241a20", "#171017")
+    + sprayText(200, 34, 25, "#ffd21f", "#05070a", "THE J-DAWG", -2)
+    + '<ellipse cx="200" cy="164" rx="128" ry="10" fill="rgba(0,0,0,.55)"/>'
+    + '<path d="M78 138 L88 96 L118 84 L282 84 L312 96 L322 138 L314 148 L86 148 Z" fill="#111318" stroke="#05070a" stroke-width="3"/>'
+    + '<path d="M96 132 L104 102 L126 92 L274 92 L296 102 L304 132 L120 132 Z" fill="rgba(255,255,255,.07)"/>'
+    + '<path d="M120 84 L140 58 L260 58 L280 84 Z" fill="#16181d" stroke="#05070a" stroke-width="3"/>'
+    + '<path d="M146 62 L254 62 L272 82 L128 82 Z" fill="#0a1220"/><path d="M150 64 L200 64 L190 80 L138 80 Z" fill="rgba(120,200,255,.20)"/>'                       // tinted glass + cel shine
+    + '<rect x="198" y="61" width="5" height="22" fill="#05070a"/>'                                                                                                     // B-pillar
+    + '<path d="M92 110 L308 110" stroke="rgba(255,255,255,.10)" stroke-width="3"/>'                                                                                    // side character line
+    + '<path d="M202 86 L202 134" stroke="rgba(0,0,0,.65)" stroke-width="2"/><rect x="184" y="98" width="15" height="4.5" rx="2.2" fill="#454a54"/>'                    // door seam + handle
+    + '<rect x="172" y="52" width="56" height="9" rx="3" fill="#23252b" stroke="#454a54" stroke-width="1.5"/>' // sunroof
+    + '<rect x="168" y="88" width="64" height="16" rx="6" fill="#141519" stroke="#4a4f58" stroke-width="2"/>'   // hood scoop mass
+    + '<rect x="182" y="92" width="36" height="8" rx="3" fill="#05060a"/>'
+    + '<rect x="128" y="112" width="144" height="26" rx="7" fill="#08090b" stroke="#c9d1dc" stroke-width="4"/>' // chrome grille surround
+    + '<rect x="140" y="118" width="120" height="4" fill="#2c2f36"/><rect x="140" y="126" width="120" height="4" fill="#2c2f36"/>'
+    + '<path d="M92 106 L122 106 L120 118 L94 118 Z" fill="#ffe9a8"/><path d="M278 106 L308 106 L306 118 L280 118 Z" fill="#ffe9a8"/>'
+    + wheelSVG(112, 148) + wheelSVG(288, 148)
+    + '<rect x="70" y="146" width="260" height="6" rx="3" fill="#c9d1dc" opacity=".85"/>'
+    + '</svg>';
+}
+function wheelSVG(x, y){
+  let spokes = "";
+  for(let i = 0; i < 5; i++){
+    const a = i * Math.PI * 2 / 5 - Math.PI / 2;
+    spokes += '<line x1="' + x + '" y1="' + y + '" x2="' + (x + Math.cos(a) * 13) + '" y2="' + (y + Math.sin(a) * 13) + '" stroke="#dfe6ee" stroke-width="4.5" stroke-linecap="round"/>';
+  }
+  return '<circle cx="' + x + '" cy="' + y + '" r="17" fill="#0a0a0c" stroke="#222" stroke-width="2"/>'
+    + '<circle cx="' + x + '" cy="' + y + '" r="14" fill="#9aa5b3"/>' + spokes
+    + '<circle cx="' + x + '" cy="' + y + '" r="4" fill="#e8edf3"/>';
+}
+function dealSceneSVG(deal){
+  const g = GOOD[deal.good], isBuy = deal.type === "buy";
+  const head = isBuy ? "COPPED!" : "MOVED!";
+  const headColor = isBuy ? "#b6ff2e" : "#ffd21f";
+  return '<svg viewBox="0 0 400 190" role="img" aria-label="Street corner hand-off scene">'
+    + brickWall("deal", "#2b1c14", "#1a110b")
+    + sprayText(86, 40, 21, "#ff2e88", "#05070a", "FRESH", -6)
+    + sprayText(322, 44, 19, "#29e6ff", "#05070a", "24/7", 5)
+    // wall dressing: a torn show poster (left) and a lit tenement window (right)
+    + '<g transform="rotate(-5 44 118)"><rect x="24" y="92" width="40" height="52" fill="#cfc4ae" stroke="#05070a" stroke-width="2"/><rect x="29" y="97" width="30" height="16" fill="#ff2e88"/><rect x="29" y="118" width="30" height="3.5" fill="#3a3f47"/><rect x="29" y="125" width="22" height="3.5" fill="#3a3f47"/><rect x="29" y="132" width="26" height="3.5" fill="#3a3f47"/><path d="M24 144 L40 132 L44 144 Z" fill="#1a110b"/></g>'
+    + '<g><rect x="338" y="84" width="32" height="42" fill="#3a2c18" stroke="#0d0d10" stroke-width="3"/><rect x="341" y="87" width="11" height="16" fill="#ffd98a" opacity=".92"/><rect x="355" y="87" width="11" height="16" fill="#8a6a34" opacity=".85"/><rect x="341" y="106" width="11" height="16" fill="#5e4a26"/><rect x="355" y="106" width="11" height="16" fill="#ffd98a" opacity=".6"/></g>'
+    // street lamp, moved off the exchange point; its light pools on the ground
+    + '<rect x="298" y="18" width="4" height="140" fill="#0d0d10"/><rect x="286" y="13" width="28" height="10" rx="3" fill="#ffd98a"/>'
+    + '<circle cx="300" cy="28" r="18" fill="rgba(255,217,138,.20)"/>'
+    + '<ellipse cx="300" cy="160" rx="58" ry="8" fill="rgba(255,217,138,.12)"/>'
+    + '<ellipse cx="185" cy="161" rx="66" ry="8" fill="rgba(255,255,255,.06)"/>'
+    // the package, sitting exactly where the two hands meet, and the cash crossing with it
+    + '<g transform="translate(185 106) rotate(-3)"><rect x="-16" y="-10" width="32" height="21" rx="3" fill="#9a743c" stroke="#05070a" stroke-width="2"/><rect x="-16" y="-2" width="32" height="4.5" fill="#77572a"/><rect x="-2.5" y="-10" width="5" height="21" fill="#77572a"/><rect x="-16" y="-10" width="32" height="5" fill="rgba(255,255,255,.13)"/></g>'
+    + '<g transform="translate(201 97) rotate(16)"><rect x="-10" y="-6" width="20" height="11" rx="2" fill="#2e7d46" stroke="#05070a" stroke-width="1.8"/><circle cx="0" cy="0" r="3.4" fill="#b6ff2e"/></g>'
+    + '<g transform="translate(193 90) rotate(-9)"><rect x="-9" y="-5" width="18" height="10" rx="2" fill="#35924f" stroke="#05070a" stroke-width="1.6"/><circle cx="0" cy="0" r="3" fill="#d8ffb0"/></g>'
+    + figure(148, 88, 1.05, isBuy ? "#20508a" : "#7a2020", "#c98d5e", "reach")
+    + figure(222, 88, 1.05, isBuy ? "#5c1e6e" : "#1e5c2e", "#8a5a34", "reach", true)
+    + fenceLayer(140) + sprayText(200, 170, 24, headColor, "#05070a", head, -1.5)
+    + '</svg>'
+    + '<div class="scene-cap"><div class="sc-title ' + (isBuy ? "spray-buy" : "spray-sell") + '">'
+    + (isBuy ? "Bought " : "Sold ") + deal.qty + " × " + g.name + '</div>'
+    + '<div class="sc-text">' + money(deal.price) + " per " + g.unit.toLowerCase() + " — " + money(deal.total) + (isBuy ? " out of your pocket." : " in your pocket.") + " The corner saw it. The corner forgets it.</div></div>";
+}
+function sceneSVG(type){
+  if(type === "jackpot"){
+    return '<div class="scene-panel"><svg viewBox="0 0 400 190" role="img" aria-label="Price spike celebration">'
+      + brickWall("jack", "#14231a", "#0d1710")
+      + '<g transform="translate(200 92)"><path d="M0 -58 L14 -22 L52 -26 L24 -2 L36 34 L0 16 L-36 34 L-24 -2 L-52 -26 L-14 -22 Z" fill="#ffd21f" stroke="#05070a" stroke-width="3"/></g>'
+      + sprayText(200, 106, 44, "#ff2e88", "#05070a", "×4!", -3)
+      + fenceLayer(138) + sprayText(200, 160, 22, "#b6ff2e", "#05070a", "PRICES WENT WILD", 0)
+      + sprayText(52, 52, 17, "#29e6ff", "#05070a", "$$$", -8) + sprayText(348, 56, 17, "#29e6ff", "#05070a", "$$$", 8)
+      + '</svg></div>';
+  }
+  if(type === "bust"){
+    return '<div class="scene-panel"><svg viewBox="0 0 400 190" role="img" aria-label="Police bust scene">'
+      + brickWall("bust", "#131c2b", "#0b111c")
+      + '<rect x="30" y="24" width="52" height="14" rx="6" fill="#ff3b30"/><rect x="318" y="24" width="52" height="14" rx="6" fill="#2e7fff"/>'
+      + '<ellipse cx="56" cy="70" rx="52" ry="26" fill="rgba(255,59,48,.13)"/><ellipse cx="344" cy="70" rx="52" ry="26" fill="rgba(46,127,255,.13)"/>'
+      + sprayText(200, 44, 27, "#ff5147", "#05070a", "BUSTED!", -2)
+      + figure(148, 90, 1.05, "#1d2f52", "#c98d5e", "stand")
+      + figure(248, 90, 1.05, "#3a3f47", "#8a5a34", "handsup", true)
+      + fenceLayer(138) + sprayText(200, 176, 13, "#e9edf3", "#05070a", "HANDS WHERE THEY CAN SEE THEM", 0, 9)
+      + '</svg></div>';
+  }
+  if(type === "mugging"){
+    return '<div class="scene-panel"><svg viewBox="0 0 400 190" role="img" aria-label="Alley mugging scene">'
+      + brickWall("mug", "#22141c", "#150b10")
+      + sprayText(200, 42, 26, "#ff2e88", "#05070a", "JUMPED!", -2)
+      + figure(120, 90, 1.05, "#7a2020", "#8a5a34", "run")
+      + figure(196, 88, 1.1, "#333a44", "#c98d5e", "stand")
+      + figure(278, 90, 1.05, "#20508a", "#6e4525", "run", true)
+      + fenceLayer(138) + sprayText(200, 176, 13, "#e9edf3", "#05070a", "WRONG ALLEY. WRONG NIGHT.", 0, 9)
+      + '</svg></div>';
+  }
+  if(type === "find"){
+    return '<div class="scene-panel"><svg viewBox="0 0 400 190" role="img" aria-label="Dropped backpack street find">'
+      + brickWall("find", "#12241c", "#0b1712")
+      + sprayText(200, 44, 26, "#b6ff2e", "#05070a", "STREET FIND!", -2)
+      + '<circle cx="200" cy="112" r="34" fill="rgba(182,255,46,.16)"/>'
+      + '<g transform="translate(200 112)"><path d="M-26 -8 A26 20 0 0 1 26 -8 L26 16 A8 8 0 0 1 18 24 L-18 24 A8 8 0 0 1 -26 16 Z" fill="#b3541e" stroke="#05070a" stroke-width="2.5"/><rect x="-14" y="-2" width="28" height="16" rx="4" fill="#8a3f14" stroke="#05070a" stroke-width="2"/><path d="M-12 -22 A12 9 0 0 1 12 -22" stroke="#05070a" stroke-width="4" fill="none"/></g>'
+      + fenceLayer(138) + sprayText(200, 176, 13, "#e9edf3", "#05070a", "NO OWNER IN SIGHT. YOURS NOW.", 0, 9)
+      + '</svg></div>';
+  }
+  if(type === "dogs"){
+    return '<div class="scene-panel"><svg viewBox="0 0 400 190" role="img" aria-label="Police dog close call">'
+      + brickWall("dogs", "#1c1a10", "#12100a")
+      + sprayText(200, 42, 25, "#ffd21f", "#05070a", "TOO CLOSE!", -2)
+      + figure(118, 90, 1.05, "#1d2f52", "#c98d5e", "stand")
+      + '<g transform="translate(196 138)"><ellipse cx="0" cy="2" rx="27" ry="13" fill="#6e5136"/><ellipse cx="-4" cy="-3" rx="20" ry="9" fill="#7d5c3d"/><circle cx="27" cy="-9" r="10.5" fill="#6e5136"/><path d="M21 -17 L25 -26 L31 -16 Z" fill="#543f29"/><circle cx="30" cy="-10" r="1.9" fill="#0a0a0c"/><ellipse cx="37" cy="-5" rx="3.4" ry="2.4" fill="#3a2a18"/><rect x="16" y="-14" width="5.5" height="12" rx="2" fill="#c22e2e" transform="rotate(16 19 -8)"/><path d="M34 -12 L40 -18 M-24 -4 L-34 -14" stroke="#6e5136" stroke-width="6" stroke-linecap="round"/><path d="M-12 10 L-14 22 M14 10 L16 22" stroke="#543f29" stroke-width="6" stroke-linecap="round"/><path d="M24 -12 L80 -24" stroke="#c9d1dc" stroke-width="2.5"/></g>'
+      + figure(292, 90, 1.05, "#3a3f47", "#8a5a34", "stand", true)
+      + fenceLayer(138) + sprayText(200, 176, 13, "#e9edf3", "#05070a", "THE DOG HIT ON YOUR COAT", 0, 9)
+      + '</svg></div>';
+  }
+  if(type === "chase" || type === "caught"){
+    const ok = type === "chase";
+    return '<div class="scene-panel"><svg viewBox="0 0 400 190" role="img" aria-label="Foot chase through the alleys">'
+      + brickWall("chase", "#101d26", "#0a1219")
+      + '<rect x="238" y="34" width="8" height="124" fill="#0d0d10"/><rect x="238" y="60" width="120" height="6" fill="#0d0d10"/><rect x="238" y="100" width="120" height="6" fill="#0d0d10"/>' // fire escape
+      + sprayText(120, 44, 24, ok ? "#29e6ff" : "#ff5147", "#05070a", ok ? "HE GONE!" : "CAUGHT!", -3)
+      + figure(112, 90, 1.05, "#20508a", "#c98d5e", "run")
+      + figure(196, 92, 1.0, "#22262c", "#8a5a34", "run")
+      + figure(272, 94, 1.0, "#22262c", "#6e4525", "run")
+      + fenceLayer(138) + sprayText(200, 176, 13, "#e9edf3", "#05070a", ok ? "FENCES. FIRE ESCAPES. GONE." : "THREE ALLEYS DEEP, LEGS DONE.", 0, 9)
+      + '</svg></div>';
+  }
+  if(type === "boss"){
+    return '<div class="scene-panel">' + bossCarSVG() + '</div>';
+  }
+  return "";
+}
+function eventSceneType(ev){
+  if(!ev) return null;
+  if(ev.kind === "price"){
+    for(const id in S.priceEvents){ if(S.priceEvents[id] === "expensive") return "jackpot"; }
+    return null;
+  }
+  if(ev.kicker === "Busted") return "bust";
+  if(ev.kicker === "Jumped") return "mugging";
+  if(ev.kicker === "Lucky break") return "find";
+  if(ev.kicker === "Too close") return "dogs";
+  return null;
+}
+function renderDealScene(){
+  const el = $("dealScene");
+  if(!S.lastDeal){ el.classList.add("hidden"); el.innerHTML = ""; _lastDealKey = null; return; }
+  const key = S.lastDeal.type + ":" + S.lastDeal.good + ":" + S.lastDeal.qty + ":" + S.lastDeal.total + ":" + S.day + ":" + S.trades;
+  if(key !== _lastDealKey){ _lastDealKey = key; if(AudioSys.ctx && !AudioSys.muted) AudioSys.sprayHiss(); }
+  el.innerHTML = dealSceneSVG(S.lastDeal);
+  el.classList.remove("hidden");
+}
+function renderHQCar(){
+  const el = $("hqCar");
+  if(S.hood === "downtown"){
+    el.innerHTML = '<div class="scene-panel">' + bossCarSVG()
+      + '<div class="scene-cap"><div class="sc-title spray-hot" style="font-size:16px">Parked outside HQ</div>'
+      + '<div class="sc-text">The Boss Man\'s ride sits outside the Loan Shark HQ in Downtown — glossy black, scoop on the hood, chrome everywhere it counts. When it\'s not parked, it\'s looking for somebody.</div></div></div>';
+    el.classList.remove("hidden");
+  } else { el.classList.add("hidden"); el.innerHTML = ""; }
+}
+function renderMapBoard(){
+  const pos = { downtown:[200,67], harbor:[62,86], uptown:[330,80], southside:[86,140], university:[200,104], industrial:[318,140], airport:[200,158] };
+  let tags = "", dots = "";
+  for(const h of ECONOMY.hoods){
+    const p = pos[h.id], here = h.id === S.hood;
+    if(here) dots += '<circle class="herePulse" cx="' + p[0] + '" cy="' + p[1] + '" r="12.5" fill="none" stroke="#ffffff" stroke-width="2.2"/>';
+    dots += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + (here ? 9 : 5) + '" fill="' + (here ? "#ffffff" : h.neon) + '" stroke="#05070a" stroke-width="2"/>';
+    tags += sprayText(p[0], p[1] - (here ? 15 : 10), here ? 14.5 : 12.5, here ? "#ffffff" : h.neon, "#05070a", h.name.split(" ")[0].toUpperCase(), (p[0] % 3) - 1);
+  }
+  $("mapBoard").innerHTML = '<svg viewBox="0 0 400 176" role="img" aria-label="Graffiti map of the city neighborhoods">'
+    + brickWall("map", "#1d1a24", "#12101a")
+    + '<path d="M62 86 L200 67 L330 80 M62 86 L86 140 M200 67 L200 104 M330 80 L318 140 M86 140 L200 158 L318 140 M200 104 L200 158" stroke="rgba(233,237,243,.28)" stroke-width="3" fill="none"/>'
+    + dots + tags
+    + sprayText(200, 18, 14, "#ffd21f", "#05070a", "HUSTLE CITY MAP", 0)
+    + '</svg>';
+}
+function renderSceneModal(){
+  const sc = S.scene;
+  const show = !!sc && !S.pendingEvent && !S.pendingBoss;
+  $("modal-scene").classList.toggle("hidden", !show);
+  if(!show){ _lastSceneKey = null; return; }
+  const _sk = sc.type + ":" + (sc.title||"") + ":" + S.day;
+  if(_sk !== _lastSceneKey){ _lastSceneKey = _sk; if(AudioSys.ctx && !AudioSys.muted) AudioSys.sprayHiss(); }
+  $("scKicker").textContent = sc.kicker || "On the street";
+  $("scTitle").textContent = sc.title || "";
+  $("scScene").innerHTML = sceneSVG(sc.type);
+  $("scText").textContent = sc.text || "";
+}
+$("btnSceneOk").addEventListener("click", () => { AudioSys.ensure(); AudioSys.click(); if(S){ S.scene = null; refresh(); } });
+
+/* trade panel wiring */
+document.querySelectorAll("#tradepanel [data-step]").forEach(b => b.addEventListener("click", () => {
+  if(!selGood) return; AudioSys.click();
+  const s = b.getAttribute("data-step");
+  if(s === "max"){ selQty = Math.max(1, maxBuyable(selGood), S.stash[selGood]); }
+  else selQty += parseInt(s, 10);
+  selQty = Math.max(1, selQty); renderTradePanel();
+}));
+$("btnBuy").addEventListener("click", () => {
+  if(!selGood) return;
+  const q = Math.min(selQty, maxBuyable(selGood));
+  if(q <= 0){ $("tpMsg").textContent = "Can't buy that — not enough cash or coat space."; return; }
+  if(buy(selGood, q)) $("tpMsg").textContent = "Bought " + q + " × " + GOOD[selGood].name + ".";
+});
+$("btnSell").addEventListener("click", () => {
+  if(!selGood) return;
+  const q = Math.min(selQty, S.stash[selGood]);
+  if(q <= 0){ $("tpMsg").textContent = "You don't own any to sell."; return; }
+  if(sell(selGood, q)) $("tpMsg").textContent = "Sold " + q + " × " + GOOD[selGood].name + ".";
+});
+$("btnSellAll").addEventListener("click", () => {
+  if(!selGood) return;
+  const q = S.stash[selGood];
+  if(q <= 0){ $("tpMsg").textContent = "You don't own any to sell."; return; }
+  if(sell(selGood, q)) $("tpMsg").textContent = "Sold all " + q + " × " + GOOD[selGood].name + ".";
+});
+/* sticky trade bar: buttons proxy the panel's own buttons, steppers share selQty */
+$("tbBuy").addEventListener("click", () => { $("btnBuy").click(); });
+$("tbSell").addEventListener("click", () => { $("btnSell").click(); });
+document.querySelectorAll("#tradeBar [data-bstep]").forEach(b => b.addEventListener("click", () => {
+  if(!selGood) return; AudioSys.click();
+  const s = b.getAttribute("data-bstep");
+  if(s === "max"){ selQty = Math.max(1, maxBuyable(selGood), S.stash[selGood]); }
+  else selQty += parseInt(s, 10);
+  selQty = Math.max(1, selQty); renderTradePanel();
+}));
+/* bottom section nav */
+document.querySelectorAll("#tradeNav [data-nav]").forEach(b => b.addEventListener("click", () => {
+  AudioSys.ensure(); AudioSys.click();
+  scrollToEl($(b.getAttribute("data-nav")));
+}));
+
+/* ================= HUSTLE CALCULATOR (display math only — never touches the economy) ================= */
+function calcNum(v){
+  if(v === "" || v === null || v === undefined) return null;
+  const n = parseFloat(v);
+  return (isFinite(n) && n >= 0) ? n : null;
+}
+function renderCalc(){
+  const costEl = $("calcCost"); if(!costEl || !S) return;
+  const sellEl = $("calcSellOut"), profEl = $("calcProfit"), detEl = $("calcDetail"), noteEl = $("calcNote");
+  let basis = null, sellEach = null, qty = null, note = "";
+  if(_calcMode === "auto"){
+    $("calcQty").textContent = selQty;
+    if(!selGood || !GOOD[selGood]){
+      $("calcGood").textContent = "Tap a product in the market first.";
+      $("calcBuyHere").textContent = "—"; $("calcSellHere").textContent = "—"; $("calcAvg").textContent = "—";
+      costEl.textContent = "—"; sellEl.textContent = "—"; profEl.textContent = "—"; profEl.className = "";
+      detEl.textContent = "—"; noteEl.textContent = "";
+      return;
+    }
+    const g = GOOD[selGood], price = S.prices[selGood], own = S.stash[selGood], avg = S.avgCost[selGood] || 0;
+    $("calcGood").textContent = g.name + " — " + HOOD[S.hood].name;
+    $("calcBuyHere").textContent = money(price);
+    $("calcSellHere").textContent = money(price);
+    $("calcAvg").textContent = own > 0 ? money(avg) + " each · you own " + own : "you don't own any yet";
+    basis = own > 0 ? avg : price; // what the units cost you: your average if you hold some, today's price if not
+    sellEach = price; qty = selQty;
+    note = own > 0 ? "Based on your average cost for the " + own + " you own." : "Based on today's price here — you don't own any yet.";
+  } else {
+    basis = calcNum($("calcInPaid").value);
+    sellEach = calcNum($("calcInSell").value);
+    qty = calcNum($("calcInQty").value);
+  }
+  if(basis === null || sellEach === null || qty === null || qty <= 0){
+    costEl.textContent = "—"; sellEl.textContent = "—"; profEl.textContent = "—"; profEl.className = "";
+    detEl.textContent = _calcMode === "manual" ? "Type all three numbers to see the deal." : "—";
+    noteEl.textContent = note;
+    return;
+  }
+  const cost = basis * qty, sells = sellEach * qty, profit = sells - cost;
+  costEl.textContent = money(cost);
+  sellEl.textContent = money(sells);
+  profEl.textContent = money(profit);
+  profEl.className = profit >= 0 ? "pos" : "neg";
+  const markup = basis > 0 ? Math.round((sellEach - basis) / basis * 1000) / 10 : null;
+  detEl.textContent = "Profit per unit: " + money(sellEach - basis) + (markup === null ? "" : " · Markup: " + markup + "%");
+  noteEl.textContent = note;
+}
+function setCalcMode(m){
+  _calcMode = m;
+  $("calcAuto").classList.toggle("hidden", m !== "auto");
+  $("calcManual").classList.toggle("hidden", m !== "manual");
+  $("calcModeAuto").classList.toggle("primary", m === "auto");
+  $("calcModeManual").classList.toggle("primary", m === "manual");
+  renderCalc();
+}
+$("calcModeAuto").addEventListener("click", () => { AudioSys.click(); setCalcMode("auto"); });
+$("calcModeManual").addEventListener("click", () => { AudioSys.click(); setCalcMode("manual"); });
+["calcInPaid", "calcInSell", "calcInQty"].forEach(id => $(id).addEventListener("input", renderCalc));
+document.querySelectorAll("#secCalc [data-cstep]").forEach(b => b.addEventListener("click", () => {
+  if(!selGood) return; AudioSys.click();
+  const s = b.getAttribute("data-cstep");
+  if(s === "max"){ selQty = Math.max(1, maxBuyable(selGood), S.stash[selGood]); }
+  else selQty += parseInt(s, 10);
+  selQty = Math.max(1, selQty); renderTradePanel();
+}));
+$("btnPay100").addEventListener("click", () => { AudioSys.ensure(); const p = payDebt(100); flashFin(p > 0 ? "Paid " + money(p) + " to the shark." : "Nothing to pay — no cash or no debt."); });
+$("btnPayMax").addEventListener("click", () => { AudioSys.ensure(); const p = payDebt(Math.min(S.cash, S.debt)); flashFin(p > 0 ? "Paid " + money(p) + " to the shark." : "Nothing to pay — no cash or no debt."); });
+$("btnDep100").addEventListener("click", () => { AudioSys.ensure(); const d = deposit(100); flashFin(d > 0 ? "Deposited " + money(d) + " at the bank. It's safe there." : "Nothing to deposit — no cash in hand."); });
+$("btnDepMax").addEventListener("click", () => { AudioSys.ensure(); const d = deposit(S.cash); flashFin(d > 0 ? "Deposited " + money(d) + " at the bank. It's safe there." : "Nothing to deposit — no cash in hand."); });
+$("btnWd100").addEventListener("click", () => { AudioSys.ensure(); const w = withdraw(100); flashFin(w > 0 ? "Withdrew " + money(w) + " from the bank." : "Nothing to withdraw — the bank is empty."); });
+$("btnWdMax").addEventListener("click", () => { AudioSys.ensure(); const w = withdraw(S.bank); flashFin(w > 0 ? "Withdrew " + money(w) + " from the bank." : "Nothing to withdraw — the bank is empty."); });
+function flashFin(msg){ const f = $("flash"); f.textContent = msg; f.classList.remove("hidden"); if(S) S.lastEvent = { kind:"info", text:msg }; }
+$("btnWait").addEventListener("click", () => { AudioSys.ensure(); AudioSys.click(); S.lastEvent = null; waitDay(); });
+$("btnNewGame").addEventListener("click", () => { AudioSys.ensure(); AudioSys.click(); selGood = null; newGame(); });
+$("btnAgain").addEventListener("click", () => { AudioSys.ensure(); AudioSys.click(); selGood = null; newGame(); });
+$("btnToTitle").addEventListener("click", () => { AudioSys.click(); S.screen = "title"; refresh(); });
+$("btnRules").addEventListener("click", () => { AudioSys.click(); $("modal-rules").classList.remove("hidden"); });
+$("btnCloseRules").addEventListener("click", () => { AudioSys.click(); $("modal-rules").classList.add("hidden"); });
+function toggleMute(){ AudioSys.muted = !AudioSys.muted; try{ localStorage.setItem("hc_muted", AudioSys.muted ? "1" : "0"); }catch(e){} updateMuteLabels(); }
+$("btnMuteTitle").addEventListener("click", () => { AudioSys.ensure(); toggleMute(); });
+
+/* ================= TEST HOOKS ================= */
+function getState(){
+  return {
+    screen: S.screen, seed: S.seed, day: S.day, cash: S.cash, bank: S.bank, debt: S.debt,
+    health: S.health, heat: S.heat, hood: S.hood,
+    hoods: ECONOMY.hoods.map(h => ({ id: h.id, name: h.name, police: h.police })),
+    prices: Object.assign({}, S.prices), stocked: S.stocked.slice(),
+    priceEvents: Object.assign({}, S.priceEvents),
+    stash: Object.assign({}, S.stash), avgCost: Object.assign({}, S.avgCost), capacity: S.capacity, slotsUsed: slotsUsed(),
+    trades: S.trades, peakNW: S.peakNW,
+    lastEvent: S.lastEvent, pendingEvent: S.pendingEvent ? {
+      kind: S.pendingEvent.kind, title: S.pendingEvent.title, text: S.pendingEvent.text,
+      choices: (S.pendingEvent.choices || []).map(c => c.label) } : null,
+    pendingBoss: S.pendingBoss ? { warning: !!S.pendingBoss.warning } : null,
+    pursuit: !!S.pursuit, gameOver: S.gameOver, netWorth: netWorth(),
+    lastDeal: S.lastDeal ? Object.assign({}, S.lastDeal) : null,
+    ledger: _ledger.slice(0, 5).map(e => ({ delta: e.delta, label: e.label, bal: e.bal })),
+    scene: S.scene ? { type: S.scene.type, title: S.scene.title } : null,
+    chaseEscapeChance: chaseEscapeChance()
+  };
+}
+window.HustleCity = {
+  getState: getState,
+  newGame: newGame,
+  buy: buy, sell: sell, sellEverything: sellEverything, payDebt: payDebt, deposit: deposit, withdraw: withdraw, waitDay: waitDay,
+  travelTo: travelTo, completeTravel: completeTravel,
+  chooseEvent: chooseEvent, bossChoice: bossChoice,
+  chaseEscapeChance: chaseEscapeChance,
+  dismissScene: function(){ if(S){ S.scene = null; refresh(); } return true; },
+  setHeat: function(n){ setHeat(n); refresh(); return S.heat; }
+};
+
+/* ================= BOOT ================= */
+S = freshState(0);
+S.screen = "title";
+refresh();
+</script>
+</body>
+</html>
