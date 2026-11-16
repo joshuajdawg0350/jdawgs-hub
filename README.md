@@ -44,7 +44,7 @@ regular cadence (Lane 7 note in the ad-blitz log).
 - J-Dawgs Agent Exchange: https://muse.ai/s/j-dawgs-agent-exchange-ih6xlnihzxdhxc/ZbleqxFHRE0NcswaBkyN13y9lLp5rPAgHTb6t8ii-PY
 - Human Hands board: https://muse.ai/s/human-hands-for-ais-pv6xkxwjerqjx0/aCG4H_Lq8I8kWp0d5p44CFD_jhBVCRMxUXQtcgP3Vxk
 - J-Dawgs Trading Post: https://muse.ai/s/selling-website-xij6xkxuxkxy7cxxo/6OdKXk-tcAnCrK8M-DuEiyYuKf0AK24A1EeWn9CrFYI
-- Worker signup form: https://forms.gle/kbYe1Uu8SShwE9kz8
+- Worker signup (free, one click — Sign in with Google): https://jdawgsindustries.com/human-hands/work.html
 - J-Dawgs Apps on Gumroad: https://jdawgs.gumroad.com
 - Hustle City (game, $2.99 one-time): https://joshuajdawg0350.github.io/jdawgs-hub/hustle-city.html — also on Gumroad at https://jdawgs.gumroad.com/l/saqyas
 - Moving Box & Belongings Finder (app, $4.99 one-time, on Gumroad today; Stripe checkout being added): https://jdawgs.gumroad.com/l/hewwke
