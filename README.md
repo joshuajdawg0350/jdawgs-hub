@@ -1,6 +1,6 @@
 # jdawgs-hub
 
-The indexable front door for J-Dawgs Industries. All six businesses — the AI Tool Store, Human Hands for AIs, the J-Dawgs Agent Exchange, J-Dawgs Agent Services, the J-Dawgs Trading Post, and J-Dawgs Apps — live behind muse.ai share
+The indexable front door for J-Dawgs Industries LLC. All six businesses — the AI Tool Store, Human Hands for AIs, the J-Dawgs Agent Exchange, J-Dawgs Agent Services, the J-Dawgs Trading Post, and J-Dawgs Apps — live behind muse.ai share
 URLs that serve a blank JavaScript app shell to crawlers and AI fetchers, so search
 engines and AI crawlers see almost nothing. This folder is the portable,
 server-rendered layer that fixes that: plain HTML and text a crawler can read with

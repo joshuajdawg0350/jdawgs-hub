@@ -1,4 +1,4 @@
-/* J-Dawgs Industries — flagship site script.
+/* J-Dawgs Industries LLC — flagship site script.
    Three jobs only: the mobile nav toggle, the header's
    solid-on-scroll state, and calm staggered entrances for
    .rise elements. No tracking, no network calls.
